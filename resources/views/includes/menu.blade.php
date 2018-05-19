@@ -12,7 +12,7 @@
                 <div class="col-lg-3 col-md-3 col-6 v_middle">
                     <div class="logo">
                         <a href="index.php">
-                                <img src="images/logo/full_logo.png" alt="logo image" class="img-fluid">
+                                <img src="{{ URL::to('/') }}/images/logo/full_logo.png" alt="logo image" class="img-fluid">
                             </a>
                     </div>
                 </div>
@@ -44,14 +44,14 @@
                                             <div class="cart_product">
                                                 <div class="product__info">
                                                     <div class="thumbn">
-                                                        <img src="images/capro1.jpg" alt="cart product thumbnail">
+                                                        <img src="{{ URL::to('/') }}/images/capro1.jpg" alt="cart product thumbnail">
                                                     </div>
 
                                                     <div class="info">
                                                         <a class="title" href="single-product.html">Finance and Consulting Business Theme</a>
                                                         <div class="cat">
                                                             <a href="#">
-                                                                    <img src="images/usr_avatar.png" alt="">Sakhawat</a>
+                                                                    <img src="{{ URL::to('/') }}/images/usr_avatar.png" alt="">Sakhawat</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -66,14 +66,14 @@
                                             <div class="cart_product">
                                                 <div class="product__info">
                                                     <div class="thumbn">
-                                                        <img src="images/capro2.jpg" alt="cart product thumbnail">
+                                                        <img src="{{ URL::to('/') }}/images/capro2.jpg" alt="cart product thumbnail">
                                                     </div>
 
                                                     <div class="info">
                                                         <a class="title" href="single-product.html">Flounce - Multipurpose OpenCart Theme</a>
                                                         <div class="cat">
                                                             <a href="#">
-                                                                    <img src="images/usr_avatar.png" alt="">Nurian</a>
+                                                                    <img src="{{ URL::to('/') }}/images/usr_avatar.png" alt="">Nurian</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -103,7 +103,7 @@
                         <!--start .author-author__info-->
                         <div class="author-author__info inline has_dropdown">
                             <div class="author__avatar">
-                                <img src="images/usr_avatar.png" alt="user avatar">
+                                <img src="{{ URL::to('/') }}/images/usr_avatar.png" alt="user avatar">
 
                             </div>
                             <div class="autor__info">
@@ -166,7 +166,7 @@
                             <span class="lnr lnr-cross close_menu"></span>
                             <div class="author-author__info">
                                 <div class="author__avatar v_middle">
-                                    <img src="images/usr_avatar.png" alt="user avatar">
+                                    <img src="{{ URL::to('/') }}/images/usr_avatar.png" alt="user avatar">
                                 </div>
                                 <div class="autor__info v_middle">
                                     <p class="name">

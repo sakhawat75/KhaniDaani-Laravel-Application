@@ -11,18 +11,18 @@
     <title>KhaniDaani - Welcome</title>
 
     <!-- inject:css -->
-    <link rel="stylesheet" href="http://localhost/khanidaani/public/css/animate.css">
-    <link rel="stylesheet" href="http://localhost/khanidaani/public/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://localhost/khanidaani/public/css/fontello.css">
-    <link rel="stylesheet" href="http://localhost/khanidaani/public/css/jquery-ui.css">
-    <link rel="stylesheet" href="http://localhost/khanidaani/public/css/lnr-icon.css">
-    <link rel="stylesheet" href="http://localhost/khanidaani/public/css/owl.carousel.css">
-    <link rel="stylesheet" href="http://localhost/khanidaani/public/css/slick.css">
-    <link rel="stylesheet" href="http://localhost/khanidaani/public/css/trumbowyg.min.css">
-    <link rel="stylesheet" href="http://localhost/khanidaani/public/css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="http://localhost/khanidaani/public/css/style.css">
+    <link rel="stylesheet" href="{{ URL::to('/') }}/css/animate.css">
+    <link rel="stylesheet" href="{{ URL::to('/') }}/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ URL::to('/') }}/css/fontello.css">
+    <link rel="stylesheet" href="{{ URL::to('/') }}/css/jquery-ui.css">
+    <link rel="stylesheet" href="{{ URL::to('/') }}/css/lnr-icon.css">
+    <link rel="stylesheet" href="{{ URL::to('/') }}/css/owl.carousel.css">
+    <link rel="stylesheet" href="{{ URL::to('/') }}/css/slick.css">
+    <link rel="stylesheet" href="{{ URL::to('/') }}/css/trumbowyg.min.css">
+    {{-- <link rel="stylesheet" href="{{ URL::to('/') }}/css/bootstrap/bootstrap.min.css"> --}}
+    <link rel="stylesheet" href="{{ URL::to('/') }}/css/app.css">
     <!-- endinject -->
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost/khanidaani/public/images/logo/logo_icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ URL::to('/') }}/images/logo/logo_icon.png">
 </head>
