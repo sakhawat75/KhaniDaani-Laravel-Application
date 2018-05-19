@@ -1,6 +1,7 @@
 @extends ('layouts.master')
 
 
+@section ('title', 'Create New Dish')
 
 @section ('content')
 

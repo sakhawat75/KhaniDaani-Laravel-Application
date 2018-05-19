@@ -8,7 +8,7 @@
     <meta name="keywords" content="app, app landing, product landing, digital, material, html5">
 
 
-    <title>KhaniDaani - Welcome</title>
+    <title>KhaniDaani - @yield ('title') </title>
 
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ URL::to('/') }}/css/animate.css">
