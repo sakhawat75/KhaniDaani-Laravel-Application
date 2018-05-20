@@ -17,6 +17,8 @@ Route::get('profile', 'ProfileController@index')->name('profile');
 
 Route::get('profile_setting', 'ProfileController@profile_setting')->name('profile_setting');
 
+Route::post('profile/create', 'ProfileController@store')->name('profile_creating');
+
 Route::get('create_dish', 'ProfileController@create_dish')->name('create_dish');
 
 Auth::routes();

@@ -11,7 +11,7 @@
                 <!-- start .col-md-3 -->
                 <div class="col-lg-3 col-md-3 col-6 v_middle">
                     <div class="logo">
-                        <a href="index.php">
+                        <a href="{{ URL::to('/') }}">
                                 <img src="{{ URL::to('/') }}/images/logo/full_logo.png" alt="logo image" class="img-fluid">
                             </a>
                     </div>
@@ -273,7 +273,7 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
                                 <li class="has_dropdown">
-                                    <a href="index.php">HOME</a>
+                                    <a href="{{ URL::to('/') }}">HOME</a>
                                 </li>
                                 <li class="has_dropdown">
                                     <a href="all-products-list.html">all dishes</a>

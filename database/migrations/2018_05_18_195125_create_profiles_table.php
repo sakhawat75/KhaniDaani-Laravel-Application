@@ -15,16 +15,18 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_fullname');
-            $table->string('user_mobile_no');
-            $table->date('user_dob');
-            $table->text('user_cover_photo');
-            $table->text('user_description');
-            $table->decimal('user_avgRating', 2, 2);
-            $table->decimal('user_communicationRating', 2, 2);
-            $table->decimal('user_presetationRating', 2, 2);
-            $table->decimal('user_timingRating', 2, 2);
-            $table->decimal('user_describeRating', 2, 2);
+            $table->integer('user_id');
+            $table->string('fullname');
+            $table->string('mobile_no');
+            $table->date('dob');
+            $table->text('cover_photo');
+            $table->text('profile_photo');
+            $table->text('description');
+            $table->decimal('avgRating', 2, 2);
+            $table->decimal('communicationRating', 2, 2);
+            $table->decimal('presetationRating', 2, 2);
+            $table->decimal('timingRating', 2, 2);
+            $table->decimal('describeRating', 2, 2);
             $table->timestamps();
         });
     }

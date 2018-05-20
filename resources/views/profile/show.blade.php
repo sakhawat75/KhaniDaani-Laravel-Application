@@ -49,8 +49,19 @@
                                 </div>
 
                                 <div class="author">
-                                    <h4>Username</h4>
-                                    <p>Signed Up: 08 April 2016</p>
+                                    <h4>
+                                        @auth
+                                        {{ Auth::user()->name }}
+
+                                        @else
+                                        Username
+                                        @endauth
+                                    </h4>
+                                    <p>Signed Up: 
+                                        @if($profile->created_at)
+                                            {{ $profile->created_at }}
+                                        @endif
+                                    </p>
                                 </div>
                                 <!-- end /.author -->
                             </div>
