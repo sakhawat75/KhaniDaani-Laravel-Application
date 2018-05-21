@@ -11,7 +11,7 @@
 =================================-->
 <section class="hero-area hero--2 bgimage">
     <div class="bg_image_holder">
-        <img src="images/hero_area_bg2.jpg" alt="kd">
+        <img src="images/hero_area_bg3.jpg" alt="kd">
     </div>
 
     <!-- start hero-content -->
@@ -130,7 +130,7 @@
                                     <li>
                                         <img class="auth-img" src="images/auth.jpg" alt="author image">
                                         <p>
-                                            <a href="#">AazzTech</a>
+                                            <a href="#">KhaniDaani</a>
                                         </p>
                                     </li>
                                     <li class="product_cat">
@@ -214,7 +214,7 @@
                                     <li>
                                         <img class="auth-img" src="images/auth.jpg" alt="author image">
                                         <p>
-                                            <a href="#">AazzTech</a>
+                                            <a href="#">KhaniDaani</a>
                                         </p>
                                     </li>
                                     <li class="product_cat">
@@ -298,7 +298,7 @@
                                     <li>
                                         <img class="auth-img" src="images/auth.jpg" alt="author image">
                                         <p>
-                                            <a href="#">AazzTech</a>
+                                            <a href="#">KhaniDaani</a>
                                         </p>
                                     </li>
                                     <li class="product_cat">
@@ -382,7 +382,7 @@
                                     <li>
                                         <img class="auth-img" src="images/auth.jpg" alt="author image">
                                         <p>
-                                            <a href="#">AazzTech</a>
+                                            <a href="#">KhaniDaani</a>
                                         </p>
                                     </li>
                                     <li class="product_cat">
@@ -538,7 +538,7 @@
                             <li>
                                 <img class="auth-img" src="images/auth.jpg" alt="author image">
                                 <p>
-                                    <a href="#">AazzTech</a>
+                                    <a href="#">KhaniDaani</a>
                                 </p>
                             </li>
                             <li class="product_cat">
@@ -591,7 +591,7 @@
                             <li>
                                 <img class="auth-img" src="images/auth2.jpg" alt="author image">
                                 <p>
-                                    <a href="#">AazzTech</a>
+                                    <a href="#">KhaniDaani</a>
                                 </p>
                             </li>
                             <li class="product_cat">
@@ -644,7 +644,7 @@
                             <li>
                                 <img class="auth-img" src="images/auth3.jpg" alt="author image">
                                 <p>
-                                    <a href="#">AazzTech</a>
+                                    <a href="#">KhaniDaani</a>
                                 </p>
                             </li>
                             <li class="product_cat">
@@ -697,7 +697,7 @@
                             <li>
                                 <img class="auth-img" src="images/auth.jpg" alt="author image">
                                 <p>
-                                    <a href="#">AazzTech</a>
+                                    <a href="#">KhaniDaani</a>
                                 </p>
                             </li>
                             <li class="product_cat">
@@ -750,7 +750,7 @@
                             <li>
                                 <img class="auth-img" src="images/auth2.jpg" alt="author image">
                                 <p>
-                                    <a href="#">AazzTech</a>
+                                    <a href="#">KhaniDaani</a>
                                 </p>
                             </li>
                             <li class="product_cat">
@@ -803,7 +803,7 @@
                             <li>
                                 <img class="auth-img" src="images/auth3.jpg" alt="author image">
                                 <p>
-                                    <a href="#">AazzTech</a>
+                                    <a href="#">KaniDaani</a>
                                 </p>
                             </li>
                             <li class="product_cat">

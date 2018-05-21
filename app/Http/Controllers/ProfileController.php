@@ -41,4 +41,7 @@ class ProfileController extends Controller
     	]);
     	return redirect('profile');
     }
+    public function single_dish() {
+    	return view('dishes.single-dish');
+    }
 }

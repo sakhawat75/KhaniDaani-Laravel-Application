@@ -21,6 +21,10 @@ Route::post('profile/create', 'ProfileController@store')->name('profile_creating
 
 Route::get('create_dish', 'ProfileController@create_dish')->name('create_dish');
 
+Route::get('single_dish', 'ProfileController@single_dish')->name('single_dish');
+
+Route::get('recover-pass', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('recover-pass');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

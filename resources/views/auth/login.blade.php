@@ -1,69 +1,107 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<body class="login-page">
+    <!--================================
+        START BREADCRUMB AREA
+    =================================-->
+    <section class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="breadcrumb">
+                        <ul>
+                            <li>
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li class="active">
+                                <a href="#">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <h1 class="page-title">Login</h1>
+                </div>
+                <!-- end /.col-md-12 -->
+            </div>
+            <!-- end /.row -->
+        </div>
+        <!-- end /.container -->
+    </section>
+    <!--================================
+        END BREADCRUMB AREA
+    =================================-->
 
-                <div class="card-body">
+    <!--================================
+            START LOGIN AREA
+    =================================-->
+    <section class="login_area section--padding2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
+                        <div class="cardify login">
+                            <div class="login--header">
+                                <h3>Welcome Back</h3>
+                                <p>You can sign in with your email adress</p>
+                            </div>
+                            <!-- end .login_header -->
 
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <div class="login--form">
+                                <div class="form-group">
+                                    <label for="user_name">Email Adress</label>
+                                    <input id="email" type="email" class="text_field{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus placeholder="Enter your email...">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
+                                    @if ($errors->has('email'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
+                                    @endif
+                                </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                <div class="form-group">
+                                    <label for="pass">Password</label>
+                                    <input id="password" type="password" class="text_field{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="Enter your password...">
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
+                                    @if ($errors->has('password'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
+                                    @endif
+                                </div>
 
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
-                                    </label>
+                                <div class="form-group">
+                                    <div class="custom_checkbox">
+                                        <input type="checkbox" id="ch2" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('') }}
+                                        <label for="ch2">
+                                            <span class="shadow_checkbox"></span>
+                                            <span class="label_text">Remember me</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn--md btn--round" type="submit">{{ __('Login') }}</button>
+
+                                <div class="login_assist">
+                                    <p class="recover">Lost your
+                                        <a href="{{ route('recover-pass') }}">username</a> or
+                                        <a href="pass-recovery.html">password</a>?</p>
+                                    <p class="signup">Don't have an
+                                        <a href="{{ route('register') }}">account</a>?</p>
                                 </div>
                             </div>
+                            <!-- end .login--form -->
                         </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            </div>
-                        </div>
+                        <!-- end .cardify -->
                     </form>
                 </div>
+                <!-- end .col-md-6 -->
             </div>
+            <!-- end .row -->
         </div>
-    </div>
-</div>
+        <!-- end .container -->
+    </section>
+    <!--================================
+            END LOGIN AREA
+    =================================-->
 @endsection

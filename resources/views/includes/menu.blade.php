@@ -273,7 +273,7 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
                                 <li class="has_dropdown">
-                                    <a href="{{ URL::to('/') }}">HOME</a>
+                                    <a href="{{route('home')}}">HOME</a>
                                 </li>
                                 <li class="has_dropdown">
                                     <a href="all-products-list.html">all dishes</a>
