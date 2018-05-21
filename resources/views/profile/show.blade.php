@@ -178,7 +178,7 @@
                                 <!-- end /.product__thumbnail -->
 
                                 <div class="product-desc">
-                                    <a href="#" class="product_title">
+                                    <a href="{{ route('single_dish')}}" class="product_title">
                                         <h4>Special Veg nonveg Pizza</h4>
                                     </a>
                                     <ul class="titlebtm">
