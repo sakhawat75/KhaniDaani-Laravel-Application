@@ -24,3 +24,5 @@ Route::get('recover-pass', 'Auth\ForgotPasswordController@showLinkRequestForm')-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/single-dish', 'ProfileController@single_dish');
