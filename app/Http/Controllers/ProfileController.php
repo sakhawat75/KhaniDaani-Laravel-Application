@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use \App\User;
 use Illuminate\Http\Request;
 use \App\Profile;
 use Auth;
 
 class ProfileController extends Controller
 {
-    public function index() {
+//	public function __construct() {
+//		$this->middleware('auth');
+//	}
+
+
+	public function index() {
     	if(!Auth::check()) {
     		return redirect('register');
     	}
@@ -33,9 +38,11 @@ class ProfileController extends Controller
     }
 
     public function store() {
-	    $user_id = Auth::user()->id;
+	    $user_id = auth()->user()->id;
 
-	    $profile = Profile::find($user_id);
+	    $user = User::find($user_id);
+	    $profile = $user->profile()->first();
+
 	    if (request()->filled('fullname')) {
 		    $profile->fullname = \request('fullname');
 	    }
@@ -58,7 +65,7 @@ class ProfileController extends Controller
     	]);*/
 
     	$profile->save();
-    	return redirect('profile');
+    	return redirect()->route('profile');
     }
     public function single_dish() {
     	return view('dishes.single-dish');
