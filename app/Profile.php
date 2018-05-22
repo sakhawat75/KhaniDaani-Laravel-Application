@@ -10,7 +10,7 @@ class Profile extends Model
 
     public static function store($id) {
     	$profile = \App\Profile::create([
-    		'user_id' => $id
+    		'user_id' => $id,
 	    ]);
     }
 

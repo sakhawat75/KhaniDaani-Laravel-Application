@@ -60,7 +60,7 @@
 	            </div>
 	            <!-- end /.row -->
 
-	            <form action="{{ URL::to('/') }}/profile/create" class="setting_form" method="post">
+	            <form action="{{ URL::to('/') }}/profile/create" class="setting_form" method="post" enctype="multipart/form-data">
 	            	{{ csrf_field() }}
 	            	
 	            	
@@ -79,7 +79,7 @@
 	                                        <label for="acname">Full Name
 	                                            <sup>*</sup>
 	                                        </label>
-	                                        <input type="text" id="acname" class="text_field" placeholder="First Name" name="fullname">
+	                                        <input type="text" id="acname" class="text_field" value="{{ $profile->fullname }}" name="fullname">
 	                                    </div>
 
 	                                    {{-- <div class="form-group">
@@ -94,12 +94,12 @@
 
 	                                    <div class="form-group">
 	                                        <label for="mobile">Date of bith</label>
-	                                        <input type="date" id="mobile" class="text_field" placeholder="Date Of Birth" name="dob">
+	                                        <input type="date" id="mobile" class="text_field" value="{{ $profile->dob }}" name="dob">
 	                                    </div>
 
 	                                    <div class="form-group">
 	                                        <label for="mobile2">Phone No</label>
-	                                        <input type="text" id="mobile2" class="text_field" placeholder="Phone no" name="mobile_no">
+	                                        <input type="text" id="mobile2" class="text_field" value="{{ $profile->mobile_no }}" name="mobile_no">
 	                                    </div>
 
 	                                    {{-- <div class="form-group">
@@ -163,7 +163,11 @@
  --}}
 	                                    <div class="form-group">
 	                                        <label for="authbio">User Description</label>
-	                                        <textarea name="description" id="authbio" class="text_field" placeholder="Short brief about yourself or your account..."></textarea>
+	                                        <textarea name="description" id="authbio" class="text_field"
+													  @if(empty($profile->description))
+														  {!! "placeholder='Short brief about yourself or your account...'" !!}
+													  @endif
+											>{{ $profile->description }}</textarea>
 	                                    </div>
 	                                </div>
 	                                <!-- end /.information_wrapper -->
@@ -192,7 +196,7 @@
 	                                        </div>
 
 	                                        <label for="profile_photo" class="upload_btn">
-	                                            <input type="file" id="profile_photo" name="profile_photo">
+	                                            <input type="file" id="profile_photo" name="profile_image">
 	                                            <span class="btn btn--sm btn--round" aria-hidden="true">Choose Image</span>
 	                                        </label>
 	                                    </div>
@@ -204,7 +208,7 @@
 	                                        <div class="upload_title">
 	                                            <p>JPG, GIF or PNG 750x370 px</p>
 	                                            <label for="dp" class="upload_btn">
-	                                                <input type="file" id="dp" name="cover_photo">
+	                                                <input type="file" id="dp" name="cover_image">
 	                                                <span class="btn btn--sm btn--round" aria-hidden="true">Choose Image</span>
 	                                            </label>
 	                                        </div>

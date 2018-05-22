@@ -45,7 +45,7 @@
                         <div class="author-card sidebar-card">
                             <div class="author-infos">
                                 <div class="author_avatar">
-                                    <img src="images/author-avatar.jpg" alt="Presenting the broken author avatar :D">
+                                    <img src="/storage/images/profile_image/{{ $profile->profile_image }}" alt="Presenting the broken author avatar :D">
                                 </div>
 
                                 <div class="author">
@@ -119,7 +119,7 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
                             <div class="author_module">
-                                <img src="images/authcvr.jpg" alt="author image">
+                                <img src="/storage/images/cover_image/{{ $profile->cover_image }}" alt="author image">
                             </div>
                         </div>
                             <div class="col-md-4 col-sm-4">

@@ -19,8 +19,8 @@ class CreateProfilesTable extends Migration
             $table->string('fullname');
             $table->string('mobile_no');
             $table->date('dob');
-            $table->text('cover_photo');
-            $table->text('profile_photo');
+            $table->string('cover_image')->default('authcvr.jpg');
+            $table->string('profile_image')->default('author-avatar.jpg');;
             $table->text('description');
             $table->decimal('avgRating', 2, 2);
             $table->decimal('communicationRating', 2, 2);
