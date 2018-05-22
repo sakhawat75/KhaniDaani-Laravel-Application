@@ -11,7 +11,7 @@
                 <!-- start .col-md-3 -->
                 <div class="col-lg-3 col-md-3 col-6 v_middle">
                     <div class="logo">
-                        <a href="{{ route('home') }}">
+                        <a href="{{ URL::to('/') }}">
                                 <img src="{{ URL::to('/') }}/images/logo/full_logo.png" alt="logo image" class="img-fluid">
                             </a>
                     </div>
