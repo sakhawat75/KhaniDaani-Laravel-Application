@@ -329,7 +329,7 @@
 
     var thumbSlider = $('.thumb-slider');
     thumbSlider.slick({
-        slidesToShow: 5,
+        slidesToShow: 2,
         slidesToScroll: 1,
         arrows: false,
         focusOnSelect: false,
