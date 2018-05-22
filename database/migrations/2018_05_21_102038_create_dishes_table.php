@@ -17,6 +17,7 @@ class CreateDishesTable extends Migration
             $table->increments('id');
             $table->string('dish_category');
             $table->string('dish_subcategory');
+            //andu ekta comment leklam
             $table->string('dish_name');
             $table->text('dish_description');
             $table->double('dish_price');
