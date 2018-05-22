@@ -7,4 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     protected $fillable = ['user_id', 'fullname', 'dob', 'mobile_no', 'description'];
+
+    public static function store($id) {
+    	$profile = \App\Profile::create([
+    		'user_id' => $id
+	    ]);
+    }
+
+    public function user() {
+    	$this->belongsTo('App\User');
+    }
 }

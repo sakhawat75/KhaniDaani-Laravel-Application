@@ -50,18 +50,9 @@
 
                                 <div class="author">
                                     <h4>
-                                        @auth
-                                        {{ Auth::user()->name }}
-
-                                        @else
-                                        Username
-                                        @endauth
+                                        {{ $profile->fullname }}
                                     </h4>
-                                    <p>Signed Up: 
-                                        @if($profile->created_at)
-                                            {{ $profile->created_at }}
-                                        @endif
-                                    </p>
+                                    <p>Signed Up {{ $profile->created_at }}</p>
                                 </div>
                                 <!-- end /.author -->
                             </div>
@@ -97,7 +88,7 @@
                                 <h2>About
                                     <span>User</span>
                                 </h2>
-                                <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattisleo quam aliquet congue. Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattisleo quam aliquet congue. Nunc placerat mi id nisi interdum mollis. Prae sent pharetra, justo ut scelerisque the mattisleo quam aliquet congue.</p>
+                                <p> {{ $profile->description }} </p>
                             </div>
                         <div class="sidebar-card message-card">
                             <div class="card-title">
