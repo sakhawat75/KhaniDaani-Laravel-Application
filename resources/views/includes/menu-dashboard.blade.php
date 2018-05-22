@@ -3,11 +3,11 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="dashboard_menu">
-                    <li>
+                    <li class="{{ request()->is('profile') ? 'active' : '' }}">
                         <a href="profile">
                                     <span class="lnr lnr-home"></span>Profile</a>
                     </li>
-                    <li class="active">
+                    <li class="{{ request()->is('profile_setting') ? 'active' : '' }}">
                         <a href="profile_setting">
                                     <span class="lnr lnr-cog"></span>Profile Setting</a>
                     </li>
