@@ -15,7 +15,7 @@
 	                <div class="breadcrumb">
 	                    <ul>
 	                        <li>
-	                            <a href="index.html">Home</a>
+	                            <a href="{{ URL::to('/') }}">Home</a>
 	                        </li>
 	                        <li>
 	                            <a href="dashboard.html">Dashboard</a>
@@ -60,7 +60,10 @@
 	            </div>
 	            <!-- end /.row -->
 
-	            <form action="#" class="setting_form">
+	            <form action="{{ URL::to('/') }}/profile/create" class="setting_form" method="post" enctype="multipart/form-data">
+	            	{{ csrf_field() }}
+	            	
+	            	
 	                <div class="row">
 	                    <div class="col-lg-6">
 	                        <div class="information_module">
@@ -73,13 +76,13 @@
 	                            <div class="information__set toggle_module collapse show" id="collapse2">
 	                                <div class="information_wrapper form--fields">
 	                                    <div class="form-group">
-	                                        <label for="acname">Account Name
+	                                        <label for="acname">Full Name
 	                                            <sup>*</sup>
 	                                        </label>
-	                                        <input type="text" id="acname" class="text_field" placeholder="First Name" value="">
+	                                        <input type="text" id="acname" class="text_field" value="{{ $profile->fullname }}" name="fullname">
 	                                    </div>
 
-	                                    <div class="form-group">
+	                                    {{-- <div class="form-group">
 	                                        <label for="usrname">Username
 	                                            <sup>*</sup>
 	                                        </label>
@@ -87,34 +90,34 @@
 	                                        <p>Your MartPlace URL: https://khanidaani.com/
 	                                            <span>user</span>
 	                                        </p>
-	                                    </div>
+	                                    </div> --}}
 
 	                                    <div class="form-group">
 	                                        <label for="mobile">Date of bith</label>
-	                                        <input type="date" id="website" class="text_field" placeholder="Date Of Birth">
+	                                        <input type="date" id="mobile" class="text_field" value="{{ $profile->dob }}" name="dob">
 	                                    </div>
 
 	                                    <div class="form-group">
-	                                        <label for="mobile">Phone No</label>
-	                                        <input type="text" id="website" class="text_field" placeholder="Phone no">
+	                                        <label for="mobile2">Phone No</label>
+	                                        <input type="text" id="mobile2" class="text_field" value="{{ $profile->mobile_no }}" name="mobile_no">
 	                                    </div>
 
-	                                    <div class="form-group">
+	                                    {{-- <div class="form-group">
 	                                        <label for="emailad">Email Address
 	                                            <sup>*</sup>
 	                                        </label>
 	                                        <input type="text" id="emailad" class="text_field" placeholder="Email address" value="">
-	                                    </div>
+	                                    </div> --}}
 
 
-	                                    <div class="form-group">
+	                                    {{-- <div class="form-group">
 	                                        <label for="password">Old Password
 	                                            <sup>*</sup>
 	                                        </label>
 	                                        <input type="password" id="password" class="text_field" placeholder="Old Password">
-	                                    </div>
+	                                    </div> --}}
 
-	                                    <div class="row">
+	                                    {{-- <div class="row">
 	                                        <div class="col-md-6">
 	                                            <div class="form-group">
 	                                                <label for="password">Password
@@ -132,9 +135,9 @@
 	                                                <input type="password" id="conpassword" class="text_field" placeholder="re-enter password">
 	                                            </div>
 	                                        </div>
-	                                    </div>
+	                                    </div> --}}
 
-	                                    <div class="form-group">
+	                                    {{-- <div class="form-group">
 	                                        <label for="country">Country
 	                                            <sup>*</sup>
 	                                        </label>
@@ -150,17 +153,21 @@
 	                                            </select>
 	                                            <span class="lnr lnr-chevron-down"></span>
 	                                        </div>
-	                                    </div>
+	                                    </div> --}}
 
 
-	                                    <div class="form-group">
+	                                    {{-- <div class="form-group">
 	                                        <label for="prohead">Profile Heading</label>
 	                                        <input type="text" id="prohead" class="text_field" placeholder="Ex: Webdesign & Development Service">
 	                                    </div>
-
+ --}}
 	                                    <div class="form-group">
-	                                        <label for="authbio">Author Bio</label>
-	                                        <textarea name="author_bio" id="authbio" class="text_field" placeholder="Short brief about yourself or your account..."></textarea>
+	                                        <label for="authbio">User Description</label>
+	                                        <textarea name="description" id="authbio" class="text_field"
+													  @if(empty($profile->description))
+														  {!! "placeholder='Short brief about yourself or your account...'" !!}
+													  @endif
+											>{{ $profile->description }}</textarea>
 	                                    </div>
 	                                </div>
 	                                <!-- end /.information_wrapper -->
@@ -188,9 +195,9 @@
 	                                            <p class="subtitle">JPG, GIF or PNG 100x100 px</p>
 	                                        </div>
 
-	                                        <label for="cover_photo" class="upload_btn">
-	                                            <input type="file" id="cover_photo">
-	                                            <span class="btn btn--sm btn--round" aria-hidden="true">Upload Image</span>
+	                                        <label for="profile_photo" class="upload_btn">
+	                                            <input type="file" id="profile_photo" name="profile_image">
+	                                            <span class="btn btn--sm btn--round" aria-hidden="true">Choose Image</span>
 	                                        </label>
 	                                    </div>
 
@@ -201,8 +208,8 @@
 	                                        <div class="upload_title">
 	                                            <p>JPG, GIF or PNG 750x370 px</p>
 	                                            <label for="dp" class="upload_btn">
-	                                                <input type="file" id="dp">
-	                                                <span class="btn btn--sm btn--round" aria-hidden="true">Upload Image</span>
+	                                                <input type="file" id="dp" name="cover_image">
+	                                                <span class="btn btn--sm btn--round" aria-hidden="true">Choose Image</span>
 	                                            </label>
 	                                        </div>
 	                                    </div>
@@ -211,7 +218,7 @@
 	                        </div>
 	                        <!-- end /.information_module -->
 
-	                        <div class="information_module">
+	                        {{-- <div class="information_module">
 	                            <a class="toggle_title" href="#collapse4" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="collapse1">
 	                                <h4>Email Notification setting
 	                                    <span class="lnr lnr-chevron-down"></span>
@@ -304,7 +311,7 @@
 	                            </div>
 	                            <!-- end /.information_module -->
 	                        </div>
-	                        <!-- end /.information_module -->
+	                        <!-- end /.information_module --> --}}
 	                    </div>
 	                    <!-- end /.col-md-6 -->
 
