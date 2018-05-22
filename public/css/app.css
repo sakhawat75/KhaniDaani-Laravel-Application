@@ -11781,7 +11781,7 @@ h6 {
   border-radius: 4px;
   -webkit-box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
   box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .product--sidebar .sidebar-card .card-title,
@@ -11946,14 +11946,14 @@ h6 {
 
 .sidebar--single-product .sidebar-card,
 .sidebar--single-product .item-preview {
-  padding: 30px;
+  padding: 20px;
 }
 
 .sidebar--single-product .sidebar-card.card-pricing .price,
 .sidebar--single-product .card-pricing.item-preview .price {
   padding: 30px 0;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   -webkit-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
@@ -13010,7 +13010,7 @@ h6 {
 }
 
 .product--card .product-purchase {
-  margin-top: 10px;
+  margin-top: 2px;
 }
 
 .product--card2 .product__thumbnail img {

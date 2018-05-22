@@ -92,6 +92,17 @@
                                         </label>
                                     <input type="text" id="product_name" class="text_field" placeholder="Enter your product name here...">
                                 </div>
+                                
+                                <div class="form-group">
+                                    <label for="category">Preperation Time</label>
+                                    <div class="select-wrap select-wrap2">
+                                        <select name="country" id="category" class="text_field">
+                                                <option value="">1 Houre</option>
+                                                <option value="">2 Houre</option>
+                                            </select>
+                                        <span class="lnr lnr-chevron-down"></span>
+                                    </div>
+                                </div>
 
 
                                 <div class="form-group no-margin">
