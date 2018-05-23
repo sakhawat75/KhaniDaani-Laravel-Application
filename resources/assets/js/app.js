@@ -20,3 +20,25 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
+
+/* Added by us*/
+function readURL(input, img) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        var selector = '#' + img;
+        reader.onload = function(e) {
+            $(selector).attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#dp").change(function() {
+    readURL(this, 'preview_cover');
+});
+
+$("#profile_photo").change(function () {
+    readURL(this, 'preview_profile_image');
+});

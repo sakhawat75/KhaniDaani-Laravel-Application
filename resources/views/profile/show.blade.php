@@ -45,12 +45,14 @@
                         <div class="author-card sidebar-card">
                             <div class="author-infos">
                                 <div class="author_avatar">
-                                    <img src="images/author-avatar.jpg" alt="Presenting the broken author avatar :D">
+                                    <img src="/storage/images/profile_image/{{ $profile->profile_image }}" alt="Presenting the broken author avatar :D">
                                 </div>
 
                                 <div class="author">
-                                    <h4>Username</h4>
-                                    <p>Signed Up: 08 April 2016</p>
+                                    <h4>
+                                        {{ $profile->fullname }}
+                                    </h4>
+                                    <p>Signed Up {{ $profile->created_at }}</p>
                                 </div>
                                 <!-- end /.author -->
                             </div>
@@ -86,7 +88,7 @@
                                 <h2>About
                                     <span>User</span>
                                 </h2>
-                                <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattisleo quam aliquet congue. Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattisleo quam aliquet congue. Nunc placerat mi id nisi interdum mollis. Prae sent pharetra, justo ut scelerisque the mattisleo quam aliquet congue.</p>
+                                <p> {{ $profile->description }} </p>
                             </div>
                         <div class="sidebar-card message-card">
                             <div class="card-title">
@@ -117,7 +119,7 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
                             <div class="author_module">
-                                <img src="images/authcvr.jpg" alt="author image">
+                                <img src="/storage/images/cover_image/{{ $profile->cover_image }}" alt="author image">
                             </div>
                         </div>
                             <div class="col-md-4 col-sm-4">
