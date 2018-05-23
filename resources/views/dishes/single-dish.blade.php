@@ -440,17 +440,17 @@
 
                             <div class="author-infos">
                                 <div class="author_avatar">
-                                    <img src="images/author-avatar.jpg" alt="Presenting the broken author avatar :D">
+                                    <img src="{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="user avatar">
                                 </div>
 
                                 <div class="author">
-                                    <h4>Username</h4>
-                                    <p>Signed Up: 08 April 2016</p>
+                                    <h4>{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</h4>
+                                    <p>Signed Up: {{ $profile->created_at }}</p>
                                 </div>
                                 <!-- end /.author -->
 
                                 <div class="author-btn">
-                                    <a href="#" class="btn btn--sm btn--round">View Profile</a>
+                                    <a href="{{ route('profile')}}" class="btn btn--sm btn--round">View Profile</a>
                                 </div>
                                 <!-- end /.author-btn -->
                             </div>

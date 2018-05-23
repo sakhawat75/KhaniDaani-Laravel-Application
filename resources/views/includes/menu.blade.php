@@ -38,7 +38,7 @@
                                         <span class="lnr lnr-cart"></span>
                                         <span class="notification_count purch">2</span>
                                     </div>
-
+<!--
                                     <div class="dropdown dropdown--cart">
                                         <div class="cart_area">
                                             <div class="cart_product">
@@ -95,20 +95,23 @@
                                             </div>
                                         </div>
                                     </div>
+                                    -->
                                 </li>
                             </ul>
-                        </div>
+                        </div> 
                         <!--start .author__notification_area -->
 
                         <!--start .author-author__info-->
                         <div class="author-author__info inline has_dropdown">
                             <div class="author__avatar">
-                                <img src="{{ URL::to('/') }}/images/usr_avatar.png" alt="user avatar">
-
+                              
+                                   <img src="{{ URL::to('/') }}/images/usr_avatar.png" alt="user avatar">
+                                
                             </div>
-                            <div class="autor__info">
+                            
+                             <div class="autor__info">
                                 <p class="name">
-                                    Sign In
+                                    Profile menu
                                 </p>
                             </div>
 
@@ -144,15 +147,17 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
-                                            <span class="lnr lnr-exit"></span>Logout</a>
-                                        </a>    
+                                            <span class="lnr lnr-exit"></span>Logout</a>   
                                         <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
                                 </ul>
                             </div>
+                            
                         </div>
+                        
+                       
                         <!--end /.author-author__info-->
                     </div>
                     <!-- end .author-area -->
@@ -175,21 +180,7 @@
                                 </div>
                             </div>
                             <!--end /.author-author__info-->
-
-                            <div class="author__notification_area">
-                                <ul>
-                                    <li>
-                                        <a href="cart.html">
-                                            <div class="icon_wrap">
-                                                <span class="lnr lnr-cart"></span>
-                                                <span class="notification_count purch">2</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--start .author__notification_area -->
-
+                            
                             <div class="dropdown dropdown--author">
                                 <ul>
                                     <li>
@@ -226,6 +217,22 @@
                                     </li>
                                 </ul>
                             </div>
+
+                            <div class="author__notification_area">
+                                <ul>
+                                    <li>
+                                        <a href="cart.html">
+                                            <div class="icon_wrap">
+                                                <span class="lnr lnr-cart"></span>
+                                                <span class="notification_count purch">2</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--start .author__notification_area -->
+
+                            
 
                             <div class="text-center">
                                 <a href="signup.html" class="author-area__seller-btn inline">Become a Chef</a>

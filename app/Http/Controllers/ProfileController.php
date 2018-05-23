@@ -93,7 +93,13 @@ class ProfileController extends Controller
     	return redirect()->route('profile');
     }
     public function single_dish() {
-    	return view('dishes.single-dish');
+    	if(!Auth::check()) {
+    		return redirect('register');
+    	}
+    	$user_id = Auth::user()->id;
+    	$profile = Profile::where('user_id', $user_id)->first();
+
+    	return view('dishes.single-dish', compact('profile'));
     }
 
     public function upload_image(Request $request, Profile $profile, $type) {
