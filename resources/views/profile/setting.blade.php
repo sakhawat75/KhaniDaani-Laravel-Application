@@ -189,7 +189,7 @@
 	                            <div class="information__set profile_images toggle_module collapse" id="collapse3">
 	                                <div class="information_wrapper">
 	                                    <div class="profile_image_area">
-	                                        <img src="images/authplc.png" alt="Author profile area">
+	                                        <img src="images/authplc.png" alt="Author profile area" id="preview_profile_image" style="height: 100px;width: 100px;">
 	                                        <div class="img_info">
 	                                            <p class="bold">Profile Image</p>
 	                                            <p class="subtitle">JPG, GIF or PNG 100x100 px</p>
@@ -203,7 +203,7 @@
 
 	                                    <div class="prof_img_upload">
 	                                        <p class="bold">Cover Image</p>
-	                                        <img src="images/cvrplc.jpg" alt="The great warrior of China">
+	                                        <img src="images/cvrplc.jpg" alt="The great warrior of China" id="preview_cover">
 
 	                                        <div class="upload_title">
 	                                            <p>JPG, GIF or PNG 750x370 px</p>
