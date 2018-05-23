@@ -18,7 +18,7 @@
     background: #fff;
     border-radius: 4px;
     @include cardShadow;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     .card-title{
       padding: 30px 30px 28px;
       display: block;
@@ -78,12 +78,12 @@
 /* SINGLE PRODUCT SIDEBAR */
 .sidebar--single-product{
   .sidebar-card{
-    padding: 30px;
+    padding: 20px;
     &.card-pricing{
       .price{
         padding: 30px 0;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
         box-shadow: 0 4px 30px transparentize(#000,.9);
         h1{
           font-weight: 500;

@@ -169,7 +169,7 @@
                             <div class="product product--card">
 
                                 <div class="product__thumbnail">
-                                    <img src="images/p4.jpg" alt="Product Image">
+                                    <img src="images/dishid_mainthumb.jpg" alt="Product Image">
                                     <div class="prod_btn">
                                         <a href="single-product.html" class="transparent btn--sm btn--round">More Info</a>
                                     </div>
@@ -180,17 +180,18 @@
                                 <div class="product-desc">
                                     <a href="{{ route('single_dish')}}" class="product_title">
                                         <h4>Special Veg nonveg Pizza</h4>
+                                        <h4>Indian butter chicken</h4>
                                     </a>
                                     <ul class="titlebtm">
                                         <li>
-                                            <img class="auth-img" src="images/auth3.jpg" alt="author image">
+                                            <img class="auth-img" src="images/dishid_mainthumb.jpg" alt="author image">
                                             <p>
                                                 <a href="#">User1</a>
                                             </p>
                                         </li>
                                         <li class="product_cat">
                                             <a href="#">
-                                                <img src="images/cathtm.png" alt="category image">Plugin</a>
+                                                From <span>Sylhet</span></a>
                                         </li>
                                     </ul>
                                 </div>

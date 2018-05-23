@@ -12,17 +12,17 @@
                     <div class="breadcrumb">
                         <ul>
                             <li>
-                                <a href="#">Home</a>
+                                <a href="#">Dish</a>
                             </li>
                             <li>
-                                <a href="#">Wordpress</a>
+                                <a href="#">Chicken</a>
                             </li>
                             <li class="active">
-                                <a href="#">Corporate & Business</a>
+                                <a href="#">Roast</a>
                             </li>
                         </ul>
                     </div>
-                    <h1 class="page-title">Beborn - Multipurpose WordPress Landing Page</h1>
+                    <h1 class="page-title">Indian Butter Chicken</h1>
                 </div>
                 <!-- end /.col-md-12 -->
             </div>
@@ -45,13 +45,13 @@
                     <div class="item-preview">
                         <div class="item__preview-slider">
                             <div class="prev-slide">
-                                <img src="images/itprv.jpg" alt="Keep calm this isn't the end of the world, the preview is just missing.">
+                                <img src="images/dishid_img1.jpg" alt="Keep calm this isn't the end of the world, the preview is just missing.">
                             </div>
                             <div class="prev-slide">
-                                <img src="images/itprv.jpg" alt="Keep calm this isn't the end of the world, the preview is just missing.">
+                                <img src="images/dishid_img2.jpg" alt="Keep calm this isn't the end of the world, the preview is just missing.">
                             </div>
                             <div class="prev-slide">
-                                <img src="images/itprv.jpg" alt="Keep calm this isn't the end of the world, the preview is just missing.">
+                                <img src="images/dishid_img3.jpg" alt="Keep calm this isn't the end of the world, the preview is just missing.">
                             </div>
                         </div>
                         <!-- end /.item--preview-slider -->
@@ -60,13 +60,13 @@
                             <div class="prev-thumb">
                                 <div class="thumb-slider">
                                     <div class="item-thumb">
-                                        <img src="images/thumb1.jpg" alt="This is the thumbnail of the item">
+                                        <img src="images/dthumb1.jpg" alt="This is the thumbnail of the item">
                                     </div>
                                     <div class="item-thumb">
-                                        <img src="images/thumb2.jpg" alt="This is the thumbnail of the item">
+                                        <img src="images/dthumb2.jpg" alt="This is the thumbnail of the item">
                                     </div>
                                     <div class="item-thumb">
-                                        <img src="images/thumb3.jpg" alt="This is the thumbnail of the item">
+                                        <img src="images/dthumb1.jpg" alt="This is the thumbnail of the item">
                                     </div>
                                 </div>
                                 <!-- end /.thumb-slider -->
@@ -148,14 +148,14 @@
                             <div class="fade show tab-pane product-tab active" id="product-details">
                                 <div class="tab-content-wrapper">
                                     <h1>Dish Description</h1>
-                                    <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattis, leo quam aliquet congue placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scel erisque the mattis, leo quam aliquet congue justo ut scelerisque. Praesent pharetra, justo ut scelerisque the mattis, leo quam aliquet congue justo ut scelerisque.</p>
+                                    <p>Chicken Makhani is one of my favorite Indian dishes. It is a full flavored dish that complements the chicken well. It can be made as mild or spicy as you wish by adjusting the cayenne. Serve with basmati rice and naan bread.</p>
 
                                     <h2>Dish Ingredients</h2>
                                     <ul>
-                                        <li>Six different themes for product slider</li>
-                                        <li>Featured products slider form selected categories.</li>
-                                        <li>Product slider form specific categories of products. Include or exclude categories.</li>
-                                        <li>Product slider form specific tags of products. Include or exclude tags. New</li>
+                                        <li>Peanut oil</li>
+                                        <li>Natural yogurt</li>
+                                        <li>Black pepper</li>
+                                        <li>Cornflour</li>
                                     </ul>
                                 </div>
                             </div>
@@ -199,11 +199,10 @@
                                                                     </li>
                                                                 </ul>
                                                             </div>
-                                                            <span class="review_tag">design quality</span>
                                                         </div>
                                                         <a href="#" class="reply-link">Reply</a>
                                                     </div>
-                                                    <p>Retina logo won't work retina logo won't work</p>
+                                                    <p>Amazing</p>
                                                 </div>
                                             </div>
 
@@ -219,10 +218,8 @@
                                                         <div class="media-body">
                                                             <div class="media-heading">
                                                                 <h4>Foddies</h4>
-                                                                <span>6 Hours Ago</span>
                                                             </div>
-                                                            <span class="comment-tag author">Author</span>
-                                                            <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceleris que the mattis, leo quam aliquet congue placerat mi id nisi interdum mollis. </p>
+                                                            <p>Thank you for taking the time to leave a review! </p>
                                                         </div>
                                                     </div>
 
@@ -258,9 +255,8 @@
                                                         <div class="pull-left">
                                                             <div class="media-heading">
                                                                 <a href="author.html">
-                                                                    <h4>Visual-Eggs</h4>
+                                                                    <h4>Mrs. Mango</h4>
                                                                 </a>
-                                                                <span>125 years ago</span>
                                                             </div>
                                                             <div class="rating product--rating">
                                                                 <ul>
@@ -285,7 +281,7 @@
                                                         </div>
                                                         <a href="#" class="reply-link">Reply</a>
                                                     </div>
-                                                    <p>This is the finest art in the history of whateverland. Pastor: No it's a witchcraft.</p>
+                                                    <p>Everything excellent!</p>
                                                 </div>
                                             </div>
 
@@ -342,10 +338,19 @@
                                     <span>320.00</span>
                                 </h1>
                             </div>
+                            <div class="sidebar-card card--metadata">
+                            <ul class="data">
+                                <li>
+                                    <p>
+                                        <span class="lnr lnr-cart pcolor"></span>Prepeartion Time</p>
+                                    <span>1 Hour</span>
+                                </li>
+                                </ul>
+                            </div>
                             <ul class="pricing-options">
                                 <li>
                                     <div class="form-group">
-                                        <label for="category">Pickers Point</label>
+                                        <label for="category">Select Pickers Point</label>
                                         <div class="select-wrap select-wrap2">
                                             <select name="country" id="category" class="text_field">
                                                 <option value="">Shibgong</option>
@@ -358,7 +363,7 @@
                                 </li>
                                 <li>
                                     <div class="form-group">
-                                        <label for="category">Deliverer</label>
+                                        <label for="category">Select Deliverer</label>
                                         <div class="select-wrap select-wrap2">
                                             <select name="country" id="category" class="text_field">
                                                 <option value="">sakhawat</option>
