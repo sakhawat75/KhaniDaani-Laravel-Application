@@ -17,7 +17,6 @@ class ProfileController extends Controller
     public function create_dish() {
     	return view('dishes.create');
     }
-    
     public function single_dish() {
     	return view('dishes.single-dish');
     }
