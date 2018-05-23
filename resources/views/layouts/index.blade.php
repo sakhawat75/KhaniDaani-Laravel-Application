@@ -104,7 +104,7 @@
             <div class="col-md-12">
                 <div class="section-title">
                     <h1>Our Featured
-                        <span class="highlighted">Products</span>
+                        <span class="highlighted">Dish</span>
                     </h1>
                     <p>Subtitle</p>
                 </div>
@@ -117,14 +117,14 @@
                 <div class="featured-product-slider prod-slider2">
                     <div class="featured__single-slider">
                         <div class="featured__preview-img">
-                            <img src="images/featprod.jpg" alt="Featured products">
+                            <img src="images/f1.jpg" alt="Featured products" class="img-fluid">
                         </div>
                         <!-- end /.featured__preview-img -->
 
                         <div class="featured__product-description">
                             <div class="product-desc desc--featured">
-                                <a href="single-product.html" class="product_title">
-                                    <h4>Rida - vCard, Portfolio / Resume Template</h4>
+                                <a href="{{ route('single_dish')}}" class="product_title">
+                                    <h4>Indina Butter Chicken</h4>
                                 </a>
                                 <ul class="titlebtm">
                                     <li>
@@ -133,14 +133,10 @@
                                             <a href="#">KhaniDaani</a>
                                         </p>
                                     </li>
-                                    <li class="product_cat">
-                                        <a href="#">
-                                            <span class="lnr lnr-book"></span> WordPress</a>
-                                    </li>
                                 </ul>
                                 <!-- end /.titlebtm -->
 
-                                <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattis, leo quam aliquet congue placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattis, leo quam aliquet congue justo ut scelerisque.</p>
+                                <p>Chicken Makhani is one of my favorite Indian dishes. It is a full flavored dish that complements the chicken well. It can be made as mild or spicy as you wish by adjusting the cayenne. Serve with basmati rice and naan bread.</p>
                             </div>
                             <!-- end /.product-desc -->
 
@@ -148,20 +144,99 @@
                                 <div class="tags tags--round">
                                     <ul>
                                         <li>
-                                            <a href="#">website</a>
+                                            <a href="#">pizza</a>
                                         </li>
                                         <li>
-                                            <a href="#">plugin</a>
+                                            <a href="#">pasta</a>
                                         </li>
                                         <li>
-                                            <a href="#">landing page</a>
+                                            <a href="#">roast</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <!-- end /.tags -->
                                 <div class="product-purchase featured--product-purchase">
                                     <div class="price_love">
-                                        <span>$10 - $50</span>
+                                        <span>৳320</span>
+                                        <p>
+                                            <span class="lnr lnr-heart"></span> 90</p>
+                                    </div>
+                                    <div class="sell">
+                                        <p>
+                                            <span class="lnr lnr-cart"></span>
+                                            <span>16</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="rating product--rating">
+                                        <ul>
+                                            <li>
+                                                <span class="fa fa-star"></span>
+                                            </li>
+                                            <li>
+                                                <span class="fa fa-star"></span>
+                                            </li>
+                                            <li>
+                                                <span class="fa fa-star"></span>
+                                            </li>
+                                            <li>
+                                                <span class="fa fa-star"></span>
+                                            </li>
+                                            <li>
+                                                <span class="fa fa-star"></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- end /.product-purchase -->
+                            </div>
+                        </div>
+                        <!-- end /.featured__product-description -->
+                    </div>
+                    <!--end /.featured__single-slider-->
+                    <div class="featured__single-slider">
+                        <div class="featured__preview-img">
+                            <img src="images/f1.jpg" alt="Featured products" class="img-fluid">
+                        </div>
+                        <!-- end /.featured__preview-img -->
+
+                        <div class="featured__product-description">
+                            <div class="product-desc desc--featured">
+                                <a href="{{ route('single_dish')}}" class="product_title">
+                                    <h4>Indina Butter Chicken</h4>
+                                </a>
+                                <ul class="titlebtm">
+                                    <li>
+                                        <img class="auth-img" src="images/auth.jpg" alt="author image">
+                                        <p>
+                                            <a href="#">KhaniDaani</a>
+                                        </p>
+                                    </li>
+                                </ul>
+                                <!-- end /.titlebtm -->
+
+                                <p>Chicken Makhani is one of my favorite Indian dishes. It is a full flavored dish that complements the chicken well. It can be made as mild or spicy as you wish by adjusting the cayenne. Serve with basmati rice and naan bread.</p>
+                            </div>
+                            <!-- end /.product-desc -->
+
+                            <div class="product_data">
+                                <div class="tags tags--round">
+                                    <ul>
+                                        <li>
+                                            <a href="#">pizza</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">pasta</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">roast</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- end /.tags -->
+                                <div class="product-purchase featured--product-purchase">
+                                    <div class="price_love">
+                                        <span>৳320</span>
                                         <p>
                                             <span class="lnr lnr-heart"></span> 90</p>
                                     </div>
@@ -199,16 +274,17 @@
                     </div>
                     <!--end /.featured__single-slider-->
 
-                    <div class="featured__single-slider">
+
+                                        <div class="featured__single-slider">
                         <div class="featured__preview-img">
-                            <img src="images/featprod.jpg" alt="Featured products">
+                            <img src="images/f1.jpg" alt="Featured products" class="img-fluid">
                         </div>
                         <!-- end /.featured__preview-img -->
 
                         <div class="featured__product-description">
                             <div class="product-desc desc--featured">
-                                <a href="single-product.html" class="product_title">
-                                    <h4>One Page Resume Template</h4>
+                                <a href="{{ route('single_dish')}}" class="product_title">
+                                    <h4>Indina Butter Chicken</h4>
                                 </a>
                                 <ul class="titlebtm">
                                     <li>
@@ -217,14 +293,10 @@
                                             <a href="#">KhaniDaani</a>
                                         </p>
                                     </li>
-                                    <li class="product_cat">
-                                        <a href="#">
-                                            <span class="lnr lnr-book"></span> WordPress</a>
-                                    </li>
                                 </ul>
                                 <!-- end /.titlebtm -->
 
-                                <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattis, leo quam aliquet congue placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattis, leo quam aliquet congue justo ut scelerisque.</p>
+                                <p>Chicken Makhani is one of my favorite Indian dishes. It is a full flavored dish that complements the chicken well. It can be made as mild or spicy as you wish by adjusting the cayenne. Serve with basmati rice and naan bread.</p>
                             </div>
                             <!-- end /.product-desc -->
 
@@ -232,188 +304,20 @@
                                 <div class="tags tags--round">
                                     <ul>
                                         <li>
-                                            <a href="#">website</a>
+                                            <a href="#">pizza</a>
                                         </li>
                                         <li>
-                                            <a href="#">plugin</a>
+                                            <a href="#">pasta</a>
                                         </li>
                                         <li>
-                                            <a href="#">landing page</a>
+                                            <a href="#">roast</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <!-- end /.tags -->
                                 <div class="product-purchase featured--product-purchase">
                                     <div class="price_love">
-                                        <span>$10 - $50</span>
-                                        <p>
-                                            <span class="lnr lnr-heart"></span> 90</p>
-                                    </div>
-                                    <div class="sell">
-                                        <p>
-                                            <span class="lnr lnr-cart"></span>
-                                            <span>16</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="rating product--rating">
-                                        <ul>
-                                            <li>
-                                                <span class="fa fa-star"></span>
-                                            </li>
-                                            <li>
-                                                <span class="fa fa-star"></span>
-                                            </li>
-                                            <li>
-                                                <span class="fa fa-star"></span>
-                                            </li>
-                                            <li>
-                                                <span class="fa fa-star"></span>
-                                            </li>
-                                            <li>
-                                                <span class="fa fa-star"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- end /.product-purchase -->
-                            </div>
-                        </div>
-                        <!-- end /.featured__product-description -->
-                    </div>
-                    <!--end /.featured__single-slider-->
-
-                    <div class="featured__single-slider">
-                        <div class="featured__preview-img">
-                            <img src="images/featprod.jpg" alt="Featured products">
-                        </div>
-                        <!-- end /.featured__preview-img -->
-
-                        <div class="featured__product-description">
-                            <div class="product-desc desc--featured">
-                                <a href="single-product.html" class="product_title">
-                                    <h4>AppsPress App Landing</h4>
-                                </a>
-                                <ul class="titlebtm">
-                                    <li>
-                                        <img class="auth-img" src="images/auth.jpg" alt="author image">
-                                        <p>
-                                            <a href="#">KhaniDaani</a>
-                                        </p>
-                                    </li>
-                                    <li class="product_cat">
-                                        <a href="#">
-                                            <span class="lnr lnr-book"></span> WordPress</a>
-                                    </li>
-                                </ul>
-                                <!-- end /.titlebtm -->
-
-                                <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattis, leo quam aliquet congue placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattis, leo quam aliquet congue justo ut scelerisque.</p>
-                            </div>
-                            <!-- end /.product-desc -->
-
-                            <div class="product_data">
-                                <div class="tags tags--round">
-                                    <ul>
-                                        <li>
-                                            <a href="#">website</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">plugin</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">landing page</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- end /.tags -->
-                                <div class="product-purchase featured--product-purchase">
-                                    <div class="price_love">
-                                        <span>$10 - $50</span>
-                                        <p>
-                                            <span class="lnr lnr-heart"></span> 90</p>
-                                    </div>
-                                    <div class="sell">
-                                        <p>
-                                            <span class="lnr lnr-cart"></span>
-                                            <span>16</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="rating product--rating">
-                                        <ul>
-                                            <li>
-                                                <span class="fa fa-star"></span>
-                                            </li>
-                                            <li>
-                                                <span class="fa fa-star"></span>
-                                            </li>
-                                            <li>
-                                                <span class="fa fa-star"></span>
-                                            </li>
-                                            <li>
-                                                <span class="fa fa-star"></span>
-                                            </li>
-                                            <li>
-                                                <span class="fa fa-star"></span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- end /.product-purchase -->
-                            </div>
-                        </div>
-                        <!-- end /.featured__product-description -->
-                    </div>
-                    <!--end /.featured__single-slider-->
-
-                    <div class="featured__single-slider">
-                        <div class="featured__preview-img">
-                            <img src="images/featprod.jpg" alt="Featured products">
-                        </div>
-                        <!-- end /.featured__preview-img -->
-
-                        <div class="featured__product-description">
-                            <div class="product-desc desc--featured">
-                                <a href="single-product.html" class="product_title">
-                                    <h4>MartPlace - Digital Marketplace</h4>
-                                </a>
-                                <ul class="titlebtm">
-                                    <li>
-                                        <img class="auth-img" src="images/auth.jpg" alt="author image">
-                                        <p>
-                                            <a href="#">KhaniDaani</a>
-                                        </p>
-                                    </li>
-                                    <li class="product_cat">
-                                        <a href="#">
-                                            <span class="lnr lnr-book"></span> WordPress</a>
-                                    </li>
-                                </ul>
-                                <!-- end /.titlebtm -->
-
-                                <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattis, leo quam aliquet congue placerat mi id nisi interdum mollis. Praesent pharetra, justo ut scelerisque the mattis, leo quam aliquet congue justo ut scelerisque.</p>
-                            </div>
-                            <!-- end /.product-desc -->
-
-                            <div class="product_data">
-                                <div class="tags tags--round">
-                                    <ul>
-                                        <li>
-                                            <a href="#">website</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">plugin</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">landing page</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- end /.tags -->
-                                <div class="product-purchase featured--product-purchase">
-                                    <div class="price_love">
-                                        <span>$10 - $50</span>
+                                        <span>৳320</span>
                                         <p>
                                             <span class="lnr lnr-heart"></span> 90</p>
                                     </div>
@@ -451,8 +355,6 @@
                     </div>
                     <!--end /.featured__single-slider-->
                 </div>
-
-
                 <span class="lnr lnr-chevron-left prod_slide_prev"></span>
                 <span class="lnr lnr-chevron-right prod_slide_next"></span>
             </div>
@@ -521,29 +423,28 @@
                 <div class="product product--card product--card3">
 
                     <div class="product__thumbnail">
-                        <img src="images/p1.jpg" alt="Product Image">
+                        <img src="images/dishid_img2.jpg" alt="Product Image">
                         <div class="prod_btn">
-                            <a href="single-product.html" class="transparent btn--sm btn--round">More Info</a>
-                            <a href="single-product.html" class="transparent btn--sm btn--round">Live Demo</a>
+                            <a href="{{ route('single_dish')}}" class="transparent btn--sm btn--round">More info</a>
                         </div>
                         <!-- end /.prod_btn -->
                     </div>
                     <!-- end /.product__thumbnail -->
 
                     <div class="product-desc">
-                        <a href="#" class="product_title">
-                            <h4>MartPlace Extension Bundle</h4>
+                        <a href="{{ route('single_dish')}}" class="product_title">
+                            <h4>Indian Butter Chiken</h4>
                         </a>
                         <ul class="titlebtm">
                             <li>
                                 <img class="auth-img" src="images/auth.jpg" alt="author image">
                                 <p>
-                                    <a href="#">KhaniDaani</a>
+                                    <a href="#">Username</a>
                                 </p>
                             </li>
                             <li class="product_cat">
-                                <a href="#">
-                                    <span class="lnr lnr-book"></span>Plugin</a>
+                                <a href="#">From
+                                    <span class=""></span>Sylhet</a>
                             </li>
                         </ul>
                     </div>
@@ -551,7 +452,7 @@
 
                     <div class="product-purchase">
                         <div class="price_love">
-                            <span>$10 - $50</span>
+                            <span>৳320</span>
                             <p>
                                 <span class="lnr lnr-heart"></span> 90</p>
                         </div>
@@ -559,271 +460,6 @@
                             <p>
                                 <span class="lnr lnr-cart"></span>
                                 <span>16</span>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- end /.product-purchase -->
-                </div>
-                <!-- end /.single-product -->
-            </div>
-            <!-- end /.col-md-4 -->
-
-            <!-- start .col-md-4 -->
-            <div class="col-lg-4 col-md-6">
-                <!-- start .single-product -->
-                <div class="product product--card product--card3">
-
-                    <div class="product__thumbnail">
-                        <img src="images/p2.jpg" alt="Product Image">
-                        <div class="prod_btn">
-                            <a href="single-product.html" class="transparent btn--sm btn--round">More Info</a>
-                            <a href="single-product.html" class="transparent btn--sm btn--round">Live Demo</a>
-                        </div>
-                        <!-- end /.prod_btn -->
-                    </div>
-                    <!-- end /.product__thumbnail -->
-
-                    <div class="product-desc">
-                        <a href="#" class="product_title">
-                            <h4>Mccarther Coffee Shop</h4>
-                        </a>
-                        <ul class="titlebtm">
-                            <li>
-                                <img class="auth-img" src="images/auth2.jpg" alt="author image">
-                                <p>
-                                    <a href="#">KhaniDaani</a>
-                                </p>
-                            </li>
-                            <li class="product_cat">
-                                <a href="#">
-                                    <span class="lnr lnr-book"></span>Plugin</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- end /.product-desc -->
-
-                    <div class="product-purchase">
-                        <div class="price_love">
-                            <span>$10</span>
-                            <p>
-                                <span class="lnr lnr-heart"></span> 48</p>
-                        </div>
-                        <div class="sell">
-                            <p>
-                                <span class="lnr lnr-cart"></span>
-                                <span>50</span>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- end /.product-purchase -->
-                </div>
-                <!-- end /.single-product -->
-            </div>
-            <!-- end /.col-md-4 -->
-
-            <!-- start .col-md-4 -->
-            <div class="col-lg-4 col-md-6">
-                <!-- start .single-product -->
-                <div class="product product--card product--card3">
-
-                    <div class="product__thumbnail">
-                        <img src="images/p3.jpg" alt="Product Image">
-                        <div class="prod_btn">
-                            <a href="single-product.html" class="transparent btn--sm btn--round">More Info</a>
-                            <a href="single-product.html" class="transparent btn--sm btn--round">Live Demo</a>
-                        </div>
-                        <!-- end /.prod_btn -->
-                    </div>
-                    <!-- end /.product__thumbnail -->
-
-                    <div class="product-desc">
-                        <a href="#" class="product_title">
-                            <h4>Visibility Manager Subscriptions</h4>
-                        </a>
-                        <ul class="titlebtm">
-                            <li>
-                                <img class="auth-img" src="images/auth3.jpg" alt="author image">
-                                <p>
-                                    <a href="#">KhaniDaani</a>
-                                </p>
-                            </li>
-                            <li class="product_cat">
-                                <a href="#">
-                                    <span class="lnr lnr-book"></span>Plugin</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- end /.product-desc -->
-
-                    <div class="product-purchase">
-                        <div class="price_love">
-                            <span>Free</span>
-                            <p>
-                                <span class="lnr lnr-heart"></span> 24</p>
-                        </div>
-                        <div class="sell">
-                            <p>
-                                <span class="lnr lnr-cart"></span>
-                                <span>27</span>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- end /.product-purchase -->
-                </div>
-                <!-- end /.single-product -->
-            </div>
-            <!-- end /.col-md-4 -->
-
-            <!-- start .col-md-4 -->
-            <div class="col-lg-4 col-md-6">
-                <!-- start .single-product -->
-                <div class="product product--card product--card3">
-
-                    <div class="product__thumbnail">
-                        <img src="images/p4.jpg" alt="Product Image">
-                        <div class="prod_btn">
-                            <a href="single-product.html" class="transparent btn--sm btn--round">More Info</a>
-                            <a href="single-product.html" class="transparent btn--sm btn--round">Live Demo</a>
-                        </div>
-                        <!-- end /.prod_btn -->
-                    </div>
-                    <!-- end /.product__thumbnail -->
-
-                    <div class="product-desc">
-                        <a href="#" class="product_title">
-                            <h4>Ajax Live Search</h4>
-                        </a>
-                        <ul class="titlebtm">
-                            <li>
-                                <img class="auth-img" src="images/auth.jpg" alt="author image">
-                                <p>
-                                    <a href="#">KhaniDaani</a>
-                                </p>
-                            </li>
-                            <li class="product_cat">
-                                <a href="#">
-                                    <span class="lnr lnr-book"></span>Plugin</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- end /.product-desc -->
-
-                    <div class="product-purchase">
-                        <div class="price_love">
-                            <span>$10 - $50</span>
-                            <p>
-                                <span class="lnr lnr-heart"></span> 90</p>
-                        </div>
-                        <div class="sell">
-                            <p>
-                                <span class="lnr lnr-cart"></span>
-                                <span>16</span>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- end /.product-purchase -->
-                </div>
-                <!-- end /.single-product -->
-            </div>
-            <!-- end /.col-md-4 -->
-
-            <!-- start .col-md-4 -->
-            <div class="col-lg-4 col-md-6">
-                <!-- start .single-product -->
-                <div class="product product--card product--card3">
-
-                    <div class="product__thumbnail">
-                        <img src="images/p5.jpg" alt="Product Image">
-                        <div class="prod_btn">
-                            <a href="single-product.html" class="transparent btn--sm btn--round">More Info</a>
-                            <a href="single-product.html" class="transparent btn--sm btn--round">Live Demo</a>
-                        </div>
-                        <!-- end /.prod_btn -->
-                    </div>
-                    <!-- end /.product__thumbnail -->
-
-                    <div class="product-desc">
-                        <a href="#" class="product_title">
-                            <h4>Mccarther Coffee Shop</h4>
-                        </a>
-                        <ul class="titlebtm">
-                            <li>
-                                <img class="auth-img" src="images/auth2.jpg" alt="author image">
-                                <p>
-                                    <a href="#">KhaniDaani</a>
-                                </p>
-                            </li>
-                            <li class="product_cat">
-                                <a href="#">
-                                    <span class="lnr lnr-book"></span>Plugin</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- end /.product-desc -->
-
-                    <div class="product-purchase">
-                        <div class="price_love">
-                            <span>$10</span>
-                            <p>
-                                <span class="lnr lnr-heart"></span> 48</p>
-                        </div>
-                        <div class="sell">
-                            <p>
-                                <span class="lnr lnr-cart"></span>
-                                <span>50</span>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- end /.product-purchase -->
-                </div>
-                <!-- end /.single-product -->
-            </div>
-            <!-- end /.col-md-4 -->
-
-            <!-- start .col-md-4 -->
-            <div class="col-lg-4 col-md-6">
-                <!-- start .single-product -->
-                <div class="product product--card product--card3">
-
-                    <div class="product__thumbnail">
-                        <img src="images/p6.jpg" alt="Product Image">
-                        <div class="prod_btn">
-                            <a href="single-product.html" class="transparent btn--sm btn--round">More Info</a>
-                            <a href="single-product.html" class="transparent btn--sm btn--round">Live Demo</a>
-                        </div>
-                        <!-- end /.prod_btn -->
-                    </div>
-                    <!-- end /.product__thumbnail -->
-
-                    <div class="product-desc">
-                        <a href="#" class="product_title">
-                            <h4>Visibility Manager Subscriptions</h4>
-                        </a>
-                        <ul class="titlebtm">
-                            <li>
-                                <img class="auth-img" src="images/auth3.jpg" alt="author image">
-                                <p>
-                                    <a href="#">KaniDaani</a>
-                                </p>
-                            </li>
-                            <li class="product_cat">
-                                <a href="#">
-                                    <span class="lnr lnr-book"></span>WordPress</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- end /.product-desc -->
-
-                    <div class="product-purchase">
-                        <div class="price_love">
-                            <span>Free</span>
-                            <p>
-                                <span class="lnr lnr-heart"></span> 24</p>
-                        </div>
-                        <div class="sell">
-                            <p>
-                                <span class="lnr lnr-cart"></span>
-                                <span>27</span>
                             </p>
                         </div>
                     </div>
@@ -862,9 +498,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="call-to-wrap">
-                    <h1 class="text--white">Ready to Join Our KhaniDaani!</h1>
+                    <h1 class="text--white">Ready to Join Our KhaniDaani Community!</h1>
                     <h4 class="text--white">Subtitle</h4>
-                    <a href="#" class="btn btn--lg btn--round btn--white callto-action-btn">Join Us Today</a>
+                    <a href="{{ route('register') }}" class="btn btn--lg btn--round btn--white callto-action-btn">Join Us Today</a>
                 </div>
             </div>
         </div>

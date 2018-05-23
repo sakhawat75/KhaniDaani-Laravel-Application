@@ -18,11 +18,11 @@
                                 <a href="index.html">Home</a>
                             </li>
                             <li class="active">
-                                <a href="#">Author Profile</a>
+                                <a href="#">Foodies Profile</a>
                             </li>
                         </ul>
                     </div>
-                    <h1 class="page-title">Author's Profile</h1>
+                    <h1 class="page-title">Foodies Profile</h1>
                 </div>
                 <!-- end /.col-md-12 -->
             </div>
@@ -50,7 +50,7 @@
 
                                 <div class="author">
                                     <h4>
-                                        {{ $profile->fullname }}
+                                        {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
                                     </h4>
                                     <p>Signed Up {{ $profile->created_at }}</p>
                                 </div>
@@ -173,7 +173,7 @@
                                 <div class="product__thumbnail">
                                     <img src="images/dishid_mainthumb.jpg" alt="Product Image">
                                     <div class="prod_btn">
-                                        <a href="single-product.html" class="transparent btn--sm btn--round">More Info</a>
+                                        <a href="{{ route('single_dish')}}" class="transparent btn--sm btn--round">More Info</a>
                                     </div>
                                     <!-- end /.prod_btn -->
                                 </div>
@@ -181,7 +181,6 @@
 
                                 <div class="product-desc">
                                     <a href="{{ route('single_dish')}}" class="product_title">
-                                        <h4>Special Veg nonveg Pizza</h4>
                                         <h4>Indian butter chicken</h4>
                                     </a>
                                     <ul class="titlebtm">
@@ -201,7 +200,7 @@
 
                                 <div class="product-purchase">
                                     <div class="price_love">
-                                        <span>$10</span>
+                                        <span>৳320</span>
                                         <p>
                                             <span class="lnr lnr-heart"></span> 48</p>
                                     </div>

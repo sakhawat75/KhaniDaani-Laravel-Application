@@ -8,7 +8,7 @@
                         <div class="info__logo">
                             <img src="images/logo/full_logo.png" alt="footer logo">
                         </div>
-                        <p class="info--text">Nunc placerat mi id nisi interdum they mollis. Praesent pharetra, justo ut scel erisque the mattis, leo quam.</p>
+                        <p class="info--text">KhaniDaani Into</p>
                         <ul class="info-contact">
                             <li>
                                 <span class="lnr lnr-phone info-icon"></span>
@@ -44,16 +44,10 @@
                                 <a href="#">Buying and Selling</a>
                             </li>
                             <li>
-                                <a href="#">Testimonials</a>
-                            </li>
-                            <li>
                                 <a href="#">Copyright Notice</a>
                             </li>
                             <li>
                                 <a href="#">Refund Policy</a>
-                            </li>
-                            <li>
-                                <a href="#">Affiliates</a>
                             </li>
                         </ul>
                     </div>
