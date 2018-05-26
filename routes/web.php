@@ -29,6 +29,7 @@ Route::put( '/profile/{profile}', 'ProfileController@update')->name('profile.upd
 
 Auth::routes();
 
+Route::get( '/dishes/manage', 'DishesController@manage')->name( 'dishes.manage');
 Route::resource( '/dishes', 'DishesController');
 
 

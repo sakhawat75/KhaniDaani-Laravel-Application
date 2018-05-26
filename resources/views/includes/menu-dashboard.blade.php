@@ -19,8 +19,8 @@
                         <a href="{{ route('dishes.create') }}">
                                     <span class="lnr lnr-upload"></span>Upload Items</a>
                     </li>
-                    <li>
-                        <a href="dashboard-manage-item.html">
+                    <li class="{{ request()->is('profile_setting') ? 'active' : '' }}">
+                        <a href="manage_dish">
                                     <span class="lnr lnr-briefcase"></span>Manage Items</a>
                     </li>
                     <li>
