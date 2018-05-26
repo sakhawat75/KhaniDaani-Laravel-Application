@@ -18,15 +18,14 @@ class CreateDishesTable extends Migration
             $table->integer('profile_id');
             $table->string('dish_category');
             $table->string('dish_subcategory');
-            //andu ekta comment leklam
             $table->string('dish_name');
             $table->text('dish_description');
             $table->double('dish_price');
             $table->string('preparation_time');
             $table->text('dish_thumbnail');
-            $table->string('dish_image_1');
-            $table->string('dish_image_2');
-            $table->string('dish_image_3');
+            $table->text('dish_image_1');
+            $table->text('dish_image_2');
+            $table->text('dish_image_3');
             $table->boolean('is_approved');
             $table->text('item_tags');
             $table->rememberToken();

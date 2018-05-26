@@ -6,6 +6,7 @@ use \App\User;
 use Illuminate\Http\Request;
 use \App\Profile;
 use Auth;
+use Storage;
 
 class ProfileController extends Controller
 {
@@ -95,18 +96,11 @@ class ProfileController extends Controller
 		//
 	}
 
-    public function single_dish() {
-    	if(!Auth::check()) {
-    		return redirect('register');
-    	}
-    	$user_id = Auth::user()->id;
-    	$profile = Profile::where('user_id', $user_id)->first();
-
-    	return view('dishes.single-dish', compact('profile'));
-    }
 
     public function upload_image(Request $request, Profile $profile, $type) {
 	    if($request->hasFile($type)){
+		    $this->delete_prev_img($profile, $type);
+
 		    // Get filename with the extension
 		    $filenameWithExt = $request->file($type)->getClientOriginalName();
 		    // Get just filename
@@ -123,7 +117,20 @@ class ProfileController extends Controller
 	    }
     }
 
+	public function delete_prev_img(Profile $profile, $type) {
+		if(strcmp('authcvr.jpg', $profile->$type) == 0) {
 
+		}
+
+		elseif (strcmp('author-avatar.jpg', $profile->$type) == 0){
+
+		}
+
+		else {
+			$path = "public/images/".$type."/" . $profile->$type;
+			Storage::delete( $path);
+		}
+	}
 
 
 }

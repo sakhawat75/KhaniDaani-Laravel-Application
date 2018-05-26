@@ -49,15 +49,15 @@
                     <div class="item-preview">
                         <div class="item__preview-slider">
                             <div class="prev-slide">
-                                <img src="{{ route('home') }}/images/dishid_img1.jpg"
+                                <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_1 }}"
                                      alt="Keep calm this isn't the end of the world, the preview is just missing.">
                             </div>
                             <div class="prev-slide">
-                                <img src="{{ route('home') }}/images/dishid_img2.jpg"
+                                <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_2 }}"
                                      alt="Keep calm this isn't the end of the world, the preview is just missing.">
                             </div>
                             <div class="prev-slide">
-                                <img src="{{ route('home') }}/images/dishid_img3.jpg"
+                                <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_3 }}"
                                      alt="Keep calm this isn't the end of the world, the preview is just missing.">
                             </div>
                         </div>
@@ -157,9 +157,7 @@
                             <div class="fade show tab-pane product-tab active" id="product-details">
                                 <div class="tab-content-wrapper">
                                     <h1>Dish Description</h1>
-                                    <p>Chicken Makhani is one of my favorite Indian dishes. It is a full flavored dish
-                                        that complements the chicken well. It can be made as mild or spicy as you wish
-                                        by adjusting the cayenne. Serve with basmati rice and naan bread.</p>
+                                    <p> {{ $dish->dish_description }} </p>
 
                                     <h2>Dish Ingredients</h2>
                                     <ul>
