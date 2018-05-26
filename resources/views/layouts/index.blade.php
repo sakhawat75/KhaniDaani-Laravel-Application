@@ -123,7 +123,7 @@
 
                         <div class="featured__product-description">
                             <div class="product-desc desc--featured">
-                                <a href="{{ route('single_dish')}}" class="product_title">
+                                <a href="{{ route('home')}}" class="product_title">
                                     <h4>Indina Butter Chicken</h4>
                                 </a>
                                 <ul class="titlebtm">
@@ -202,7 +202,7 @@
 
                         <div class="featured__product-description">
                             <div class="product-desc desc--featured">
-                                <a href="{{ route('single_dish')}}" class="product_title">
+                                <a href="{{ route('home')}}" class="product_title">
                                     <h4>Indina Butter Chicken</h4>
                                 </a>
                                 <ul class="titlebtm">
@@ -283,7 +283,7 @@
 
                         <div class="featured__product-description">
                             <div class="product-desc desc--featured">
-                                <a href="{{ route('single_dish')}}" class="product_title">
+                                <a href="{{ route('home')}}" class="product_title">
                                     <h4>Indina Butter Chicken</h4>
                                 </a>
                                 <ul class="titlebtm">
@@ -425,14 +425,14 @@
                     <div class="product__thumbnail">
                         <img src="images/dishid_img2.jpg" alt="Product Image">
                         <div class="prod_btn">
-                            <a href="{{ route('single_dish')}}" class="transparent btn--sm btn--round">More info</a>
+                            <a href="{{ route('home')}}" class="transparent btn--sm btn--round">More info</a>
                         </div>
                         <!-- end /.prod_btn -->
                     </div>
                     <!-- end /.product__thumbnail -->
 
                     <div class="product-desc">
-                        <a href="{{ route('single_dish')}}" class="product_title">
+                        <a href="{{ route('home')}}" class="product_title">
                             <h4>Indian Butter Chiken</h4>
                         </a>
                         <ul class="titlebtm">

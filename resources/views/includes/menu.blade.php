@@ -11,9 +11,9 @@
                 <!-- start .col-md-3 -->
                 <div class="col-lg-3 col-md-3 col-6 v_middle">
                     <div class="logo">
-                        <a href="{{ URL::to('/') }}">
-                                <img src="{{ URL::to('/') }}/images/logo/full_logo.png" alt="logo image" class="img-fluid">
-                            </a>
+                        <a href="{{ route('home') }}">
+                            <img src="{{ URL::to('/') }}/images/logo/full_logo.png" alt="logo image" class="img-fluid">
+                        </a>
                     </div>
                 </div>
                 <!-- end /.col-md-3 -->
@@ -24,7 +24,8 @@
                     <div class="author-area">
                         @if (Route::has('login'))
                             @auth
-                                <a href="profile" class="author-area__seller-btn inline" >{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</a>
+                                <a href="profile"
+                                   class="author-area__seller-btn inline">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</a>
                             @else
                                 <a href="{{ route('login') }}" class="author-area__seller-btn inline">Login</a>
                                 <a href="{{ route('register') }}" class="author-area__seller-btn inline">Register</a>
@@ -38,7 +39,7 @@
                                         <span class="lnr lnr-cart"></span>
                                         <span class="notification_count purch">2</span>
                                     </div>
-<!--
+                                <!--
                                     <div class="dropdown dropdown--cart">
                                         <div class="cart_area">
                                             <div class="cart_product">
@@ -98,18 +99,18 @@
                                     -->
                                 </li>
                             </ul>
-                        </div> 
+                        </div>
                         <!--start .author__notification_area -->
 
                         <!--start .author-author__info-->
                         <div class="author-author__info inline has_dropdown">
                             <div class="author__avatar">
-                              
-                                   <img src="{{ URL::to('/') }}/images/usr_avatar.png" alt="user avatar">
-                                
+
+                                <img src="{{ URL::to('/') }}/images/usr_avatar.png" alt="user avatar">
+
                             </div>
-                            
-                             <div class="autor__info">
+
+                            <div class="autor__info">
                                 <p class="name">
                                     Profile menu
                                 </p>
@@ -118,46 +119,49 @@
                             <div class="dropdown dropdown--author">
                                 <ul>
                                     <li>
-                                        <a href="profile">
-                                                <span class="lnr lnr-user"></span>Profile</a>
+                                        <a href="{{ route('profile.show', ['profile' => auth()->id()]) }}">
+                                            <span class="lnr lnr-user"></span>Profile
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="profile_setting">
-                                                <span class="lnr lnr-cog"></span> Profile Setting</a>
+                                        <a href="{{ route('profile.edit', ['profile' => auth()->id()]) }}">
+                                            <span class="lnr lnr-cog"></span> Profile Setting</a>
                                     </li>
                                     <li>
                                         <a href="cart.html">
-                                                <span class="lnr lnr-cart"></span>Purchases</a>
+                                            <span class="lnr lnr-cart"></span>Purchases</a>
                                     </li>
                                     <li>
                                         <a href="favourites.html">
-                                                <span class="lnr lnr-heart"></span> Favourite</a>
+                                            <span class="lnr lnr-heart"></span> Favourite</a>
                                     </li>
                                     <li>
-                                        <a href="create_dish">
-                                                <span class="lnr lnr-upload"></span>Upload Item</a>
+                                        <a href="{{ route('dishes.create') }}">
+                                            <span class="lnr lnr-upload"></span>Upload Item</a>
                                     </li>
                                     <li>
                                         <a href="dashboard-manage-item.html">
-                                                <span class="lnr lnr-book"></span>Manage Item</a>
+                                            <span class="lnr lnr-book"></span>Manage Item</a>
                                     </li>
                                     <li>
                                         <a href="dashboard-withdrawal.html">
-                                                <span class="lnr lnr-briefcase"></span>Withdrawals</a>
+                                            <span class="lnr lnr-briefcase"></span>Withdrawals</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
-                                            <span class="lnr lnr-exit"></span>Logout</a>   
-                                        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        <a href="{{ route('logout') }}"
+                                           onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                                            <span class="lnr lnr-exit"></span>Logout</a>
+                                        <form id="frm-logout" action="{{ route('logout') }}" method="POST"
+                                              style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
                                 </ul>
                             </div>
-                            
+
                         </div>
-                        
-                       
+
+
                         <!--end /.author-author__info-->
                     </div>
                     <!-- end .author-area -->
@@ -180,40 +184,40 @@
                                 </div>
                             </div>
                             <!--end /.author-author__info-->
-                            
+
                             <div class="dropdown dropdown--author">
                                 <ul>
                                     <li>
                                         <a href="author.html">
-                                                <span class="lnr lnr-user"></span>Profile</a>
+                                            <span class="lnr lnr-user"></span>Profile</a>
                                     </li>
                                     <li>
                                         <a href="dashboard-setting.html">
-                                                <span class="lnr lnr-cog"></span>Profile Setting</a>
+                                            <span class="lnr lnr-cog"></span>Profile Setting</a>
                                     </li>
                                     <li>
                                         <a href="cart.html">
-                                                <span class="lnr lnr-cart"></span>Purchases</a>
+                                            <span class="lnr lnr-cart"></span>Purchases</a>
                                     </li>
                                     <li>
                                         <a href="favourites.html">
-                                                <span class="lnr lnr-heart"></span> Favourite</a>
+                                            <span class="lnr lnr-heart"></span> Favourite</a>
                                     </li>
                                     <li>
                                         <a href="dashboard-upload.html">
-                                                <span class="lnr lnr-upload"></span>Upload Item</a>
+                                            <span class="lnr lnr-upload"></span>Upload Item</a>
                                     </li>
                                     <li>
                                         <a href="dashboard-manage-item.html">
-                                                <span class="lnr lnr-book"></span>Manage Item</a>
+                                            <span class="lnr lnr-book"></span>Manage Item</a>
                                     </li>
                                     <li>
                                         <a href="dashboard-withdrawal.html">
-                                                <span class="lnr lnr-briefcase"></span>Withdrawals</a>
+                                            <span class="lnr lnr-briefcase"></span>Withdrawals</a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                                <span class="lnr lnr-exit"></span>Logout</a>
+                                            <span class="lnr lnr-exit"></span>Logout</a>
                                     </li>
                                 </ul>
                             </div>
@@ -232,7 +236,6 @@
                             </div>
                             <!--start .author__notification_area -->
 
-                            
 
                             <div class="text-center">
                                 <a href="signup.html" class="author-area__seller-btn inline">Become a Chef</a>
@@ -264,8 +267,8 @@
                                 <div class="searc-wrap">
                                     <input type="text" placeholder="Search Dishes">
                                     <button type="submit" class="search-wrap__btn">
-                                            <span class="lnr lnr-magnifier"></span>
-                                        </button>
+                                        <span class="lnr lnr-magnifier"></span>
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -273,9 +276,10 @@
                     </div>
 
                     <nav class="navbar navbar-expand-md navbar-light mainmenu__menu">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">

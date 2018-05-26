@@ -3,12 +3,12 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="dashboard_menu">
-                    <li class="{{ request()->is('profile') ? 'active' : '' }}">
-                        <a href="profile">
+                    <li class="{{ request()->is(route('profile.show', ['profile' => auth()->id()])) ? 'active' : '' }}">
+                        <a href="{{ route('profile.show', ['profile' => auth()->id()]) }}">
                                     <span class="lnr lnr-home"></span>Profile</a>
                     </li>
-                    <li class="{{ request()->is('profile_setting') ? 'active' : '' }}">
-                        <a href="profile_setting">
+                    <li class="{{ request()->is(route('profile.edit', ['profile' => auth()->id()])) ? 'active' : '' }}">
+                        <a href="{{ route('profile.edit', ['profile' => auth()->id()]) }}">
                                     <span class="lnr lnr-cog"></span>Profile Setting</a>
                     </li>
                     <li>
@@ -16,7 +16,7 @@
                                     <span class="lnr lnr-cart"></span>Purchase</a>
                     </li>
                     <li>
-                        <a href="create_dish">
+                        <a href="{{ route('dishes.create') }}">
                                     <span class="lnr lnr-upload"></span>Upload Items</a>
                     </li>
                     <li>
