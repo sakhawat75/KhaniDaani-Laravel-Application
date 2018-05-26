@@ -45,7 +45,7 @@
                         <div class="author-card sidebar-card">
                             <div class="author-infos">
                                 <div class="author_avatar">
-                                    <img src="/storage/images/profile_image/{{ $profile->profile_image }}" alt="Presenting the broken author avatar :D">
+                                    <img src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="Presenting the broken author avatar :D">
                                 </div>
 
                                 <div class="author">
@@ -174,7 +174,7 @@
                             <div class="product product--card">
 
                                 <div class="product__thumbnail">
-                                    <img src="{{URL::to('/')}}/images/dishid_mainthumb.jpg" alt="Product Image">
+                                    <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_thumbnail }}" alt="Product Image">
                                     <div class="prod_btn">
                                         <a href="{{ route('dishes.show', ['id' => $dish]) }}" class="transparent btn--sm btn--round">More Info</a>
                                     </div>
@@ -188,7 +188,7 @@
                                     </a>
                                     <ul class="titlebtm">
                                         <li>
-                                            <img class="auth-img" src="{{URL::to('/')}}/images/dishid_mainthumb.jpg" alt="author image">
+                                            <img class="auth-img" src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="author image">
                                             <p>
                                                 <a href="#">{{ $user->name }}</a>
                                             </p>
