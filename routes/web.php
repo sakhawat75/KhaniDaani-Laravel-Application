@@ -13,20 +13,26 @@
 
 Route::get('/', 'ViewController@index')->name('home');
 
-Route::get('profile', 'ProfileController@index')->name('profile');
 
-Route::get('profile_setting', 'ProfileController@profile_setting')->name('profile_setting');
+Route::get('/profile', 'ProfileController@index')->name('profile.index');
 
-Route::post('profile/create', 'ProfileController@store')->name('profile_creating');
+Route::get('/profile/create', 'ProfileController@create')->name('profile.create');
 
-Route::get('create_dish', 'ProfileController@create_dish')->name('create_dish');
+Route::post('/profile', 'ProfileController@store')->name( 'profile.store');
 
-Route::get('single_dish', 'ProfileController@single_dish')->name('single_dish');
+Route::get('/profile/{profile}', 'ProfileController@show')->name('profile.show');
 
-Route::get('recover-pass', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('recover-pass');
+Route::get('/profile/{profile}/edit', 'ProfileController@edit')->name('profile.edit');
+
+Route::put( '/profile/{profile}', 'ProfileController@update')->name('profile.update');
+
 
 Auth::routes();
 
+Route::resource( '/dishes', 'DishesController');
+
+
+Route::get('recover-pass', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('recover-pass');
+
 Route::get('/home', 'HomeController@index');
 
-Route::get('/single-dish', 'ProfileController@single_dish');

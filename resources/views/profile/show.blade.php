@@ -33,7 +33,7 @@
     <!--================================
         END BREADCRUMB AREA
     =================================-->
-    @include( 'includes.menu-dashboard' )
+    {{--@include( 'includes.menu-dashboard' )--}}
     <!--================================
         START PROFILE AREA
     =================================-->
@@ -52,7 +52,8 @@
                                     <h4>
                                         {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
                                     </h4>
-                                    <p>Signed Up {{ $profile->created_at }}</p>
+                                    <p>Signed Up {{ $profile->created_at->toFormattedDateString() }}</p>
+                                    <p>{{ $profile->created_at->diffForHumans() }}</p>
                                 </div>
                                 <!-- end /.author -->
                             </div>
@@ -166,28 +167,30 @@
                     <!-- end /.row -->
 
                     <div class="row">
+
+                        @foreach($dishes as $dish)
                         <div class="col-lg-6 col-md-6">
                             <!-- start .single-product -->
                             <div class="product product--card">
 
                                 <div class="product__thumbnail">
-                                    <img src="images/dishid_mainthumb.jpg" alt="Product Image">
+                                    <img src="{{URL::to('/')}}/images/dishid_mainthumb.jpg" alt="Product Image">
                                     <div class="prod_btn">
-                                        <a href="{{ route('single_dish')}}" class="transparent btn--sm btn--round">More Info</a>
+                                        <a href="{{ route('dishes.show', ['id' => $dish]) }}" class="transparent btn--sm btn--round">More Info</a>
                                     </div>
                                     <!-- end /.prod_btn -->
                                 </div>
                                 <!-- end /.product__thumbnail -->
 
                                 <div class="product-desc">
-                                    <a href="{{ route('single_dish')}}" class="product_title">
-                                        <h4>Indian butter chicken</h4>
+                                    <a href="{{ route('dishes.show', ['id' => $dish]) }}" class="product_title">
+                                        <h4> {{ $dish->dish_name }} </h4>
                                     </a>
                                     <ul class="titlebtm">
                                         <li>
-                                            <img class="auth-img" src="images/dishid_mainthumb.jpg" alt="author image">
+                                            <img class="auth-img" src="{{URL::to('/')}}/images/dishid_mainthumb.jpg" alt="author image">
                                             <p>
-                                                <a href="#">User1</a>
+                                                <a href="#">{{ $user->name }}</a>
                                             </p>
                                         </li>
                                         <li class="product_cat">
@@ -200,7 +203,7 @@
 
                                 <div class="product-purchase">
                                     <div class="price_love">
-                                        <span>৳320</span>
+                                        <span>৳{{ $dish->dish_price }}</span>
                                         <p>
                                             <span class="lnr lnr-heart"></span> 48</p>
                                     </div>
@@ -236,6 +239,7 @@
                             </div>
                             <!-- end /.single-product -->
                         </div>
+                        @endforeach
                     </div>
                     <!-- end /.row -->
                 </div>

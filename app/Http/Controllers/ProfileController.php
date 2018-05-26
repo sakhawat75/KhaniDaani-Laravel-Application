@@ -9,47 +9,57 @@ use Auth;
 
 class ProfileController extends Controller
 {
-//	public function __construct() {
-//		$this->middleware('auth');
-//	}
+	public function __construct() {
+		$this->middleware('auth')->except('show');
+	}
 
+	public function index()
+	{
+		//
+	}
 
-	public function index() {
-    	if(!Auth::check()) {
-    		return redirect('register');
-    	}
-    	$user_id = Auth::user()->id;
-    	$profile = Profile::where('user_id', $user_id)->first();
+	public function create()
+	{
+		return view('profile.create');
+	}
 
-    	// return $profile;
+	public function store(Request $request)
+	{
 
-    	return view('profile.show', compact('profile'));
+	}
+
+	public function show(Profile $profile) {
+
+//    	$user_id = Auth::user()->id;
+//    	$profile = Profile::where('user_id', $user_id)->first();
+		$user = $profile->user;
+		$dishes = $profile->dish;
+
+    	return view('profile.show', compact('profile', 'dishes', 'user'));
     }
 
-    public function profile_setting() {
-    	if(!Auth::check()) {
-    		return redirect('register');
-    	}
-	    $user_id = Auth::user()->id;
-	    $profile = Profile::where('user_id', $user_id)->first();
+	public function edit(Profile $profile)
+	{
+		if(!Auth::check()) {
+			return redirect('register');
+		}
+//	    $user_id = Auth::user()->id;
+//	    $profile = Profile::where('user_id', $user_id)->first();
 
-    	return view('profile.setting', compact('profile'));
-    }
+		return view('profile.setting', compact('profile'));
+	}
 
-    public function create_dish() {
-    	return view('dishes.create');
-    }
+    public function update(Request $request, Profile $profile) {
 
-    public function store(Request $request) {
-	    $user_id = auth()->user()->id;
+	    //		$user_id = auth()->user()->id;
 
-	    $user = User::find($user_id);
-	    $profile = $user->profile()->first();
+		//$user = User::find($user_id);
+	    //$profile = $user->profile()->first();
 
 	    /*$this->validate($request, [
 			'profile_photo' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:1999',
-		    'cover_photo' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:1999'
-	    ]);*/
+			'cover_photo' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:1999'
+		]);*/
 
 	    if (request()->filled('fullname')) {
 		    $profile->fullname = $request->input('fullname');
@@ -64,34 +74,27 @@ class ProfileController extends Controller
 		    $profile->description = $request->input('description');
 	    }
 
-	    /*if($request->hasFile('cover_image')){
-		    // Get filename with the extension
-		    $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
-		    // Get just filename
-		    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-		    // Get just ext
-		    $extension = $request->file('cover_image')->getClientOriginalExtension();
-		    // Filename to store
-		    $fileNameToStore= $filename.'_'.time().'.'.$extension;
-		    // Upload Image
-		    $path = $request->file('cover_image')->storeAs('public/images/cover_images', $fileNameToStore);
-		    $profile->cover_photo = $fileNameToStore;
-	    }*/
 
 	    $this->upload_image($request, $profile, 'cover_image');
 	    $this->upload_image($request, $profile, 'profile_image');
 
-    	/*Profile::find($user_id)->update([
-    		'user_id' => Auth::id(),
-    		'fullname' => request('fullname'),
-    		'dob' => request('dob'),
-    		'mobile_no' => request('mobile_no'),
-    		'description' => request('description')
-    	]);*/
+	    /*Profile::find($user_id)->update([
+			'user_id' => Auth::id(),
+			'fullname' => request('fullname'),
+			'dob' => request('dob'),
+			'mobile_no' => request('mobile_no'),
+			'description' => request('description')
+		]);*/
 
-    	$profile->save();
-    	return redirect()->route('profile');
+	    $profile->save();
+	    return redirect()->route('profile.show', ['profile' => $profile]);
     }
+
+	public function destroy($id)
+	{
+		//
+	}
+
     public function single_dish() {
     	if(!Auth::check()) {
     		return redirect('register');
@@ -119,4 +122,8 @@ class ProfileController extends Controller
 		    $profile->$type = $fileNameToStore;
 	    }
     }
+
+
+
+
 }

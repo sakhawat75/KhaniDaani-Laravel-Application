@@ -57,7 +57,8 @@
 
             <div class="row">
                 <div class="col-lg-8 col-md-7">
-                    <form action="#">
+                    <form action="{{ route('dishes.store') }}" method="post">
+                        {{ csrf_field() }}
                         <div class="upload_modules">
                             <div class="modules__title">
                                 <h3>Dish Name & Description</h3>
@@ -68,38 +69,38 @@
                                 <div class="form-group">
                                     <label for="category">Select Category</label>
                                     <div class="select-wrap select-wrap2">
-                                        <select name="country" id="category" class="text_field">
-                                                <option value="">Pizza</option>
-                                                <option value="">Pasta</option>
-                                            </select>
+                                        <select name="dish_category" id="category" class="text_field">
+                                            <option value="Pizza">Pizza</option>
+                                            <option value="Pasta">Pasta</option>
+                                        </select>
                                         <span class="lnr lnr-chevron-down"></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="category">Select Sub Category</label>
                                     <div class="select-wrap select-wrap2">
-                                        <select name="country" id="category" class="text_field">
-                                                <option value="">Vegitable</option>
-                                                <option value="">Maxican</option>
-                                            </select>
+                                        <select name="dish_subcategory" id="category" class="text_field">
+                                            <option value="Vegitable">Vegitable</option>
+                                            <option value="Maxican">Maxican</option>
+                                        </select>
                                         <span class="lnr lnr-chevron-down"></span>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="product_name">Dish Name
-                                            <span>(Max 100 characters)</span>
-                                        </label>
-                                    <input type="text" id="product_name" class="text_field" placeholder="Enter your product name here...">
+                                        <span>(Max 100 characters)</span>
+                                    </label>
+                                    <input name="dish_name" type="text" id="product_name" class="text_field" placeholder="Enter your product name here...">
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="category">Preperation Time</label>
+                                    <label for="preperation_time">Preperation Time</label>
                                     <div class="select-wrap select-wrap2">
-                                        <select name="country" id="category" class="text_field">
-                                                <option value="">1 Houre</option>
-                                                <option value="">2 Houre</option>
-                                            </select>
+                                        <select name="preparation_time" id="preperation_time" class="text_field">
+                                            <option value="1 Hour">1 Hour</option>
+                                            <option value="2 Hour">2 Hour</option>
+                                        </select>
                                         <span class="lnr lnr-chevron-down"></span>
                                     </div>
                                 </div>
@@ -126,7 +127,7 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon">৳</span>
-                                                <input type="text" id="rlicense" class="text_field" placeholder="00.00">
+                                                <input name="dish_price" type="text" id="rlicense" class="text_field" placeholder="00.00">
                                             </div>
                                         </div>
                                     </div>
@@ -286,7 +287,7 @@
                                     <label for="tags">Item Tags
                                             <span>(Max 10 tags)</span>
                                         </label>
-                                    <textarea name="tags" id="tags" class="text_field" placeholder="Enter your item tags here..."></textarea>
+                                    <textarea name="item_tags" id="tags" class="text_field" placeholder="Enter your item tags here..."></textarea>
                                 </div>
                             </div>
                             <!-- end /.upload_modules -->

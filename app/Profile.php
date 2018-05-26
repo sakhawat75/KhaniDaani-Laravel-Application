@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Profile extends Model
 {
     protected $fillable = ['user_id', 'fullname', 'dob', 'mobile_no', 'description'];
@@ -16,5 +17,9 @@ class Profile extends Model
 
     public function user() {
     	return $this->belongsTo('App\User');
+    }
+
+    public function dish() {
+    	return $this->hasMany(Dish::class);
     }
 }

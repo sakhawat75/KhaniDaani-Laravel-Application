@@ -6,7 +6,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="info-footer">
                         <div class="info__logo">
-                            <img src="images/logo/full_logo.png" alt="footer logo">
+                            <img src="{{ route('home') }}/images/logo/full_logo.png" alt="footer logo">
                         </div>
                         <p class="info--text">KhaniDaani Into</p>
                         <ul class="info-contact">

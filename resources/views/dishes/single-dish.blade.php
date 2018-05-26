@@ -1,6 +1,10 @@
-@extends ('layouts.master') @section ('title', 'Create New Dish') @section ('content')
+@extends ('layouts.master')
 
-<body class="single-dish">
+@section ('title', 'Single Dish')
+
+@section ('content')
+
+    <body class="single-dish">
 
     <!--================================
         START BREADCRUMB AREA
@@ -22,7 +26,7 @@
                             </li>
                         </ul>
                     </div>
-                    <h1 class="page-title">Indian Butter Chicken</h1>
+                    <h1 class="page-title">{{ $dish->dish_name }}</h1>
                 </div>
                 <!-- end /.col-md-12 -->
             </div>
@@ -45,13 +49,16 @@
                     <div class="item-preview">
                         <div class="item__preview-slider">
                             <div class="prev-slide">
-                                <img src="images/dishid_img1.jpg" alt="Keep calm this isn't the end of the world, the preview is just missing.">
+                                <img src="{{ route('home') }}/images/dishid_img1.jpg"
+                                     alt="Keep calm this isn't the end of the world, the preview is just missing.">
                             </div>
                             <div class="prev-slide">
-                                <img src="images/dishid_img2.jpg" alt="Keep calm this isn't the end of the world, the preview is just missing.">
+                                <img src="{{ route('home') }}/images/dishid_img2.jpg"
+                                     alt="Keep calm this isn't the end of the world, the preview is just missing.">
                             </div>
                             <div class="prev-slide">
-                                <img src="images/dishid_img3.jpg" alt="Keep calm this isn't the end of the world, the preview is just missing.">
+                                <img src="{{ route('home') }}/images/dishid_img3.jpg"
+                                     alt="Keep calm this isn't the end of the world, the preview is just missing.">
                             </div>
                         </div>
                         <!-- end /.item--preview-slider -->
@@ -60,13 +67,13 @@
                             <div class="prev-thumb">
                                 <div class="thumb-slider">
                                     <div class="item-thumb">
-                                        <img src="images/dthumb1.jpg" alt="This is the thumbnail of the item">
+                                        <img src="{{ route('home') }}/images/dthumb1.jpg" alt="This is the thumbnail of the item">
                                     </div>
                                     <div class="item-thumb">
-                                        <img src="images/dthumb2.jpg" alt="This is the thumbnail of the item">
+                                        <img src="{{ route('home') }}/images/dthumb2.jpg" alt="This is the thumbnail of the item">
                                     </div>
                                     <div class="item-thumb">
-                                        <img src="images/dthumb1.jpg" alt="This is the thumbnail of the item">
+                                        <img src="{{ route('home') }}/images/dthumb1.jpg" alt="This is the thumbnail of the item">
                                     </div>
                                 </div>
                                 <!-- end /.thumb-slider -->
@@ -80,7 +87,7 @@
 
                             <div class=" item-action item_social_share">
                                 <p>
-                                    <img src="images/svg/share.svg" alt="This is share svg">
+                                    <img src="{{ route('home') }}/images/svg/share.svg" alt="This is share svg">
                                     <span>Share this item</span>
                                 </p>
 
@@ -132,12 +139,14 @@
                             <div class="item-navigation">
                                 <ul class="nav nav-tabs nav--tabs2">
                                     <li>
-                                        <a href="#product-details" class="active" aria-controls="product-details" role="tab" data-toggle="tab">Item Details</a>
+                                        <a href="#product-details" class="active" aria-controls="product-details"
+                                           role="tab" data-toggle="tab">Item Details</a>
                                     </li>
                                     <li>
-                                        <a href="#product-review" aria-controls="product-review" role="tab" data-toggle="tab">Reviews
-                                        <span>(35)</span>
-                                    </a>
+                                        <a href="#product-review" aria-controls="product-review" role="tab"
+                                           data-toggle="tab">Reviews
+                                            <span>(35)</span>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -148,7 +157,9 @@
                             <div class="fade show tab-pane product-tab active" id="product-details">
                                 <div class="tab-content-wrapper">
                                     <h1>Dish Description</h1>
-                                    <p>Chicken Makhani is one of my favorite Indian dishes. It is a full flavored dish that complements the chicken well. It can be made as mild or spicy as you wish by adjusting the cayenne. Serve with basmati rice and naan bread.</p>
+                                    <p>Chicken Makhani is one of my favorite Indian dishes. It is a full flavored dish
+                                        that complements the chicken well. It can be made as mild or spicy as you wish
+                                        by adjusting the cayenne. Serve with basmati rice and naan bread.</p>
 
                                     <h2>Dish Ingredients</h2>
                                     <ul>
@@ -168,7 +179,8 @@
                                             <div class="media">
                                                 <div class="media-left">
                                                     <a href="#">
-                                                        <img class="media-object" src="images/m8.png" alt="Commentator Avatar">
+                                                        <img class="media-object" src="{{ route('home') }}/images/m8.png"
+                                                             alt="Commentator Avatar">
                                                     </a>
                                                 </div>
                                                 <div class="media-body">
@@ -189,13 +201,16 @@
                                                                         <span class="fa fa-star"></span>
                                                                     </li>
                                                                     <li>
-                                                                        <span class="fa fa-star-o" aria-hidden="true"></span>
+                                                                        <span class="fa fa-star-o"
+                                                                              aria-hidden="true"></span>
                                                                     </li>
                                                                     <li>
-                                                                        <span class="fa fa-star-o" aria-hidden="true"></span>
+                                                                        <span class="fa fa-star-o"
+                                                                              aria-hidden="true"></span>
                                                                     </li>
                                                                     <li>
-                                                                        <span class="fa fa-star-o" aria-hidden="true"></span>
+                                                                        <span class="fa fa-star-o"
+                                                                              aria-hidden="true"></span>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -212,7 +227,8 @@
                                                     <div class="media">
                                                         <div class="media-left">
                                                             <a href="#">
-                                                                <img class="media-object" src="images/m2.png" alt="Commentator Avatar">
+                                                                <img class="media-object" src="{{ route('home') }}/images/m2.png"
+                                                                     alt="Commentator Avatar">
                                                             </a>
                                                         </div>
                                                         <div class="media-body">
@@ -230,12 +246,14 @@
                                             <div class="media depth-2 reply-comment">
                                                 <div class="media-left">
                                                     <a href="#">
-                                                        <img class="media-object" src="images/m2.png" alt="Commentator Avatar">
+                                                        <img class="media-object" src="{{ route('home') }}/images/m2.png"
+                                                             alt="Commentator Avatar">
                                                     </a>
                                                 </div>
                                                 <div class="media-body">
                                                     <form action="#" class="comment-reply-form">
-                                                        <textarea class="bla" name="reply-comment" placeholder="Write your comment..."></textarea>
+                                                        <textarea class="bla" name="reply-comment"
+                                                                  placeholder="Write your comment..."></textarea>
                                                         <button class="btn btn--md btn--round">Post Comment</button>
                                                     </form>
                                                 </div>
@@ -247,7 +265,8 @@
                                             <div class="media">
                                                 <div class="media-left">
                                                     <a href="#">
-                                                        <img class="media-object" src="images/m6.png" alt="Commentator Avatar">
+                                                        <img class="media-object" src="{{ route('home') }}/images/m6.png"
+                                                             alt="Commentator Avatar">
                                                     </a>
                                                 </div>
                                                 <div class="media-body">
@@ -289,12 +308,14 @@
                                             <div class="media depth-2 reply-comment">
                                                 <div class="media-left">
                                                     <a href="#">
-                                                        <img class="media-object" src="images/m2.png" alt="Commentator Avatar">
+                                                        <img class="media-object" src="{{ route('home') }}/images/m2.png"
+                                                             alt="Commentator Avatar">
                                                     </a>
                                                 </div>
                                                 <div class="media-body">
                                                     <form action="#" class="comment-reply-form">
-                                                        <textarea class="bla" name="reply-comment" placeholder="Write your comment..."></textarea>
+                                                        <textarea class="bla" name="reply-comment"
+                                                                  placeholder="Write your comment..."></textarea>
                                                         <button class="btn btn--md btn--round">Post Comment</button>
                                                     </form>
                                                 </div>
@@ -335,16 +356,16 @@
                             <div class="price">
                                 <h1>
                                     <sup>৳</sup>
-                                    <span>320.00</span>
+                                    <span>{{ $dish->dish_price }}</span>
                                 </h1>
                             </div>
                             <div class="sidebar-card card--metadata">
-                            <ul class="data">
-                                <li>
-                                    <p>
-                                        <span class="lnr lnr-cart pcolor"></span>Prepeartion Time</p>
-                                    <span>1 Hour</span>
-                                </li>
+                                <ul class="data">
+                                    <li>
+                                        <p>
+                                            <span class="lnr lnr-cart pcolor"></span>Prepeartion Time</p>
+                                        <span>{{ $dish->preparation_time }}</span>
+                                    </li>
                                 </ul>
                             </div>
                             <ul class="pricing-options">
@@ -383,7 +404,7 @@
                                 <a href="#" class="btn btn--lg btn--round cart-btn">
                                     <span class="lnr lnr-cart"></span> Add To Cart</a>
                                 <a href="#" class="btn btn--round btn--lg btn--icon">
-                                        <span class="lnr lnr-heart"></span>Add To Favorites</a>
+                                    <span class="lnr lnr-heart"></span>Add To Favorites</a>
                             </div>
                             <!-- end /.purchase-button -->
                         </div>
@@ -440,7 +461,8 @@
 
                             <div class="author-infos">
                                 <div class="author_avatar">
-                                    <img src="{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="user avatar">
+                                    <img src="{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}"
+                                         alt="user avatar">
                                 </div>
 
                                 <div class="author">
@@ -450,7 +472,8 @@
                                 <!-- end /.author -->
 
                                 <div class="author-btn">
-                                    <a href="{{ route('profile')}}" class="btn btn--sm btn--round">View Profile</a>
+                                    <a href="{{ route('profile.show', ['profile' => $profile])}}"
+                                       class="btn btn--sm btn--round">View Profile</a>
                                 </div>
                                 <!-- end /.author-btn -->
                             </div>
@@ -472,4 +495,4 @@
         END SINGLE PRODUCT DESCRIPTION AREA
     ===============================================-->
 
-    @endsection
+@endsection
