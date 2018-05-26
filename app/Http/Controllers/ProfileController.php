@@ -40,6 +40,10 @@ class ProfileController extends Controller
     	return view('dishes.create');
     }
 
+     public function manage_dish() {
+    	return view('dishes.manage-dish');
+    }
+
     public function store(Request $request) {
 	    $user_id = auth()->user()->id;
 

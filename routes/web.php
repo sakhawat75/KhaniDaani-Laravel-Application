@@ -23,6 +23,8 @@ Route::get('create_dish', 'ProfileController@create_dish')->name('create_dish');
 
 Route::get('single_dish', 'ProfileController@single_dish')->name('single_dish');
 
+Route::get('manage_dish', 'ProfileController@manage_dish')->name('manage_dish');
+
 Route::get('recover-pass', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('recover-pass');
 
 Auth::routes();
