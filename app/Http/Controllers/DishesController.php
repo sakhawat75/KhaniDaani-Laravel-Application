@@ -63,4 +63,8 @@ class DishesController extends Controller
     {
         //
     }
+
+    public function manage() {
+    	return view('dishes.manage-dish');
+    }
 }

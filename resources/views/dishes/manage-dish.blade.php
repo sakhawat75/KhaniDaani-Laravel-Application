@@ -1,6 +1,6 @@
 @extends ('layouts.master') @section ('title', 'Manage Dish') @section ('content')
 
- <!--================================
+    <!--================================
         START BREADCRUMB AREA
     =================================-->
     <section class="breadcrumb-area">
@@ -10,7 +10,7 @@
                     <div class="breadcrumb">
                         <ul>
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
                                 <a href="dashboard.html">Profile</a>
@@ -77,10 +77,11 @@
                         <div class="product product--card">
 
                             <div class="">
-                                <img src="images/dishid_mainthumb.jpg" alt="Product Image">
+                                <img src="{{ route('home') }}/images/dishid_mainthumb.jpg" alt="Product Image">
 
                                 <div class="prod_option">
-                                    <a href="#" id="drop1" class="dropdown-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <a href="#" id="drop1" class="dropdown-trigger" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="true">
                                         <span class="lnr lnr-cog setting-icon"></span>
                                     </a>
 
@@ -101,12 +102,12 @@
                             <!-- end /.product__thumbnail -->
 
                             <div class="product-desc">
-                                <a href="{{ route('single_dish')}}" class="product_title">
+                                <a href="{{ route('home')}}" class="product_title">
                                     <h4>Indian Butter Chicken</h4>
                                 </a>
                                 <ul class="titlebtm">
                                     <li>
-                                        <img class="auth-img" src="images/auth2.jpg" alt="dish image">
+                                        <img class="auth-img" src="{{ route('home') }}/images/auth2.jpg" alt="dish image">
                                         <p>
                                             <a href="#">User1</a>
                                         </p>
@@ -191,4 +192,4 @@
             END DASHBOARD AREA
     =================================-->
 
-    @endsection
+@endsection
