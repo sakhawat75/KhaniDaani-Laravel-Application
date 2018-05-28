@@ -20,7 +20,7 @@
                                     <span class="lnr lnr-upload"></span>Upload Items</a>
                     </li>
                     <li class="{{ request()->is('profile_setting') ? 'active' : '' }}">
-                        <a href="manage_dish">
+                        <a href="{{ route('dishes.manage') }}">
                                     <span class="lnr lnr-briefcase"></span>Manage Items</a>
                     </li>
                     <li>

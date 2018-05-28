@@ -140,7 +140,7 @@
                                             <span class="lnr lnr-upload"></span>Upload Item</a>
                                     </li>
                                     <li>
-                                        <a href="manage_dish">
+                                        <a href="{{ route('dishes.manage') }}">
                                             <span class="lnr lnr-book"></span>Manage Item</a>
                                     </li>
                                     <li>
