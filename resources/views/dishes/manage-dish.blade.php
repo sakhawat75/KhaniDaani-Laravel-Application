@@ -35,7 +35,7 @@
     <!--================================
             START DASHBOARD AREA
     =================================-->
-    <section class="dashboard-area">
+    <section class="dashboard-edit dashboard-area">
         @include('includes.menu-dashboard')
         <div class="dashboard_contents">
             <div class="container">
