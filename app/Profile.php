@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Auth;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -9,10 +10,15 @@ class Profile extends Model
 {
     protected $fillable = ['user_id', 'fullname', 'dob', 'mobile_no', 'description'];
 
-    public static function store($id) {
-    	$profile = \App\Profile::create([
-    		'user_id' => $id,
-	    ]);
+    public static function store($id, $name) {
+//    	$profile = \App\Profile::create([
+//    		'user_id' => $id,
+//    		'user_name' => auth()->user()
+//	    ]);
+    	$profile = new Profile();
+    	$profile->user_id = $id;
+    	$profile->user_name = $name;
+    	$profile->save();
     }
 
     public function user() {
