@@ -44,10 +44,10 @@ class DishesController extends Controller
 	    $dish->dish_description = $request->input('dish_description');
 	    $dish->item_tags = $request->input('item_tags');
 
-	    $this->upload_image( $request, $dish, 'dish_images', 'dish_thumbnail');
-	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_1');
-	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_2');
-	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_3');
+	    $this->upload_image( $request, $dish, 'dish_images', 'dish_thumbnail', false);
+	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_1', false);
+	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_2', false);
+	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_3', false);
 
 	    $dish->save();
 
@@ -64,30 +64,79 @@ class DishesController extends Controller
 
     public function edit($id)
     {
-        //
+    	$dish = Dish::find($id);
+	    return view('dishes.dish-edit', compact( 'dish'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $dish = Dish::find($id);
+	    $profile = $dish->profile;
+
+	    if (request()->filled('dish_category')) {
+		    $dish->dish_category = $request->input('dish_category');
+	    }
+	    if (request()->filled('dish_subcategory')) {
+		    $dish->dish_subcategory = $request->input('dish_subcategory');
+	    }
+	    if (request()->filled('preparation_time')) {
+		    $dish->preparation_time = $request->input('preparation_time');
+	    }
+	    if (request()->filled('dish_name')) {
+		    $dish->dish_name = $request->input('dish_name');
+	    }
+    	if (request()->filled('dish_price')) {
+		    $dish->dish_price = $request->input('dish_price');
+	    }
+    	if (request()->filled('dish_description')) {
+		    $dish->dish_description = $request->input('dish_description');
+	    }
+	    if (request()->filled('item_tags')) {
+		    $dish->item_tags = $request->input('item_tags');
+	    }
+
+	    $this->upload_image( $request, $dish, 'dish_images', 'dish_thumbnail', true);
+	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_1', true);
+	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_2', true);
+	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_3', true);
+
+	    $dish->update();
+
+	    return view('dishes.single-dish', compact( 'profile', 'dish'));
+
     }
 
     public function destroy($id)
     {
-        //
+	    $dish = Dish::find($id);
+
+	    $this->delete_prev_img( $dish, 'dish_images', 'dish_thumbnail');
+	    $this->delete_prev_img( $dish, 'dish_images', 'dish_image_1');
+	    $this->delete_prev_img( $dish, 'dish_images', 'dish_image_2');
+	    $this->delete_prev_img( $dish, 'dish_images', 'dish_image_3');
+
+	    $dish->delete();
+
+	    return redirect()->action( 'DishesController@manage');
     }
 
     public function manage() {
-    	return view('dishes.manage-dish');
+		$id = auth()->id();
+	    $profile = Profile::find($id);
+	    $dishes = $profile->dish;
+    	return view('dishes.manage-dish', compact( 'profile', 'dishes'));
     }
 
     public function editdish() {
     	return view('dishes.dish-edit');
     }
 
-	public function upload_image(Request $request, Dish $dish, $type, $input_name) {
+	public function upload_image(Request $request, Dish $dish, $type, $input_name, $del_prev) {
 		if($request->hasFile($input_name)){
 
+			if($del_prev) {
+				$this->delete_prev_img( $dish, $type, $input_name);
+			}
 			// Get filename with the extension
 			$filenameWithExt = $request->file($input_name)->getClientOriginalName();
 			// Get just filename

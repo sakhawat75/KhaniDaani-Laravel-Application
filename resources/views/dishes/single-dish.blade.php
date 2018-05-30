@@ -60,13 +60,13 @@
                             <div class="prev-thumb">
                                 <div class="thumb-slider">
                                     <div class="item-thumb">
-                                        <img src="{{ route('home') }}/images/dthumb1.jpg" alt="This is the thumbnail of the item">
+                                        <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_1 }}" alt="This is the thumbnail of the item">
                                     </div>
                                     <div class="item-thumb">
-                                        <img src="{{ route('home') }}/images/dthumb2.jpg" alt="This is the thumbnail of the item">
+                                        <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_2 }}" alt="This is the thumbnail of the item">
                                     </div>
                                     <div class="item-thumb">
-                                        <img src="{{ route('home') }}/images/dthumb1.jpg" alt="This is the thumbnail of the item">
+                                        <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_3 }}" alt="This is the thumbnail of the item">
                                     </div>
                                 </div>
                                 <!-- end /.thumb-slider -->
