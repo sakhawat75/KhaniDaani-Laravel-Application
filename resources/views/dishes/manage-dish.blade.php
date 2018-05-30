@@ -80,7 +80,7 @@
                                 <img src="{{ route('home') }}/images/dishid_mainthumb.jpg" alt="Product Image">
 
                                 <div class="prod_option">
-                                    <a href="#" id="drop1" class="dropdown-trigger" data-toggle="dropdown"
+                                    <a href="#" id="drop2" class="dropdown-trigger" data-toggle="dropdown"
                                        aria-haspopup="true" aria-expanded="true">
                                         <span class="lnr lnr-cog setting-icon"></span>
                                     </a>
