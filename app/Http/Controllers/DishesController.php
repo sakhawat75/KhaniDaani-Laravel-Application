@@ -122,8 +122,12 @@ class DishesController extends Controller
 
     public function manage() {
 		$id = auth()->id();
-	    $profile = Profile::find($id);
+	    $profile = Profile::where('user_id', $id)->first();
 	    $dishes = $profile->dish;
+
+	    if(!$dishes->first()) {
+	    	return redirect()->route( 'dishes.create');
+	    }
     	return view('dishes.manage-dish', compact( 'profile', 'dishes'));
     }
 

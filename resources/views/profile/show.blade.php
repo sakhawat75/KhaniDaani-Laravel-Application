@@ -50,7 +50,8 @@
 
                                 <div class="author">
                                     <h4>
-                                        {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
+                                        {{ $user->name }}
+                                        {{--{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}--}}
                                     </h4>
                                     <p>Signed Up {{ $profile->created_at->toFormattedDateString() }}</p>
                                     <p>{{ $profile->created_at->diffForHumans() }}</p>

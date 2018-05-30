@@ -29,20 +29,32 @@ class ProfileController extends Controller
 
 	}
 
-	public function show(Profile $profile) {
+	public function show($profile) {
 
-//    	$user_id = Auth::user()->id;
-//    	$profile = Profile::where('user_id', $user_id)->first();
-		$user = $profile->user;
+    	$user_id = $profile;
+		$user = User::find($user_id);
+		$profile = Profile::where('user_id', $user_id)->first();
+		if(!$profile) {
+			return redirect()->route( 'home');
+		}
 		$dishes = $profile->dish;
 
     	return view('profile.show', compact('profile', 'dishes', 'user'));
     }
 
-	public function edit(Profile $profile)
+	public function edit($profile)
 	{
 		if(!Auth::check()) {
 			return redirect('register');
+		}
+		$user_id = $profile;
+		//$user = User::find($user_id);
+		$profile = Profile::where('user_id', $user_id)->first();
+		if(!$profile) {
+			return redirect()->route( 'home');
+		}
+		if($profile->user_id != auth()->id()) {
+			return redirect()->route( 'home');
 		}
 //	    $user_id = Auth::user()->id;
 //	    $profile = Profile::where('user_id', $user_id)->first();
