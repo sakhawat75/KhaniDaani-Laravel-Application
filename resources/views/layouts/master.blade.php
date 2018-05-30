@@ -26,7 +26,7 @@
     <!--//////////////////// JS GOES HERE ////////////////-->
 
     <!-- inject:js -->
-    @include ('includes.injects')
+    @include ('includes.injectjs')
     <!-- endinject -->
 </body>
 
