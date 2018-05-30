@@ -333,7 +333,6 @@
                     <!-- end /.item-info -->
                 </div>
                 <!-- end /.col-md-8 -->
-
                 <div class="col-lg-4">
                     <aside class="sidebar sidebar--single-product">
                         <div class="sidebar-card card-pricing card--pricing2">
@@ -347,7 +346,9 @@
                                     <span class="lnr lnr-cart pcolor"></span>Get it within
                                     <span>{{ $dish->preparation_time }}</span></h4>
                             </div>
+                            
                             <ul class="pricing-options">
+                                <h4>Delivey service provider</h4>
                                 <li>
                                     <div class="custom-radio">
                                         <input type="radio" id="opt1" class="" name="filter_opt" checked>
@@ -360,8 +361,8 @@
                                 
                                 <li>
                                     <div class="custom-radio">
-                                        <input type="radio" id="opt1" class="" name="filter_opt" checked>
-                                        <label for="opt1" data-price="60">
+                                        <input type="radio" id="opt2" class="" name="filter_opt" checked>
+                                        <label for="opt2" data-price="60">
                                             <span class="circle"></span>Username </label>
                                     </div>
 
@@ -369,14 +370,22 @@
                                 </li>
                             </ul>
 
-                            <!-- end /.pricing-options -->
+                            <ul class="pricing-options">
+                                <h4>Pickers Point</h4>
+                                <li>
+                                    <div class="custom-radio">
+                                        <input type="radio" id="opt3" class="" name="filter_opt" checked>
+                                        <label for="opt3" data-price="60">
+                                            <span class="circle"></span>Username </label>
+                                    </div>
+
+                                    <p>Location service detail</p>
+                                </li>
+                                
+                            </ul>
 
                             <div class="purchase-button">
                                 <a href="#" class="btn btn--lg btn--round">Order Now</a>
-                                <a href="#" class="btn btn--lg btn--round cart-btn">
-                                    <span class="lnr lnr-cart"></span> Add To Cart</a>
-                                <a href="#" class="btn btn--round btn--lg btn--icon">
-                                    <span class="lnr lnr-heart"></span>Add To Favorites</a>
                             </div>
                             <!-- end /.purchase-button -->
                         </div>

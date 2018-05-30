@@ -293,6 +293,79 @@
                                 <!-- end /.upload_modules -->
                             </div>
 
+                                                    <div class="upload_modules with--addons">
+                            <div class="modules__title">
+                                <h3>Delivery Service Provider</h3>
+                            </div>
+                            <!-- end /.module_title -->
+
+                            <div class="modules__content">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" id="rlicense" class="text_field" placeholder="username">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end /.col-md-6 -->
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" id="exlicense" class="text_field" placeholder="username2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end /.col-md-6 -->
+
+                                </div>
+                                <!-- end /.row -->
+                            </div>
+                            <!-- end /.modules__content -->
+                        </div>
+                        
+                        <div class="upload_modules with--addons">
+                            <div class="modules__title">
+                                <h3>Pickers Point</h3>
+                            </div>
+                            <!-- end /.module_title -->
+
+                            <div class="modules__content">
+                                
+                                <!-- end /.row -->
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" id="single_use" class="text_field" placeholder="username">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" id="double_use" class="text_field" placeholder="username">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" id="multi_user" class="text_field" placeholder="username">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end /.row -->
+                            </div>
+                            <!-- end /.modules__content -->
+                        </div>
+
+
+
                             <!-- submit button -->
                             <button type="submit" class="btn btn--round btn--fullwidth btn--lg">Click to update the dish</button>
                         </form>
