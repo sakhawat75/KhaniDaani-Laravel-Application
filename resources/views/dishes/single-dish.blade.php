@@ -1,10 +1,6 @@
-@extends ('layouts.master')
+@extends ('layouts.master') @section ('title', 'Single Dish') @section ('content')
 
-@section ('title', 'Single Dish')
-
-@section ('content')
-
-    <body class="single-dish">
+<body class="single-dish">
 
     <!--================================
         START BREADCRUMB AREA
@@ -49,16 +45,13 @@
                     <div class="item-preview">
                         <div class="item__preview-slider">
                             <div class="prev-slide">
-                                <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_1 }}"
-                                     alt="Keep calm this isn't the end of the world, the preview is just missing.">
+                                <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_1 }}" alt="Keep calm this isn't the end of the world, the preview is just missing.">
                             </div>
                             <div class="prev-slide">
-                                <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_2 }}"
-                                     alt="Keep calm this isn't the end of the world, the preview is just missing.">
+                                <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_2 }}" alt="Keep calm this isn't the end of the world, the preview is just missing.">
                             </div>
                             <div class="prev-slide">
-                                <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_3 }}"
-                                     alt="Keep calm this isn't the end of the world, the preview is just missing.">
+                                <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_3 }}" alt="Keep calm this isn't the end of the world, the preview is just missing.">
                             </div>
                         </div>
                         <!-- end /.item--preview-slider -->
@@ -139,12 +132,10 @@
                             <div class="item-navigation">
                                 <ul class="nav nav-tabs nav--tabs2">
                                     <li>
-                                        <a href="#product-details" class="active" aria-controls="product-details"
-                                           role="tab" data-toggle="tab">Item Details</a>
+                                        <a href="#product-details" class="active" aria-controls="product-details" role="tab" data-toggle="tab">Item Details</a>
                                     </li>
                                     <li>
-                                        <a href="#product-review" aria-controls="product-review" role="tab"
-                                           data-toggle="tab">Reviews
+                                        <a href="#product-review" aria-controls="product-review" role="tab" data-toggle="tab">Reviews
                                             <span>(35)</span>
                                         </a>
                                     </li>
@@ -199,16 +190,13 @@
                                                                         <span class="fa fa-star"></span>
                                                                     </li>
                                                                     <li>
-                                                                        <span class="fa fa-star-o"
-                                                                              aria-hidden="true"></span>
+                                                                        <span class="fa fa-star-o" aria-hidden="true"></span>
                                                                     </li>
                                                                     <li>
-                                                                        <span class="fa fa-star-o"
-                                                                              aria-hidden="true"></span>
+                                                                        <span class="fa fa-star-o" aria-hidden="true"></span>
                                                                     </li>
                                                                     <li>
-                                                                        <span class="fa fa-star-o"
-                                                                              aria-hidden="true"></span>
+                                                                        <span class="fa fa-star-o" aria-hidden="true"></span>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -250,8 +238,7 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <form action="#" class="comment-reply-form">
-                                                        <textarea class="bla" name="reply-comment"
-                                                                  placeholder="Write your comment..."></textarea>
+                                                        <textarea class="bla" name="reply-comment" placeholder="Write your comment..."></textarea>
                                                         <button class="btn btn--md btn--round">Post Comment</button>
                                                     </form>
                                                 </div>
@@ -312,8 +299,7 @@
                                                 </div>
                                                 <div class="media-body">
                                                     <form action="#" class="comment-reply-form">
-                                                        <textarea class="bla" name="reply-comment"
-                                                                  placeholder="Write your comment..."></textarea>
+                                                        <textarea class="bla" name="reply-comment" placeholder="Write your comment..."></textarea>
                                                         <button class="btn btn--md btn--round">Post Comment</button>
                                                     </form>
                                                 </div>
@@ -356,42 +342,30 @@
                                     <sup>৳</sup>
                                     <span>{{ $dish->dish_price }}</span>
                                 </h1>
-                            </div>
-                            <div class="sidebar-card card--metadata">
-                                <ul class="data">
-                                    <li>
-                                        <p>
-                                            <span class="lnr lnr-cart pcolor"></span>Prepeartion Time</p>
-                                        <span>{{ $dish->preparation_time }}</span>
-                                    </li>
-                                </ul>
+                                <br>
+                                <h4>
+                                    <span class="lnr lnr-cart pcolor"></span>Get it within
+                                    <span>{{ $dish->preparation_time }}</span></h4>
                             </div>
                             <ul class="pricing-options">
                                 <li>
-                                    <div class="form-group">
-                                        <label for="category">Select Pickers Point</label>
-                                        <div class="select-wrap select-wrap2">
-                                            <select name="country" id="category" class="text_field">
-                                                <option value="">Shibgong</option>
-                                                <option value="wordpress">Upasahar</option>
-                                                <option value="html">Zindabazar</option>
-                                            </select>
-                                            <span class="lnr lnr-chevron-down"></span>
-                                        </div>
+                                    <div class="custom-radio">
+                                        <input type="radio" id="opt1" class="" name="filter_opt" checked>
+                                        <label for="opt1" data-price="60">
+                                            <span class="circle"></span>Username </label>
                                     </div>
+
+                                    <p>Location service detail</p>
                                 </li>
+                                
                                 <li>
-                                    <div class="form-group">
-                                        <label for="category">Select Deliverer</label>
-                                        <div class="select-wrap select-wrap2">
-                                            <select name="country" id="category" class="text_field">
-                                                <option value="">sakhawat</option>
-                                                <option value="wordpress">juned</option>
-                                                <option value="html">nurain</option>
-                                            </select>
-                                            <span class="lnr lnr-chevron-down"></span>
-                                        </div>
+                                    <div class="custom-radio">
+                                        <input type="radio" id="opt1" class="" name="filter_opt" checked>
+                                        <label for="opt1" data-price="60">
+                                            <span class="circle"></span>Username </label>
                                     </div>
+
+                                    <p>Location service detail</p>
                                 </li>
                             </ul>
 
@@ -459,8 +433,7 @@
 
                             <div class="author-infos">
                                 <div class="author_avatar">
-                                    <img src="{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}"
-                                         alt="user avatar">
+                                    <img src="{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="user avatar">
                                 </div>
 
                                 <div class="author">
@@ -470,8 +443,7 @@
                                 <!-- end /.author -->
 
                                 <div class="author-btn">
-                                    <a href="{{ route('profile.show', ['profile' => $profile])}}"
-                                       class="btn btn--sm btn--round">View Profile</a>
+                                    <a href="{{ route('profile.show', ['profile' => $profile])}}" class="btn btn--sm btn--round">View Profile</a>
                                 </div>
                                 <!-- end /.author-btn -->
                             </div>
@@ -493,4 +465,4 @@
         END SINGLE PRODUCT DESCRIPTION AREA
     ===============================================-->
 
-@endsection
+    @endsection

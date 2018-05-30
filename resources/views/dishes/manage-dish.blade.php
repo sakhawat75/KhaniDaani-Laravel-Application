@@ -76,16 +76,16 @@
                         <!-- start .single-product -->
                         <div class="product product--card">
 
-                            <div class="">
+                            <div class="product__thumbnail">
                                 <img src="{{ route('home') }}/images/dishid_mainthumb.jpg" alt="Product Image">
 
                                 <div class="prod_option">
-                                    <a href="#" id="drop1" class="dropdown-trigger" data-toggle="dropdown"
+                                    <a href="#" id="drop2" class="dropdown-trigger" data-toggle="dropdown"
                                        aria-haspopup="true" aria-expanded="true">
                                         <span class="lnr lnr-cog setting-icon"></span>
                                     </a>
 
-                                    <div class="options dropdown-menu" aria-labelledby="drop1">
+                                    <div class="options dropdown-menu" aria-labelledby="drop2">
                                         <ul>
                                             <li>
                                                 <a href="edit-item.html">
