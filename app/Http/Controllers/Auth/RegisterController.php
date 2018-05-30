@@ -69,7 +69,7 @@ class RegisterController extends Controller
 		    'password' => Hash::make($data['password']),
 	    ]);
 
-    	\App\Profile::store($user->id);
+    	\App\Profile::store($user->id, $data['name']);
 
         return $user;
     }
