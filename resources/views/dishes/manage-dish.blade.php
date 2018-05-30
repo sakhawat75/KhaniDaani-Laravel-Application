@@ -71,94 +71,128 @@
                 <!-- end /.row -->
 
                 <div class="row">
+
+                @foreach($dishes as $dish)
                     <!-- start .col-md-4 -->
-                    <div class="col-lg-4 col-md-6">
-                        <!-- start .single-product -->
-                        <div class="product product--card">
+                        <div class="col-lg-4 col-md-6">
+                            <!-- start .single-product -->
+                            <div class="product product--card">
 
-                            <div class="product__thumbnail">
-                                <img src="{{ route('home') }}/images/dishid_mainthumb.jpg" alt="Product Image">
+                                <div class="product__thumbnail">
+                                    <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_thumbnail }}"
+                                         alt="Product Image">
 
-                                <div class="prod_option">
-                                    <a href="#" id="drop2" class="dropdown-trigger" data-toggle="dropdown"
-                                       aria-haspopup="true" aria-expanded="true">
-                                        <span class="lnr lnr-cog setting-icon"></span>
-                                    </a>
+                                    <div class="prod_option">
+                                        <a href="#" id="drop2" class="dropdown-trigger" data-toggle="dropdown"
+                                           aria-haspopup="true" aria-expanded="true">
+                                            <span class="lnr lnr-cog setting-icon"></span>
+                                        </a>
 
-                                    <div class="options dropdown-menu" aria-labelledby="drop2">
-                                        <ul>
-                                            <li>
-                                                <a href="edit-item.html">
-                                                    <span class="lnr lnr-pencil"></span>Edit</a>
-                                            </li>
-                                            <li>
-                                                <a href="#" data-toggle="modal" data-target="#myModal2" class="delete">
-                                                    <span class="lnr lnr-trash"></span>Delete</a>
-                                            </li>
-                                        </ul>
+                                        <div class="options dropdown-menu" aria-labelledby="drop2">
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('dishes.edit', ['id' => $dish]) }}">
+                                                        <span class="lnr lnr-pencil"></span>Edit</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" data-toggle="modal" data-target="#myModal2"
+                                                       class="delete">
+                                                        <span class="lnr lnr-trash"></span>Delete</a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- end /.product__thumbnail -->
+                                <!-- end /.product__thumbnail -->
 
-                            <div class="product-desc">
-                                <a href="{{ route('home')}}" class="product_title">
-                                    <h4>Indian Butter Chicken</h4>
-                                </a>
-                                <ul class="titlebtm">
-                                    <li>
-                                        <img class="auth-img" src="{{ route('home') }}/images/auth2.jpg" alt="dish image">
-                                        <p>
-                                            <a href="#">User1</a>
-                                        </p>
-                                    </li>
-                                    <li class="product_cat">
-                                        <a href="#">From
-                                            <span> Sylhet</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- end /.product-desc -->
-
-                            <div class="product-purchase">
-                                <div class="price_love">
-                                    <span>৳320</span>
-                                    <p>
-                                        <span class="lnr lnr-heart"></span> 48</p>
-                                </div>
-
-                                <div class="rating product--rating">
-                                    <ul>
+                                <div class="product-desc">
+                                    <a href="{{ route('dishes.show', ['id' => $dish]) }}" class="product_title">
+                                        <h4>{{ $dish->dish_name }}</h4>
+                                    </a>
+                                    <ul class="titlebtm">
                                         <li>
-                                            <span class="fa fa-star"></span>
+                                            <img class="auth-img"
+                                                 src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}"
+                                                 alt="Profile image">
+                                            <p>
+                                                <a href="{{ route('profile.show', ['profile' => $profile]) }}">{{ $profile->fullname }}</a>
+                                            </p>
                                         </li>
-                                        <li>
-                                            <span class="fa fa-star"></span>
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-star"></span>
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-star"></span>
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-star-half-o"></span>
+                                        <li class="product_cat">
+                                            <a href="#">From
+                                                <span> Sylhet</span></a>
                                         </li>
                                     </ul>
                                 </div>
+                                <!-- end /.product-desc -->
 
-                                <div class="sell">
-                                    <p>
-                                        <span class="lnr lnr-cart"></span>
-                                        <span>50</span>
-                                    </p>
+                                <div class="product-purchase">
+                                    <div class="price_love">
+                                        <span>৳{{ $dish->dish_price }}</span>
+                                        <p>
+                                            <span class="lnr lnr-heart"></span> 48</p>
+                                    </div>
+
+                                    <div class="rating product--rating">
+                                        <ul>
+                                            <li>
+                                                <span class="fa fa-star"></span>
+                                            </li>
+                                            <li>
+                                                <span class="fa fa-star"></span>
+                                            </li>
+                                            <li>
+                                                <span class="fa fa-star"></span>
+                                            </li>
+                                            <li>
+                                                <span class="fa fa-star"></span>
+                                            </li>
+                                            <li>
+                                                <span class="fa fa-star-half-o"></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="sell">
+                                        <p>
+                                            <span class="lnr lnr-cart"></span>
+                                            <span>50</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- end /.product-purchase -->
+                            </div>
+                            <!-- end /.single-product -->
+                        </div>
+                        <!-- end /.col-md-4 -->
+                        <div class="modal fade rating_modal item_remove_modal" id="myModal2" tabindex="-1" role="dialog"
+                             aria-labelledby="myModal2">
+                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="modal-title">Are you sure to delete this item?</h3>
+                                        <p>You will not be able to recover this file!</p>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <!-- end /.modal-header -->
+
+                                    <div class="modal-body">
+                                        <form action="{{ route('dishes.destroy', ['id' => $dish]) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn--round btn-danger btn--default">Delete</button>
+                                            <button class="btn btn--round modal_close" data-dismiss="modal">Cancel</button>
+                                        </form>
+
+                                    </div>
+                                    <!-- end /.modal-body -->
                                 </div>
                             </div>
-                            <!-- end /.product-purchase -->
                         </div>
-                        <!-- end /.single-product -->
-                    </div>
-                    <!-- end /.col-md-4 -->
+                    @endforeach
+
                 </div>
 
                 <div class="row">
@@ -188,27 +222,6 @@
         </div>
         <!-- end /.dashboard_menu_area -->
     </section>
-
-        <div class="modal fade rating_modal item_remove_modal" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal2">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title">Are you sure to delete this item?</h3>
-                    <p>You will not be able to recover this file!</p>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <!-- end /.modal-header -->
-
-                <div class="modal-body">
-                    <button type="submit" class="btn btn--round btn-danger btn--default">Delete</button>
-                    <button class="btn btn--round modal_close" data-dismiss="modal">Cancel</button>
-                </div>
-                <!-- end /.modal-body -->
-            </div>
-        </div>
-    </div>
     <!--================================
             END DASHBOARD AREA
     =================================-->
