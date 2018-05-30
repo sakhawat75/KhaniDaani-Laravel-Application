@@ -33,7 +33,7 @@
     <!--================================
         END BREADCRUMB AREA
     =================================-->
-    {{--@include( 'includes.menu-dashboard' )--}}
+   @include( 'includes.menu-dashboard' )
     <!--================================
         START PROFILE AREA
     =================================-->
@@ -120,7 +120,7 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
                             <div class="author_module">
-                                <img src="/storage/images/cover_image/{{ $profile->cover_image }}" alt="author image">
+                                <img src="/storage/images/cover_image/{{ $profile->cover_image }}" alt="author image" height="300px" width="1280px">
                             </div>
                         </div>
                             <div class="col-md-4 col-sm-4">

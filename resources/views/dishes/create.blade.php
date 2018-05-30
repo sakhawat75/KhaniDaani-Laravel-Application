@@ -160,13 +160,9 @@
                                             <!-- end /.custom_upload -->
 
                                             <div class="progress_wrapper">
-                                                <div class="labels clearfix">
-                                                    <p>Thumbnail.jpg</p>
-                                                    <span data-width="89">89%</span>
-                                                </div>
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                                                         aria-valuemin="0" aria-valuemax="100" style="width: 89%;">
+                                                         aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
                                                         <span class="sr-only">70% Complete</span>
                                                     </div>
                                                 </div>
@@ -194,10 +190,6 @@
                                             <!-- end /.custom_upload -->
 
                                             <div class="progress_wrapper">
-                                                <div class="labels clearfix">
-                                                    <p>Thumbnail.jpg</p>
-                                                    <span data-width="78">78%</span>
-                                                </div>
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar" aria-valuenow="70"
                                                          aria-valuemin="0" aria-valuemax="100" style="width: 78%;">
@@ -227,10 +219,6 @@
                                             <!-- end /.custom_upload -->
 
                                             <div class="progress_wrapper">
-                                                <div class="labels clearfix">
-                                                    <p>Thumbnail.jpg</p>
-                                                    <span data-width="78">78%</span>
-                                                </div>
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar" aria-valuenow="70"
                                                          aria-valuemin="0" aria-valuemax="100" style="width: 78%;">
@@ -260,10 +248,6 @@
                                             <!-- end /.custom_upload -->
 
                                             <div class="progress_wrapper">
-                                                <div class="labels clearfix">
-                                                    <p>Thumbnail.jpg</p>
-                                                    <span data-width="78">78%</span>
-                                                </div>
                                                 <div class="progress">
                                                     <div class="progress-bar" role="progressbar" aria-valuenow="70"
                                                          aria-valuemin="0" aria-valuemax="100" style="width: 78%;">

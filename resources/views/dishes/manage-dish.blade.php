@@ -20,7 +20,7 @@
                             </li>
                         </ul>
                     </div>
-                    <h1 class="page-title">Manage Youre Dish</h1>
+                    <h1 class="page-title">Edit <span>Dish Title</span></h1>
                 </div>
                 <!-- end /.col-md-12 -->
             </div>
@@ -188,6 +188,27 @@
         </div>
         <!-- end /.dashboard_menu_area -->
     </section>
+
+        <div class="modal fade rating_modal item_remove_modal" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal2">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Are you sure to delete this item?</h3>
+                    <p>You will not be able to recover this file!</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- end /.modal-header -->
+
+                <div class="modal-body">
+                    <button type="submit" class="btn btn--round btn-danger btn--default">Delete</button>
+                    <button class="btn btn--round modal_close" data-dismiss="modal">Cancel</button>
+                </div>
+                <!-- end /.modal-body -->
+            </div>
+        </div>
+    </div>
     <!--================================
             END DASHBOARD AREA
     =================================-->

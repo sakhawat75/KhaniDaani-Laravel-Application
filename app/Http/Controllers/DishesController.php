@@ -28,7 +28,6 @@ class DishesController extends Controller
 	    return view('dishes.create');
     }
 
-
     public function store(Request $request)
     {
 	    $id = auth()->id();
@@ -80,6 +79,10 @@ class DishesController extends Controller
 
     public function manage() {
     	return view('dishes.manage-dish');
+    }
+
+    public function editdish() {
+    	return view('dishes.dish-edit');
     }
 
 	public function upload_image(Request $request, Dish $dish, $type, $input_name) {
