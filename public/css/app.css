@@ -28023,3 +28023,38 @@ span.counter {
   float: right;
 }
 
+.aspect_ratio {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+}
+
+.aspect_ratio .ratio_img {
+  width: 100%;
+  max-width: 100% !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-height: 100% !important;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+}
+
+.ar_16-9 {
+  padding-top: 56.5% !important;
+}
+
+.ar_1-1 {
+  padding-top: 100% !important;
+}
+
+.ar_4-3 {
+  padding-top: 75% !important;
+}
+
+.ar_3-2 {
+  padding-top: 66.66% !important;
+}
+
