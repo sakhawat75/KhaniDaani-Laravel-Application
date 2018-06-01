@@ -23,6 +23,8 @@ const app = new Vue({
 */
 
 /!* Added by us*!/
+
+// To read image
 function readURL(input, img) {
 
     if (input.files && input.files[0]) {
@@ -36,10 +38,30 @@ function readURL(input, img) {
     }
 }
 
+// preview cover image
 $("#dp").change(function() {
     readURL(this, 'preview_cover');
 });
 
+// preview profile image
 $("#profile_photo").change(function () {
     readURL(this, 'preview_profile_image');
 });
+
+
+// dynamically add dish subcategory with JSON
+$("#dish_category").on('change', function (e) {
+    console.log(e);
+
+    let cat_name = e.target.value;
+
+    $.get('/ajax-subcat?cat_name=' + cat_name, function (data) {
+        $('#dish_subcategory').empty();
+
+        $.each(data, function (index, subCatObj) {
+            $('#dish_subcategory').append('<option value="'+ subCatObj.name +'">'+ subCatObj.name +'</option>');
+        });
+    });
+});
+
+$("#dish_category").trigger('change');
