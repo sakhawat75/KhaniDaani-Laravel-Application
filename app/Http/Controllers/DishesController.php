@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Dish;
 
 use App\Profile;
@@ -25,7 +26,9 @@ class DishesController extends Controller
 
     public function create()
     {
-	    return view('dishes.create');
+		$categories = new Category;
+		$categories = $categories->get();
+	    return view('dishes.create', compact( 'categories'));
     }
 
     public function store(Request $request)

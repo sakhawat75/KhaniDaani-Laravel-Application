@@ -33,6 +33,7 @@ Route::get( '/dishes/manage', 'DishesController@manage')->name( 'dishes.manage')
 Route::get( '/dishes/editdish', 'DishesController@editdish')->name( 'dishes.editdish');
 Route::resource( '/dishes', 'DishesController');
 
+Route::get('/ajax-subcat', 'CategoriesController@jsonSubCat');
 
 Route::get('recover-pass', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('recover-pass');
 
