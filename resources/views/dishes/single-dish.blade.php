@@ -17,13 +17,13 @@
             <div class="breadcrumb">
               <ul>
                 <li>
-                  <a href="#">Dish</a>
+                  <a href="#">{{ $dish->dish_category }}</a>
                 </li>
                 <li>
-                  <a href="#">Chicken</a>
+                  <a href="#">{{ $dish->dish_subcategory }}</a>
                 </li>
                 <li class="active">
-                  <a href="#">Roast</a>
+                  <a href="#">{{ $dish->dish_name }}</a>
                 </li>
               </ul>
             </div>

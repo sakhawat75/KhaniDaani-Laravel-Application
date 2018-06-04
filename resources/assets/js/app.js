@@ -48,6 +48,26 @@ $("#profile_photo").change(function () {
     readURL(this, 'preview_profile_image');
 });
 
+// preview preview_dish_thumbnail image
+$("#dish_thumbnail1").change(function () {
+    readURL(this, 'preview_dish_thumbnail');
+});
+
+// preview screenshot1 image
+$("#screenshot1").change(function () {
+    readURL(this, 'preview_screenshot1');
+});
+
+// preview screenshot2 image
+$("#screenshot2").change(function () {
+    readURL(this, 'preview_screenshot2');
+});
+
+// preview screenshot3 image
+$("#screenshot3").change(function () {
+    readURL(this, 'preview_screenshot3');
+});
+
 
 // dynamically add dish subcategory with JSON
 $("#dish_category").on('change', function (e) {
