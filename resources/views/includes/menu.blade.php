@@ -1,6 +1,3 @@
-<!--================================
-        START MENU AREA
-    =================================-->
 <div class="menu-area">
     <!-- start .top-menu-area -->
     <div class="top-menu-area">
@@ -18,19 +15,16 @@
                 </div>
                 <!-- end /.col-md-3 -->
 
+
+
                 <!-- start .col-md-5 -->
                 <div class="col-lg-8 offset-lg-1 col-md-9 col-6 v_middle">
                     <!-- start .author-area -->
                     <div class="author-area">
-                        @if (Route::has('login'))
-                            @auth
-                                <a href="profile"
-                                   class="author-area__seller-btn inline">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</a>
-                            @else
-                                <a href="{{ route('login') }}" class="author-area__seller-btn inline">Login</a>
-                                <a href="{{ route('register') }}" class="author-area__seller-btn inline">Register</a>
-                            @endauth
-                        @endif
+                        @if (Route::has('login')) @auth
+                        <a href="profile" class="author-area__seller-btn inline">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</a> @else
+                        <a href="{{ route('register') }}" class="author-area__seller-btn inline">Become a Member</a>
+                        <a href="{{ route('login') }}" class="author-area__seller-btn inline">Login</a> @endauth @endif
 
                         <div class="author__notification_area">
                             <ul>
@@ -39,7 +33,7 @@
                                         <span class="lnr lnr-cart"></span>
                                         <span class="notification_count purch">2</span>
                                     </div>
-                                <!--
+                                    <!--
                                     <div class="dropdown dropdown--cart">
                                         <div class="cart_area">
                                             <div class="cart_product">
@@ -104,18 +98,18 @@
 
                         <!--start .author-author__info-->
                         <div class="author-author__info inline has_dropdown">
-                            <div class="author__avatar">
+                            <div class="author__avatar ">
 
                                 <img src="{{ URL::to('/') }}/images/usr_avatar.png" alt="user avatar">
 
                             </div>
-
+                            
                             <div class="autor__info">
                                 <p class="name">
-                                    Profile menu
+                                    Username
                                 </p>
                             </div>
-
+                            
                             <div class="dropdown dropdown--author">
                                 <ul>
                                     <li>
@@ -148,11 +142,9 @@
                                             <span class="lnr lnr-briefcase"></span>Withdrawals</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('logout') }}"
-                                           onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                                             <span class="lnr lnr-exit"></span>Logout</a>
-                                        <form id="frm-logout" action="{{ route('logout') }}" method="POST"
-                                              style="display: none;">
+                                        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
@@ -238,7 +230,7 @@
 
 
                             <div class="text-center">
-                                <a href="signup.html" class="author-area__seller-btn inline">Become a Chef</a>
+                                <a href="signup.html" class="author-area__seller-btn inline">Become a Member</a>
                             </div>
                         </div>
                     </div>
@@ -276,8 +268,7 @@
                     </div>
 
                     <nav class="navbar navbar-expand-md navbar-light mainmenu__menu">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                         <!-- Collect the nav links, forms, and other content for toggling -->
