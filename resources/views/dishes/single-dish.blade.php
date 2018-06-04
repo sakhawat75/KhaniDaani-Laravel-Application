@@ -100,8 +100,11 @@
                   </div>
                   <!-- end /.prev-nav -->
                 </div>
+                
 
                 <div class=" item-action item_social_share">
+                 <a href="#" class="btn btn--round btn--lg btn--icon">
+                                        <span class="lnr lnr-heart"></span>Add To Favorites</a>
                   <p>
                     <img src="{{ route('home') }}/images/svg/share.svg" alt="This is share svg">
                     <span>Share this item</span>
@@ -117,26 +120,6 @@
                       <li>
                         <a href="#">
                           <span class="fa fa-twitter"></span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span class="fa fa-google-plus"></span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span class="fa fa-pinterest"></span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span class="fa fa-linkedin"></span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span class="fa fa-dribbble"></span>
                         </a>
                       </li>
                     </ul>
@@ -367,50 +350,31 @@
                     <span>{{ $dish->dish_price }}</span>
                   </h1>
                   <br>
-                  <h4>
-                    <span class="lnr lnr-cart pcolor"></span>Get it within
-                    <span>{{ $dish->preparation_time }}</span></h4>
                 </div>
-
-                <ul class="pricing-options">
-                  <h4>Delivey service provider</h4>
+                <div class="sidebar-card card--metadata">
+                <ul class="data">
                   <li>
-                    <div class="custom-radio">
-                      <input type="radio" id="opt1" class="" name="filter_opt" checked>
-                      <label for="opt1" data-price="60">
-                        <span class="circle"></span>Username </label>
-                    </div>
-
-                    <p>Location service detail</p>
+                    <p>
+                      <span class="lnr lnr-cart pcolor"></span>Preparation Time</p>
+                    <span>{{ $dish->preparation_time }}</span>
                   </li>
-
                   <li>
-                    <div class="custom-radio">
-                      <input type="radio" id="opt2" class="" name="filter_opt" checked>
-                      <label for="opt2" data-price="60">
-                        <span class="circle"></span>Username </label>
-                    </div>
-
-                    <p>Location service detail</p>
+                    <p>
+                      <span class="lnr lnr-heart scolor"></span>Total Delivery Option</p>
+                    <span>7</span>
+                  </li>
+                  <li>
+                    <p>
+                      <span class="lnr lnr-cart scolor"></span>Delivery Charge</p>
+                    <span>5-6</span>
                   </li>
                 </ul>
 
-                <ul class="pricing-options">
-                  <h4>Pickers Point</h4>
-                  <li>
-                    <div class="custom-radio">
-                      <input type="radio" id="opt3" class="" name="filter_opt" checked>
-                      <label for="opt3" data-price="60">
-                        <span class="circle"></span>Username </label>
-                    </div>
-
-                    <p>Location service detail</p>
-                  </li>
-
-                </ul>
-
+              </div>
+              <!-- end /.sidebar-card -->
+                
                 <div class="purchase-button">
-                  <a href="#" class="btn btn--lg btn--round">Order Now</a>
+                  <a href="{{ route('order.selectdsp') }}" class="btn btn--lg btn--round">Order Now</a>
                 </div>
                 <!-- end /.purchase-button -->
               </div>
@@ -462,7 +426,7 @@
 
               <div class="author-card sidebar-card ">
                 <div class="card-title">
-                  <h4>Product Information</h4>
+                  <h4>Chef Information</h4>
                 </div>
 
                 <div class="author-infos">

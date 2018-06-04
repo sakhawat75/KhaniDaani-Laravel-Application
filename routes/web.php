@@ -26,6 +26,9 @@ Route::get('/profile/{profile}/edit', 'ProfileController@edit')->name('profile.e
 
 Route::put( '/profile/{profile}', 'ProfileController@update')->name('profile.update');
 
+Route::get( '/order/selectdsp', 'OrderController@selectdsp')->name( 'order.selectdsp');
+
+Route::get( '/order/confirm', 'OrderController@confirm')->name( 'order.confirm');
 
 Auth::routes();
 

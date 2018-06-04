@@ -81,26 +81,13 @@
                                             <span class="fa fa-twitter"></span>
                                         </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                            <span class="fa fa-google-plus"></span>
-                                        </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                            <span class="fa fa-pinterest"></span>
-                                        </a>
-                                </li>
+
                                 <li>
                                     <a href="#">
                                             <span class="fa fa-linkedin"></span>
                                         </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                            <span class="fa fa-dribbble"></span>
-                                        </a>
-                                </li>
+
                             </ul>
                         </div>
                         <!-- end /.social -->
