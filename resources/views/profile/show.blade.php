@@ -91,7 +91,7 @@
               <h2>About
                 <span>User</span>
               </h2>
-              <p> {{ $profile->description }} </p>
+              <p> {!! $profile->description !!} </p>
             </div>
             <div class="sidebar-card message-card">
               <div class="card-title">

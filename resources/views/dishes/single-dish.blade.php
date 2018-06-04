@@ -100,11 +100,12 @@
                   </div>
                   <!-- end /.prev-nav -->
                 </div>
-                
+
 
                 <div class=" item-action item_social_share">
-                 <a href="#" class="btn btn--round btn--lg btn--icon">
-                                        <span class="lnr lnr-heart"></span>Add To Favorites</a>
+                  <a href="#" class="btn btn--round btn--lg btn--icon">
+                    <span class="lnr lnr-heart"></span>Add To Favorites
+                  </a>
                   <p>
                     <img src="{{ route('home') }}/images/svg/share.svg" alt="This is share svg">
                     <span>Share this item</span>
@@ -156,7 +157,7 @@
                 <div class="fade show tab-pane product-tab active" id="product-details">
                   <div class="tab-content-wrapper">
                     <h1>Dish Description</h1>
-                    <p> {{ $dish->dish_description }} </p>
+                    <p> {!! $dish->dish_description !!} </p>
 
                     <h2>Dish Ingredients</h2>
                     <ul>
@@ -352,27 +353,27 @@
                   <br>
                 </div>
                 <div class="sidebar-card card--metadata">
-                <ul class="data">
-                  <li>
-                    <p>
-                      <span class="lnr lnr-cart pcolor"></span>Preparation Time</p>
-                    <span>{{ $dish->preparation_time }}</span>
-                  </li>
-                  <li>
-                    <p>
-                      <span class="lnr lnr-heart scolor"></span>Total Delivery Option</p>
-                    <span>7</span>
-                  </li>
-                  <li>
-                    <p>
-                      <span class="lnr lnr-cart scolor"></span>Delivery Charge</p>
-                    <span>5-6</span>
-                  </li>
-                </ul>
+                  <ul class="data">
+                    <li>
+                      <p>
+                        <span class="lnr lnr-cart pcolor"></span>Preparation Time</p>
+                      <span>{{ $dish->preparation_time }}</span>
+                    </li>
+                    <li>
+                      <p>
+                        <span class="lnr lnr-heart scolor"></span>Total Delivery Option</p>
+                      <span>7</span>
+                    </li>
+                    <li>
+                      <p>
+                        <span class="lnr lnr-cart scolor"></span>Delivery Charge</p>
+                      <span>5-6</span>
+                    </li>
+                  </ul>
 
-              </div>
-              <!-- end /.sidebar-card -->
-                
+                </div>
+                <!-- end /.sidebar-card -->
+
                 <div class="purchase-button">
                   <a href="{{ route('order.selectdsp') }}" class="btn btn--lg btn--round">Order Now</a>
                 </div>

@@ -21,5 +21,6 @@
     <script src="{{ URL::to('/') }}/js/main.js"></script>
     <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBeySPFGz7DIUTrReCRQT6HYaMM0ia0knA"></script>
     <script src="{{ URL::to('/') }}/js/map.js"></script>
+    <script src="{{ route('home') }}/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script src="{{ URL::to('/') }}/js/app.js"></script>
     <!-- endinject -->

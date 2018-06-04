@@ -167,11 +167,11 @@
 --}}
                     <div class="form-group">
                       <label for="authbio">User Description</label>
-                      <textarea name="description" id="authbio" class="text_field"
+                      <textarea name="description" id="article-ckeditor" class="text_field"
                       @if(empty($profile->description))
                         {!! "placeholder='Short brief about yourself or your account...'" !!}
                           @endif
-                      >{{ $profile->description }}</textarea>
+                      >{!! $profile->description !!}</textarea>
                     </div>
                   </div>
                   <!-- end /.information_wrapper -->

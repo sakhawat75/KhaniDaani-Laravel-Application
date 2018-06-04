@@ -30,7 +30,7 @@ function readURL(input, img) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         var selector = '#' + img;
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             $(selector).attr('src', e.target.result);
         }
 
@@ -39,7 +39,7 @@ function readURL(input, img) {
 }
 
 // preview cover image
-$("#dp").change(function() {
+$("#dp").change(function () {
     readURL(this, 'preview_cover');
 });
 
@@ -79,9 +79,13 @@ $("#dish_category").on('change', function (e) {
         $('#dish_subcategory').empty();
 
         $.each(data, function (index, subCatObj) {
-            $('#dish_subcategory').append('<option value="'+ subCatObj.name +'">'+ subCatObj.name +'</option>');
+            $('#dish_subcategory').append('<option value="' + subCatObj.name + '">' + subCatObj.name + '</option>');
         });
     });
 });
 
+// To trigger the category select option
 $("#dish_category").trigger('change');
+
+// To add ck-editor in textarea
+CKEDITOR.replace('article-ckeditor');

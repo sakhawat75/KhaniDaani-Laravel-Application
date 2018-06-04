@@ -112,7 +112,7 @@
                   <div class="form-group no-margin">
                     <p class="label">Product Description</p>
                     <textarea name="dish_description" rows="10" class="form-control"
-                              placeholder="max 1000 character"></textarea>
+                              placeholder="max 1000 character" id="article-ckeditor"></textarea>
                   </div>
                 </div>
                 <!-- end /.modules__content -->
@@ -160,24 +160,25 @@
                       </div>
                       <!-- end /.custom_upload -->
 
-                      {{--<div class="progress_wrapper">--}}
-                        {{--<div class="progress">--}}
-                          {{--<div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"--}}
-                               {{--aria-valuemax="100" style="width: 45%;">--}}
-                            {{--<span class="sr-only">70% Complete</span>--}}
-                          {{--</div>--}}
-                        {{--</div>--}}
-                      {{--</div>--}}
-                      <!-- end /.progress_wrapper -->
+                    {{--<div class="progress_wrapper">--}}
+                    {{--<div class="progress">--}}
+                    {{--<div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"--}}
+                    {{--aria-valuemax="100" style="width: 45%;">--}}
+                    {{--<span class="sr-only">70% Complete</span>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    <!-- end /.progress_wrapper -->
 
                       {{--<span class="lnr upload_cross lnr-cross"></span>--}}
                       <div class="prof_img_upload aspect_ratio mt-3">
-                        <img src="{{ route('home') }}/images/cvrplc.jpg" alt="Author profile area" id="preview_dish_thumbnail" class="ratio_img">
+                        <img src="{{ route('home') }}/images/cvrplc.jpg" alt="Author profile area"
+                             id="preview_dish_thumbnail" class="ratio_img">
 
 
                         {{--<label for="profile_photo" class="upload_btn">--}}
-                          {{--<input type="file" id="profile_photo" name="profile_image">--}}
-                          {{--<span class="btn btn--sm btn--round" aria-hidden="true">Choose Image</span>--}}
+                        {{--<input type="file" id="profile_photo" name="profile_image">--}}
+                        {{--<span class="btn btn--sm btn--round" aria-hidden="true">Choose Image</span>--}}
                         {{--</label>--}}
                       </div>
                     </div>
@@ -199,19 +200,20 @@
                       </div>
                       <!-- end /.custom_upload -->
 
-                      {{--<div class="progress_wrapper">--}}
-                        {{--<div class="progress">--}}
-                          {{--<div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"--}}
-                               {{--aria-valuemax="100" style="width: 78%;">--}}
-                            {{--<span class="sr-only">78% Complete</span>--}}
-                          {{--</div>--}}
-                        {{--</div>--}}
-                      {{--</div>--}}
-                      <!-- end /.progress_wrapper -->
+                    {{--<div class="progress_wrapper">--}}
+                    {{--<div class="progress">--}}
+                    {{--<div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"--}}
+                    {{--aria-valuemax="100" style="width: 78%;">--}}
+                    {{--<span class="sr-only">78% Complete</span>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    {{--</div>--}}
+                    <!-- end /.progress_wrapper -->
 
                       {{--<span class="lnr upload_cross lnr-cross"></span>--}}
                       <div class="prof_img_upload aspect_ratio mt-3">
-                        <img src="{{ route('home') }}/images/cvrplc.jpg" alt="Author profile area" id="preview_screenshot1" class="ratio_img">
+                        <img src="{{ route('home') }}/images/cvrplc.jpg" alt="Author profile area"
+                             id="preview_screenshot1" class="ratio_img">
                       </div>
                     </div>
                     <!-- end /.upload_wrapper -->
@@ -232,18 +234,19 @@
                       <!-- end /.custom_upload -->
 
                       {{--<div class="progress_wrapper">--}}
-                        {{--<div class="progress">--}}
-                          {{--<div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"--}}
-                               {{--aria-valuemax="100" style="width: 78%;">--}}
-                            {{--<span class="sr-only">78% Complete</span>--}}
-                          {{--</div>--}}
-                        {{--</div>--}}
+                      {{--<div class="progress">--}}
+                      {{--<div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"--}}
+                      {{--aria-valuemax="100" style="width: 78%;">--}}
+                      {{--<span class="sr-only">78% Complete</span>--}}
+                      {{--</div>--}}
+                      {{--</div>--}}
                       {{--</div>--}}
                       {{--<!-- end /.progress_wrapper -->--}}
 
                       {{--<span class="lnr upload_cross lnr-cross"></span>--}}
                       <div class="prof_img_upload aspect_ratio mt-3">
-                        <img src="{{ route('home') }}/images/cvrplc.jpg" alt="Author profile area" id="preview_screenshot2" class="ratio_img">
+                        <img src="{{ route('home') }}/images/cvrplc.jpg" alt="Author profile area"
+                             id="preview_screenshot2" class="ratio_img">
                       </div>
                     </div>
                     <!-- end /.upload_wrapper -->
@@ -264,18 +267,19 @@
                       <!-- end /.custom_upload -->
 
                       {{--<div class="progress_wrapper">--}}
-                        {{--<div class="progress">--}}
-                          {{--<div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"--}}
-                               {{--aria-valuemax="100" style="width: 78%;">--}}
-                            {{--<span class="sr-only">78% Complete</span>--}}
-                          {{--</div>--}}
-                        {{--</div>--}}
+                      {{--<div class="progress">--}}
+                      {{--<div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0"--}}
+                      {{--aria-valuemax="100" style="width: 78%;">--}}
+                      {{--<span class="sr-only">78% Complete</span>--}}
+                      {{--</div>--}}
+                      {{--</div>--}}
                       {{--</div>--}}
                       {{--<!-- end /.progress_wrapper -->--}}
 
                       {{--<span class="lnr upload_cross lnr-cross"></span>--}}
                       <div class="prof_img_upload aspect_ratio mt-3">
-                        <img src="{{ route('home') }}/images/cvrplc.jpg" alt="Author profile area" id="preview_screenshot3" class="ratio_img">
+                        <img src="{{ route('home') }}/images/cvrplc.jpg" alt="Author profile area"
+                             id="preview_screenshot3" class="ratio_img">
                       </div>
                     </div>
                     <!-- end /.upload_wrapper -->
