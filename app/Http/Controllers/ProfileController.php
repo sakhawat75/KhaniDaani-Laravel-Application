@@ -74,6 +74,17 @@ class ProfileController extends Controller
 			'cover_photo' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:1999'
 		]);*/
 
+	    $inputData = \request()->all();
+
+	    $this->validate( $request, [
+			'fullname' => 'required|min:2|regex:/^[\pL\s\-\.]+$/u|max:190',
+		    'dob' => 'required|date',
+		    'mobile_no' => 'required|numeric',
+		    'description' => 'required|max:5000',
+		    'cover_image' => 'nullable|file|image|max:1024',
+		    'profile_image' => 'nullable|file|image|max:1024',
+	    ]);
+
 	    if (request()->filled('fullname')) {
 		    $profile->fullname = $request->input('fullname');
 	    }

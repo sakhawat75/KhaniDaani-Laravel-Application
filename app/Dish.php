@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dish extends Model
 {
+	protected $table = "dishes";
+
     public function profile() {
     	return $this->belongsTo( 'App\Profile')->withDefault();
     }

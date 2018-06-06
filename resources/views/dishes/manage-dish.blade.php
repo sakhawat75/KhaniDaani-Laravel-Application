@@ -54,7 +54,7 @@
               <div class="pull-right">
                 <div class="filter__option filter--text">
                   <p>
-                    <span>26</span>Dishes</p>
+                    <span>Total Dish: {{ count($dishes) }}</span></p>
                 </div>
 
                 <div class="filter__option filter--select">
