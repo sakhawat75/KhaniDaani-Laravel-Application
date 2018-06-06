@@ -4,7 +4,7 @@
     <!-- start .container -->
     <div class="container">
       <!-- start .row -->
-      <div class="row">
+      <div class="row temp_min-height">
         <!-- start .col-md-3 -->
         <div class="col-lg-3 col-md-3 col-6 v_middle">
           <div class="logo">
@@ -22,7 +22,7 @@
           <div class="author-area">
 
             @guest
-              <a href="{{ route('register') }}" class="author-area__seller-btn inline">Become a Member</a>
+              <a href="{{ route('register') }}" class="author-area__seller-btn inline my-4">Become a Member</a>
               <a href="{{ route('login') }}" class="author-area__seller-btn inline">Login</a>
             @endguest
 
@@ -32,26 +32,19 @@
                 <ul>
                   <li class="has_dropdown">
                     <div class="icon_wrap">
-                      <span class="lnr lnr-cart"></span>
+                      <span class="lnr lnr-alarm"></span>
                       <span class="notification_count purch">2</span>
                     </div>
                   </li>
                 </ul>
               </div>
-              <!--start .author__notification_area -->
-                <div class="autor__info">
-                  <p class="name">
-                    <a href="{{ route('profile.show', ['profile' => auth()->id()]) }}"
-                       class="author-area__seller-btn inline">
-                      {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
-                    </a>
-                  </p>
-                </div>
+
               <!--start .author-author__info-->
               <div class="author-author__info inline has_dropdown">
                 <div class="author__avatar ">
 
-                  <img src="{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="user avatar" style="height: 60px;width: 60px;border-radius: 50%;">
+                  <img src="{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}"
+                       alt="user avatar" style="height: 60px;width: 60px;border-radius: 50%;">
 
                 </div>
 
@@ -103,6 +96,16 @@
                     </li>
                   </ul>
                 </div>
+              </div>
+
+              <!--start .author__notification_area -->
+              <div class="autor__info">
+                <p class="name">
+                  <a href="{{ route('profile.show', ['profile' => auth()->id()]) }}"
+                     class="author-area__seller-btn inline mr-0">
+                    {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
+                  </a>
+                </p>
               </div>
 
 
@@ -196,7 +199,7 @@
           </div>
           <!-- end /.mobile_content -->
 
-        @endauth
+          @endauth
         </div>
         <!-- end /.col-md-5 -->
       </div>
