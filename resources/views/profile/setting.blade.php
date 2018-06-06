@@ -60,6 +60,7 @@
         </div>
         <!-- end /.row -->
 
+          @include('includes.messeages')
         <form action="{{ route('profile.update', ['profile' => $profile->id])  }}" class="setting_form" method="post"
               enctype="multipart/form-data">
           @csrf

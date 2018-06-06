@@ -34,8 +34,7 @@ class DishesController extends Controller
     public function store(Request $request)
     {
 	    $id = auth()->id();
-	    $user = User::find($id);
-	    $profile = $user->profile;
+	    $profile = Profile::where('user_id', $id)->first();
 
 	    $dish = new Dish;
 	    $dish->profile_id = $profile->id;
