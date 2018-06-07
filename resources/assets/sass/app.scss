@@ -120,7 +120,7 @@
       font-size: 16px;
     }
     .ammount{
-      color: #0674ec;
+      color: #333;
       font-size: 15px;
       font-weight: 400;
     }
@@ -2090,19 +2090,16 @@ span.counter {
 /**/
 .author_module{
   @include cardShadow;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   background: #fff;
 }
 .about_author{
-  padding: 44px 30px;
+  padding: 20px 20px;
   border-radius: 4px;
-  margin-bottom: 70px;
-  h2{
-    line-height: 48px;
-    padding-bottom: 22px;
-    span{
-      font-weight: 500;
-    }
+  margin-bottom: 10px;
+  h4{
+    line-height: 15px;
+    padding-bottom: 10px;
   }
   p+p{
     margin-bottom: 0;
@@ -6063,4 +6060,8 @@ span.counter {
 
 .autor__info {
   margin-left: 5px;
+}
+
+.brdr_btm{
+    border-bottom: 1px solid $borderColor;
 }
