@@ -12233,7 +12233,7 @@ h6 {
 }
 
 .author-card .author-infos {
-  padding: 30px 0;
+  padding-top: 30px;
   text-align: center;
 }
 
@@ -12262,7 +12262,7 @@ h6 {
 }
 
 .author-card .author-infos .author-badges {
-  margin-top: 25px;
+  margin-top: 30px;
   padding: 0 30px 20px 30px;
   border-bottom: 1px solid #ececec;
 }
@@ -12860,7 +12860,7 @@ h6 {
 }
 
 .product-desc {
-  padding: 30px;
+  padding: 10px;
 }
 
 .product-desc p {
@@ -12868,7 +12868,7 @@ h6 {
 }
 
 .product-desc ul.titlebtm {
-  padding-bottom: 23px;
+  padding-bottom: 5px;
 }
 
 .product-desc ul.titlebtm > li {
@@ -18160,7 +18160,7 @@ ul.nav-tabs.nav--tabs2 li a::before {
 }
 
 .autor__info .ammount {
-  color: #0674ec;
+  color: #333;
   font-size: 15px;
   font-weight: 400;
 }
@@ -20457,23 +20457,19 @@ span.counter {
 .author_module {
   -webkit-box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
   box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   background: #fff;
 }
 
 .about_author {
-  padding: 44px 30px;
+  padding: 20px 20px;
   border-radius: 4px;
-  margin-bottom: 70px;
+  margin-bottom: 10px;
 }
 
-.about_author h2 {
-  line-height: 48px;
-  padding-bottom: 22px;
-}
-
-.about_author h2 span {
-  font-weight: 500;
+.about_author h4 {
+  line-height: 15px;
+  padding-bottom: 10px;
 }
 
 .about_author p + p {
@@ -25267,7 +25263,7 @@ span.counter {
   /* PRODUCT AREA */
 
   .product .product-desc {
-    padding: 25px;
+    padding: 10px;
   }
 
   .product .product-purchase {
@@ -28077,5 +28073,9 @@ span.counter {
 
 .autor__info {
   margin-left: 5px;
+}
+
+.brdr_btm {
+  border-bottom: 1px solid #ececec;
 }
 
