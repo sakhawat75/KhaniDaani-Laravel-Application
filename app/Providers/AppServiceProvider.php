@@ -30,6 +30,10 @@ class AppServiceProvider extends ServiceProvider
 			    $view->with('profile', null);
 		    }
 	    });
+
+	    view()->composer( 'layouts.index', function ( $view ){
+			$view->with('dishes', \App\Dish::latestDishes(6));
+	    });
     }
 
     /**

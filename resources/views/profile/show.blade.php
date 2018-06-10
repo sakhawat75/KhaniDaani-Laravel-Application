@@ -132,14 +132,14 @@
             <div class="col-md-4 col-sm-4">
               <div class="author-info mcolorbg4">
                 <p>Total Items</p>
-                <h3>4,369</h3>
+                <h3>{{ count($dishes) }}</h3>
               </div>
             </div>
             <!-- end /.col-md-4 -->
             <div class="col-md-4 col-sm-4">
               <div class="author-info pcolorbg">
                 <p>Total sales</p>
-                <h3>36,957</h3>
+                <h3> 0 </h3>
               </div>
             </div>
             <!-- end /.col-md-4 -->
@@ -164,7 +164,7 @@
                       <span class="fa fa-star-half-o"></span>
                     </li>
                   </ul>
-                  <span class="rating__count">(26)</span>
+                  <span class="rating__count">(0)</span>
                 </div>
               </div>
             </div>

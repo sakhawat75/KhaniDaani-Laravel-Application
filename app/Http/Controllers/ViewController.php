@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dish;
 use App\Profile;
 use App\User;
 use Auth;
@@ -16,7 +17,9 @@ class ViewController extends Controller
 		    $user_id = $user->id;
 		    $profile = Profile::where('user_id', $user_id)->first();
 
-		    return view('layouts.index', compact( 'profile'));
+		    $dishes = Dish::latest()->limit(6)->get();
+
+		    return view('layouts.index', compact( 'profile', 'dishes'));
 	    }
     	return view('layouts.index');
     }

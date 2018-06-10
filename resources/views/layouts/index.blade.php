@@ -423,58 +423,89 @@
 
       <!-- start .row -->
       <div class="row">
-        <!-- start .col-md-4 -->
-        <div class="col-lg-4 col-md-6">
-          <!-- start .single-product -->
-          <div class="product product--card product--card3">
+        @if(isset($dishes))
+          @foreach($dishes as $dish)
+            <div class="col-lg-4 col-md-4">
+              <!-- start .single-product -->
+              <div class="product product--card">
 
-            <div class="product__thumbnail">
-              <img src="images/dishid_img2.jpg" alt="Product Image">
-              <div class="prod_btn">
-                <a href="{{ route('home')}}" class="transparent btn--sm btn--round">More info</a>
-              </div>
-              <!-- end /.prod_btn -->
-            </div>
-            <!-- end /.product__thumbnail -->
+                <div class="product__thumbnail">
+                  <div class="aspect_ratio">
+                    <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_thumbnail }}"
+                         alt="Product Image" class="ratio_img">
+                  </div>
 
-            <div class="product-desc">
-              <a href="{{ route('home')}}" class="product_title">
-                <h4>Indian Butter Chiken</h4>
-              </a>
-              <ul class="titlebtm">
-                <li>
-                  <img class="auth-img" src="images/auth.jpg" alt="author image">
-                  <p>
-                    <a href="#">Username</a>
-                  </p>
-                </li>
-                <li class="product_cat">
-                  <a href="#">From
-                    <span class=""></span>Sylhet
+                  <div class="prod_btn">
+                    <a href="{{ route('dishes.show', ['id' => $dish]) }}" class="transparent btn--sm btn--round">More
+                      Info
+                    </a>
+                  </div>
+                  <!-- end /.prod_btn -->
+                </div>
+                <!-- end /.product__thumbnail -->
+
+                <div class="product-desc">
+                  <a href="{{ route('dishes.show', ['id' => $dish]) }}" class="product_title">
+                    <h4> {{ $dish->dish_name }} </h4>
                   </a>
-                </li>
-              </ul>
-            </div>
-            <!-- end /.product-desc -->
+                  <ul class="titlebtm">
+                    <li>
+                      <img class="auth-img"
+                           src="{{ route('home') }}/storage/images/profile_image/{{  $dish->profile->profile_image }}"
+                           alt="author image">
+                      <p>
+                        <a href="#">{{  $dish->profile->user_name }}</a>
+                      </p>
+                    </li>
+                    <li class="product_cat">
+                      <a href="#">
+                        From <span>Sylhet</span></a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- end /.product-desc -->
 
-            <div class="product-purchase">
-              <div class="price_love">
-                <span>৳320</span>
-                <p>
-                  <span class="lnr lnr-heart"></span> 90</p>
+                <div class="product-purchase">
+                  <div class="price_love">
+                    <span>৳{{ $dish->dish_price }}</span>
+                    <p>
+                      <span class="lnr lnr-heart"></span> 48</p>
+                  </div>
+
+                  <div class="rating product--rating">
+                    <ul>
+                      <li>
+                        <span class="fa fa-star"></span>
+                      </li>
+                      <li>
+                        <span class="fa fa-star"></span>
+                      </li>
+                      <li>
+                        <span class="fa fa-star"></span>
+                      </li>
+                      <li>
+                        <span class="fa fa-star"></span>
+                      </li>
+                      <li>
+                        <span class="fa fa-star-half-o"></span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="sell">
+                    <p>
+                      <span class="lnr lnr-cart"></span>
+                      <span>50</span>
+                    </p>
+                  </div>
+                </div>
+                <!-- end /.product-purchase -->
               </div>
-              <div class="sell">
-                <p>
-                  <span class="lnr lnr-cart"></span>
-                  <span>16</span>
-                </p>
-              </div>
+              <!-- end /.single-product -->
             </div>
-            <!-- end /.product-purchase -->
-          </div>
-          <!-- end /.single-product -->
-        </div>
-        <!-- end /.col-md-4 -->
+          @endforeach
+        @endif
+
       </div>
 
       <!-- start .row -->
