@@ -17,7 +17,7 @@ class ViewController extends Controller
 		    $user_id = $user->id;
 		    $profile = Profile::where('user_id', $user_id)->first();
 
-		    $dishes = Dish::latest()->limit(6)->get();
+		    $dishes = Dish::latestDishes( 6);
 
 		    return view('layouts.index', compact( 'profile', 'dishes'));
 	    }
