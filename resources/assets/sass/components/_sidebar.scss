@@ -305,7 +305,7 @@
     padding:0;
   }
   .author-infos{
-    padding: 30px 0;
+    padding-top: 30px;
     text-align: center;
     .author_avatar{
       width: 100px;
@@ -329,7 +329,7 @@
 
     }
     .author-badges{
-        margin-top: 25px;
+        margin-top: 30px;
         padding: 0 30px 20px 30px;
         border-bottom: 1px solid $borderColor;
         ul{

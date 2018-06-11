@@ -4,7 +4,7 @@
     <!-- start .container -->
     <div class="container">
       <!-- start .row -->
-      <div class="row temp_min-height">
+      <div class="row"> <!-- temp_min-height -->
         <!-- start .col-md-3 -->
         <div class="col-lg-3 col-md-3 col-6 v_middle">
           <div class="logo">
@@ -14,13 +14,9 @@
           </div>
         </div>
         <!-- end /.col-md-3 -->
-
-
-        <!-- start .col-md-5 -->
         <div class="col-lg-8 offset-lg-1 col-md-9 col-6 v_middle">
           <!-- start .author-area -->
           <div class="author-area">
-
             @guest
               <a href="{{ route('register') }}" class="author-area__seller-btn inline my-4">Become a Member</a>
               <a href="{{ route('login') }}" class="author-area__seller-btn inline">Login</a>
@@ -28,27 +24,53 @@
 
             @auth
 
-              <div class="author__notification_area">
+            <div class="author__notification_area">
                 <ul>
-                  <li class="has_dropdown">
-                    <div class="icon_wrap">
-                      <span class="lnr lnr-alarm"></span>
-                      <span class="notification_count purch">2</span>
-                    </div>
-                  </li>
+                    <li class="has_dropdown">
+                        <div class="icon_wrap"> <span class="lnr lnr-envelope"></span> <span class="notification_count msg">1</span> </div>
+                        <div class="dropdown messaging--dropdown">
+                            <div class="dropdown_module_header">
+                                <h4>My Messages</h4> <a href="message.html">View All</a> </div>
+                            <div class="messages">
+                                <a href="message.html" class="message recent">
+                                    <div class="message__actions_avatar">
+                                        <div class="avatar"> <img src="images/notification_head4.png" alt=""> </div>
+                                    </div>
+                                    <!-- end /.actions -->
+                                    <div class="message_data">
+                                        <div class="name_time">
+                                            <div class="name">
+                                                <p>KhaniDaani</p> <span class="lnr lnr-envelope"></span> </div> <span class="time">Just now</span>
+                                            <p>Hello John Smith! Nunc placerat mi ...</p>
+                                        </div>
+                                    </div>
+                                    <!-- end /.message_data -->
+                                </a>
+                                <!-- end /.message -->
+                            </div>
+                        </div>
+                    </li>
+                    <li class="has_dropdown">
+                        <div class="icon_wrap"> <span class="lnr lnr-alarm"></span> <span class="notification_count purch">2</span> </div>
+                    </li>
                 </ul>
-              </div>
-
+            </div>
+             
               <!--start .author-author__info-->
-              <div class="author-author__info inline has_dropdown">
+            <div class="author-author__info inline has_dropdown">
                 <div class="author__avatar ">
-
-                  <img src="{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}"
-                       alt="user avatar" style="height: 60px;width: 60px;border-radius: 50%;">
-
+                  <img src="{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="user avatar" style="height: 60px;width: 60px;border-radius: 50%;">
                 </div>
-
-                <div class="dropdown dropdown--author">
+                
+            <div class="autor__info">
+                <p class="name">
+                <a href="{{ route('profile.show', ['profile' => auth()->id()]) }}" class="">
+                    {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
+                </a></p>
+                <p class="ammount">৳00.00</p>
+            </div>
+                  
+            <div class="dropdown dropdown--author">
                   <ul>
                     <li>
                       <a href="{{ route('profile.show', ['profile' => auth()->id()]) }}">
@@ -96,19 +118,8 @@
                     </li>
                   </ul>
                 </div>
-              </div>
-
+            </div>
               <!--start .author__notification_area -->
-              <div class="autor__info">
-                <p class="name">
-                  <a href="{{ route('profile.show', ['profile' => auth()->id()]) }}"
-                     class="author-area__seller-btn inline mr-0">
-                    {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
-                  </a>
-                </p>
-              </div>
-
-
               <!--end /.author-author__info-->
           </div>
           <!-- end .author-area -->
@@ -116,31 +127,55 @@
           <!-- author area restructured for mobile -->
           <div class="mobile_content ">
             <span class="lnr lnr-user menu_icon"></span>
-
             <!-- offcanvas menu -->
             <div class="offcanvas-menu closed">
               <span class="lnr lnr-cross close_menu"></span>
+              
               <div class="author-author__info">
                 <div class="author__avatar v_middle">
-                  <img src="{{ URL::to('/') }}/images/usr_avatar.png" alt="user avatar">
+                  <img src="{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="user avatar" style="height: 60px;width: 60px;border-radius: 50%;">
                 </div>
                 <div class="autor__info v_middle">
-                  <p class="name">
-                    Sign In
-                  </p>
+                    <p class="name">
+                        <a href="{{ route('profile.show', ['profile' => auth()->id()]) }}">
+                    {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
+                        </a>
+                    </p>
+                    <p class="ammount">৳00.00</p>
                 </div>
               </div>
               <!--end /.author-author__info-->
+              
+            <div class="author__notification_area">
+                <ul>
+                    <li>
+                        <a href="notification.html">
+                            <div class="icon_wrap">
+                                <span class="lnr lnr-alarm"></span>
+                                <span class="notification_count noti">1</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="message.html">
+                            <div class="icon_wrap">
+                                <span class="lnr lnr-envelope"></span>
+                                <span class="notification_count msg">1</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
               <div class="dropdown dropdown--author">
                 <ul>
                   <li>
-                    <a href="author.html">
+                    <a href="{{ route('profile.show', ['profile' => auth()->id()]) }}">
                       <span class="lnr lnr-user"></span>Profile
                     </a>
                   </li>
                   <li>
-                    <a href="dashboard-setting.html">
+                    <a href="{{ route('profile.edit', ['profile' => auth()->id()]) }}">
                       <span class="lnr lnr-cog"></span>Profile Setting
                     </a>
                   </li>
@@ -155,13 +190,13 @@
                     </a>
                   </li>
                   <li>
-                    <a href="dashboard-upload.html">
-                      <span class="lnr lnr-upload"></span>Upload Item
+                    <a href="{{ route('dishes.create') }}">
+                      <span class="lnr lnr-upload"></span>Upload Dish
                     </a>
                   </li>
                   <li>
-                    <a href="dashboard-manage-item.html">
-                      <span class="lnr lnr-book"></span>Manage Item
+                    <a href="{{ route('dishes.manage') }}">
+                      <span class="lnr lnr-book"></span>Manage Dish
                     </a>
                   </li>
                   <li>
@@ -170,31 +205,17 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#">
-                      <span class="lnr lnr-exit"></span>Logout
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="author__notification_area">
-                <ul>
-                  <li>
-                    <a href="cart.html">
-                      <div class="icon_wrap">
-                        <span class="lnr lnr-cart"></span>
-                        <span class="notification_count purch">2</span>
-                      </div>
-                    </a>
+                      <a href="{{ route('logout') }}"
+                         onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                        <span class="lnr lnr-exit"></span>Logout
+                      </a>
+                      <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                      </form>
                   </li>
                 </ul>
               </div>
               <!--start .author__notification_area -->
-
-
-              <div class="text-center">
-                <a href="signup.html" class="author-area__seller-btn inline">Become a Member</a>
-              </div>
             </div>
           </div>
           <!-- end /.mobile_content -->
