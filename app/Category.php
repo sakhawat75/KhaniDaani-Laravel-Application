@@ -10,6 +10,6 @@ class Category extends Model
     protected $fillable = ['name'];
 
     public function subcategories() {
-    	return $this->hasOne( SubCategory::class);
+    	return $this->hasMany( SubCategory::class);
     }
 }
