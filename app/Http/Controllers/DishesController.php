@@ -52,6 +52,7 @@ class DishesController extends Controller
 	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_3', false);
 
 	    $dish->save();
+	    session()->flash('success', 'Dish has been created successfully');
 
 	    return redirect()->route( 'profile.show', [ 'profile' => $profile ]);
     }
