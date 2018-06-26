@@ -39,6 +39,9 @@
   @if($flash = session('success'))
    <div class="alert alert-success" role="alert">{{ $flash }}</div>
   @endif
+  @if($flash = session('prf_updated'))
+   <div class="alert alert-success" role="alert">{{ $flash }}</div>
+  @endif
   <!--================================
         START PROFILE AREA
     =================================-->

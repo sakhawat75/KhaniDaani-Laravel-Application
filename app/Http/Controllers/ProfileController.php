@@ -109,6 +109,7 @@ class ProfileController extends Controller
 		]);*/
 
 	    $profile->save();
+	    session()->flash('prf_updated', 'Profile has been updated successfully');
 	    return redirect()->route('profile.show', ['profile' => $profile]);
     }
 
