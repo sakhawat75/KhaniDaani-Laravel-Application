@@ -104,6 +104,7 @@ class DishesController extends Controller
 	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_3', true);
 
 	    $dish->update();
+	    session()->flash('success', 'Dish has been updated successfully');
 
 	    return view('dishes.single-dish', compact( 'profile', 'dish'));
 

@@ -39,7 +39,9 @@
         END BREADCRUMB AREA
     =================================-->
 
-
+    @if($flash = session('success'))
+     <div class="alert alert-success" role="alert">{{ $flash }}</div>
+    @endif
     <!--============================================
         START SINGLE PRODUCT DESCRIPTION AREA
     ==============================================-->
