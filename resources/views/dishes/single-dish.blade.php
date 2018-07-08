@@ -137,7 +137,7 @@
             <!-- end /.item-preview-->
 
             <div class="item-info">
-              <div class="tab tab2">
+              <div class="tab">
                 <div class="item-navigation">
                   <ul class="nav nav-tabs nav--tabs2">
                     <li>
@@ -158,7 +158,6 @@
               <div class="tab-content">
                 <div class="fade show tab-pane product-tab active" id="product-details">
                   <div class="tab-content-wrapper">
-                    <h1>Dish Description</h1>
                     <p> {!! $dish->dish_description !!} </p>
 
                     <h2>Dish Ingredients</h2>
@@ -388,17 +387,17 @@
                   <li>
                     <p>
                       <span class="lnr lnr-cart pcolor"></span>Total Sales</p>
-                    <span>426</span>
+                    <span>0</span>
                   </li>
                   <li>
                     <p>
                       <span class="lnr lnr-heart scolor"></span>Favorites</p>
-                    <span>240</span>
+                    <span>0</span>
                   </li>
                   <li>
                     <p>
                       <span class="lnr lnr-bubble mcolor3"></span>Comments</p>
-                    <span>35</span>
+                    <span>0</span>
                   </li>
                 </ul>
 
@@ -421,40 +420,39 @@
                       <span class="fa fa-star-half-o"></span>
                     </li>
                   </ul>
-                  <span class="rating__count">( 26 Ratings )</span>
+                  <span class="rating__count">( 1 Ratings )</span>
                 </div>
                 <!-- end /.rating -->
               </div>
               <!-- end /.sidebar-card -->
-
-              <div class="author-card sidebar-card ">
-                <div class="card-title">
-                  <h4>Chef Information</h4>
+              
+              <div class="author-card sidebar-card">
+              <div class="author-infos">
+                <div class="author_avatar">
+                  <img src="{{ route('home') }}/storage/images/profile_image/{{ $dish->profile->profile_image }}"
+                       alt="Presenting the broken author avatar :D">
                 </div>
 
-                <div class="author-infos">
-                  <div class="author_avatar">
-                    <img src="{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}"
-                         alt="user avatar">
-                  </div>
-
-                  <div class="author">
-                    <h4>{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</h4>
-                    <p>Signed Up: {{ $profile->created_at }}</p>
-                  </div>
-                  <!-- end /.author -->
-
-                  <div class="author-btn">
-                    <a href="{{ route('profile.show', ['profile' => $profile])}}" class="btn btn--sm btn--round">View
-                      Profile
-                    </a>
-                  </div>
-                  <!-- end /.author-btn -->
+                <div class="author">
+                  <h4>
+                    {{{ $dish->profile->user_name }}}
+                  </h4>
+                  <p>Joined {{ $dish->profile->created_at->toFormattedDateString() }}</p>
                 </div>
-                <!-- end /.author-infos -->
-
-
+                <div class="author-badges">
+                    <div class="author-btn"> <a href="#" class="btn btn--md btn--round">Follow</a> </div>
+                </div>
+                <!-- end /.author -->
               </div>
+              <!-- end /.author-infos -->
+            <div class="freelance-status">
+                <div class="custom-radio">
+                    <input type="radio" id="opt1" class="" name="filter_opt" checked>
+                    <label for="opt1">
+                    <span class="circle"></span>Khanidaani Chef</label>
+                </div>
+            </div>
+        </div>
               <!-- end /.author-card -->
             </aside>
             <!-- end /.aside -->

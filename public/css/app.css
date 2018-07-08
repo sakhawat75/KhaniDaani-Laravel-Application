@@ -18031,7 +18031,7 @@ ul.nav-tabs.nav--tabs2 li a::before {
 }
 
 .tab .tab-content {
-  margin-top: 30px;
+  margin-top: 5px;
 }
 
 .tab2,
@@ -19989,7 +19989,7 @@ span.counter {
 }
 
 .item-info .tab-content {
-  margin-top: 50px;
+  margin-top: 5px;
 }
 
 .tab-content-wrapper {

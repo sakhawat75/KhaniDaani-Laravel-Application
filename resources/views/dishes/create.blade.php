@@ -98,7 +98,7 @@
                   <div class="form-group">
                     <label for="preperation_time">Preperation Time</label>
                     <div class="select-wrap select-wrap2">
-                      <select name="preparation_time" id="preperation_time" class="text_field">
+                      <select name="preparation_time" id="preparation_time" class="text_field">
                         <option value="1 Hour">1 Hour</option>
                         <option value="2 Hour">2 Hour</option>
                         <option value="2 Hour">3 Hour</option>
