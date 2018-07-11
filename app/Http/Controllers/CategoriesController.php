@@ -17,4 +17,8 @@ class CategoriesController extends Controller
 
     	return \Response::json($subcategories);
     }
+
+    public function livedish() {
+        return view('search.livedish');
+    }
 }

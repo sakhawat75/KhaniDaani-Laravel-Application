@@ -265,20 +265,20 @@
                   <a href="{{route('home')}}">HOME</a>
                 </li>
                 <li class="has_dropdown">
-                  <a href="all-products-list.html">all dishes</a>
+                  <a href="#">all dishes</a>
                   <div class="dropdown dropdown--menu">
                     <ul>
                       <li>
-                        <a href="all-products.html">Recent dishes</a>
+                        <a href="{{ route('search.livedish') }}">Live Dishes</a>
                       </li>
                       <li>
-                        <a href="all-products.html">Popular dishes</a>
+                        <a href="all-products.html">Frozen</a>
                       </li>
                       <li>
-                        <a href="#">Sale dishes</a>
+                        <a href="#">Sale Dishes</a>
                       </li>
                       <li>
-                        <a href="#">Our Feature Product</a>
+                        <a href="#">Feature Dishes</a>
                       </li>
                     </ul>
                   </div>

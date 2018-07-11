@@ -10,13 +10,12 @@ use Storage;
 
 class ProfileController extends Controller
 {
+     public function chefdishes() {
+    	return view('profile.chefdishes');
+    }
+    
 	public function __construct() {
 		$this->middleware('auth')->except('show');
-	}
-
-	public function index()
-	{
-		//
 	}
 
 	public function create()
