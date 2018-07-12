@@ -88,9 +88,9 @@
 
     $(".price-range").slider({
         range: true,
-        min: 0,
-        max: 500,
-        values: [30, 300],
+        min: 200,
+        max: 2000,
+        values: [200, 500],
         slide: function (event, ui) {
             $priceFrom.text("$" + ui.values[0]);
             $priceTo.text("$" + ui.values[1]);

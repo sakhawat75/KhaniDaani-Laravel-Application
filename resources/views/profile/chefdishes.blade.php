@@ -7,7 +7,6 @@
 
 <body class="chefdish">
 
-<h1>Chef Dish</h1>
-
+<h1>hello</h1>
 </body>
 @endsection
