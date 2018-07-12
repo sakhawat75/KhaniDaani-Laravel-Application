@@ -79,7 +79,7 @@
                 <div class="sidebar-card author-menu">
                     <ul>
                         <li> <a href="#">User Profile</a> </li>
-                        <li> <a href="{{ route('profile.chefdishes') }}">Chef Dish</a> </li>
+                        <li> <a href= "{{ route('profile.chefdishes') }}" >Chef Dish</a> </li>
                         <li> <a href="#">Chef Delivery Option</a> </li>
                     </ul>
                 </div>
