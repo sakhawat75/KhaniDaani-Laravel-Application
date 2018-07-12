@@ -106,8 +106,20 @@
                       <input type="text" id="mobile2" class="text_field" value="{{ $profile->mobile_no }}"
                              name="mobile_no">
                     </div>
-
+                    <!-- city selection -->
                     <div class="form-group">
+                      <label for="country">Select City</label>
+                      <div class="select-wrap select-wrap2">
+                        <select name="country" id="country" class="text_field">
+                          @foreach($cities as $city)
+                            <option value="{{ $city->name }}">{{ $city->name }}</option>
+                          @endforeach
+                        </select>
+                        <span class="lnr lnr-chevron-down"></span>
+                      </div>
+                    </div>
+
+                    <!-- <div class="form-group">
                         <label for="country">City
                             <sup>*</sup>
                         </label>
@@ -120,7 +132,7 @@
                             <span class="lnr lnr-chevron-down"></span>
                         </div>
                     </div>
-
+ -->
                     <div class="form-group">
                       <label for="country">Area
                         <sup>*</sup>
