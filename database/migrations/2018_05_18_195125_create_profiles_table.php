@@ -20,6 +20,8 @@ class CreateProfilesTable extends Migration
             $table->string('fullname');
             $table->string('mobile_no');
             $table->date('dob');
+            $table->string('city');
+            $table->string('area');
             $table->string('cover_image')->default('authcvr.jpg');
             $table->string('profile_image')->default('author-avatar.jpg');;
             $table->text('description');
