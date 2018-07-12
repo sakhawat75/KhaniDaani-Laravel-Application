@@ -5,7 +5,7 @@
 
 @section ('content')
 
-<body class="">
+<body class="chefdish">
 
 <h1>Chef Dish</h1>
 
