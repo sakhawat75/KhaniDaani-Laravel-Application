@@ -13,7 +13,6 @@
 
 Route::get('/', 'ViewController@index')->name('home');
 
-
 Route::get('/profile', 'ProfileController@index')->name('profile.index');
 
 Route::get('/profile/create', 'ProfileController@create')->name('profile.create');
@@ -28,13 +27,9 @@ Route::put( '/profile/{profile}', 'ProfileController@update')->name('profile.upd
 
 Route::get( '/profile/chefdishes', 'ProfileController@chefdishes')->name('profile.chefdishes');
 
-
-
 Route::get( '/order/selectdsp', 'OrderController@selectdsp')->name( 'order.selectdsp');
 
 Route::get( '/order/confirm', 'OrderController@confirm')->name( 'order.confirm');
-
-
 
 Route::get( '/search/livedish', 'CategoriesController@livedish')->name( 'search.livedish');
 
