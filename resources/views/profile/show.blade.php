@@ -39,10 +39,12 @@
   @include( 'includes.menu-dashboard' )
 
   @if($flash = session('success'))
-   <div class="alert alert-success" role="alert">{{ $flash }}</div>
+   <div class="alert alert-default" role="alert">{{ $flash }}</div>
   @endif
   @if($flash = session('prf_updated'))
-   <div class="alert alert-success" role="alert">{{ $flash }}</div>
+   <div class="alert alert-default" role="alert"><span class="alert_icon lnr lnr-checkmark-circle"></span>{{ $flash }}<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span class="lnr lnr-cross" aria-hidden="true"></span>
+       </button></div>
   @endif
   <!--================================
         START PROFILE AREA
