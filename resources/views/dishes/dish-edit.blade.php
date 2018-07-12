@@ -78,8 +78,6 @@
                       <div class="select-wrap select-wrap2">
                         <select name="dish_category" id="category" class="text_field">
                           <option value="{{ $dish->dish_category }}">{{ $dish->dish_category }}</option>
-                          <option value="Pizza">Pizza</option>
-                          <option value="Pasta">Pasta</option>
                         </select>
                         <span class="lnr lnr-chevron-down"></span>
                       </div>
@@ -90,8 +88,6 @@
                       <div class="select-wrap select-wrap2">
                         <select name="dish_subcategory" id="category" class="text_field">
                           <option value="{{ $dish->dish_subcategory }}">{{ $dish->dish_subcategory }}</option>
-                          <option value="Vegitable">Vegitable</option>
-                          <option value="Maxican">Maxican</option>
                         </select>
                         <span class="lnr lnr-chevron-down"></span>
                       </div>
