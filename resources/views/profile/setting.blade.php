@@ -119,7 +119,7 @@
                       </div>
                     </div>
 
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <label for="country">City
                             <sup>*</sup>
                         </label>
@@ -132,7 +132,7 @@
                             <span class="lnr lnr-chevron-down"></span>
                         </div>
                     </div>
- -->
+
                     <div class="form-group">
                       <label for="country">Area
                         <sup>*</sup>
