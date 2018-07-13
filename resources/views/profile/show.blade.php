@@ -217,7 +217,7 @@
                       </li>
                       <li class="product_cat">
                         <a href="#">
-                          From <span>Sylhet</span></a>
+                          From <span>{{ $profile->city }}, </span><span>{{ $profile->area }}</span></a>
                       </li>
                     </ul>
                   </div>

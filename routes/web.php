@@ -36,7 +36,7 @@ Route::get( '/order/selectdsp', 'OrderController@selectdsp')->name( 'order.selec
 
 Route::get( '/order/confirm', 'OrderController@confirm')->name( 'order.confirm');
 
-Route::get( '/search/livedish', 'CategoriesController@livedish')->name( 'search.livedish');
+Route::get( '/search/livedish', 'RestApiController@livedish')->name( 'search.livedish');
 
 Auth::routes();
 
@@ -44,7 +44,8 @@ Route::get( '/dishes/manage', 'DishesController@manage')->name( 'dishes.manage')
 Route::get( '/dishes/editdish', 'DishesController@editdish')->name( 'dishes.editdish');
 Route::resource( '/dishes', 'DishesController');
 
-Route::get('/ajax-subcat', 'CategoriesController@jsonSubCat');
+Route::get('/ajax-subcat', 'RestApiController@jsonSubCat');
+Route::get('/ajax-areas', 'RestApiController@jsonAreas');
 
 Route::get('recover-pass', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('recover-pass');
 
