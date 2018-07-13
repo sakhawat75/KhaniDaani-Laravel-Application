@@ -24,7 +24,10 @@ class ProfileController extends Controller
 
 	public function create()
 	{
-		return view('profile.create');
+		$cities = new City;
+		$cities = $cities->get();
+	    return view('profile.create', compact( 'cities'));
+		//return view('profile.create');
 	}
 
 	public function store(Request $request)
