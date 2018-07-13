@@ -10,6 +10,10 @@ use Storage;
 
 class ProfileController extends Controller
 {
+    public function chefdelivery() {
+        return view('profile.chefdelivery');
+    }
+
     public function chefdishes() {
         return view('profile.chefdishes');
     }

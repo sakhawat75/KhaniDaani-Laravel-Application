@@ -19,13 +19,16 @@ Route::get('/profile/create', 'ProfileController@create')->name('profile.create'
 
 Route::post('/profile', 'ProfileController@store')->name( 'profile.store');
 
+Route::get( '/profile/chefdishes', 'ProfileController@chefdishes')->name('profile.chefdishes');
+
+Route::get( '/profile/chefdelivery', 'ProfileController@chefdelivery')->name('profile.chefdelivery');
+
 Route::get('/profile/{profile}', 'ProfileController@show')->name('profile.show');
 
 Route::get('/profile/{profile}/edit', 'ProfileController@edit')->name('profile.edit');
 
 Route::put( '/profile/{profile}', 'ProfileController@update')->name('profile.update');
 
-Route::get( '/profile/chefdishes', 'ProfileController@chefdishes')->name('profile.chefdishes');
 
 Route::get( '/order/selectdsp', 'OrderController@selectdsp')->name( 'order.selectdsp');
 

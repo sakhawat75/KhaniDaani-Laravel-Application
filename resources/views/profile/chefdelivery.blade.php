@@ -5,7 +5,7 @@
 
 @section ('content')
 
-<body class="cehfdish">
+    <body class="cehfdish">
 
     <!--================================
           START BREADCRUMB AREA
@@ -148,7 +148,7 @@
                                 <div class="filter-bar clearfix filter-bar2">
                                     <div class="filter__option filter--text pull-left">
                                         <p>
-                                            <span>All dishes</p>
+                                            <span>Chef Delivery Services</p>
                                     </div>
 
                                     <div class="pull-right">
@@ -191,145 +191,87 @@
                             <!-- end /.col-md-12 -->
 
                             <!-- start .col-md-6 -->
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-lg-12 col-md-12">
                                 <!-- start .single-product -->
-                                <div class="product product--card">
+                                <div class="product product--list product--list-small">
 
                                     <div class="product__thumbnail">
-                                        <div class="aspect_ratio">
-                                            <img src="{{ asset('images/d.jpg') }}" alt="Product Image" class="ratio_img">
-                                        </div>
-
+                                        <img src="{{ asset('images/1.jpg') }}" alt="Product Image">
                                         <div class="prod_btn">
-                                            <a href="#" class="transparent btn--sm btn--round">More
-                                                Info
-                                            </a>
+                                            <a href="single-product.html" class="transparent btn--sm btn--round">More Info</a>
                                         </div>
                                         <!-- end /.prod_btn -->
                                     </div>
                                     <!-- end /.product__thumbnail -->
 
-                                    <div class="product-desc">
-                                        <a href="" class="product_title">
-                                            <h4>Special Veg nonveg Pizza </h4>
-                                        </a>
-                                        <ul class="titlebtm">
-                                            <li>
-                                                <img class="auth-img" src="{{ asset('images/1.jpg') }}" alt="author image">
-                                                <p>
-                                                    <a href="#">name</a>
-                                                </p>
-                                            </li>
-                                            <li class="product_cat">
-                                                <a href="#">
-                                                    From <span>Sylhet</span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- end /.product-desc -->
-
-                                    <div class="product-purchase">
-                                        <div class="price_love">
-                                            <span>৳500</span>
-                                            <p>
-                                                <span class="lnr lnr-heart"></span> 48</p>
-                                        </div>
-
-                                        <div class="rating product--rating">
-                                            <ul>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star-half-o"></span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- end /.product-purchase -->
-                                </div>
-                                <!-- end /.single-product -->
-                            </div>
-                            <!-- end /.col-md-6 -->
-                            <div class="col-lg-6 col-md-6">
-                                <!-- start .single-product -->
-                                <div class="product product--card">
-
-                                    <div class="product__thumbnail">
-                                        <div class="aspect_ratio">
-                                            <img src="{{ asset('images/d.jpg') }}" alt="Product Image" class="ratio_img">
-                                        </div>
-
-                                        <div class="prod_btn">
-                                            <a href="#" class="transparent btn--sm btn--round">More
-                                                Info
+                                    <div class="product__details">
+                                        <div class="product-desc">
+                                            <a href="#" class="product_title">
+                                                <h4>Delivering Uposahar to all over sylhet </h4>
                                             </a>
-                                        </div>
-                                        <!-- end /.prod_btn -->
-                                    </div>
-                                    <!-- end /.product__thumbnail -->
+                                            <p>Nunc placerat mi id nisi inter dum mollis. Praesent phare...</p>
 
-                                    <div class="product-desc">
-                                        <a href="" class="product_title">
-                                            <h4>Special Veg nonveg Pizza </h4>
-                                        </a>
-                                        <ul class="titlebtm">
-                                            <li>
-                                                <img class="auth-img" src="{{ asset('images/1.jpg') }}" alt="author image">
-                                                <p>
-                                                    <a href="#">name</a>
-                                                </p>
-                                            </li>
-                                            <li class="product_cat">
-                                                <a href="#">
-                                                    From <span>Sylhet</span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- end /.product-desc -->
-
-                                    <div class="product-purchase">
-                                        <div class="price_love">
-                                            <span>৳500</span>
-                                            <p>
-                                                <span class="lnr lnr-heart"></span> 48</p>
-                                        </div>
-
-                                        <div class="rating product--rating">
-                                            <ul>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star-half-o"></span>
+                                            <ul class="titlebtm">
+                                                <li class="product_cat">
+                                                    <a href="#">
+                                                        <span class="lnr lnr-book"></span>Plugin</a>
                                                 </li>
                                             </ul>
+                                            <!-- end /.titlebtm -->
                                         </div>
+                                        <!-- end /.product-desc -->
+
+                                        <div class="product-meta">
+                                            <div class="author">
+                                                <img class="auth-img" src="{{ asset('images/1.jpg') }}" alt="author image">
+                                                <p>
+                                                    <a href="#">KhaniDaani</a>
+                                                </p>
+                                            </div>
+                                            <!-- end /.author -->
+
+                                            <div class="love-comments">
+                                                <p>
+                                                    <span class="lnr lnr-heart"></span> From Areas</p>
+                                                <p>
+                                                    <span class="lnr lnr-bubble"></span> Delivering</p>
+                                            </div>
+                                            <!-- end /.love-comments -->
+
+                                            <div class="rating product--rating">
+                                                <ul>
+                                                    <li>
+                                                        <span class="fa fa-star"></span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="fa fa-star"></span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="fa fa-star"></span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="fa fa-star"></span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="fa fa-star-half-o"></span>
+                                                    </li>
+                                                </ul>
+                                                <span class="rating__count">(34)</span>
+                                            </div>
+                                            <!-- end /.rating -->
+                                        </div>
+                                        <!-- end /.product-meta -->
+
+                                        <div class="product-purchase">
+                                            <div class="price_love">
+                                                <span>$10 - $50</span>
+                                            </div>
+                                        </div>
+                                        <!-- end /.product-purchase -->
                                     </div>
-                                    <!-- end /.product-purchase -->
                                 </div>
                                 <!-- end /.single-product -->
                             </div>
-                            <!-- end /.col-md-6 -->
-
 
                         </div>
                         <!-- end /.row -->
