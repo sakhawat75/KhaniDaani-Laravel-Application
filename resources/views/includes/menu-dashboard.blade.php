@@ -27,6 +27,10 @@
                         <a href="dashboard-withdrawal.html">
                                     <span class="lnr lnr-briefcase"></span>Withdrawals</a>
                     </li>
+                    <li>
+                        <a href="{{ route('delivery.AddService') }}">
+                            <span class="lnr lnr-upload"></span>Add Service</a>
+                    </li>
                 </ul>
                 <!-- end /.dashboard_menu -->
             </div>
