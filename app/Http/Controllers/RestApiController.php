@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Area;
 use App\Category;
+use App\City;
 use App\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
-class CategoriesController extends Controller
+class RestApiController extends Controller
 {
     public function jsonSubCat() {
     	$cat_name = Input::get('cat_name');
@@ -20,5 +22,14 @@ class CategoriesController extends Controller
 
     public function livedish() {
         return view('search.livedish');
+    }
+
+    public function jsonAreas() {
+        $city_name = Input::get('city_name');
+        $city_id = City::where('name', '=', $city_name)->first();
+        $id = $city_id->id;
+        $areas = Area::where('city_id', '=', $id)->get();
+
+        return \Response::json($areas);
     }
 }

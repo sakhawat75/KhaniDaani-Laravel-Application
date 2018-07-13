@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
-    protected $fillable = ['user_id', 'fullname', 'dob', 'mobile_no', 'description'];
+    protected $fillable = ['user_id', 'fullname', 'dob', 'mobile_no', 'description', 'city', 'area', 'address', 'address_hint'];
 
     public static function store($id, $name) {
 //    	$profile = \App\Profile::create([

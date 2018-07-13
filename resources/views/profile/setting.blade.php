@@ -108,9 +108,9 @@
                     </div>
                     <!-- city selection -->
                     <div class="form-group">
-                      <label for="country">Select City</label>
+                      <label for="city">Select City</label>
                       <div class="select-wrap select-wrap2">
-                        <select name="country" id="country" class="text_field">
+                        <select name="city" id="city" class="text_field">
                           @foreach($cities as $city)
                             <option value="{{ $city->name }}">{{ $city->name }}</option>
                           @endforeach
@@ -119,29 +119,14 @@
                       </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="country">City
-                            <sup>*</sup>
-                        </label>
-                        <div class="select-wrap select-wrap2">
-                            <select name="country" id="country" class="text_field">
-                                <option value="">Select City</option>
-                                <option value="bangladesh">Sylhet</option>
-                                <option value="india">Dhaka</option>
-                            </select>
-                            <span class="lnr lnr-chevron-down"></span>
-                        </div>
-                    </div>
 
                     <div class="form-group">
-                      <label for="country">Area
+                      <label for="areas">Area
                         <sup>*</sup>
                       </label>
                       <div class="select-wrap select-wrap2">
-                        <select name="country" id="country" class="text_field">
-                          <option value="">Select City</option>
-                          <option value="bangladesh">Sylhet</option>
-                          <option value="india">Dhaka</option>
+                        <select name="areas" id="areas" class="text_field">
+
                         </select>
                         <span class="lnr lnr-chevron-down"></span>
                       </div>
@@ -150,13 +135,13 @@
                      <div class="form-group">
                         <label for="prohead">Full Address one<sup>*</sup></label>
 
-                        <input type="text" id="prohead" class="text_field" placeholder="Ex: House No, Road no, Block">
+                        <input type="text" id="prohead" class="text_field" placeholder="Ex: House No, Road no, Block" name="address">
                     </div>
 
                     <div class="form-group">
                       <label for="prohead">Adress Hint</label>
 
-                      <input type="text" id="prohead" class="text_field" placeholder="Noticeable hint for delivery purpose">
+                      <input type="text" id="prohead" class="text_field" placeholder="Noticeable hint for delivery purpose" name="address_hint">
                     </div>
 
                   </div>

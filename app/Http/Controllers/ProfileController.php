@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
 use \App\User;
 use Illuminate\Http\Request;
 use \App\Profile;
@@ -65,7 +66,9 @@ class ProfileController extends Controller
 //	    $user_id = Auth::user()->id;
 //	    $profile = Profile::where('user_id', $user_id)->first();
 
-		return view('profile.setting', compact('profile'));
+        $cities = City::all();
+
+		return view('profile.setting', compact('profile', 'cities'));
 	}
 
     public function update(Request $request, Profile $profile) {
@@ -84,10 +87,28 @@ class ProfileController extends Controller
 			'fullname' => 'required|min:2|regex:/^[\pL\s\-\.]+$/u|max:190',
 		    'dob' => 'required|date',
 		    'mobile_no' => 'required|numeric',
-		    'description' => 'required|max:5000',
+		    'description' => 'max:5000',
 		    'cover_image' => 'nullable|file|image|max:1024',
 		    'profile_image' => 'nullable|file|image|max:1024',
+		    'city' => 'required',
+		    'areas' => 'required',
+            'address' => 'required|max:5000',
+            'address_hint' => 'required|max:5000',
 	    ]);
+
+        if (request()->filled('city')) {
+            $profile->city = $request->input('city');
+        }
+        if (request()->filled('areas')) {
+            $profile->area = $request->input('areas');
+        }
+
+        if (request()->filled('address')) {
+            $profile->address = $request->input('address');
+        }
+        if (request()->filled('address_hint')) {
+            $profile->address_hint = $request->input('address_hint');
+        }
 
 	    if (request()->filled('fullname')) {
 		    $profile->fullname = $request->input('fullname');

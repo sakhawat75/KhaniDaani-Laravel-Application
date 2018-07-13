@@ -84,8 +84,27 @@ $("#dish_category").on('change', function (e) {
     });
 });
 
+// To trigger the city select option
+$("#dish_catego").trigger('change');
+
+
+// dynamically add dish subcategory with JSON
+$("#city").on('change', function (e) {
+    console.log(e);
+
+    let city_name = e.target.value;
+
+    $.get('/ajax-areas?city_name=' + city_name, function (data) {
+        $('#areas').empty();
+
+        $.each(data, function (index, subCatObj) {
+            $('#areas').append('<option value="' + subCatObj.name + '">' + subCatObj.name + '</option>');
+        });
+    });
+});
+
 // To trigger the category select option
-$("#dish_category").trigger('change');
+$("#areas").trigger('change');
 
 // To add ck-editor in textarea
 CKEDITOR.replace('article-ckeditor');
