@@ -43,7 +43,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-7">
-                        <form action="" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('delivery.AddService') }}" method="post" enctype="multipart/form-data">
 
                             <div class="upload_modules">
                                 <div class="modules__title">
@@ -56,7 +56,7 @@
                                         <label for="product_name">Service Title
                                             <span>(Max 100 characters)</span>
                                         </label>
-                                        <input name="dish_name" type="text" id="product_name" class="text_field"
+                                        <input name="service_title" type="text" id="product_name" class="text_field"
                                                placeholder="Enter your product name here...">
                                     </div>
 
@@ -64,7 +64,7 @@
                                         <label for="product_name">Service Description
                                             <span>(Describe Everything in detail)</span>
                                         </label>
-                                        <textarea name="dish_description" rows="10" class="form-control"
+                                        <textarea name="service_description" rows="10" class="form-control"
                                                   placeholder="max 1000 character" id="article-ckeditor"></textarea>
                                     </div>
                                 </div>
@@ -74,14 +74,14 @@
                                         <label for="tags">Service Area
                                             <span>(Max 10 Area)</span>
                                         </label>
-                                        <textarea name="item_tags" id="tags" class="text_field" placeholder="Now input just one area as string"></textarea>
+                                        <textarea name="service_area" id="tags" class="text_field" placeholder="Now input just one area as string"></textarea>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="upload_modules with--addons">
                                 <div class="modules__title">
-                                    <h3>Service Houre</h3>
+                                    <h3>Service Hours</h3>
                                 </div>
                                 <!-- end /.module_title -->
 
@@ -90,7 +90,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="text" id="rlicense" class="text_field"
+                                                    <input type="text" name="service_hours" id="rlicense" class="text_field"
                                                            placeholder="Start Time">
                                                 </div>
                                             </div>
@@ -127,7 +127,7 @@
                                         <div class="form-group">
                                             <label for="">Servcie Charge <span>(In taka)</span></label>
                                             <div class="input-group">
-                                                <input name="dish_price" type="text" id="rlicense"
+                                                <input name="service_charge" type="text" id="rlicense"
                                                        class="text_field" value="৳500">
                                             </div>
                                         </div>
@@ -135,7 +135,7 @@
                                         <div class="form-group">
                                             <label for="preperation_time">Min Delivery Time<span> (In Hour)</span></label>
                                             <div class="select-wrap select-wrap2">
-                                                <select name="preparation_time" id="preperation_time"
+                                                <select name="min_delivery_time" id="preperation_time"
                                                         class="text_field">
                                                     <option value="">1</option>
                                                     <option value="1 Hour">2</option>
@@ -147,7 +147,7 @@
                                         <div class="form-group">
                                             <label for="preperation_time">Max Delivery Time <span> (In Hour)</span></label>
                                             <div class="select-wrap select-wrap2">
-                                                <select name="preparation_time" id="preperation_time"
+                                                <select name="max_delivery_time" id="preperation_time"
                                                         class="text_field">
                                                     <option value="">1</option>
                                                     <option value="1 Hour">2</option>

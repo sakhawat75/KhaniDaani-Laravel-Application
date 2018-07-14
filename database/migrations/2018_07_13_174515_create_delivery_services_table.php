@@ -14,15 +14,18 @@ class CreateDeliveryServicesTable extends Migration
     public function up()
     {
         Schema::create('delivery_services', function (Blueprint $table) {
-            $table->increments('service_id');
+            $table->increments('id');
+            $table->integer('user_id')->unsigned()->index();
             $table->string('service_title');
             $table->text('service_description');
             $table->string('service_area');
-            $table->integer('service_hours');
-            $table->float('service_charge');
+            $table->decimal('service_hours', 5, 2);
+            $table->decimal('service_charge', 5, 2);
             $table->integer('min_delivery_time');
             $table->integer('max_delivery_time');
             $table->timestamps();
+
+
         });
     }
 
