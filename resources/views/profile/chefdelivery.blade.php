@@ -192,17 +192,7 @@
 
                             <!-- start .col-md-6 -->
                             <div class="col-lg-12 col-md-12">
-                                <!-- start .single-product -->
                                 <div class="product product--list product--list-small">
-
-                                    <div class="product__thumbnail">
-                                        <img src="{{ asset('images/1.jpg') }}" alt="Product Image">
-                                        <div class="prod_btn">
-                                            <a href="single-product.html" class="transparent btn--sm btn--round">More Info</a>
-                                        </div>
-                                        <!-- end /.prod_btn -->
-                                    </div>
-                                    <!-- end /.product__thumbnail -->
 
                                     <div class="product__details">
                                         <div class="product-desc">
@@ -214,7 +204,7 @@
                                             <ul class="titlebtm">
                                                 <li class="product_cat">
                                                     <a href="#">
-                                                        <span class="lnr lnr-book"></span>Plugin</a>
+                                                        <span class="lnr lnr-book"></span>Shibgong, Zindabazar ..</a>
                                                 </li>
                                             </ul>
                                             <!-- end /.titlebtm -->
@@ -223,7 +213,7 @@
 
                                         <div class="product-meta">
                                             <div class="author">
-                                                <img class="auth-img" src="{{ asset('images/1.jpg') }}" alt="author image">
+                                                <img class="auth-img" src="{{ asset('images/kd.jpg') }}" alt="author image">
                                                 <p>
                                                     <a href="#">KhaniDaani</a>
                                                 </p>
@@ -232,9 +222,9 @@
 
                                             <div class="love-comments">
                                                 <p>
-                                                    <span class="lnr lnr-heart"></span> From Areas</p>
+                                                    <span class="lnr lnr-heart"></span> Charge <span>৳50</span></p>
                                                 <p>
-                                                    <span class="lnr lnr-bubble"></span> Delivering</p>
+                                                    <span class="lnr lnr-heart"></span> From <span>Areas</span></p>
                                             </div>
                                             <!-- end /.love-comments -->
 
@@ -264,7 +254,14 @@
 
                                         <div class="product-purchase">
                                             <div class="price_love">
-                                                <span>$10 - $50</span>
+                                                Delivery time:
+                                                <span>1 hrs - 5 hrs</span>
+                                            </div>
+                                            <div class="sell">
+                                                <p>
+                                                    <span class="">Id:</span>
+                                                    <span>150678</span>
+                                                </p>
                                             </div>
                                         </div>
                                         <!-- end /.product-purchase -->
