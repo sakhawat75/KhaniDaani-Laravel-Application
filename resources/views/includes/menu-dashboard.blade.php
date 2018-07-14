@@ -15,10 +15,6 @@
                         <a href="{{ route('dishes.editdish') }}">
                                     <span class="lnr lnr-cart"></span>Purchase</a>
                     </li>
-                    <li>
-                        <a href="{{ route('dishes.create') }}">
-                                    <span class="lnr lnr-upload"></span>Upload Dish</a>
-                    </li>
                     <li class="{{ request()->is('profile_setting') ? 'active' : '' }}">
                         <a href="{{ route('dishes.manage') }}">
                                     <span class="lnr lnr-briefcase"></span>Manage Dish</a>

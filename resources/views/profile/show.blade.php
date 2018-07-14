@@ -182,6 +182,33 @@
                 <!-- end /.product-title-area -->
             </div>
 
+            <div class="col-lg-6 col-md-6">
+                <!-- start .single-product -->
+                <div class="product product--card">
+
+                    <div class="product__thumbnail">
+                        <div class="aspect_ratio">
+                            <img src="{{ asset('images/d.jpg') }}"
+                                 alt="Product Image" class="ratio_img">
+                        </div>
+
+                        <div class="prod_btn">
+                            <a href="{{ route('dishes.create') }}" class="transparent btn--sm btn--round">Add Now
+                            </a>
+                        </div>
+                        <!-- end /.prod_btn -->
+                    </div>
+                    <!-- end /.product__thumbnail -->
+
+                    <div class="product-desc">
+                        <a href="{{ route('dishes.create') }}" class="product_title">
+                            <h4> Add your own dishes </h4>
+                        </a>
+                    </div>
+                </div>
+                <!-- end /.single-product -->
+            </div>
+
             @foreach($dishes as $dish)
               <div class="col-lg-6 col-md-6">
                 <!-- start .single-product -->
