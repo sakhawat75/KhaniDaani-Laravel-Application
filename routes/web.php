@@ -38,6 +38,8 @@ Route::get( '/order/confirm', 'OrderController@confirm')->name( 'order.confirm')
 
 Route::get( '/search/livedish', 'RestApiController@livedish')->name( 'search.livedish');
 
+Route::get( '/delivery/AddService', 'DeliveryServiceController@AddService')->name( 'delivery.AddService');
+
 Auth::routes();
 
 Route::get( '/dishes/manage', 'DishesController@manage')->name( 'dishes.manage');
