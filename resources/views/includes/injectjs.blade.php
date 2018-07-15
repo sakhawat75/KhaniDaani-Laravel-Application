@@ -1,6 +1,7 @@
     <!--//////////////////// JS GOES HERE ////////////////-->
 
     <!-- inject:js -->
+
     <script src="{{ URL::to('/') }}/js/vendor/jquery/jquery-1.12.3.js"></script>
     <script src="{{ URL::to('/') }}/js/vendor/jquery/popper.min.js"></script>
     <script src="{{ URL::to('/') }}/js/vendor/jquery/uikit.min.js"></script>
@@ -21,6 +22,6 @@
     <script src="{{ URL::to('/') }}/js/main.js"></script>
     <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBeySPFGz7DIUTrReCRQT6HYaMM0ia0knA"></script>
     <script src="{{ URL::to('/') }}/js/map.js"></script>
-    <script src="{{ route('home') }}/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="{{ route('home') }}/vendor/unisharp/laravel-ckeditor/ckeditor.js">
     <script src="{{ URL::to('/') }}/js/app.js"></script>
     <!-- endinject -->

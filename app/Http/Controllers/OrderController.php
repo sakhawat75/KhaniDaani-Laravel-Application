@@ -13,4 +13,8 @@ class OrderController extends Controller
     public function confirm() {
     	return view('order.confirm');
     }
+
+    public function status() {
+        return view('order.status');
+    }
 }

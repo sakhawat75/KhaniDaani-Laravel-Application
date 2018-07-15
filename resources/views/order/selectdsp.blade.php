@@ -50,7 +50,7 @@
                                             <div class="single_acco_title">
                                                 <h4>
                                                     <a data-toggle="collapse" href="#collapse1" class="collapsed" aria-expanded="false" data-target="#collapse1" aria-controls="collapse1">
-                                                <span>username</span> <span>charge:৳10</span>
+                                                <span>UsernameLink </span> <span>Charge: ৳10</span>
                                                 <i class="lnr lnr-chevron-down indicator"></i>
                                                 </a>
                                                 </h4>
@@ -58,17 +58,31 @@
 
                                             <div id="collapse1" class="panel-collapse collapse" aria-labelledby="panel-one" data-parent="#accordion">
                                                 <div class="panel-body">
+                                                    <div class="product-meta">
+                                                        <div class="author">
+                                                            <img class="auth-img" src="{{ asset('images/kd.jpg') }}" alt="author image">
+                                                            <p>
+                                                                <a href="#">KhaniDaani</a>
+                                                            </p>
+
+                                                            <p>Service Id: <span>4506</span></p>
+                                                        </div>
+                                                    </div>
+
+                                                    <h6 class="pcolor">Title:</h6>
                                                     <ul>
                                                         <li>
-                                                            <span>area of service:</span>
+                                                            <span>Area of service:</span>
                                                         </li>
                                                         <li>
-                                                            <span>max delivery time:</span>
+                                                            <span>Delivery time:</span>
                                                         </li>
                                                         <li>
                                                             Availavlity time:
                                                         </li>
                                                     </ul>
+
+
                                                     <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceleris que the mattis, leo quam aliquet congue placerat mi id nisi interdum mollis. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher.</p>
                                                     <a href="{{ route('order.confirm') }}" class="btn btn--lg btn--round">Continue & Order</a>
                                                 </div>
@@ -89,7 +103,7 @@
                                                 <div class="panel-body">
                                                     <ul>
                                                         <li>
-                                                            <span>area of service:</span>
+                                                            <span>Area of service:</span>
                                                         </li>
                                                         <li>
                                                             <span>max delivery time:</span>

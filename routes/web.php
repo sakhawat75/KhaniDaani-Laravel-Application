@@ -36,6 +36,8 @@ Route::get( '/order/selectdsp', 'OrderController@selectdsp')->name( 'order.selec
 
 Route::get( '/order/confirm', 'OrderController@confirm')->name( 'order.confirm');
 
+Route::get( '/order/status', 'OrderController@status')->name( 'order.status');
+
 Route::get( '/search/livedish', 'RestApiController@livedish')->name( 'search.livedish');
 
 Route::get( '/delivery/AddService', 'DeliveryServiceController@AddService')->name( 'delivery.AddService');

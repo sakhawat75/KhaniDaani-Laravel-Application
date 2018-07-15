@@ -11,6 +11,8 @@
     <title>KhaniDaani - @yield ('title') </title>
 
     <!-- inject:css -->
+    <link rel="stylesheet" href="{{ URL::to('/') }}/css/materialize-stepper.css">
+
     <link rel="stylesheet" href="{{ URL::to('/') }}/css/animate.css">
     <link rel="stylesheet" href="{{ URL::to('/') }}/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ URL::to('/') }}/css/fontello.css">
@@ -21,6 +23,7 @@
     <link rel="stylesheet" href="{{ URL::to('/') }}/css/trumbowyg.min.css">
     {{-- <link rel="stylesheet" href="{{ URL::to('/') }}/css/bootstrap/bootstrap.min.css"> --}}
     <link rel="stylesheet" href="{{ URL::to('/') }}/css/app.css">
+
     <!-- endinject -->
 
     <!-- Favicon -->
