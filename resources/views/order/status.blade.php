@@ -6,11 +6,15 @@
 @section ('content')
     <body class="">
 
+    @push('scripts')
+
     <script src="{{ asset('/js/vendor/jquery/jquery-1.12.3.js') }}"></script>
     <script src="{{ asset('/js/materialize.min.js') }}"></script>
 
     <script type="text/javascript" src="/js/vendor/jquery/jquery-1.12.3.js"></script>
     <script type="text/javascript" src="/js/materialize.min.js"></script>
+
+    @endpush
 
     <section class="dashboard-area">
         <div class="dashboard_contents">
@@ -33,7 +37,7 @@
                                 <li class="step active">
                                     <div data-step-label="Now chef is preparing the food" class="step-title waves-effect waves-dark">Order Started</div>
                                     <div class="step-content">
-
+                                        <h1>gdsfg</h1>
 
                                     </div>
                                 </li>
@@ -57,6 +61,8 @@
             </div>
         </div>
     </section>
+
+    @push('script')
     <script>
         $(document).ready(function () {
             $('.stepper').activateStepper();
@@ -65,6 +71,8 @@
     <script type="text/javascript" src="/js/materialize-stepper.js"></script>
 
     <script src="{{ asset('/js/materialize-stepper.js') }}"></script>
+
+        @endpush
 
 
     </body>
