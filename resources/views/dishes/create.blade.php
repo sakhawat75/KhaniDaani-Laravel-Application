@@ -60,9 +60,9 @@
             <form action="{{ route('dishes.store') }}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="upload_modules">
-                <div class="modules__title">
-                  <h3>Dish Name & Description</h3>
-                </div>
+                  <div class="modules__title">
+                    <h3>Dish Name & Description</h3>
+                  </div>
                 <!-- end /.module_title -->
                 <div class="modules__content">
 

@@ -147,7 +147,8 @@
                                         <div class="form-group">
                                             <input id="card_number" type="text" class="text_field" placeholder="Enter your bkash trasaction number here...">
                                         </div>
-                                        <button type="submit" class="btn btn--round btn--default">Confirm Order</button>
+                                        <a href="{{ route('order.status') }}"><button type="submit" class="btn btn--round btn--default">Continue & Order</button></a>
+
                                     </li>
                                     <li>
                                         <div class="custom-radio">
