@@ -130,6 +130,7 @@ class DishesController extends Controller
 	    $dishes = $profile->dish;
 
 	    if(!$dishes->first()) {
+	    	session()->flash( 'success', 'No Dish To manage. Please Create a dish First');
 	    	return redirect()->route( 'dishes.create');
 	    }
     	return view('dishes.manage-dish', compact( 'profile', 'dishes'));

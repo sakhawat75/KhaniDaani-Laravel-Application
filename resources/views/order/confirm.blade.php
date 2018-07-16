@@ -50,12 +50,12 @@
 
                                 <ul>
                                     <li class="item">
-                                        <a href="single-product.html" target="_blank">Dish title </a>
-                                        <span>৳60</span>
+                                        <a href="single-product.html" target="_blank">Dish title: {{ $dish->dish_name }} </a>
+                                        <span>৳{{ $dish->dish_price }}</span>
                                     </li>
                                     <li class="item">
-                                        <a href="single-product.html" target="_blank">Dsp username</a>
-                                        <span>৳60</span>
+                                        <a href="single-product.html" target="_blank">Dsp username: {{ $dsp->user->name }}</a>
+                                        <span>৳{{ $dsp->service_charge }}</span>
                                     </li>
                                     <li>
                                         <p>Transaction Fees:</p>
@@ -63,7 +63,7 @@
                                     </li>
                                     <li class="total_ammount">
                                         <p>Total</p>
-                                        <span>৳122.00</span>
+                                        <span>৳{{ ($dish->dish_price + $dsp->service_charge + 2) }}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -80,7 +80,7 @@
                                             <label for="email">Your Full Name
                                                 <sup>*</sup>
                                             </label>
-                                            <input type="text" id="email" class="text_field" placeholder="AazzTech" value="AazzTech">
+                                            <input type="text" id="email" class="text_field" placeholder="Full name">
                                         </div>
 
 
@@ -102,14 +102,14 @@
                                                     <label for="city">Mobile No
                                                         <sup>*</sup>
                                                     </label>
-                                                    <input type="text" id="zipcode" class="text_field" placeholder="Mobile No 1">
+                                                    <input type="number" id="zipcode" class="text_field" placeholder="Mobile No 1">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="zipcode">Mobile no (Optional)
                                                     </label>
-                                                    <input type="text" id="zipcode" class="text_field" placeholder="Mobile no 2">
+                                                    <input type="number" id="zipcode" class="text_field" placeholder="Mobile no 2">
                                                 </div>
                                             </div>
                                         </div>
