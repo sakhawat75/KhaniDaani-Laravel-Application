@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\City;
+use App\DeliveryService;
 use \App\User;
 use Illuminate\Http\Request;
 use \App\Profile;
@@ -12,7 +13,8 @@ use Storage;
 class ProfileController extends Controller
 {
     public function chefdelivery() {
-        return view('profile.chefdelivery');
+    	$dsps = DeliveryService::all();
+        return view('profile.chefdelivery', compact( 'dsps'));
     }
 
     public function chefdishes() {

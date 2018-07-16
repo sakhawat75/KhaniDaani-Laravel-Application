@@ -23,8 +23,6 @@ Route::get( '/profile/chefdishes', 'ProfileController@chefdishes')->name('profil
 
 Route::get( '/profile/chefdelivery', 'ProfileController@chefdelivery')->name('profile.chefdelivery');
 
-Route::get( '/profile/chefdishes', 'ProfileController@chefdishes')->name('profile.chefdishes');
-
 Route::get('/profile/{profile}', 'ProfileController@show')->name('profile.show');
 
 Route::get('/profile/{profile}/edit', 'ProfileController@edit')->name('profile.edit');
@@ -40,7 +38,8 @@ Route::get( '/order/status', 'OrderController@status')->name( 'order.status');
 
 Route::get( '/search/livedish', 'RestApiController@livedish')->name( 'search.livedish');
 
-Route::get( '/delivery/AddService', 'DeliveryServiceController@AddService')->name( 'delivery.AddService');
+Route::get( '/delivery/AddService', 'DeliveryServiceController@create')->name( 'delivery.create');
+Route::post( '/delivery/Add_Service', 'DeliveryServiceController@AddService')->name( 'delivery.AddService');
 
 Auth::routes();
 

@@ -19,7 +19,8 @@ class CreateDeliveryServicesTable extends Migration
             $table->string('service_title');
             $table->text('service_description');
             $table->string('service_area');
-            $table->decimal('service_hours', 5, 2);
+            $table->time('service_hours_start');
+            $table->time('service_hours_end');
             $table->decimal('service_charge', 5, 2);
             $table->integer('min_delivery_time');
             $table->integer('max_delivery_time');
