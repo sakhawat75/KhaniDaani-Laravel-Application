@@ -24,6 +24,8 @@
     {{-- <link rel="stylesheet" href="{{ URL::to('/') }}/css/bootstrap/bootstrap.min.css"> --}}
     <link rel="stylesheet" href="{{ URL::to('/') }}/css/app.css">
 
+    <script src="{{ URL::to('/') }}/js/vendor/jquery/jquery-1.12.3.js"></script>
+
     <!-- endinject -->
 
     <!-- Favicon -->

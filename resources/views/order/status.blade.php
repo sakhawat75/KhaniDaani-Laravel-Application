@@ -4,18 +4,8 @@
 @section ('title', 'Order Status')
 
 @section ('content')
-    <body class="">
 
-    @push('scripts')
-
-    <script src="{{ asset('/js/vendor/jquery/jquery-1.12.3.js') }}"></script>
     <script src="{{ asset('/js/materialize.min.js') }}"></script>
-
-    <script type="text/javascript" src="/js/vendor/jquery/jquery-1.12.3.js"></script>
-    <script type="text/javascript" src="/js/materialize.min.js"></script>
-
-    @endpush
-
     <section class="dashboard-area">
         <div class="dashboard_contents">
             <div class="container">
@@ -24,7 +14,7 @@
                         <div class="dashboard_title_area">
                             <div class="pull-left">
                                 <div class="dashboard__title">
-                                    <h3>Upload Your Dish</h3> </div>
+                                    <h3>Your Order Status</h3> </div>
                             </div>
                         </div>
                     </div>
@@ -38,7 +28,6 @@
                                     <div data-step-label="Now chef is preparing the food" class="step-title waves-effect waves-dark">Order Started</div>
                                     <div class="step-content">
                                         <h1>gdsfg</h1>
-
                                     </div>
                                 </li>
                                 <li class="step">
@@ -57,25 +46,38 @@
                         </div>
                     </div>
                     <!-- end /.col-md-12 -->
-                </div>
+
+
+                    <div class="col-lg-4 col-md-5">
+                        <aside class="sidebar upload_sidebar">
+
+                            <div class="sidebar-card">
+                                <div class="card-title">
+                                    <h3>Help Order Staus</h3>
+                                </div>
+
+                                <div class="card_content">
+                                    <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceler isque the mattis, leo quam aliquet congue.</p>
+                                    <ul>
+                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
+                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
+                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
+                                        <li>Consectetur elit, sed do eiusmod the</li>
+                                    </ul>
+                                </div>
+                            </div>
+                    </div>
             </div>
         </div>
     </section>
 
-    @push('script')
-    <script>
-        $(document).ready(function () {
-            $('.stepper').activateStepper();
-        });</script>
+        <script>
+            $(document).ready(function () {
+                $('.stepper').activateStepper();
+            });</script>
 
-    <script type="text/javascript" src="/js/materialize-stepper.js"></script>
+        <script src="{{ asset('/js/materialize-stepper.js') }}"></script>
 
-    <script src="{{ asset('/js/materialize-stepper.js') }}"></script>
-
-        @endpush
-
-
-    </body>
 
 
 

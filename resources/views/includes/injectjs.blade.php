@@ -2,7 +2,6 @@
 
     <!-- inject:js -->
 
-    <script src="{{ URL::to('/') }}/js/vendor/jquery/jquery-1.12.3.js"></script>
     <script src="{{ URL::to('/') }}/js/vendor/jquery/popper.min.js"></script>
     <script src="{{ URL::to('/') }}/js/vendor/jquery/uikit.min.js"></script>
     <script src="{{ URL::to('/') }}/js/vendor/bootstrap.min.js"></script>
