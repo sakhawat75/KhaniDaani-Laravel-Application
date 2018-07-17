@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
      public function selectdsp( Dish $dish ) {
-     	$dsps =   DeliveryService::all();
+     	$dsps =   DeliveryService::where('id', $dish->dsp_1)->orWhere('id', $dish->dsp_2)->orWhere('id', $dish->dsp_3)->get();
     	return view('order.selectdsp', compact( 'dsps', 'dish'));
     }
     

@@ -53,15 +53,15 @@
                       <div class="panel accordion__single" id="panel-one">
                         <div class="single_acco_title">
                           <h4>
-                            <a data-toggle="collapse" href="#collapse1" class="collapsed" aria-expanded="false"
-                               data-target="#collapse1" aria-controls="collapse1">
+                            <a data-toggle="collapse" href="#collapse{{ $dsp->id }}" class="collapsed" aria-expanded="false"
+                               data-target="#collapse{{ $dsp->id }}" aria-controls="collapse{{ $dsp->id }}">
                               <span>{{ $dsp->user->name }} </span> <span>Charge: ৳{{ $dsp->service_charge }}</span>
                               <i class="lnr lnr-chevron-down indicator"></i>
                             </a>
                           </h4>
                         </div>
 
-                        <div id="collapse1" class="panel-collapse collapse" aria-labelledby="panel-one"
+                        <div id="collapse{{ $dsp->id }}" class="panel-collapse collapse" aria-labelledby="panel-one"
                              data-parent="#accordion">
                           <div class="panel-body">
                             <div class="product-meta">

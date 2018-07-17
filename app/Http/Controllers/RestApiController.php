@@ -27,9 +27,6 @@ class RestApiController extends Controller
     	return \Response::json($subcategories);
     }
 
-    public function livedish() {
-        return view('search.livedish');
-    }
 
     public function jsonAreas() {
         $city_name = Input::get('city_name');

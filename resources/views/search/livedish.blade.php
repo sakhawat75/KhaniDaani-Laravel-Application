@@ -47,6 +47,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+
                     <div class="filter-bar">
                         <div class="filter__option filter--dropdown"> <a href="#" id="drop1" class="dropdown-trigger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dish Type
                                     <span class="lnr lnr-chevron-down"></span>
@@ -81,22 +82,30 @@
                             </div>
                         </div>
                         <!-- end /.filter__option -->
-                        <div class="filter__option filter--select">
-                            <div class="select-wrap">
-                                <select name="price">
-                                    <option value="">Categories</option>
-                                    <option value=""></option>
-                                </select> <span class="lnr lnr-chevron-down"></span> </div>
-                        </div>
-                        <!-- end /.filter__option -->
-                        <div class="filter__option filter--select">
-                            <div class="select-wrap">
-                                <select name="price">
-                                    <option value="">Sub-Categories</option>
-                                    <option value=""></option>
-                                    <option value=""></option>
-                                </select> <span class="lnr lnr-chevron-down"></span> </div>
-                        </div>
+                        <form action="{{ route('search.livedish') }}" method="post">
+                            @csrf
+
+
+                            <div class="filter__option filter--select">
+                                <div class="select-wrap">
+                                    <select name="dish_category" id="dish_category" class="text_field">
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="lnr lnr-chevron-down"></span> </div>
+                            </div>
+                            <!-- end /.filter__option -->
+                            <div class="filter__option filter--select">
+                                <div class="select-wrap">
+                                    <select name="dish_subcategory" id="dish_subcategory" class="text_field">
+
+                                    </select>
+                                    <span class="lnr lnr-chevron-down"></span> </div>
+                            </div>
+
+                            <button class="btn btn--round py-2 px-3">Search</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -113,48 +122,7 @@
         <div class="container">
             <!-- start .row -->
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <!-- start .single-product -->
-                    <div class="product product--card">
-                        <div class="product__thumbnail">
-                            <div class="aspect_ratio"> <img src="{{ asset('images/d.jpg') }}" alt="Product Image" class="ratio_img"> </div>
-                            <div class="prod_btn"> <a href="#" class="transparent btn--sm btn--round">More
-                                        Info
-                                    </a> </div>
-                            <!-- end /.prod_btn -->
-                        </div>
-                        <!-- end /.product__thumbnail -->
-                        <div class="product-desc">
-                            <a href="" class="product_title">
-                                <h4>Special Veg nonveg Pizza </h4> </a>
-                            <ul class="titlebtm">
-                                <li> <img class="auth-img" src="{{ asset('images/1.jpg') }}" alt="author image">
-                                    <p> <a href="#">name</a> </p>
-                                </li>
-                                <li class="product_cat"> <a href="#">
-                                            From <span>Sylhet</span></a> </li>
-                            </ul>
-                        </div>
-                        <!-- end /.product-desc -->
-                        <div class="product-purchase">
-                            <div class="price_love"> <span>৳500</span>
-                                <p> <span class="lnr lnr-heart"></span> 48</p>
-                            </div>
-                            <div class="rating product--rating">
-                                <ul>
-                                    <li> <span class="fa fa-star"></span> </li>
-                                    <li> <span class="fa fa-star"></span> </li>
-                                    <li> <span class="fa fa-star"></span> </li>
-                                    <li> <span class="fa fa-star"></span> </li>
-                                    <li> <span class="fa fa-star-half-o"></span> </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- end /.product-purchase -->
-                    </div>
-                    <!-- end /.single-product -->
-                </div>
-                <!-- end /.col-md-4 -->
+                @include('includes.dish_preview')
             </div>
         </div>
         <div class="row">
@@ -188,6 +156,7 @@
             </div>
         </div>
     </section>
+
     <!--================================
         END CALL TO ACTION AREA
     =================================-->

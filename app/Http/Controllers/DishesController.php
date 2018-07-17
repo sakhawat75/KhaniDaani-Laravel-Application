@@ -49,6 +49,9 @@ class DishesController extends Controller
 	    $dish->dish_price = $request->input('dish_price');
 	    $dish->dish_description = $request->input('dish_description');
 	    $dish->item_tags = $request->input('item_tags');
+	    $dish->dsp_1 = $request->input('dsp_1');
+	    $dish->dsp_2 = $request->input('dsp_2');
+	    $dish->dsp_3 = $request->input('dsp_3');
 
 	    $this->upload_image( $request, $dish, 'dish_images', 'dish_thumbnail', false);
 	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_1', false);
