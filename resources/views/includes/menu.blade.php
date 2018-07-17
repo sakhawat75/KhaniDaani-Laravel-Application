@@ -286,7 +286,7 @@
                 <li class="has_dropdown">
                   <a href="#">Dish categories</a>
                   <div class="dropdown dropdown--menu">
-                    <ul>
+                    <ul id="cat_ul">
                       <li>
                         <a href="category-grid.html">Tandori / Grill</a>
                       </li>

@@ -5,8 +5,6 @@
 
 @section ('content')
 
-    <body class="cehfdish">
-
     <!--================================
           START BREADCRUMB AREA
       =================================-->
@@ -40,6 +38,14 @@
     <!--================================
         START PROFILE AREA
     =================================-->
+
+    <div class="container">
+        @include('includes.success_message')
+        @include('includes.messeages')
+    </div>
+
+
+
     <section class="author-profile-area">
         <div class="container">
             <div class="row">
@@ -148,7 +154,7 @@
                                 <div class="filter-bar clearfix filter-bar2">
                                     <div class="filter__option filter--text pull-left">
                                         <p>
-                                            <span>Chef Delivery Services</p>
+                                            <span>Chef Delivery Services</span></p>
                                     </div>
 
                                     <div class="pull-right">
@@ -191,20 +197,23 @@
                             <!-- end /.col-md-12 -->
 
                             <!-- start .col-md-6 -->
+
+
+                            @foreach($dsps as $dsp)
                             <div class="col-lg-12 col-md-12">
                                 <div class="product product--list product--list-small">
 
                                     <div class="product__details">
                                         <div class="product-desc">
                                             <a href="#" class="product_title">
-                                                <h4>Delivering Uposahar to all over sylhet </h4>
+                                                <h4>{{ $dsp->service_title }}</h4>
                                             </a>
-                                            <p>Nunc placerat mi id nisi inter dum mollis. Praesent phare...</p>
+                                            <p>{!! $dsp->service_description !!}</p>
 
                                             <ul class="titlebtm">
                                                 <li class="product_cat">
                                                     <a href="#">
-                                                        <span class="lnr lnr-book"></span>Shibgong, Zindabazar ..</a>
+                                                        <span class="lnr lnr-book"></span>{{ $dsp->user->profile->area }}, {{ $dsp->user->profile->city }} ..</a>
                                                 </li>
                                             </ul>
                                             <!-- end /.titlebtm -->
@@ -213,18 +222,18 @@
 
                                         <div class="product-meta">
                                             <div class="author">
-                                                <img class="auth-img" src="{{ asset('images/kd.jpg') }}" alt="author image">
+                                                <img class="auth-img" src="{{ route('home') }}/storage/images/profile_image/{{ $dsp->user->profile->profile_image }}" alt="author image">
                                                 <p>
-                                                    <a href="#">KhaniDaani</a>
+                                                    <a href="#">{{ $dsp->user->name }}</a>
                                                 </p>
                                             </div>
                                             <!-- end /.author -->
 
                                             <div class="love-comments">
                                                 <p>
-                                                    <span class="lnr lnr-heart"></span> Charge <span>৳50</span></p>
+                                                    <span class="lnr lnr-heart"></span> Charge <span>{{ $dsp->service_charge }}</span></p>
                                                 <p>
-                                                    <span class="lnr lnr-heart"></span> From <span>Areas</span></p>
+                                                    <span class="lnr lnr-heart"></span> From <span>{{ $dsp->service_area }}</span></p>
                                             </div>
                                             <!-- end /.love-comments -->
 
@@ -255,12 +264,12 @@
                                         <div class="product-purchase">
                                             <div class="price_love">
                                                 Delivery time:
-                                                <span>1 hrs - 5 hrs</span>
+                                                <span>{{ $dsp->min_delivery_time }} hrs - {{ $dsp->max_delivery_time }} hrs</span>
                                             </div>
                                             <div class="sell">
                                                 <p>
                                                     <span class="">Id:</span>
-                                                    <span>150678</span>
+                                                    <span>{{ $dsp->id }}</span>
                                                 </p>
                                             </div>
                                         </div>
@@ -269,6 +278,7 @@
                                 </div>
                                 <!-- end /.single-product -->
                             </div>
+                            @endforeach
 
                         </div>
                         <!-- end /.row -->
@@ -299,5 +309,5 @@
 
         </div>
     </section>
-    </body>
+
 @endsection

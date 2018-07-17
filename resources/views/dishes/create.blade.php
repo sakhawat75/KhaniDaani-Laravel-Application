@@ -56,6 +56,10 @@
         <!-- end /.row -->
 
         <div class="row">
+          <div class="container">
+            @include('includes.success_message')
+            @include('includes.messeages')
+          </div>
           <div class="col-lg-8 col-md-7">
             <form action="{{ route('dishes.store') }}" method="post" enctype="multipart/form-data">
               {{ csrf_field() }}
@@ -98,6 +102,7 @@
                   <div class="form-group">
                     <label for="preperation_time">Preperation Time</label>
                     <div class="select-wrap select-wrap2">
+                      <label for="preparation_time"></label>
                       <select name="preparation_time" id="preparation_time" class="text_field">
                         <option value="1 Hour">1 Hour</option>
                         <option value="2 Hour">2 Hour</option>

@@ -66,8 +66,10 @@
                                     </ul>
                                 </div>
                             </div>
+                        </aside>
                     </div>
             </div>
+        </div>
         </div>
     </section>
 

@@ -376,7 +376,11 @@
                 <!-- end /.sidebar-card -->
 
                 <div class="purchase-button">
-                  <a href="{{ route('order.selectdsp') }}" class="btn btn--lg btn--round">Order Now</a>
+                  <form action="{{ route('order.selectdsp', ['dish' => $dish]) }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn--lg btn--round">Order Now</button>
+                  </form>
+                  {{--<a href="{{ route('order.selectdsp') }}" class="btn btn--lg btn--round">Order Now</a>--}}
                 </div>
                 <!-- end /.purchase-button -->
               </div>

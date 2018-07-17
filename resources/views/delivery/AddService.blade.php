@@ -38,12 +38,15 @@
     <section class="dashboard-area">
 
         @include( 'includes.menu-dashboard' )
+        @include('includes.messeages')
 
         <div class="dashboard_contents">
             <div class="container">
+                @include('includes.success_message')
                 <div class="row">
                     <div class="col-lg-8 col-md-7">
                         <form action="{{ route('delivery.AddService') }}" method="post" enctype="multipart/form-data">
+                            @csrf
 
                             <div class="upload_modules">
                                 <div class="modules__title">
@@ -90,7 +93,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="text" name="service_hours" id="rlicense" class="text_field"
+                                                    <input type="time" name="service_hours_start" id="rlicense" class="text_field"
                                                            placeholder="Start Time">
                                                 </div>
                                             </div>
@@ -100,8 +103,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="text" id="exlicense" class="text_field"
-                                                           placeholder="End Time">
+                                                    <input type="time" id="exlicense" class="text_field"
+                                                           placeholder="End Time" name="service_hours_end">
                                                 </div>
                                             </div>
                                         </div>
@@ -127,7 +130,7 @@
                                         <div class="form-group">
                                             <label for="">Servcie Charge <span>(In taka)</span></label>
                                             <div class="input-group">
-                                                <input name="service_charge" type="text" id="rlicense"
+                                                <input name="service_charge" type="number" id="rlicense"
                                                        class="text_field" value="৳500">
                                             </div>
                                         </div>
