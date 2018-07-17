@@ -41,7 +41,7 @@ Route::get( '/order/status', 'OrderController@status')->name( 'order.status');
 Route::get( '/search/livedish', 'RestApiController@livedish')->name( 'search.livedish');
 
 Route::get( '/delivery/AddService', 'DeliveryServiceController@create')->name( 'delivery.create');
-Route::post( '/delivery/Add_Service', 'DeliveryServiceController@AddService')->name( 'delivery.AddService');
+Route::post( '/delivery/AddService', 'DeliveryServiceController@AddService')->name( 'delivery.AddService');
 
 Auth::routes();
 
