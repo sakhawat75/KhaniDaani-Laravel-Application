@@ -140,9 +140,9 @@
                                             <div class="select-wrap select-wrap2">
                                                 <select name="min_delivery_time" id="preperation_time"
                                                         class="text_field">
-                                                    <option value="">1</option>
-                                                    <option value="1 Hour">2</option>
-                                                    <option value="2 Hour">3</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
                                                 </select>
                                                 <span class="lnr lnr-chevron-down"></span>
                                             </div>
@@ -152,9 +152,9 @@
                                             <div class="select-wrap select-wrap2">
                                                 <select name="max_delivery_time" id="preperation_time"
                                                         class="text_field">
-                                                    <option value="">1</option>
-                                                    <option value="1 Hour">2</option>
-                                                    <option value="2 Hour">3</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
                                                 </select>
                                                 <span class="lnr lnr-chevron-down"></span>
                                             </div>

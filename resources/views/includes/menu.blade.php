@@ -324,9 +324,9 @@
                     <div class="megamnu_module">
                       <div class="menu_items">
                         <div class="menu_column">
-                          <ul>
+                          <ul id="area_ul">
                             <li class="title">Sylhet</li>
-                            <li>
+                            {{--<li>
                               <a href="all-products.html">Zindabazar</a>
                             </li>
                             <li>
@@ -334,7 +334,7 @@
                             </li>
                             <li>
                               <a href="category-grid.html">Shibgonj</a>
-                            </li>
+                            </li>--}}
                           </ul>
                         </div>
                       </div>
@@ -361,3 +361,55 @@
 <!--================================
         END MENU AREA
     =================================-->
+
+@push('scripts-footer-bottom')
+  <script>
+    $.ajax({
+        url: "{{ route('home')}}/api/categories",
+        /*data: {
+            id: 5,
+        },*/
+        type: "GET",
+        dataType: "json",
+    }).done( function (json) {
+        $('#cat_ul').html('');
+        /*json.forEach(function (category) {
+            console.log(category.name);
+        });*/
+        $.each(json, function (index, category) {
+            //console.log(category.name);
+            $('#cat_ul').append("<li><a href='#'>"+ category.name +"</a></li>")
+        }).fail(function( xhr, status, errorThrown ) {
+            //alert( "Sorry, there was a problem!" );
+            console.log( "Error: " + errorThrown );
+            console.log( "Status: " + status );
+            console.dir( xhr );
+        })
+        // Code to run regardless of success or failure;
+            .always(function( xhr, status ) {
+                //alert( "The request is complete!" );
+            });
+    });
+
+    $.ajax({
+        url: "{{ route('home') }}/ajax-areas",
+        data: {
+            city_name: "Sylhet",
+        },
+        dataType: "json",
+    }).done(function (json) {
+        $.each(json, function (index, area) {
+            $("#area_ul").append(
+                $('<li/>').append($('<a/>').attr('href', '#').text(area.name))
+
+                // <li><a href="all-products-list.html">Upashahr</a></li>
+            );
+        }).fail(function( xhr, status, errorThrown ) {
+            //alert( "Sorry, there was a problem!" );
+            console.log( "Error: " + errorThrown );
+            console.log( "Status: " + status );
+            console.dir( xhr );
+        });
+    });
+  </script>
+@endpush
