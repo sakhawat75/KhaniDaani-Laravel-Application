@@ -77,7 +77,7 @@
                         </div>
                         <div class="sidebar-card author-menu">
                             <ul>
-                                <li> <a href="#">User Profile</a> </li>
+                                <li> <a href="{{ route('profile.show', ['profile' => auth()->id()]) }}">User Profile</a> </li>
                                 <li> <a href= "{{ route('profile.chefdishes') }}" >Chef Dish</a> </li>
                                 <li> <a href="{{ route('profile.chefdelivery') }}">Chef Delivery Option</a> </li>
                             </ul>
@@ -164,28 +164,14 @@
                                             </a>
                                             <ul class="custom_dropdown custom_drop2 dropdown-menu" aria-labelledby="drop1">
                                                 <li>
-                                                    <a href="#">Pizza
-                                                        <span>35</span>
+                                                    <a href="#">Deliverer
+                                                        <span>2</span>
                                                     </a>
                                                 </li>
-                                            </ul>
-                                        </div>
-                                        <div class="filter__option filter--dropdown">
-                                            <a href="#" id="drop2" class="dropdown-trigger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter By
-                                                <span class="lnr lnr-chevron-down"></span>
-                                            </a>
-                                            <ul class="custom_dropdown dropdown-menu" aria-labelledby="drop2">
                                                 <li>
-                                                    <a href="#">Popular items</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">New items </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Best seller </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">Best rating </a>
+                                                    <a href="#">Pickers Point
+                                                        <span>2</span>
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </div>

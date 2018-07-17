@@ -468,8 +468,12 @@
                 <div class="product-purchase">
                   <div class="price_love">
                     <span>৳{{ $dish->dish_price }}</span>
+                  </div>
+                  <div class="sell">
                     <p>
-                      <span class="lnr lnr-heart"></span> 48</p>
+                      <span class="lnr lnr-heart"></span>
+                      <span>50</span>
+                    </p>
                   </div>
 
                   <div class="rating product--rating">
@@ -492,12 +496,7 @@
                     </ul>
                   </div>
 
-                  <div class="sell">
-                    <p>
-                      <span class="lnr lnr-cart"></span>
-                      <span>50</span>
-                    </p>
-                  </div>
+                  
                 </div>
                 <!-- end /.product-purchase -->
               </div>
