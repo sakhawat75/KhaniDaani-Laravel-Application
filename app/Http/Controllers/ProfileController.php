@@ -16,8 +16,11 @@ class ProfileController extends Controller
         return view('profile.cashout');
     }
     
-    public function chefdelivery() {
-    	$dsps = DeliveryService::all();
+    public function chefdelivery(User $user) {
+
+    	$dsps = $user->delivery_services;
+
+    	//return response()->json($dsps) ;
         return view('profile.chefdelivery', compact( 'dsps'));
     }
 

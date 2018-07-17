@@ -85,7 +85,7 @@ $("#dish_category").on('change', function (e) {
 });
 
 // To trigger the city select option
-$("#dish_catego").trigger('change');
+$("#dish_category").trigger('change');
 
 
 // dynamically add dish subcategory with JSON

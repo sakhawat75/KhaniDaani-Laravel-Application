@@ -23,7 +23,7 @@ Route::post('/profile', 'ProfileController@store')->name( 'profile.store');
 
 Route::get( '/profile/chefdishes', 'ProfileController@chefdishes')->name('profile.chefdishes');
 
-Route::get( '/profile/chefdelivery', 'ProfileController@chefdelivery')->name('profile.chefdelivery');
+Route::get( '/profile/{user}/chefdelivery', 'ProfileController@chefdelivery')->name('profile.chefdelivery');
 
 Route::get('/profile/{profile}', 'ProfileController@show')->name('profile.show');
 
@@ -38,7 +38,8 @@ Route::post( '/order/confirm/{dsp}/{dish}', 'OrderController@confirm')->name( 'o
 
 Route::get( '/order/status', 'OrderController@status')->name( 'order.status');
 
-Route::get( '/search/livedish', 'RestApiController@livedish')->name( 'search.livedish');
+Route::get( '/search/livedish', 'SearchController@livedish')->name( 'search.livedish');
+Route::post( '/search/livedish', 'SearchController@search_livedish')->name( 'search.livedish');
 
 Route::get( '/delivery/AddService', 'DeliveryServiceController@create')->name( 'delivery.create');
 Route::post( '/delivery/AddService', 'DeliveryServiceController@AddService')->name( 'delivery.AddService');
