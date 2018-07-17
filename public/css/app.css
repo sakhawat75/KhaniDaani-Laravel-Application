@@ -10866,7 +10866,7 @@ a {
 }
 
 .mcolor1 {
-  color: #77de51;
+  color: #00b22d;
 }
 
 .mcolor2 {
@@ -10890,7 +10890,7 @@ a {
 }
 
 .mcolorbg1 {
-  background: #77de51;
+  background: #00b22d;
 }
 
 .mcolorbg2 {
@@ -12669,7 +12669,7 @@ h6 {
 .btn.btn--color2:hover,
 .btn-success:hover,
 .btn--success:hover {
-  background: #77de51;
+  background: #00b22d;
 }
 
 .btn.btn--color2.btn--bordered,
@@ -12679,8 +12679,8 @@ h6 {
 .btn-success:hover.btn--bordered,
 .btn--success:hover.btn--bordered {
   background: none;
-  border: 1px solid #77de51;
-  color: #77de51;
+  border: 1px solid #00b22d;
+  color: #00b22d;
 }
 
 .btn.btn--color3,
@@ -12729,7 +12729,7 @@ h6 {
 .btn.btn--color5:hover,
 .btn--danger:hover,
 .btn-danger:hover {
-  background: #ff6a6d;
+  background: #f64646;
 }
 
 .btn.btn--color5.btn--bordered,
@@ -13833,7 +13833,7 @@ h6 {
 }
 
 .table tbody > tr > td.type span.sale {
-  background: #77de51;
+  background: #00b22d;
 }
 
 .table tbody > tr > td.type span.purchase {
@@ -14056,7 +14056,7 @@ h6 {
 }
 
 .mcolor1 {
-  color: #77de51;
+  color: #00b22d;
 }
 
 .mcolor2 {
@@ -14080,7 +14080,7 @@ h6 {
 }
 
 .mcolorbg1 {
-  background: #77de51;
+  background: #00b22d;
 }
 
 .mcolorbg2 {
@@ -15319,7 +15319,7 @@ h6 {
 }
 
 .mcolor1 {
-  color: #77de51;
+  color: #00b22d;
 }
 
 .mcolor2 {
@@ -15343,7 +15343,7 @@ h6 {
 }
 
 .mcolorbg1 {
-  background: #77de51;
+  background: #00b22d;
 }
 
 .mcolorbg2 {
@@ -16787,9 +16787,9 @@ div#ui-datepicker-div tbody tr td a:hover {
 }
 
 .alert.alert-success {
-  color: #77de51;
-  background: rgba(119, 222, 81, 0.1);
-  border-color: rgba(119, 222, 81, 0.1);
+  color: #00b22d;
+  background: rgba(0, 178, 45, 0.1);
+  border-color: rgba(0, 178, 45, 0.1);
 }
 
 .alert.alert-info {
@@ -16909,7 +16909,7 @@ div#ui-datepicker-div tbody tr td a:hover {
 }
 
 .mcolor1 {
-  color: #77de51;
+  color: #00b22d;
 }
 
 .mcolor2 {
@@ -16933,7 +16933,7 @@ div#ui-datepicker-div tbody tr td a:hover {
 }
 
 .mcolorbg1 {
-  background: #77de51;
+  background: #00b22d;
 }
 
 .mcolorbg2 {
@@ -18209,7 +18209,7 @@ ul.nav-tabs.nav--tabs2 li a::before {
 }
 
 .author__notification_area ul li .notification_count.msg {
-  background: #77de51;
+  background: #00b22d;
 }
 
 .author__notification_area ul li .notification_count.purch {
@@ -20385,7 +20385,7 @@ span.counter {
 .sidebar_author .freelance-status .custom-radio label span.circle:before,
 .sidebar_author .freelance-status .custom-radio .form-group p.label span.circle:before,
 .form-group .sidebar_author .freelance-status .custom-radio p.label span.circle:before {
-  background: #77de51;
+  background: #00b22d;
   border: 0;
   content: "\F00C";
   font-family: FontAwesome , sans-serif;
@@ -21875,7 +21875,7 @@ span.counter {
 }
 
 .invoice .invoice__meta .date_info p.status {
-  color: #77de51;
+  color: #00b22d;
 }
 
 .invoice .invoice__meta {
@@ -22305,8 +22305,8 @@ span.counter {
 }
 
 .notifications_module .notification .notification__icons .noti_icon.reviewed {
-  color: #77de51;
-  background: rgba(119, 222, 81, 0.1);
+  color: #00b22d;
+  background: rgba(0, 178, 45, 0.1);
 }
 
 .notifications_module .notification .notification__icons span.lnr-cross {
@@ -23182,7 +23182,7 @@ span.counter {
 }
 
 .support_thread_list .support_thread--single .support_thread_info .support_title span.solved {
-  background: #77de51;
+  background: #00b22d;
 }
 
 .support_thread_list .support_thread--single .support_thread_info .suppot_query_tag {

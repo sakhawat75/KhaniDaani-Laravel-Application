@@ -15,6 +15,10 @@ use Storage;
 class DishesController extends Controller
 {
 
+    public function purchase() {
+        return view('dishes.purchase');
+    }
+
 	public function __construct() {
 		$this->middleware('auth')->except('show');
 	}
