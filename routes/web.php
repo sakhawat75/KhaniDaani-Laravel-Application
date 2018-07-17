@@ -48,6 +48,7 @@ Route::get( '/dishes/editdish', 'DishesController@editdish')->name( 'dishes.edit
 Route::resource( '/dishes', 'DishesController');
 
 Route::get('/ajax-subcat', 'RestApiController@jsonSubCat');
+Route::get('/api/categories', 'RestApiController@jsonCategories');
 Route::get('/ajax-areas', 'RestApiController@jsonAreas');
 
 Route::get('recover-pass', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('recover-pass');

@@ -1,6 +1,7 @@
     <!--//////////////////// JS GOES HERE ////////////////-->
 
     <!-- inject:js -->
+    @stack('scripts-footer-top')
 
     <script src="{{ URL::to('/') }}/js/vendor/jquery/popper.min.js"></script>
     <script src="{{ URL::to('/') }}/js/vendor/jquery/uikit.min.js"></script>
@@ -23,4 +24,7 @@
     {{--<script src="{{ URL::to('/') }}/js/map.js"></script>--}}
     <script src="{{ route('home') }}/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script src="{{ URL::to('/') }}/js/app.js"></script>
+
+    @stack('scripts-footer-bottom')
+
     <!-- endinject -->

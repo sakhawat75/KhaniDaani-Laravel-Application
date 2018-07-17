@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Input;
 
 class RestApiController extends Controller
 {
+
+	public function jsonCategories()
+	{
+		$categories = Category::all();
+		return response()->json($categories);
+	}
+
     public function jsonSubCat() {
     	$cat_name = Input::get('cat_name');
     	$cat_id = Category::where('name', '=', $cat_name)->first();
