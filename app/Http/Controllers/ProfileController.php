@@ -12,6 +12,10 @@ use Storage;
 
 class ProfileController extends Controller
 {
+    public function cashout() {
+        return view('profile.cashout');
+    }
+    
     public function chefdelivery() {
     	$dsps = DeliveryService::all();
         return view('profile.chefdelivery', compact( 'dsps'));

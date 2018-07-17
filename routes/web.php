@@ -13,6 +13,8 @@
 
 Route::get('/', 'ViewController@index')->name('home');
 
+Route::get('/profile/cashout', 'ProfileController@cashout')->name('profile.cashout');
+
 Route::get('/profile', 'ProfileController@index')->name('profile.index');
 
 Route::get('/profile/create', 'ProfileController@create')->name('profile.create');
@@ -43,6 +45,7 @@ Route::post( '/delivery/Add_Service', 'DeliveryServiceController@AddService')->n
 
 Auth::routes();
 
+Route::get( '/dishes/purchase', 'DishesController@purchase')->name( 'dishes.purchase');
 Route::get( '/dishes/manage', 'DishesController@manage')->name( 'dishes.manage');
 Route::get( '/dishes/editdish', 'DishesController@editdish')->name( 'dishes.editdish');
 Route::resource( '/dishes', 'DishesController');

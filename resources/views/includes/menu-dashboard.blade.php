@@ -12,7 +12,7 @@
                                     <span class="lnr lnr-cog"></span>Profile Setting</a>
                     </li>
                     <li>
-                        <a href="{{ route('dishes.editdish') }}">
+                        <a href="{{ route('dishes.purchase') }}">
                                     <span class="lnr lnr-cart"></span>Purchase</a>
                     </li>
                     <li class="{{ request()->is('profile_setting') ? 'active' : '' }}">
@@ -20,7 +20,7 @@
                                     <span class="lnr lnr-briefcase"></span>Manage Dish</a>
                     </li>
                     <li>
-                        <a href="dashboard-withdrawal.html">
+                        <a href="{{ route('profile.cashout') }}">
                                     <span class="lnr lnr-briefcase"></span>Withdrawals</a>
                     </li>
                     <li>
