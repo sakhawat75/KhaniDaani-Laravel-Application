@@ -41,10 +41,7 @@ class DeliveryServiceController extends Controller
     public function AddService(Request $request) {
     	$deliveryService = new DeliveryService;
     	$id = auth()->id();
-		$deliveryService->user_id = $id;
-    	//$id = auth()->id();
-	    //$user = User::where('user_id', $id)->first(); 	    
-	    //$deliveryService->user_id = $user->id;
+		$deliveryService->user_id = $id;    	
 	    $deliveryService->service_title = $request->input('service_title');
 	    $deliveryService->service_description = Input::get('service_description');
 	    $deliveryService->service_area = Input::get('service_area');
