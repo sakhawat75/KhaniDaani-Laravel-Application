@@ -4,8 +4,8 @@ use Faker\Generator as Faker;
 
 $factory->define(App\DeliveryService::class, function (Faker $faker) {
     return [
-        'user_id' => function () {
-            return factory(App\User::class)->create()->id;},
+        /*'user_id' => function () {
+            return factory(App\User::class)->create()->id;},*/
         'service_title' => $faker->name,
         'service_description' => $faker->name,
         'service_area' => $faker->secondaryAddress,

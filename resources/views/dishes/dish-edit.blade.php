@@ -312,8 +312,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="text" id="rlicense" class="text_field"
-                                 placeholder="username">
+                          <input type="number" id="dsp_1" class="text_field" name="dsp_1" value="{{ $dish->dsp_1 }}" >
                         </div>
                       </div>
                     </div>
@@ -322,13 +321,20 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="text" id="exlicense" class="text_field"
-                                 placeholder="username2">
+                          <input type="number" id="dsp_2" class="text_field" name="dsp_2"  value="{{ $dish->dsp_2 }}">
                         </div>
                       </div>
                     </div>
                     <!-- end /.col-md-6 -->
 
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <input type="number" id="dsp_3" class="text_field" name="dsp_3" value="{{ $dish->dsp_3 }}">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end /.col-md-6 -->
                   </div>
                   <!-- end /.row -->
                 </div>

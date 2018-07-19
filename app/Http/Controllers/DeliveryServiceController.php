@@ -54,6 +54,6 @@ class DeliveryServiceController extends Controller
 	    $deliveryService->save();
 	    session()->flash('success', 'Delivery Service has been created successfully');
 
-       	return redirect()->route( 'profile.chefdelivery');
+       	return redirect()->route( 'profile.chefdelivery', ['user' => $id]);
        }
 }

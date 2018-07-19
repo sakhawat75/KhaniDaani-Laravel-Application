@@ -18,17 +18,19 @@ class DatabaseSeeder extends Seeder
         DB::table('profiles')->delete();
         DB::table('users')->delete();     
 
-        $this->call(UsersTableSeeder::class);
-        $this->command->info("Users table has been seeded");
+//        $this->call(UsersTableSeeder::class);
+//        $this->command->info("Users table has been seeded");
 
-        $this->call(ProfilesTableSeeder::class);
-        $this->command->info("Profiles table has been seeded");
+//        $this->call(ProfilesTableSeeder::class);
+//        $this->command->info("Profiles table has been seeded");
         
         $this->call(DishesTableSeeder::class);
         $this->command->info("Dishes table has been seeded");
 
-        $this->call(DeliveryServicesTableSeeder::class);
-        $this->command->info("DSP table has been seeded");
+//        $this->call(DeliveryServicesTableSeeder::class);
+//        $this->command->info("DSP table has been seeded");
+
+
        
         DB::table('subcategories')->delete();
         DB::table('categories')->delete();
