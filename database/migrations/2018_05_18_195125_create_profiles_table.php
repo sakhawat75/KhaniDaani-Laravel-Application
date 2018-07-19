@@ -16,6 +16,7 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
+            
             $table->string('user_name');
             $table->string('fullname');
             $table->string('mobile_no');
@@ -29,10 +30,12 @@ class CreateProfilesTable extends Migration
             $table->text('description');
             $table->decimal('avgRating', 2, 2);
             $table->decimal('communicationRating', 2, 2);
-            $table->decimal('presetationRating', 2, 2);
+            $table->decimal('presentationRating', 2, 2);
             $table->decimal('timingRating', 2, 2);
             $table->decimal('describeRating', 2, 2);
             $table->timestamps();
+
+            //$table->foreign( 'user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
