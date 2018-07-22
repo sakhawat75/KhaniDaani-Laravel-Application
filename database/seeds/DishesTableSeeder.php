@@ -11,6 +11,6 @@ class DishesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Dish::class, 15)->create();
+        factory(App\Dish::class, 5)->create();
     }
 }
