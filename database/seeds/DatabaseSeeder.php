@@ -16,16 +16,13 @@ class DatabaseSeeder extends Seeder
         DB::table('dishes')->delete();
         DB::table('delivery_services')->delete();
         DB::table('profiles')->delete();
-        DB::table('users')->delete();     
-
-//        $this->call(UsersTableSeeder::class);
-//        $this->command->info("Users table has been seeded");
+        DB::table('users')->delete();
 
 //        $this->call(ProfilesTableSeeder::class);
 //        $this->command->info("Profiles table has been seeded");
         
-        $this->call(DishesTableSeeder::class);
-        $this->command->info("Dishes table has been seeded");
+//        $this->call(DishesTableSeeder::class);
+//        $this->command->info("Dishes table has been seeded");
 
 //        $this->call(DeliveryServicesTableSeeder::class);
 //        $this->command->info("DSP table has been seeded");
@@ -50,6 +47,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AreasTableSeeder::class);
         $this->command->info("Areas table has been seeded");
 
+	    $this->call(UsersTableSeeder::class);
+	    $this->command->info("Users table has been seeded");
         
     }
 }
