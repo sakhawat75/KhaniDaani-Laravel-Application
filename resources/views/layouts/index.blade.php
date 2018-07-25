@@ -25,9 +25,9 @@
             <div class="col-md-6">
               <div class="hero__content__title">
                 <h1>
-                  Sell Your Special Dishes Near You or Buy Variety of Dishes.
+                  Sell your special dishes near you or buy variety of dishes OR
                 </h1>
-                <p class="tagline">Subtitle</p>
+                <p class="tagline">Earn money by delivering those dishes.</p>
               </div>
 
               <!-- start .hero__btn-area-->
@@ -472,26 +472,26 @@
                   <div class="sell">
                     <p>
                       <span class="lnr lnr-heart"></span>
-                      <span>50</span>
+                      <span>0</span>
                     </p>
                   </div>
 
                   <div class="rating product--rating">
                     <ul>
                       <li>
-                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star-o"></span>
                       </li>
                       <li>
-                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star-o"></span>
                       </li>
                       <li>
-                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star-o"></span>
                       </li>
                       <li>
-                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star-o"></span>
                       </li>
                       <li>
-                        <span class="fa fa-star-half-o"></span>
+                        <span class="fa fa-star-o"></span>
                       </li>
                     </ul>
                   </div>
