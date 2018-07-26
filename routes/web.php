@@ -54,6 +54,7 @@ Route::resource( '/dishes', 'DishesController');
 Route::get('/ajax-subcat', 'RestApiController@jsonSubCat');
 Route::get('/api/categories', 'RestApiController@jsonCategories');
 Route::get('/ajax-areas', 'RestApiController@jsonAreas');
+Route::get('/api/search-dish', 'RestApiController@jsonSearchDish')->name( 'api.search.dish');
 
 Route::get('recover-pass', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('recover-pass');
 

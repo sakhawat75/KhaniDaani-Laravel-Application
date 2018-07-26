@@ -62,4 +62,5 @@ class Dish extends Model
     public static function latestDishes($limit) {
     	return static::latest()->limit($limit)->get();
     }
+
 }
