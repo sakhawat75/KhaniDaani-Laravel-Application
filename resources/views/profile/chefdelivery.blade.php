@@ -18,11 +18,11 @@
                                 <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li class="active">
-                                <a href="#">Profile</a>
+                                <a href="#">Chef Delivery</a>
                             </li>
                         </ul>
                     </div>
-                    <h1 class="page-title"> Profile</h1>
+                    <h1 class="page-title">Chef Delivery Option</h1>
                 </div>
                 <!-- end /.col-md-12 -->
             </div>
@@ -56,7 +56,7 @@
                                 <div class="author_avatar"> <img src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="Presenting the broken author avatar :D"> </div>
                                 <div class="author">
                                     <h4>
-                                        s
+                                         NiruGupta
                                     </h4>
                                     <p>Joined {{ $profile->created_at->toFormattedDateString() }}</p>
                                 </div>
@@ -113,13 +113,13 @@
                         <div class="col-md-4 col-sm-4">
                             <div class="author-info mcolorbg4">
                                 <p>Total Dish</p>
-                                <h3></h3>
+                                <h3>3</h3>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4">
                             <div class="author-info pcolorbg">
                                 <p>Total sales</p>
-                                <h3>****</h3>
+                                <h3>0</h3>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4">
@@ -128,22 +128,22 @@
                                 <div class="rating product--rating">
                                     <ul>
                                         <li>
-                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-sta-o"></span>
                                         </li>
                                         <li>
-                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star-o"></span>
                                         </li>
                                         <li>
-                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star-o"></span>
                                         </li>
                                         <li>
-                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star-o"></span>
                                         </li>
                                         <li>
-                                            <span class="fa fa-star-half-o"></span>
+                                            <span class="fa fa-star-o"></span>
                                         </li>
                                     </ul>
-                                    <span class="rating__count">(***)</span>
+                                    <span class="rating__count">(0)</span>
                                 </div>
                             </div>
                         </div>
@@ -217,31 +217,31 @@
 
                                             <div class="love-comments">
                                                 <p>
-                                                    <span class="lnr lnr-heart"></span> Charge <span>{{ $dsp->service_charge }}</span></p>
+                                                 Charge: ৳ <span>{{ $dsp->service_charge }}</span></p>
                                                 <p>
-                                                    <span class="lnr lnr-heart"></span> From <span>{{ $dsp->service_area }}</span></p>
+                                                     Delivering: <span>{{ $dsp->service_area }}</span></p>
                                             </div>
                                             <!-- end /.love-comments -->
 
                                             <div class="rating product--rating">
                                                 <ul>
                                                     <li>
-                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star-o"></span>
                                                     </li>
                                                     <li>
-                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star-o"></span>
                                                     </li>
                                                     <li>
-                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star-o"></span>
                                                     </li>
                                                     <li>
-                                                        <span class="fa fa-star"></span>
+                                                        <span class="fa fa-star-o"></span>
                                                     </li>
                                                     <li>
-                                                        <span class="fa fa-star-half-o"></span>
+                                                        <span class="fa fa-star-o"></span>
                                                     </li>
                                                 </ul>
-                                                <span class="rating__count">(34)</span>
+                                                <span class="rating__count">(0)</span>
                                             </div>
                                             <!-- end /.rating -->
                                         </div>
@@ -254,7 +254,7 @@
                                             </div>
                                             <div class="sell">
                                                 <p>
-                                                    <span class="">Id:</span>
+                                                    <span class="">DSP-ID:</span>
                                                     <span>{{ $dsp->id }}</span>
                                                 </p>
                                             </div>

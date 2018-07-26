@@ -131,7 +131,7 @@
                         <div class="col-md-12">
                             <div class="product-title-area">
                                 <div class="product__title">
-                                    <h2>Newest Dishes</h2> </div> <a href="#" class="btn btn--sm">See all Dish</a> </div>
+                                    <h2>{{ $user->name }} {{--{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}--}} Dishes</h2> </div> <a href="#" class="btn btn--sm">See all Dishes</a> </div>
                             <!-- end /.product-title-area -->
                         </div>
                         <div class="col-lg-6 col-md-6">
@@ -158,7 +158,7 @@
                                 
                                 <div class="product-purchase ">
                             <div class="price_love"> <span>৳00</span>
-                                <p> <span class="lnr lnr-heart "></span> 48</p>
+                                <p> <span class="lnr lnr-heart "></span> 0</p>
                             </div>
                             <div class="rating product--rating pull-right">
                                 <ul>
@@ -180,7 +180,7 @@
                                 <div class="product__thumbnail">
                                     <div class="aspect_ratio"> <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_thumbnail }}" alt="Product Image" class="ratio_img"> </div>
                                     <div class="prod_btn"> 
-                                    <a href="{{ route('dishes.show', ['id' => $dish]) }}" class="transparent btn--sm btn--round">MoreInfo</a> 
+                                    <a href="{{ route('dishes.show', ['id' => $dish]) }}" class="transparent btn--sm btn--round">More Info</a> 
                                     </div>
                                     <!-- end /.prod_btn -->
                                 </div>
@@ -199,15 +199,15 @@
                                 <!-- end /.product-desc -->
                                 <div class="product-purchase">
                                     <div class="price_love"> <span>৳{{ $dish->dish_price }}</span>
-                                        <p> <span class="lnr lnr-heart"></span> 48</p>
+                                        <p> <span class="lnr lnr-heart"></span> 0</p>
                                     </div>
                                     <div class="rating product--rating pull-right">
                                         <ul>
-                                            <li> <span class="fa fa-star"></span> </li>
-                                            <li> <span class="fa fa-star"></span> </li>
-                                            <li> <span class="fa fa-star"></span> </li>
-                                            <li> <span class="fa fa-star"></span> </li>
-                                            <li> <span class="fa fa-star-half-o"></span> </li>
+                                            <li> <span class="fa fa-star-o"></span> </li>
+                                            <li> <span class="fa fa-star-o"></span> </li>
+                                            <li> <span class="fa fa-star-o"></span> </li>
+                                            <li> <span class="fa fa-star-o"></span> </li>
+                                            <li> <span class="ffa fa-star-o"></span> </li>
                                         </ul>
                                     </div>
                                 </div>
