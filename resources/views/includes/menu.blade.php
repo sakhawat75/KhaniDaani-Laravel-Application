@@ -379,16 +379,7 @@
         $.each(json, function (index, category) {
             //console.log(category.name);
             $('#cat_ul').append("<li><a href='#'>"+ category.name +"</a></li>")
-        }).fail(function( xhr, status, errorThrown ) {
-            //alert( "Sorry, there was a problem!" );
-            console.log( "Error: " + errorThrown );
-            console.log( "Status: " + status );
-            console.dir( xhr );
-        })
-        // Code to run regardless of success or failure;
-            .always(function( xhr, status ) {
-                //alert( "The request is complete!" );
-            });
+        });
     });
 
     $.ajax({
@@ -404,11 +395,6 @@
 
                 // <li><a href="all-products-list.html">Upashahr</a></li>
             );
-        }).fail(function( xhr, status, errorThrown ) {
-            //alert( "Sorry, there was a problem!" );
-            console.log( "Error: " + errorThrown );
-            console.log( "Status: " + status );
-            console.dir( xhr );
         });
     });
   </script>

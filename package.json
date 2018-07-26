@@ -20,6 +20,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "jscroll": "^2.4.1",
         "materialize-stepper": "^2.1.4"
     }
 }

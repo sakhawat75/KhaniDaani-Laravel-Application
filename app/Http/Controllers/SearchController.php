@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class SearchController extends Controller
 {
     public function livedish() {
-        $dishes = Dish::all();
+        $dishes = Dish::paginate(9);
         $categories = Category::all();
         return view('search.livedish', compact('dishes', 'categories'));
     }
@@ -19,7 +19,7 @@ class SearchController extends Controller
         $dish_category = $request->input('dish_category');
         $dish_subcategory = $request->input('dish_subcategory');
 
-        $dishes = Dish::where('dish_subcategory', $dish_subcategory)->get();
+        $dishes = Dish::where('dish_subcategory', $dish_subcategory)->paginate(9);
         $categories = Category::all();
         return view('search.livedish', compact('dishes', 'categories'));
     }

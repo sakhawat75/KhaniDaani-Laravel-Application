@@ -1,6 +1,5 @@
 @extends ('layouts.master') @section ('title', 'Search Dishes') @section ('content') {{-- ready for initial development --}}
 
-<body class="search">
     <!--================================
         START SEARCH AREA
     =================================-->
@@ -119,24 +118,32 @@
         FOUND DISH
     =================================-->
     <section class="products section--padding2">
-        <div class="container">
+        <div class="container scroll">
             <!-- start .row -->
             <div class="row">
                 @include('includes.dish_preview')
             </div>
+            <div class="container">
+                {{ $dishes->links() }}
+            </div>
         </div>
-        <div class="row">
+
+        {{--<div class="row">
             <div class="col-md-12">
-                <div class="pagination-area categorised_item_pagination">
+                --}}{{--<div class="pagination-area categorised_item_pagination">
                     <nav class="navigation pagination" role="navigation">
                         <div class="nav-links">
                             <a class="prev page-numbers" href="#"> <span class="lnr lnr-arrow-left"></span> </a> <a class="page-numbers current" href="#">1</a> <a class="page-numbers" href="#">2</a> <a class="page-numbers" href="#">3</a>
                             <a class="next page-numbers" href="#"> <span class="lnr lnr-arrow-right"></span> </a>
                         </div>
                     </nav>
+                </div>--}}{{--
+                <div class="container">
+                    {{ $dishes->links() }}
                 </div>
+
             </div>
-        </div>
+        </div>--}}
     </section>
     <!--================================
         END PRODUCTS AREA
@@ -156,8 +163,7 @@
             </div>
         </div>
     </section>
-
     <!--================================
         END CALL TO ACTION AREA
     =================================-->
-</body> @endsection
+@endsection

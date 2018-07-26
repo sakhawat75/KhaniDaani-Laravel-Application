@@ -182,7 +182,22 @@ $("#city").on('change', function (e) {
 $("#areas").trigger('change');
 
 // To add ck-editor in textarea
-CKEDITOR.replace('article-ckeditor');
+// CKEDITOR.replace('article-ckeditor');
+
+$('ul.pagination').hide();
+$(function () {
+    $('.scroll').jscroll({
+        autoTrigger: true,
+        nextSelector: '.pagination li.active + li a',
+        contentSelector: 'div.scroll',
+        debug: 'false',
+        padding: 0,
+        callback: function callback() {
+            // $('ul.pagination:visible:first').hide();
+            $('ul.pagination').remove();
+        }
+    });
+});
 
 /***/ }),
 /* 2 */
