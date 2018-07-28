@@ -278,28 +278,6 @@
               });
           }
 
-
-
-          /*$("body").on('DOMSubtreeModified', "#min_price", function() {
-              min_price = $("#min_price").text();
-              // min_price =  parseInt(min_price.replace(/([^0-9\\.])/g,""));
-              min_price = + min_price.replace(/([^0-9\\.])/g,"");
-              console.log('Min Price: ' + min_price);
-              if(min_price > 0) {
-                  callAjax();
-              }
-          });
-
-          $("body").on('DOMSubtreeModified', "#max_price", function() {
-              max_price = $("#max_price").text();
-              // max_price =  parseInt(max_price.replace(/([^0-9\\.])/g,""));
-              max_price = + max_price.replace(/([^0-9\\.])/g,"");
-              if(max_price > 0) {
-                  callAjax();
-              }
-              console.log('Max Price: ' + max_price);
-          });*/
-
           $("body").on('DOMSubtreeModified', ".price-ranges", function() {
               max_price = $("#max_price").text();
               min_price = $("#min_price").text();
