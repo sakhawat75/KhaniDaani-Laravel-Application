@@ -38,17 +38,40 @@ class RestApiController extends Controller
         return \Response::json($areas);
     }
 
-    public function jsonSearchDish(Request $request) {
+	/**
+	 *
+	 * Search And Filter dish
+	 *
+	 * @param Request $request
+	 *
+	 * @return \Illuminate\Http\JsonResponse
+	 */
+	public function jsonSearchDish(Request $request) {
+		$dishes = Dish::query();
 		if ($request->has( 'dish_category')) {
 			$dish_category = $request->input('dish_category');
-			$dishes = Dish::where('dish_category', $dish_category)->with('profile');
+			if ($dish_category != '') {
+				$dishes->where('dish_category', $dish_category);
+			}
+
 		}
 		if ($request->has( 'dish_subcategory')) {
 			$dish_subcategory = $request->input('dish_subcategory');
-			$dishes = $dishes->Where('dish_subcategory', $dish_subcategory);
-		}
+			if ($dish_subcategory != '') {
+				$dishes->Where('dish_subcategory', $dish_subcategory);
+			}
 
-		$dishes = $dishes->get();
+		}
+	    if ($request->has( 'keyword'))
+	    {
+	    	$keyword = $request->input('keyword');
+	    	if ($keyword != '') {
+			    $dishes->where('dish_name','like', '%'. $keyword . '%');
+		    }
+
+	    }
+
+		$dishes = $dishes->with('profile')->get();
 
 		return response()->json($dishes);
     }

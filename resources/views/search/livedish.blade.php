@@ -18,7 +18,7 @@
             <div class="search__field">
               <form action="#">
                 <div class="field-wrapper">
-                  <input class="relative-field rounded" type="text" placeholder="Search your Dishes">
+                  <input class="relative-field rounded" type="text" placeholder="Search your Dishes" id="onpage_search">
                   <button class="btn btn--round" type="submit">Search</button>
                 </div>
               </form>
@@ -231,29 +231,31 @@
                   });
               });
 
-              $.ajax({
-                  url: "{{ route('api.search.dish') }}",
-                  data: {
-                      dish_category: cat_name,
-                  },
-                  type: "GET",
-                  dataType: "json",
-              }).done( function (dishes) {
-                  $('#dish_result').html('');
-                  $('ul.pagination').hide();
-                  renderDishes(dishes);
-              });
+              callAjax();
           });
 
           // $("#dish_category").trigger('change');
           $('#dish_subcategory').on('change', function (e) {
+              callAjax();
+          });
+
+          $('#onpage_search').on('input', function (event) {
+              callAjax();
+          });
+
+          function callAjax() {
+              let keyword = $('#onpage_search').val();
               let cat_name = $('#dish_category').val();
-              let subcat_name = e.target.value;
+              let subcat_name = $('#dish_subcategory').val();
+
+              // console.log('Keyword: ' + keyword);
+
               $.ajax({
                   url: "{{ route('api.search.dish') }}",
                   data: {
                       dish_category: cat_name,
                       dish_subcategory: subcat_name,
+                      keyword: keyword,
                   },
                   type: "GET",
                   dataType: "json",
@@ -262,7 +264,7 @@
                   $('ul.pagination').hide();
                   renderDishes(dishes);
               });
-          })
+          }
       });
 
 
