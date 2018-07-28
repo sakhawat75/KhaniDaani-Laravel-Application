@@ -71,7 +71,17 @@ class RestApiController extends Controller
 
 	    }
 
-		$dishes = $dishes->with('profile')->get();
+		if ($request->has( 'min_price') && $request->has( 'max_price'))
+		{
+			$min_price = $request->input('min_price');
+			$max_price = $request->input('max_price');
+			if ($min_price > 0 && $max_price > 0) {
+				$dishes->whereBetween( 'dish_price', [$min_price, $max_price]);
+			}
+
+		}
+
+		$dishes = $dishes->with('profile')->paginate(12);
 
 		return response()->json($dishes);
     }

@@ -102,7 +102,7 @@
             </a>
             <div class="custom_dropdown dropdown-menu" aria-labelledby="drop3">
               <div class="range-slider price-range"></div>
-              <div class="price-ranges"><span class="from rounded">৳200</span> <span class="to rounded">৳500</span>
+              <div class="price-ranges"><span class="from rounded" id="min_price">৳200</span> <span class="to rounded" id="max_price">৳500</span>
               </div>
             </div>
           </div>
@@ -202,26 +202,31 @@
     <script>
       $(document).ready(function () {
           _.templateSettings.variable = 'dish';
+          var min_price = 0;
+          var max_price = 0;
+          var timer;
+
+
           var template = _.template(
               $('script.template').html()
           );
 
           var renderDishes = function(dishes) {
-              _.each(dishes, function(dish) {
+              _.each(dishes.data, function(dish) {
                   $('#dish_result').prepend(template(dish));
               });
           };
 
-          $('#dish_category').prepend('<option value="" selected>Select Category</option>');
+          $('#dish_category').prepend('<option value="" selected>All Category</option>');
 
           $("#dish_category").off('change');
           $('#dish_subcategory').empty();
-          $('#dish_subcategory').append('<option value="" selected>Select Sub Category</option>');
+          $('#dish_subcategory').append('<option value="" selected>All Sub Category</option>');
 
           $("#dish_category").on('change', function (e) {
               console.log(e);
               $('#dish_subcategory').empty();
-              $('#dish_subcategory').prepend('<option value="" selected>Select Sub Category</option>');
+              $('#dish_subcategory').prepend('<option value="" selected>All Sub Category</option>');
               let cat_name = e.target.value;
 
               $.get('/ajax-subcat?cat_name=' + cat_name, function (data) {
@@ -240,7 +245,12 @@
           });
 
           $('#onpage_search').on('input', function (event) {
-              callAjax();
+              clearTimeout(timer);
+              timer = setTimeout(function () {
+                  callAjax();
+                  console.log('Min Price: ' + min_price);
+                  console.log('Max Price: ' + max_price);
+              }, 500);
           });
 
           function callAjax() {
@@ -256,6 +266,8 @@
                       dish_category: cat_name,
                       dish_subcategory: subcat_name,
                       keyword: keyword,
+                      min_price: min_price,
+                      max_price: max_price,
                   },
                   type: "GET",
                   dataType: "json",
@@ -265,6 +277,49 @@
                   renderDishes(dishes);
               });
           }
+
+
+
+          /*$("body").on('DOMSubtreeModified', "#min_price", function() {
+              min_price = $("#min_price").text();
+              // min_price =  parseInt(min_price.replace(/([^0-9\\.])/g,""));
+              min_price = + min_price.replace(/([^0-9\\.])/g,"");
+              console.log('Min Price: ' + min_price);
+              if(min_price > 0) {
+                  callAjax();
+              }
+          });
+
+          $("body").on('DOMSubtreeModified', "#max_price", function() {
+              max_price = $("#max_price").text();
+              // max_price =  parseInt(max_price.replace(/([^0-9\\.])/g,""));
+              max_price = + max_price.replace(/([^0-9\\.])/g,"");
+              if(max_price > 0) {
+                  callAjax();
+              }
+              console.log('Max Price: ' + max_price);
+          });*/
+
+          $("body").on('DOMSubtreeModified', ".price-ranges", function() {
+              max_price = $("#max_price").text();
+              min_price = $("#min_price").text();
+
+              min_price = + min_price.replace(/([^0-9\\.])/g,"");
+              max_price = + max_price.replace(/([^0-9\\.])/g,"");
+
+              if(max_price > 0 && min_price > 0) {
+                  clearTimeout(timer);
+                  timer = setTimeout(function () {
+                      callAjax();
+                      console.log('Min Price: ' + min_price);
+                      console.log('Max Price: ' + max_price);
+                  }, 1000);
+
+              }
+
+          });
+
+
       });
 
 
