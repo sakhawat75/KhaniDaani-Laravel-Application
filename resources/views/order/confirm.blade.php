@@ -40,6 +40,7 @@
         <div class="dashboard_contents">
             <div class="container">
                 <form action="{{ route('order.store') }}" class="setting_form" method="post">
+                    @csrf
 
                     <input type="hidden" name="buyer_user_id" value="{{ auth()->id() }}">
                     <input type="hidden" name="dish_id" value="{{ $dish->id }}">
@@ -156,7 +157,7 @@
                                 <ul>
                                     <li>
                                         <div class="custom-radio">
-                                            <input type="radio" id="opt3" class="" name="payment_type">
+                                            <input type="radio" id="opt3" class="" name="payment_type" VALUE="khanidaani_balance">
                                             <label for="opt3">
                                                 <span class="circle"></span>Khanidaani Balance</label>
                                         </div>
@@ -166,7 +167,7 @@
                                     </li>
                                     <li>
                                         <div class="custom-radio">
-                                            <input type="radio" id="opt2" class="" name="payment_type">
+                                            <input type="radio" id="opt2" class="" name="payment_type" value="bkash">
                                             <label for="opt2">
                                                 <span class="circle"></span>Bkash</label>
                                         </div>
@@ -180,7 +181,7 @@
                                     </li>
                                     <li>
                                         <div class="custom-radio">
-                                            <input type="radio" id="opt1" class="" name="payment_type">
+                                            <input type="radio" id="opt1" class="" name="payment_type" value="credit_card">
                                             <label for="opt1">
                                                 <span class="circle"></span>Credit Card</label>
                                         </div>
@@ -256,7 +257,7 @@
                                                     <input id="cv_code" type="text" class="text_field" placeholder="Enter code here...">
                                                 </div>
 
-                                                <button type="submit" href="{{ route('order.status') }}" class="btn btn--round btn--default">Continue & Order</button>
+                                                <button type="submit" class="btn btn--round btn--default">Continue & Order</button>
 
                                                 {{--<button type="submit" class="btn btn--round btn--default">Confirm Order</button>--}}
                                             </div>
