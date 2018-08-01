@@ -39,7 +39,13 @@
     <section class="dashboard-area">
         <div class="dashboard_contents">
             <div class="container">
-                <form action="#" class="setting_form">
+                <form action="{{ route('order.store') }}" class="setting_form" method="post">
+
+                    <input type="hidden" name="buyer_user_id" value="{{ auth()->id() }}">
+                    <input type="hidden" name="dish_id" value="{{ $dish->id }}">
+                    <input type="hidden" name="dsp_id" value="{{ $dsp->id }}">
+
+
                     <div class="row">
                         <div class="col-lg-6">
 
@@ -77,39 +83,60 @@
                                     <div class="information_wrapper form--fields">
 
                                         <div class="form-group">
-                                            <label for="email">Your Full Name
+                                            <label for="buyer_fullname">Your Full Name
                                                 <sup>*</sup>
                                             </label>
-                                            <input type="text" id="email" class="text_field" placeholder="Full name">
+                                            @auth
+                                                <input type="text" id="buyer_fullname" class="text_field" value="{{ auth()->user()->profile->fullname }}" name="buyer_fullname">
+                                                @else
+                                                <input type="text" id="buyer_fullname" class="text_field" placeholder="Enter your name here" name="buyer_fullname">
+
+                                            @endauth
                                         </div>
 
 
                                         <div class="form-group">
-                                            <label for="address1">Address Line 1</label>
+                                            <label for="delivery_address">Address Line 1</label>
                                             <sup>*</sup>
-                                            <input type="text" id="address1" class="text_field" placeholder="Address line one">
+
+                                            @auth
+                                                <input type="text" id="delivery_address" name="delivery_address" class="text_field" value="{{ auth()->user()->profile->address }}">
+                                            @else
+                                                <input type="text" id="delivery_address" name="delivery_address" class="text_field" placeholder="Address line one">
+
+                                            @endauth
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="address2">Address Line 2</label>
+                                            <label for="delivery_address_hint">Address Hint</label>
                                             <sup>*</sup>
-                                            <input type="text" id="address2" class="text_field" placeholder="Address line two">
+                                            @auth
+                                                <input type="text" id="delivery_address_hint" name="delivery_address_hint" class="text_field" value="{{ auth()->user()->profile->address_hint }}">
+                                            @else
+                                                <input type="text" id="delivery_address_hint" name="delivery_address_hint" class="text_field" placeholder="Address line two">
+
+                                            @endauth
                                         </div>
 
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="city">Mobile No
+                                                    <label for="buyer_contact_n">Mobile No
                                                         <sup>*</sup>
                                                     </label>
-                                                    <input type="number" id="zipcode" class="text_field" placeholder="Mobile No 1">
+                                                    @auth
+                                                        <input type="text" id="buyer_contact_n" name="buyer_contact_n" class="text_field" value="{{ auth()->user()->profile->mobile_no }}">
+                                                    @else
+                                                        <input type="text" id="buyer_contact_n" name="buyer_contact_n" class="text_field" placeholder="Mobile No 1">
+
+                                                    @endauth
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="zipcode">Mobile no (Optional)
+                                                    <label for="buyer_cn_opt" name="buyer_cn_opt">Mobile no (Optional)
                                                     </label>
-                                                    <input type="number" id="zipcode" class="text_field" placeholder="Mobile no 2">
+                                                    <input type="number" id="buyer_cn_opt" name="buyer_cn_opt" class="text_field" placeholder="Mobile no 2">
                                                 </div>
                                             </div>
                                         </div>
@@ -129,7 +156,7 @@
                                 <ul>
                                     <li>
                                         <div class="custom-radio">
-                                            <input type="radio" id="opt3" class="" name="filter_opt">
+                                            <input type="radio" id="opt3" class="" name="payment_type">
                                             <label for="opt3">
                                                 <span class="circle"></span>Khanidaani Balance</label>
                                         </div>
@@ -139,7 +166,7 @@
                                     </li>
                                     <li>
                                         <div class="custom-radio">
-                                            <input type="radio" id="opt2" class="" name="filter_opt">
+                                            <input type="radio" id="opt2" class="" name="payment_type">
                                             <label for="opt2">
                                                 <span class="circle"></span>Bkash</label>
                                         </div>
@@ -147,12 +174,13 @@
                                         <div class="form-group">
                                             <input id="card_number" type="text" class="text_field" placeholder="Enter your bkash trasaction number here...">
                                         </div>
-                                        <a href="{{ route('order.status') }}" class="btn btn--round btn--default">Continue & Order</a>
+                                        {{--<a href="{{ route('order.status') }}" class="btn btn--round btn--default">Continue & Order</a>--}}
+
 
                                     </li>
                                     <li>
                                         <div class="custom-radio">
-                                            <input type="radio" id="opt1" class="" name="filter_opt">
+                                            <input type="radio" id="opt1" class="" name="payment_type">
                                             <label for="opt1">
                                                 <span class="circle"></span>Credit Card</label>
                                         </div>
@@ -228,7 +256,9 @@
                                                     <input id="cv_code" type="text" class="text_field" placeholder="Enter code here...">
                                                 </div>
 
-                                                <button type="submit" class="btn btn--round btn--default">Confirm Order</button>
+                                                <button type="submit" href="{{ route('order.status') }}" class="btn btn--round btn--default">Continue & Order</button>
+
+                                                {{--<button type="submit" class="btn btn--round btn--default">Confirm Order</button>--}}
                                             </div>
                                         </div>
                                     </div>

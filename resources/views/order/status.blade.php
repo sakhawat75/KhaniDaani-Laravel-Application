@@ -27,7 +27,7 @@
                                 <li class="step active">
                                     <div data-step-label="Now chef is preparing the food please wait..." class="step-title waves-effect waves-dark">Order Started</div>
                                     <div class="step-content">
-                                        <h1>4 Hours: 35 Min</h1>
+                                        <h1>{{ $order->delivery_time }} Hours: 35 Min</h1>
                                         -or-
                                         <h6>Dish is Ready Please Check delivery option</h6>
 
