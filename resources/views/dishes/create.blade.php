@@ -104,10 +104,10 @@
                     <div class="select-wrap select-wrap2">
                       <label for="preparation_time"></label>
                       <select name="preparation_time" id="preparation_time" class="text_field">
-                        <option value="1 Hour">1 Hour</option>
-                        <option value="2 Hour">2 Hour</option>
-                        <option value="2 Hour">3 Hour</option>
-                        <option value="2 Hour">4 Hour</option>
+                        <option value="1">1 Hour</option>
+                        <option value="2">2 Hour</option>
+                        <option value="3">3 Hour</option>
+                        <option value="4">4 Hour</option>
                       </select>
                       <span class="lnr lnr-chevron-down"></span>
                     </div>

@@ -93,8 +93,10 @@
                         <select name="preparation_time" id="preperation_time"
                                 class="text_field">
                           <option value="{{ $dish->preparation_time }}">{{ $dish->preparation_time }}</option>
-                          <option value="1 Hour">1 Hour</option>
-                          <option value="2 Hour">2 Hour</option>
+                          <option value="1">1 Hour</option>
+                          <option value="2">2 Hour</option>
+                          <option value="3">3 Hour</option>
+                          <option value="4">4 Hour</option>
                         </select>
                         <span class="lnr lnr-chevron-down"></span>
                       </div>

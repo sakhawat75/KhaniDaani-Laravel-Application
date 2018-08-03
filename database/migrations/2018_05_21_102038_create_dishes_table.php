@@ -24,7 +24,7 @@ class CreateDishesTable extends Migration
             $table->string('dish_name');
             $table->text('dish_description');
             $table->double('dish_price');
-            $table->string('preparation_time');
+            $table->integer('preparation_time');
             $table->text('dish_thumbnail');
             $table->text('dish_image_1');
             $table->text('dish_image_2');

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         DB::table('delivery_services')->delete();
         DB::table('profiles')->delete();
         DB::table('users')->delete();
+        DB::table('system_variables')->delete();
 
 //        $this->call(ProfilesTableSeeder::class);
 //        $this->command->info("Profiles table has been seeded");
@@ -49,6 +50,9 @@ class DatabaseSeeder extends Seeder
 
 	    $this->call(UsersTableSeeder::class);
 	    $this->command->info("Users table has been seeded");
-        
+
+        $this->call(SystemVariablesSeeder::class);
+	    $this->command->info("SystemVariables table has been seeded");
+
     }
 }
