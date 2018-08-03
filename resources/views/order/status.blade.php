@@ -33,9 +33,9 @@
 
                     <br>
                     <p>Chef Option</p>
-                    <button class="btn btn--icon btn-md btn--round btn-success">
+                    <button class="btn btn--icon btn-md btn--round btn-success" id="dish_ready" type="button">
                       <span class="lnr lnr-bullhorn"></span>Ready</button>
-                    <button class="btn btn--icon btn-md btn--round btn-danger">
+                    <button class="btn btn--icon btn-md btn--round btn-danger" type="button">
                       <span class="lnr  lnr-thumbs-up"></span>Delivered</button>
                   </div>
                 </li>
@@ -195,7 +195,7 @@
   </div>
 
 
-  @push('scripts-footer-top')
+  @push('scripts-footer-bottom')
     <script type="text/javascript" src="{{ asset('js/vendor/jquery.countdown.min.js') }}"></script>
     <script>
         $(document).ready(function () {
@@ -221,6 +221,13 @@
                         // .parent().addClass('disabled');
 
                 });
+
+            $('#dish_ready').on('click', function (e) {
+                e.preventDefault();
+                console.log('Clicked: #dish_ready');
+                $('.timer').countdown('stop');
+                $('.timer').text('Dish is ready');
+            });
 
         //    Asia/Dhaka
         });
