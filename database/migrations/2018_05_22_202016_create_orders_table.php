@@ -26,7 +26,7 @@ class CreateOrdersTable extends Migration
 	        $table->double('khanidaani_charge');
 	        $table->double('total_price');
 //            $table->string('quantity');
-	        $table->time('preparation_time');
+	        $table->integer('preparation_time');
 	        $table->text('delivery_address');
 	        $table->text('delivery_address_hint');
 	        $table->string('payment_type');
