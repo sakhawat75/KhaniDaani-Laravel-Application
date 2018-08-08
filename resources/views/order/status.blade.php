@@ -44,7 +44,7 @@
                   <div data-step-label="Status of the delivery ..." class="step-title waves-effect waves-dark">Delivery Service</div>
                   <div class="step-content">
                     <button class="btn btn--icon btn-md btn--round btn-success" type="button" id="dsp_ready"> <span class="lnr  lnr-thumbs-up"></span>Received By DSPID</button>
-                    <h5 {{--class="d-none"--}} id="dsp_str">Count down will start after clicking Recieved</h5>
+                    <h5 {{--class="d-none"--}} id="dsp_str">{{--Count down will start after clicking Recieved--}}</h5>
                     <h1><span id="dsp_timer">{{--{{ $order->delivery_time }}--}}</span></h1>
                     <button class="btn btn--icon btn-md btn--round btn-danger"> <span class="lnr  lnr-thumbs-up"></span>Delivered By DSPID</button>
                   </div>
@@ -197,7 +197,7 @@
 
   @push('scripts-footer-bottom')
     <script type="text/javascript" src="{{ asset('js/vendor/jquery.countdown.min.js') }}"></script>
-    <script>
+    <script type="text/javascript">
         $(document).ready(function () {
             $('.stepper').activateStepper();
 
@@ -206,9 +206,13 @@
             $('#dish_ready').on('click', function (e) {
                 e.preventDefault();
                 console.log('Clicked: #dish_ready');
-                $('#chef_timer').countdown('stop');
-                $('#chef_timer').text('Dish is ready');
-                {{--addTimer({{ $order->delivery_time }}, '#dsp_timer');--}}
+                @if($order->dish->profile_id == auth()->id())
+                  $('#chef_timer').countdown('stop');
+                  $('#chef_timer').text('Dish is ready');
+                  addTimer({{ $order->delivery_time }}, '#dsp_timer');
+                  $('#dsp_str').text('Count Down started...');
+                @endif
+
             });
 
         $('#dsp_ready').on('click', function (e) {
@@ -216,8 +220,8 @@
                 console.log('Clicked: #dsp_ready');
                 // $('#chef_timer').countdown('stop');
                 // $('#chef_timer').text('Dish is ready');
-                addTimer({{ $order->delivery_time }}, '#dsp_timer');
-                $('#dsp_str').text('Count Down started...');
+                {{--addTimer({{ $order->delivery_time }}, '#dsp_timer');--}}
+                // $('#dsp_str').text('Count Down started...');
             });
 
         //    Asia/Dhaka
