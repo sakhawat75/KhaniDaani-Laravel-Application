@@ -102,6 +102,20 @@ class RestApiController extends Controller
 				    $order->save();
 			    }
 		    }
+		    if($order->buyer_user_id == auth()->id()) {
+			    if($request->has( 'is_order_completed')){
+
+				    $order->is_order_completed = 1;
+				    $order->save();
+			    }
+		    }
+		    if(auth()->user()->delivery_services->contains('id', $order->dsp_id)) {
+			    if($request->has( 'dsp_is_dish_delivered')){
+
+				    $order->dsp_is_dish_delivered = 1;
+				    $order->save();
+			    }
+		    }
 	    }
 
     }

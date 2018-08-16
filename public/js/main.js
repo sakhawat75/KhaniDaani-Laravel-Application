@@ -199,9 +199,9 @@
 
 
     /* bar rating plugin installation */
-    $('.give_rating').barrating({
+    /*$('.give_rating').barrating({
         theme: 'fontawesome-stars'
-    });
+    });*/
 
 
     /* custom slick slider navigation */

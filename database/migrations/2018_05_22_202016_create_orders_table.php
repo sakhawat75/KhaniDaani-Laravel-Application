@@ -36,7 +36,7 @@ class CreateOrdersTable extends Migration
 	        $table->boolean('chef_is_dish_delivered')->nullable();
 	        $table->boolean('dsp_is_dish_recieved')->nullable();
 	        $table->boolean('dsp_is_dish_delivered')->nullable();
-	        $table->boolean('is_order_complited')->nullable();
+	        $table->boolean('is_order_completed')->nullable();
 	        $table->timestamps();
         });
     }
