@@ -32,7 +32,7 @@ class CreateOrdersTable extends Migration
 	        $table->string('payment_type');
 	        $table->integer('delivery_time');
 	        $table->integer('rating')->nullable();
-	        $table->boolean('chef_is_dish_ready')->nullable();
+	        $table->boolean('chef_is_dish_ready')->default(0);
 	        $table->boolean('chef_is_dish_delivered')->nullable();
 	        $table->boolean('dsp_is_dish_recieved')->nullable();
 	        $table->boolean('dsp_is_dish_delivered')->nullable();

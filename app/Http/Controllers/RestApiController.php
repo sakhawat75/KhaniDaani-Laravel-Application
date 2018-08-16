@@ -6,6 +6,7 @@ use App\Area;
 use App\Category;
 use App\City;
 use App\Dish;
+use App\Order;
 use App\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -84,5 +85,24 @@ class RestApiController extends Controller
 		$dishes = $dishes->with('profile')->paginate(12);
 
 		return response()->json($dishes);
+    }
+
+    public function orderUpdate(Request $request)
+    {
+    	$order_id = null;
+    	$order = null;
+
+    	if ($request->has( 'order_id')) {
+    		$order_id = $request->input('order_id');
+    		$order = Order::find($order_id);
+    		if($order->dish->profile_id == auth()->id()) {
+			    if($request->has( 'chef_is_dish_ready')){
+
+				    $order->chef_is_dish_ready = 1;
+				    $order->save();
+			    }
+		    }
+	    }
+
     }
 }

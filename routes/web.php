@@ -56,6 +56,7 @@ Route::get('/ajax-subcat', 'RestApiController@jsonSubCat');
 Route::get('/api/categories', 'RestApiController@jsonCategories');
 Route::get('/ajax-areas', 'RestApiController@jsonAreas');
 Route::get('/api/search-dish', 'RestApiController@jsonSearchDish')->name( 'api.search.dish');
+Route::get('/api/order/update', 'RestApiController@orderUpdate')->name( 'api.order.update');
 
 Route::get('recover-pass', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('recover-pass');
 

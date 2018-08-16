@@ -14,7 +14,7 @@
             <div class="dashboard_title_area">
               <div class="pull-left">
                 <div class="dashboard__title">
-                  <h3>Your Order Status</h3> </div>
+                  <h3>Your Order Status</h3></div>
               </div>
             </div>
           </div>
@@ -25,28 +25,38 @@
             <div class="dashboard_title_area">
               <ul class="stepper">
                 <li class="step active">
-                  <div data-step-label="Now chef is preparing the food please wait..." class="step-title waves-effect waves-dark">Order Started</div>
+                  <div data-step-label="Now chef is preparing the food please wait..."
+                       class="step-title waves-effect waves-dark">Order Started
+                  </div>
                   <div class="step-content">
-                    <h1><span id="chef_timer">{{ $order->preparation_time }}</span></h1>
-                    -or-
-                    <h6>Dish is Ready Please Check delivery option</h6>
+                    <h1><span id="chef_timer">Dish is ready</span></h1>
+                    {{---or-
+                    <h6>Dish is Ready Please Check delivery option</h6>--}}
 
                     <br>
                     <p>Chef Option</p>
                     <button class="btn btn--icon btn-md btn--round btn-success" id="dish_ready" type="button">
-                      <span class="lnr lnr-bullhorn"></span>Ready</button>
+                      <span class="lnr lnr-bullhorn"></span>Ready
+                    </button>
                     <button class="btn btn--icon btn-md btn--round btn-danger" type="button">
-                      <span class="lnr  lnr-thumbs-up"></span>Delivered</button>
+                      <span class="lnr  lnr-thumbs-up"></span>Delivered
+                    </button>
                   </div>
                 </li>
 
                 <li class="step">
-                  <div data-step-label="Status of the delivery ..." class="step-title waves-effect waves-dark">Delivery Service</div>
+                  <div data-step-label="Status of the delivery ..." class="step-title waves-effect waves-dark">Delivery
+                    Service
+                  </div>
                   <div class="step-content">
-                    <button class="btn btn--icon btn-md btn--round btn-success" type="button" id="dsp_ready"> <span class="lnr  lnr-thumbs-up"></span>Received By DSPID</button>
+                    <button class="btn btn--icon btn-md btn--round btn-success" type="button" id="dsp_ready"><span
+                          class="lnr  lnr-thumbs-up"></span>Received By DSPID
+                    </button>
                     <h5 {{--class="d-none"--}} id="dsp_str">{{--Count down will start after clicking Recieved--}}</h5>
                     <h1><span id="dsp_timer">{{--{{ $order->delivery_time }}--}}</span></h1>
-                    <button class="btn btn--icon btn-md btn--round btn-danger"> <span class="lnr  lnr-thumbs-up"></span>Delivered By DSPID</button>
+                    <button class="btn btn--icon btn-md btn--round btn-danger"><span class="lnr  lnr-thumbs-up"></span>Delivered
+                      By DSPID
+                    </button>
                   </div>
                 </li>
 
@@ -55,11 +65,14 @@
                   <div class="step-content">
                     <div class="product__price_download">
 
-                      <button class="btn btn--icon btn-md btn--round btn-success"> <span class="lnr  lnr-thumbs-up"></span>Received By DSPID</button>
+                      <button class="btn btn--icon btn-md btn--round btn-success"><span
+                            class="lnr  lnr-thumbs-up"></span>Received By DSPID
+                      </button>
 
                       <div class="product__price_download">
                         <div class="item_action v_middle">
-                          <a href="#" class="btn btn--md btn--round btn--white rating--btn not--rated" data-toggle="modal" data-target="#myModal">
+                          <a href="#" class="btn btn--md btn--round btn--white rating--btn not--rated"
+                             data-toggle="modal" data-target="#myModal">
                             <P class="rate_it">Rate Now</P>
                             <div class="rating product--rating">
                               <ul>
@@ -88,13 +101,7 @@
                       <!-- end /.product__price_download -->
 
 
-
-
                     </div>
-
-
-
-
 
 
                   </div>
@@ -115,7 +122,8 @@
                 </div>
 
                 <div class="card_content">
-                  <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceler isque the mattis, leo quam aliquet congue.</p>
+                  <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceler isque the mattis, leo
+                    quam aliquet congue.</p>
                   <ul>
                     <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
                     <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
@@ -181,7 +189,8 @@
 
             <div class="rating_field">
               <label for="rating_field">Comments</label>
-              <textarea name="rating_field" id="rating_field" class="text_field" placeholder="Please enter your rating reason...."></textarea>
+              <textarea name="rating_field" id="rating_field" class="text_field"
+                        placeholder="Please enter your rating reason...."></textarea>
               <p class="notice">Your review will be ​publicly visible​ and the chef may reply to your review. </p>
             </div>
             <button type="submit" class="btn btn--round btn--default">Submit Rating</button>
@@ -201,30 +210,45 @@
         $(document).ready(function () {
             $('.stepper').activateStepper();
 
-            addTimer({{ $order->preparation_time }}, '#chef_timer');
+          @if($order->chef_is_dish_ready != 1)
+          addTimer({{ $order->preparation_time }}, '#chef_timer');
+          @endif
 
-            $('#dish_ready').on('click', function (e) {
-                e.preventDefault();
-                console.log('Clicked: #dish_ready');
-                @if($order->dish->profile_id == auth()->id())
-                  $('#chef_timer').countdown('stop');
-                  $('#chef_timer').text('Dish is ready');
-                  addTimer({{ $order->delivery_time }}, '#dsp_timer');
-                  $('#dsp_str').text('Count Down started...');
-                @endif
+          $('#dish_ready').on('click', function (e) {
+              e.preventDefault();
+              console.log('Clicked: #dish_ready');
+            @if($order->dish->profile_id == auth()->id())
+
+            $.ajax({
+                url: "/api/order/update",
+                data: {
+                    order_id: {{ $order->id }},
+                    chef_is_dish_ready: 1
+                },
+                type: "GET",
+
+            }).done(function () {
 
             });
 
-        $('#dsp_ready').on('click', function (e) {
+              $('#chef_timer').countdown('stop');
+              $('#chef_timer').text('Dish is ready');
+              addTimer({{ $order->delivery_time }}, '#dsp_timer');
+              $('#dsp_str').text('Count Down started...');
+            @endif
+
+          });
+
+            $('#dsp_ready').on('click', function (e) {
                 e.preventDefault();
                 console.log('Clicked: #dsp_ready');
                 // $('#chef_timer').countdown('stop');
                 // $('#chef_timer').text('Dish is ready');
-                {{--addTimer({{ $order->delivery_time }}, '#dsp_timer');--}}
+              {{--addTimer({{ $order->delivery_time }}, '#dsp_timer');--}}
                 // $('#dsp_str').text('Count Down started...');
             });
 
-        //    Asia/Dhaka
+            //    Asia/Dhaka
             function addTimer(date, selector) {
                 var finalDate = new Date("{{ $order->created_at }}");
                 console.log("Date initial: " + finalDate.toString());
@@ -233,15 +257,15 @@
                 console.log("Date After: " + finalDate.toString());
 
                 $(selector).countdown(finalDate)
-                    .on('update.countdown', function(event) {
+                    .on('update.countdown', function (event) {
                         var format = '%H:%M:%S';
-                        if(event.offset.totalDays > 0) {
+                        if (event.offset.totalDays > 0) {
                             format = '%-d day%!d ' + format;
                         }
 
                         $(this).html(event.strftime(format));
                     })
-                    .on('finish.countdown', function(event) {
+                    .on('finish.countdown', function (event) {
                         $(this).html('Delivery Time has expired!');
                         // .parent().addClass('disabled');
 
