@@ -54,7 +54,7 @@
                     </button>
                     <h5 {{--class="d-none"--}} id="dsp_str">{{--Count down will start after clicking Recieved--}}</h5>
                     <h1><span id="dsp_timer">{{--{{ $order->delivery_time }}--}}</span></h1>
-                    <button class="btn btn--icon btn-md btn--round btn-danger"><span class="lnr  lnr-thumbs-up"></span>Delivered
+                    <button class="btn btn--icon btn-md btn--round btn-danger" type="button" id="dsp_delivered"><span class="lnr  lnr-thumbs-up" ></span>Delivered
                       By DSPID
                     </button>
                   </div>
@@ -65,8 +65,8 @@
                   <div class="step-content">
                     <div class="product__price_download">
 
-                      <button class="btn btn--icon btn-md btn--round btn-success"><span
-                            class="lnr  lnr-thumbs-up"></span>Received By DSPID
+                      <button class="btn btn--icon btn-md btn--round btn-success" id="order_completed" type="button"><span
+                            class="lnr  lnr-thumbs-up"></span>Received By User
                       </button>
 
                       <div class="product__price_download">
@@ -157,12 +157,13 @@
         <!-- end /.modal-header -->
 
         <div class="modal-body">
-          <form action="#">
+          <form action="{{ route('rating.store', ['order' => $order]) }}" method="get">
+            @csrf
             <ul>
               <li>
                 <p>Your Rating</p>
                 <div class="right_content btn btn--round btn--white btn--md">
-                  <select name="rating" class="give_rating">
+                  <select name="rating" class="give_rating" id="select_rating">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -172,7 +173,7 @@
                 </div>
               </li>
 
-              <li>
+              <!-- <li>
                 <p>Rating Causes</p>
                 <div class="right_content">
                   <div class="select-wrap">
@@ -184,12 +185,12 @@
                     <span class="lnr lnr-chevron-down"></span>
                   </div>
                 </div>
-              </li>
+              </li> -->
             </ul>
 
             <div class="rating_field">
               <label for="rating_field">Comments</label>
-              <textarea name="rating_field" id="rating_field" class="text_field"
+              <textarea name="rating_comment" id="rating_field" class="text_field"
                         placeholder="Please enter your rating reason...."></textarea>
               <p class="notice">Your review will be ​publicly visible​ and the chef may reply to your review. </p>
             </div>
@@ -212,6 +213,18 @@
 
           @if($order->chef_is_dish_ready != 1)
           addTimer({{ $order->preparation_time }}, '#chef_timer');
+          @else
+           addTimer({{ $order->delivery_time }}, '#dsp_timer');
+          @endif
+
+          @if($order->dsp_is_dish_delivered == 1)
+          addTimer({{ $order->delivery_time }}, '#dsp_timer');
+           $('#dsp_timer').countdown('pause');
+          @endif
+
+          @if($order->is_order_completed == 1)
+            $('#dsp_timer').html('Order is Completed');
+            $('#order_completed').html('Order is Completed');
           @endif
 
           $('#dish_ready').on('click', function (e) {
@@ -239,6 +252,74 @@
 
           });
 
+          $('#dsp_delivered').on('click', function (e) {
+              e.preventDefault();
+              console.log('auth id: {{ auth()->id() }}');
+              console.log('dsp id: {{ $order->dsp_id }}');
+            @if(auth()->user()->delivery_services->contains('id', $order->dsp_id))
+console.log('Clicked: #dsp_delivered');
+            $.ajax({
+                url: "/api/order/update",
+                data: {
+                    order_id: {{ $order->id }},
+                    dsp_is_dish_delivered: 1
+                },
+                type: "GET",
+
+            }).done(function () {
+                $('#dsp_timer').countdown('pause');
+            });
+
+              
+              
+            @endif
+
+          });
+
+          // order_completed
+          $('#order_completed').on('click', function (e) {
+              e.preventDefault();
+              console.log('auth id: {{ auth()->id() }}');
+              console.log('dsp id: {{ $order->dsp_id }}');
+            @if(auth()->id() == $order->buyer_user_id)
+console.log('Clicked: #dsp_delivered');
+            $.ajax({
+                url: "/api/order/update",
+                data: {
+                    order_id: {{ $order->id }},
+                    is_order_completed: 1
+                },
+                type: "GET",
+
+            }).done(function () {
+                $('#dsp_timer').countdown('stop');
+                $('#dsp_timer').html('Order is Completed');
+                $('#order_completed').html('Order is Completed');
+            });
+
+              
+              
+            @endif
+
+          });
+
+
+            /* bar rating plugin installation */
+            $('#select_rating').barrating({
+                theme: 'fontawesome-stars',
+                onSelect: function(value, text, event) {
+                  console.log('rating clicked');
+                    if (typeof(event) !== 'undefined') {
+                      // rating was selected by a user
+                      console.log(event.target);
+                    } else {
+                      // rating was selected programmatically
+                      // by calling `set` method
+                    }
+                  }
+            });
+
+
             $('#dsp_ready').on('click', function (e) {
                 e.preventDefault();
                 console.log('Clicked: #dsp_ready');
@@ -251,10 +332,10 @@
             //    Asia/Dhaka
             function addTimer(date, selector) {
                 var finalDate = new Date("{{ $order->created_at }}");
-                console.log("Date initial: " + finalDate.toString());
+                
                 finalDate = finalDate.getTime() + ((date + 6) * 60 * 60 * 1000);
                 finalDate = new Date(finalDate);
-                console.log("Date After: " + finalDate.toString());
+                
 
                 $(selector).countdown(finalDate)
                     .on('update.countdown', function (event) {
