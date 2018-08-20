@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/notifications/all', 'NotificationsController@notifications')->name('notifications.all');
+
 Route::get('/', 'ViewController@index')->name('home');
 
 Route::get('/profile/cashout', 'ProfileController@cashout')->name('profile.cashout');

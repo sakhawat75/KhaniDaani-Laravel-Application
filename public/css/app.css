@@ -16146,10 +16146,6 @@ h6 {
   margin-top: 0;
 }
 
-.dropdown.notification--dropdown .notifications_module .notification .notification__info .info p a {
-  display: block;
-}
-
 .dropdown.notification--dropdown .notifications_module .notification .notification__icons .noti_icon {
   margin-right: 0;
   line-height: 30px;

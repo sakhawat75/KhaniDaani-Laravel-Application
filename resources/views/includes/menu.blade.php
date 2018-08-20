@@ -27,16 +27,136 @@
             <div class="author__notification_area">
                 <ul>
                     <li class="has_dropdown">
+                        <div class="icon_wrap">
+                            <span class="lnr lnr-alarm"></span>
+                            <span class="notification_count noti">3</span>
+                        </div>
+
+                        <div class="dropdown notification--dropdown">
+
+                            <div class="dropdown_module_header">
+                                <h4>Notifications</h4>
+                                <a href="{{ route('notifications.all') }}">View All</a>
+                            </div>
+
+                            <!-- after order chef recieve this notification  -->
+
+                            <a href="order-page"> <div class="notifications_module">
+                                <div class="notification">
+                                    <div class="notification__info">
+                                        <div class="info_avatar">
+                                            <img src="images/notification_head4.png" alt="">
+                                        </div>
+                                        <div class="info">
+                                            <p><a href="">Sakhawat</a>
+                                                <Span>Ordered your dish</Span>
+                                                <a href="dish">Indian Butter chiken</a>
+                                            </p>
+                                            <p class="time">Just now</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end /.notificationsController -->
+                            </div> </a>
+
+
+                            <!-- after order deliverer recieve this notification  -->
+
+                            <a href="order-page"> <div class="notifications_module">
+                                    <div class="notification">
+                                        <div class="notification__info">
+                                            <div class="info_avatar">
+                                                <img src="images/notification_head4.png" alt="">
+                                            </div>
+                                            <div class="info">
+                                                <p><a href="">Sakhawat</a>
+                                                    <span>Choose you as deliverer for</span>
+                                                    <a href="dish">Indian Butter chiken</a>
+                                                </p>
+                                                <p class="time">Just now</p>
+                                            </div>
+                                        </div>
+                                        <!-- end /.notificationsController -->
+                                    </div>
+                                    <!-- end /.notificationsController -->
+                                </div> </a>
+
+                            <!-- after dish is ready deliverer recieve this notification  -->
+
+                            <a href="order-page"> <div class="notifications_module">
+                                    <div class="notification">
+                                        <div class="notification__info">
+                                            <div class="info_avatar">
+                                                <img src="images/notification_head4.png" alt="">
+                                            </div>
+                                            <div class="info">
+                                                <p><a href="">Chef</a>
+                                                    <span>said the dish is ready please go for collection </span>
+                                                    <a href="dish">Indian Butter chiken</a>
+                                                </p>
+                                                <p class="time">Just now</p>
+                                            </div>
+                                        </div>
+                                        <!-- end /.notificationsController -->
+                                    </div>
+                                    <!-- end /.notificationsController -->
+                                </div> </a>
+
+                            <!-- after dish is collected by deliverer user recieve this notification  -->
+
+                            <a href="order-page"> <div class="notifications_module">
+                                    <div class="notification">
+                                        <div class="notification__info">
+                                            <div class="info_avatar">
+                                                <img src="images/notification_head4.png" alt="">
+                                            </div>
+                                            <div class="info">
+                                                <p>
+                                                    <a href="">Deliverer</a>
+                                                    <span>recive your dish and he is on his way </span>
+                                                    <a href="dish">Indian Butter chiken</a>
+                                                </p>
+                                                <p class="time">Just now</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end /.notificationsController -->
+                                </div> </a>
+                            <!-- end /.dropdown -->
+                        </div>
+                    </li>
+                    <li class="has_dropdown">
                         <div class="icon_wrap"> <span class="lnr lnr-envelope"></span> <span class="notification_count msg">1</span> </div>
                         <div class="dropdown messaging--dropdown">
                             <div class="dropdown_module_header">
-                                <h4>My Messages</h4> <a href="message.html">View All</a> </div>
+                                <h4>Messages</h4> <a href="message.html">View All</a> </div>
+
+                            <!-- add upto 5 massages in the dropdown menue -->
+
                             <div class="messages">
-                                <a href="message.html" class="message recent">
+                                <a href="#" class="message recent">
                                     <div class="message__actions_avatar">
                                         <div class="avatar"> <img src="images/notification_head4.png" alt=""> </div>
                                     </div>
-                                    <!-- end /.actions -->
+
+                                    <div class="message_data">
+                                        <div class="name_time">
+                                            <div class="name">
+                                                <p>KhaniDaani</p> <span class="lnr lnr-envelope"></span> </div> <span class="time">Just now</span>
+                                            <p>Hello John Smith! Nunc placerat mi ...</p>
+                                        </div>
+                                    </div>
+                                    <!-- end /.message_data -->
+                                </a>
+                                <!-- end /.message -->
+                            </div>
+
+                            <div class="messages">
+                                <a href="#" class="message recent">
+                                    <div class="message__actions_avatar">
+                                        <div class="avatar"> <img src="images/notification_head4.png" alt=""> </div>
+                                    </div>
+                                    <!-- add upto 5 massages in the dropdown menue -->
                                     <div class="message_data">
                                         <div class="name_time">
                                             <div class="name">
@@ -49,9 +169,6 @@
                                 <!-- end /.message -->
                             </div>
                         </div>
-                    </li>
-                    <li class="has_dropdown">
-                        <div class="icon_wrap"> <span class="lnr lnr-alarm"></span> <span class="notification_count purch">2</span> </div>
                     </li>
                 </ul>
             </div>
