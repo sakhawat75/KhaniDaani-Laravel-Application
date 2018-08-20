@@ -26,6 +26,8 @@
 
     <script src="{{ URL::to('/') }}/js/vendor/jquery/jquery-1.12.3.js"></script>
 
+    @stack('head-css')
+
     @stack('head-scripts')
 
     <!-- endinject -->
