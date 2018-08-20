@@ -165,18 +165,27 @@ namespace App{
  * @property float $dish_price
  * @property float $khanidaani_charge
  * @property float $total_price
- * @property string $preparation_time
+ * @property int $preparation_time
  * @property string $delivery_address
  * @property string $delivery_address_hint
  * @property string $payment_type
- * @property string $delivery_time
+ * @property int $delivery_time
  * @property int|null $rating
+ * @property int|null $chef_is_dish_ready
+ * @property int|null $chef_is_dish_delivered
+ * @property int|null $dsp_is_dish_recieved
+ * @property int|null $dsp_is_dish_delivered
+ * @property int|null $is_order_complited
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
+ * @property-read \App\Dish $dish
+ * @property-read \App\DeliveryService $dsp
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereBuyerCnOpt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereBuyerContactN($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereBuyerFullname($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereBuyerUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereChefIsDishDelivered($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereChefIsDishReady($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDeliveryAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDeliveryAddressHint($value)
@@ -184,8 +193,11 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDishId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDishPrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDspId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDspIsDishDelivered($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDspIsDishRecieved($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDspServiceCharge($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereIsOrderComplited($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereKhanidaaniCharge($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order wherePaymentType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order wherePreparationTime($value)
@@ -249,6 +261,14 @@ namespace App{
 
 namespace App{
 /**
+ * App\Rating
+ *
+ */
+	class Rating extends \Eloquent {}
+}
+
+namespace App{
+/**
  * App\SubCategory
  *
  * @property int $id
@@ -265,6 +285,22 @@ namespace App{
  * @mixin \Eloquent
  */
 	class SubCategory extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\SystemVariables
+ *
+ * @property int $id
+ * @property int $service_percentage
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\SystemVariables whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\SystemVariables whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\SystemVariables whereServicePercentage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\SystemVariables whereUpdatedAt($value)
+ */
+	class SystemVariables extends \Eloquent {}
 }
 
 namespace App{

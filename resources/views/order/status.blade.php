@@ -34,13 +34,15 @@
                     <h6>Dish is Ready Please Check delivery option</h6>--}}
 
                     <br>
-                    <p>Chef Option</p>
-                    <button class="btn btn--icon btn-md btn--round btn-success" id="dish_ready" type="button">
-                      <span class="lnr lnr-bullhorn"></span>Ready
-                    </button>
-                    <button class="btn btn--icon btn-md btn--round btn-danger" type="button">
-                      <span class="lnr  lnr-thumbs-up"></span>Delivered
-                    </button>
+                    <div class="chef_opt d-none">
+                      <p>Chef Option</p>
+                      <button class="btn btn--icon btn-md btn--round btn-success" id="dish_ready" type="button">
+                        <span class="lnr lnr-bullhorn"></span>Ready
+                      </button>
+                      <button class="btn btn--icon btn-md btn--round btn-danger" type="button">
+                        <span class="lnr  lnr-thumbs-up"></span>Delivered
+                      </button>
+                    </div>
                   </div>
                 </li>
 
@@ -49,14 +51,17 @@
                     Service
                   </div>
                   <div class="step-content">
-                    <button class="btn btn--icon btn-md btn--round btn-success" type="button" id="dsp_ready"><span
-                          class="lnr  lnr-thumbs-up"></span>Received By DSPID
-                    </button>
                     <h5 {{--class="d-none"--}} id="dsp_str">{{--Count down will start after clicking Recieved--}}</h5>
                     <h1><span id="dsp_timer">{{--{{ $order->delivery_time }}--}}</span></h1>
-                    <button class="btn btn--icon btn-md btn--round btn-danger" type="button" id="dsp_delivered"><span class="lnr  lnr-thumbs-up" ></span>Delivered
-                      By DSPID
-                    </button>
+                    <div class="dsp_opt d-none">
+                      <button class="btn btn--icon btn-md btn--round btn-success" type="button" id="dsp_ready"><span
+                            class="lnr  lnr-thumbs-up"></span>Received By DSPID
+                      </button>
+                      <button class="btn btn--icon btn-md btn--round btn-danger" type="button" id="dsp_delivered"><span
+                            class="lnr  lnr-thumbs-up"></span>Delivered
+                        By DSPID
+                      </button>
+                    </div>
                   </div>
                 </li>
 
@@ -65,40 +70,43 @@
                   <div class="step-content">
                     <div class="product__price_download">
 
-                      <button class="btn btn--icon btn-md btn--round btn-success" id="order_completed" type="button"><span
-                            class="lnr  lnr-thumbs-up"></span>Received By User
-                      </button>
+                      <div class="buyer_opt d-none">
+                        <button class="btn btn--icon btn-md btn--round btn-success" id="order_completed"
+                                type="button"><span
+                              class="lnr  lnr-thumbs-up"></span>Received By User
+                        </button>
 
-                      <div class="product__price_download">
-                        <div class="item_action v_middle">
-                          <a href="#" class="btn btn--md btn--round btn--white rating--btn not--rated"
-                             data-toggle="modal" data-target="#myModal">
-                            <P class="rate_it">Rate Now</P>
-                            <div class="rating product--rating">
-                              <ul>
-                                <li>
-                                  <span class="fa fa-star-o"></span>
-                                </li>
-                                <li>
-                                  <span class="fa fa-star-o"></span>
-                                </li>
-                                <li>
-                                  <span class="fa fa-star-o"></span>
-                                </li>
-                                <li>
-                                  <span class="fa fa-star-o"></span>
-                                </li>
-                                <li>
-                                  <span class="fa fa-star-o"></span>
-                                </li>
-                              </ul>
-                            </div>
-                          </a>
-                          <!-- end /.rating--btn -->
+                        <div class="product__price_download">
+                          <div class="item_action v_middle d-none">
+                            <a href="#" class="btn btn--md btn--round btn--white rating--btn not--rated"
+                               data-toggle="modal" data-target="#myModal">
+                              <P class="rate_it">Rate Now</P>
+                              <div class="rating product--rating">
+                                <ul>
+                                  <li>
+                                    <span class="fa fa-star-o"></span>
+                                  </li>
+                                  <li>
+                                    <span class="fa fa-star-o"></span>
+                                  </li>
+                                  <li>
+                                    <span class="fa fa-star-o"></span>
+                                  </li>
+                                  <li>
+                                    <span class="fa fa-star-o"></span>
+                                  </li>
+                                  <li>
+                                    <span class="fa fa-star-o"></span>
+                                  </li>
+                                </ul>
+                              </div>
+                            </a>
+                            <!-- end /.rating--btn -->
+                          </div>
+                          <!-- end /.item_action -->
                         </div>
-                        <!-- end /.item_action -->
+                        <!-- end /.product__price_download -->
                       </div>
-                      <!-- end /.product__price_download -->
 
 
                     </div>
@@ -211,24 +219,68 @@
         $(document).ready(function () {
             $('.stepper').activateStepper();
 
+
+            @auth
+              //logged in as chef
+              @if($order->dish->profile_id == auth()->id())
+
+                $('.chef_opt').removeClass('d-none');
+                
+                @if($order->chef_is_dish_ready == 1)
+                  $('#dish_ready').attr('disabled', 'disabled');
+                @endif
+                
+              
+              @endif
+
+              //logged in as dsp
+              @if(auth()->user()->delivery_services->contains('id', $order->dsp_id))
+
+                @if($order->chef_is_dish_ready == 1)
+                  $('.dsp_opt').removeClass('d-none');
+                @endif
+
+                @if($order->dsp_is_dish_delivered == 1)
+                  $('#dsp_delivered').attr('disabled', 'disabled');
+                @endif
+
+              @endif
+
+              // logged in as buyer
+              @if(auth()->id() == $order->buyer_user_id)
+
+                @if($order->chef_is_dish_ready == 1 and $order->dsp_is_dish_delivered == 1)
+                  $('.buyer_opt').removeClass('d-none');
+                @endif
+
+                @if($order->is_order_completed == 1)
+                  $('#order_completed').attr('disabled', 'disabled');
+                  $('.item_action').removeClass('d-none');
+                @endif
+
+              @endif
+            @endauth
+
+
           @if($order->chef_is_dish_ready != 1)
           addTimer({{ $order->preparation_time }}, '#chef_timer');
           @else
-           addTimer({{ $order->delivery_time }}, '#dsp_timer');
+          addTimer({{ $order->delivery_time }}, '#dsp_timer');
           @endif
 
           @if($order->dsp_is_dish_delivered == 1)
           addTimer({{ $order->delivery_time }}, '#dsp_timer');
-           $('#dsp_timer').countdown('pause');
+            $('#dsp_timer').countdown('pause');
           @endif
 
           @if($order->is_order_completed == 1)
-            $('#dsp_timer').html('Order is Completed');
+          $('#dsp_timer').html('Order is Completed');
             $('#order_completed').html('Order is Completed');
           @endif
 
           $('#dish_ready').on('click', function (e) {
               e.preventDefault();
+              $('#dish_ready').attr('disabled', 'disabled');
               console.log('Clicked: #dish_ready');
             @if($order->dish->profile_id == auth()->id())
 
@@ -252,71 +304,77 @@
 
           });
 
-          $('#dsp_delivered').on('click', function (e) {
-              e.preventDefault();
-              console.log('auth id: {{ auth()->id() }}');
-              console.log('dsp id: {{ $order->dsp_id }}');
-            @if(auth()->user()->delivery_services->contains('id', $order->dsp_id))
-console.log('Clicked: #dsp_delivered');
-            $.ajax({
-                url: "/api/order/update",
-                data: {
-                    order_id: {{ $order->id }},
-                    dsp_is_dish_delivered: 1
-                },
-                type: "GET",
+            $('#dsp_delivered').on('click', function (e) {
+                e.preventDefault();
+                $(this).attr('disabled', 'disabled');
+                console.log('auth id: {{ auth()->id() }}');
+                console.log('dsp id: {{ $order->dsp_id }}');
+              @if(auth()->user()->delivery_services->contains('id', $order->dsp_id))
+              console.log('Clicked: #dsp_delivered');
+                $.ajax({
+                    url: "/api/order/update",
+                    data: {
+                        order_id: {{ $order->id }},
+                        dsp_is_dish_delivered: 1
+                    },
+                    type: "GET",
 
-            }).done(function () {
-                $('#dsp_timer').countdown('pause');
+                }).done(function () {
+                    $('#dsp_timer').countdown('pause');
+                });
+
+
+
+              @endif
+
             });
 
-              
-              
-            @endif
+            // order_completed
+            $('#order_completed').on('click', function (e) {
+                e.preventDefault();
+                $('#order_completed').attr('disabled', 'disabled');
+                $('.item_action').removeClass('d-none');
 
-          });
+                $(this).attr('disabled', 'disabled');
 
-          // order_completed
-          $('#order_completed').on('click', function (e) {
-              e.preventDefault();
-              console.log('auth id: {{ auth()->id() }}');
-              console.log('dsp id: {{ $order->dsp_id }}');
-            @if(auth()->id() == $order->buyer_user_id)
-console.log('Clicked: #dsp_delivered');
-            $.ajax({
-                url: "/api/order/update",
-                data: {
-                    order_id: {{ $order->id }},
-                    is_order_completed: 1
-                },
-                type: "GET",
+                console.log('auth id: {{ auth()->id() }}');
+                console.log('dsp id: {{ $order->dsp_id }}');
+              @if(auth()->id() == $order->buyer_user_id)
+              console.log('Clicked: #dsp_delivered');
+                $.ajax({
+                    url: "/api/order/update",
+                    data: {
+                        order_id: {{ $order->id }},
+                        is_order_completed: 1
+                    },
+                    type: "GET",
 
-            }).done(function () {
-                $('#dsp_timer').countdown('stop');
-                $('#dsp_timer').html('Order is Completed');
-                $('#order_completed').html('Order is Completed');
+                }).done(function () {
+                    $('#dsp_timer').countdown('stop');
+                    $('#dsp_timer').html('Order is Completed');
+                    $('#order_completed').html('Order is Completed');
+                });
+
+
+
+              @endif
+
             });
-
-              
-              
-            @endif
-
-          });
 
 
             /* bar rating plugin installation */
             $('#select_rating').barrating({
                 theme: 'fontawesome-stars',
-                onSelect: function(value, text, event) {
-                  console.log('rating clicked');
+                onSelect: function (value, text, event) {
+                    console.log('rating clicked');
                     if (typeof(event) !== 'undefined') {
-                      // rating was selected by a user
-                      console.log(event.target);
+                        // rating was selected by a user
+                        console.log(event.target);
                     } else {
-                      // rating was selected programmatically
-                      // by calling `set` method
+                        // rating was selected programmatically
+                        // by calling `set` method
                     }
-                  }
+                }
             });
 
 
@@ -332,10 +390,10 @@ console.log('Clicked: #dsp_delivered');
             //    Asia/Dhaka
             function addTimer(date, selector) {
                 var finalDate = new Date("{{ $order->created_at }}");
-                
+
                 finalDate = finalDate.getTime() + ((date + 6) * 60 * 60 * 1000);
                 finalDate = new Date(finalDate);
-                
+
 
                 $(selector).countdown(finalDate)
                     .on('update.countdown', function (event) {
