@@ -376,8 +376,8 @@
                 <!-- end /.sidebar-card -->
 
                 <div class="purchase-button">
-                  <form action="{{ route('order.selectdsp', ['dish' => $dish]) }}" method="post">
-                    @csrf
+                  <form action="{{ route('order.selectdsp', ['dish' => $dish]) }}" method="get">
+                    {{ csrf_field() }}
                     <button type="submit" class="btn btn--lg btn--round">Order Now</button>
                   </form>
                   {{--<a href="{{ route('order.selectdsp') }}" class="btn btn--lg btn--round">Order Now</a>--}}

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Area;
 use App\Category;
 use App\City;
+use App\User;
 use App\Dish;
+use App\Http\Resources\NotificationCollection;
 use App\Order;
 use App\SubCategory;
 use Illuminate\Http\Request;
@@ -118,5 +120,12 @@ class RestApiController extends Controller
 		    }
 	    }
 
+    }
+
+
+    public function allNotification(){
+	    $user = User::find(auth()->id());
+
+		return new NotificationCollection( $user->notifications);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DeliveryService;
 use App\Dish;
+use App\Notifications\NotifyOrder;
 use App\Order;
 use App\SystemVariables;
 use App\User;
@@ -23,7 +24,15 @@ class OrderController extends Controller
 	}
 
 	public function status(Order $order) {
-		return view('order.status', compact( 'order'));
+
+		if($order->dish->profile_id == auth()->id() or $order->buyer_user_id == auth()->id()) {
+			return view('order.status', compact( 'order'));
+		}
+		if (auth()->user()->delivery_services->contains('id', $order->dsp_id)) {
+			return view('order.status', compact( 'order'));			
+		}
+
+		return redirect()->back();
 	}
 
 	/**
@@ -63,6 +72,10 @@ class OrderController extends Controller
 		$order->delivery_time = $dsp->max_delivery_time;
 
 		$order->save();
+
+		$user->notify( new NotifyOrder( $order, 'user'));
+		$dish->profile->user->notify(new NotifyOrder( $order, 'chef'));
+		$dsp->user->notify(new NotifyOrder( $order, 'dsp'));
 
 		return redirect()->route( 'order.status', $order);
 

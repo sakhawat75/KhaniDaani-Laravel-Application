@@ -39,8 +39,8 @@
     <section class="dashboard-area">
         <div class="dashboard_contents">
             <div class="container">
-                <form action="{{ route('order.store') }}" class="setting_form" method="post">
-                    @csrf
+                <form action="{{ route('order.store') }}" class="setting_form" method="get">
+                    {{ csrf_field() }}
 
                     <input type="hidden" name="buyer_user_id" value="{{ auth()->id() }}">
                     <input type="hidden" name="dish_id" value="{{ $dish->id }}">

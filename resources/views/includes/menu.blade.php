@@ -29,7 +29,7 @@
                     <li class="has_dropdown">
                         <div class="icon_wrap">
                             <span class="lnr lnr-alarm"></span>
-                            <span class="notification_count noti">3</span>
+                            <span class="notification_count noti" id="count_notification"></span>
                         </div>
 
                         <div class="dropdown notification--dropdown">
@@ -39,89 +39,92 @@
                                 <a href="{{ route('notifications.all') }}">View All</a>
                             </div>
 
-                            <!-- after order chef recieve this notification  -->
+                          <div id="noti_dynamic">
+                            {{--<!-- after order chef recieve this notification  -->
 
                             <a href="order-page"> <div class="notifications_module">
                                 <div class="notification">
-                                    <div class="notification__info">
-                                        <div class="info_avatar">
-                                            <img src="images/notification_head4.png" alt="">
-                                        </div>
-                                        <div class="info">
-                                            <p><a href="">Sakhawat</a>
-                                                <Span>Ordered your dish</Span>
-                                                <a href="dish">Indian Butter chiken</a>
-                                            </p>
-                                            <p class="time">Just now</p>
-                                        </div>
+                                  <div class="notification__info">
+                                    <div class="info_avatar">
+                                      <img src="images/notification_head4.png" alt="">
                                     </div>
+                                    <div class="info">
+                                      <p><a href="">Sakhawat</a>
+                                        <Span>Ordered your dish</Span>
+                                        <a href="dish">Indian Butter chiken</a>
+                                      </p>
+                                      <p class="time">Just now</p>
+                                    </div>
+                                  </div>
                                 </div>
                                 <!-- end /.notificationsController -->
-                            </div> </a>
+                              </div> </a>
 
 
                             <!-- after order deliverer recieve this notification  -->
 
                             <a href="order-page"> <div class="notifications_module">
-                                    <div class="notification">
-                                        <div class="notification__info">
-                                            <div class="info_avatar">
-                                                <img src="images/notification_head4.png" alt="">
-                                            </div>
-                                            <div class="info">
-                                                <p><a href="">Sakhawat</a>
-                                                    <span>Choose you as deliverer for</span>
-                                                    <a href="dish">Indian Butter chiken</a>
-                                                </p>
-                                                <p class="time">Just now</p>
-                                            </div>
-                                        </div>
-                                        <!-- end /.notificationsController -->
+                                <div class="notification">
+                                  <div class="notification__info">
+                                    <div class="info_avatar">
+                                      <img src="images/notification_head4.png" alt="">
                                     </div>
-                                    <!-- end /.notificationsController -->
-                                </div> </a>
+                                    <div class="info">
+                                      <p><a href="">Sakhawat</a>
+                                        <span>Choose you as deliverer for</span>
+                                        <a href="dish">Indian Butter chiken</a>
+                                      </p>
+                                      <p class="time">Just now</p>
+                                    </div>
+                                  </div>
+                                  <!-- end /.notificationsController -->
+                                </div>
+                                <!-- end /.notificationsController -->
+                              </div> </a>
 
                             <!-- after dish is ready deliverer recieve this notification  -->
 
                             <a href="order-page"> <div class="notifications_module">
-                                    <div class="notification">
-                                        <div class="notification__info">
-                                            <div class="info_avatar">
-                                                <img src="images/notification_head4.png" alt="">
-                                            </div>
-                                            <div class="info">
-                                                <p><a href="">Chef</a>
-                                                    <span>said the dish is ready please go for collection </span>
-                                                    <a href="dish">Indian Butter chiken</a>
-                                                </p>
-                                                <p class="time">Just now</p>
-                                            </div>
-                                        </div>
-                                        <!-- end /.notificationsController -->
+                                <div class="notification">
+                                  <div class="notification__info">
+                                    <div class="info_avatar">
+                                      <img src="images/notification_head4.png" alt="">
                                     </div>
-                                    <!-- end /.notificationsController -->
-                                </div> </a>
+                                    <div class="info">
+                                      <p><a href="">Chef</a>
+                                        <span>said the dish is ready please go for collection </span>
+                                        <a href="dish">Indian Butter chiken</a>
+                                      </p>
+                                      <p class="time">Just now</p>
+                                    </div>
+                                  </div>
+                                  <!-- end /.notificationsController -->
+                                </div>
+                                <!-- end /.notificationsController -->
+                              </div> </a>
 
                             <!-- after dish is collected by deliverer user recieve this notification  -->
 
                             <a href="order-page"> <div class="notifications_module">
-                                    <div class="notification">
-                                        <div class="notification__info">
-                                            <div class="info_avatar">
-                                                <img src="images/notification_head4.png" alt="">
-                                            </div>
-                                            <div class="info">
-                                                <p>
-                                                    <a href="">Deliverer</a>
-                                                    <span>recive your dish and he is on his way </span>
-                                                    <a href="dish">Indian Butter chiken</a>
-                                                </p>
-                                                <p class="time">Just now</p>
-                                            </div>
-                                        </div>
+                                <div class="notification">
+                                  <div class="notification__info">
+                                    <div class="info_avatar">
+                                      <img src="images/notification_head4.png" alt="">
                                     </div>
-                                    <!-- end /.notificationsController -->
-                                </div> </a>
+                                    <div class="info">
+                                      <p>
+                                        <a href="">Deliverer</a>
+                                        <span>recive your dish and he is on his way </span>
+                                        <a href="dish">Indian Butter chiken</a>
+                                      </p>
+                                      <p class="time">Just now</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- end /.notificationsController -->
+                              </div> </a>--}}
+                          </div>
+
                             <!-- end /.dropdown -->
                         </div>
                     </li>
@@ -136,7 +139,7 @@
                             <div class="messages">
                                 <a href="#" class="message recent">
                                     <div class="message__actions_avatar">
-                                        <div class="avatar"> <img src="images/notification_head4.png" alt=""> </div>
+                                        <div class="avatar"> <img src="{{ asset('/images/notification_head4.png')}}" alt=""> </div>
                                     </div>
 
                                     <div class="message_data">
@@ -154,7 +157,7 @@
                             <div class="messages">
                                 <a href="#" class="message recent">
                                     <div class="message__actions_avatar">
-                                        <div class="avatar"> <img src="images/notification_head4.png" alt=""> </div>
+                                        <div class="avatar"> <img src="{{ asset('/images/notification_head4.png')}}" alt=""> </div>
                                     </div>
                                     <!-- add upto 5 massages in the dropdown menue -->
                                     <div class="message_data">
@@ -480,39 +483,88 @@
     =================================-->
 
 @push('scripts-footer-bottom')
-  <script>
-    $.ajax({
-        url: "{{ route('home')}}/api/categories",
-        /*data: {
-            id: 5,
-        },*/
-        type: "GET",
-        dataType: "json",
-    }).done( function (json) {
-        $('#cat_ul').html('');
-        /*json.forEach(function (category) {
-            console.log(category.name);
-        });*/
-        $.each(json, function (index, category) {
-            //console.log(category.name);
-            $('#cat_ul').append("<li><a href='#'>"+ category.name +"</a></li>")
+  @include ('notifications.notify_order_template')
+  <script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            url: "{{ route('home')}}/api/categories",
+            /*data: {
+                id: 5,
+            },*/
+            type: "GET",
+            dataType: "json",
+        }).done( function (json) {
+            $('#cat_ul').html('');
+            /*json.forEach(function (category) {
+                console.log(category.name);
+            });*/
+            $.each(json, function (index, category) {
+                //console.log(category.name);
+                $('#cat_ul').append("<li><a href='#'>"+ category.name +"</a></li>")
+            });
+        });
+
+        $.ajax({
+            url: "{{ route('home') }}/ajax-areas",
+            data: {
+                city_name: "Sylhet",
+            },
+            dataType: "json",
+        }).done(function (json) {
+            $.each(json, function (index, area) {
+                $("#area_ul").append(
+                    $('<li/>').append($('<a/>').attr('href', '#').text(area.name))
+
+                    // <li><a href="all-products-list.html">Upashahr</a></li>
+                );
+            });
         });
     });
+  </script>
 
-    $.ajax({
-        url: "{{ route('home') }}/ajax-areas",
-        data: {
-            city_name: "Sylhet",
-        },
-        dataType: "json",
-    }).done(function (json) {
-        $.each(json, function (index, area) {
-            $("#area_ul").append(
-                $('<li/>').append($('<a/>').attr('href', '#').text(area.name))
+  <script type="text/javascript">
+    $(document).ready(function () {
 
-                // <li><a href="all-products-list.html">Upashahr</a></li>
-            );
-        });
+    	moment.tz.setDefault('Europe/London');
+
+        _.templateSettings.variable = "notify";
+        var template = _.template(
+            $('#notify_order_template').html()
+ 
+       );
+
+		var renderNotification = function(notifis) {
+			var unread_count = 0;
+              _.each(notifis.data, function(notify) {
+                  $('#noti_dynamic').append(template(notify));
+                  if(notify.read_at == null) {
+                  	unread_count++;
+                  }
+              });
+              $("#count_notification").text(unread_count);
+          };
+
+	@auth
+        function loadNotifications() {
+            
+                $.ajax({
+                    url: "{{ route('api.all_notifications') }}",
+                    cached: false
+                }).done( function (res) {
+                    $('#noti_dynamic').html(' ');
+                    renderNotification(res);
+                });
+        }
+
+        loadNotifications();
+
+        var myInterval;
+
+        myInterval = setInterval(function(){
+            loadNotifications();
+        }, 15000);
+
+      @endauth
     });
   </script>
 @endpush

@@ -90,8 +90,8 @@
 
 
                             <p>{!! $dsp->service_description !!}</p>
-                            <form action="{{ route( 'order.confirm', ['dsp' => $dsp, 'dish' => $dish] ) }}" method="post">
-                              @csrf
+                            <form action="{{ route( 'order.confirm', ['dsp' => $dsp, 'dish' => $dish] ) }}" method="get">
+                              {{ csrf_field() }}
                               <button type="submit" class="btn btn--lg btn--round">Continue & Order</button>
                             </form>
                             {{--<a href="{{ route( 'order.confirm', ['dsp' => $dsp, 'dish' => $dish] ) }}" class="btn btn--lg btn--round">Continue & Order</a>--}}

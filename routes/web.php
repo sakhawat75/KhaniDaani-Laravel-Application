@@ -34,13 +34,6 @@ Route::get('/profile/{profile}/edit', 'ProfileController@edit')->name('profile.e
 Route::put( '/profile/{profile}', 'ProfileController@update')->name('profile.update');
 
 
-Route::post( '/order/selectdsp/{dish}', 'OrderController@selectdsp')->name( 'order.selectdsp');
-
-Route::post( '/order/confirm/{dsp}/{dish}', 'OrderController@confirm')->name( 'order.confirm');
-Route::post( '/order/store', 'OrderController@storeOrder')->name( 'order.store');
-
-Route::get( '/order/status/{order}', 'OrderController@status')->name( 'order.status');
-
 Route::get( '/search/livedish', 'SearchController@livedish')->name( 'search.livedish');
 Route::post( '/search/livedish', 'SearchController@search_livedish')->name( 'search.livedish');
 
@@ -66,3 +59,16 @@ Route::get('recover-pass', 'Auth\ForgotPasswordController@showLinkRequestForm')-
 
 Route::get('/home', 'HomeController@index');
 
+
+// Auth Required Routes
+Route::group(['middleware' => 'auth'], function (){
+	// Order Routes
+	Route::get( '/order/selectdsp/{dish}', 'OrderController@selectdsp')->name( 'order.selectdsp');
+	Route::get( '/order/confirm/{dsp}/{dish}', 'OrderController@confirm')->name( 'order.confirm');
+	Route::get( '/order/store', 'OrderController@storeOrder')->name( 'order.store');
+	Route::get( '/order/status/{order}', 'OrderController@status')->name( 'order.status');
+});
+
+Route::get('/tz', function(){
+	dd(date_default_timezone_get());
+});
