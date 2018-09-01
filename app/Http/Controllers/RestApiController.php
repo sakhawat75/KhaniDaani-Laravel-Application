@@ -128,4 +128,11 @@ class RestApiController extends Controller
 
 		return new NotificationCollection( $user->notifications);
     }
+
+    public function get_profile_image($id) {
+	    $user = User::find($id);
+	    $url = $user->profile->profile_image;
+	    
+	    return response()->json($url);
+    }
 }

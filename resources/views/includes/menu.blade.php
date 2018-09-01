@@ -562,7 +562,7 @@
 
         myInterval = setInterval(function(){
             loadNotifications();
-        }, 15000);
+        }, 30000);
 
       @endauth
     });
