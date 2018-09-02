@@ -68,7 +68,7 @@
             </p>
             <p class="time">
               <%= moment.utc(notify.data.order.created_at).fromNow() %>
-            	<% console.log('now: ' + notify.data.order.created_at); %>
+            	
             </p>
           </div>
         </div>
