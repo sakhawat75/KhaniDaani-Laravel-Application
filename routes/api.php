@@ -22,5 +22,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 	Route::get('/all_notifications', 'RestApiController@allNotification')->name( 'api.all_notifications');
 });*/
 
-
 Route::get('/user/{id}/profile_image', 'RestApiController@get_profile_image')->name( 'api.user.profile_image');
