@@ -39,21 +39,20 @@
                     <div class="col-md-12">
                         <div class="cardify notifications_module">
 
-                            <a href="order-page">
+                            <a href="{{route('home')}}">
                             <div class="notification">
-                                <span class="line"></span> <! The line will show up if it's not clicked once (optional) -->
+                                <span class="line"></span> <!-- The line will show up if it's not clicked once (optional) -->
                                 <div class="notification__info">
                                     <div class="info_avatar">
-                                        <img src="images/notification_head4.png" alt="user-images">
+                                        <img src="{{asset('images/notification_head.png')}}" alt="user-images">
                                     </div>
                                     <div class="info">
                                         <p><a href="">Sakhawat</a>
                                             <span>Order your dish</span>
                                             <a href="order-page">Indian butter chicken</a>
                                             <br>
-                                            What about unique order id {eg. 182082001} it's mean 2018/8/20 order no 1.
                                         </p>
-                                        <p class="time">Just now (eg. 15 min ,30min , 1hr,2hr, 1day) ago</p>
+                                        <p class="time">Just now</p>
                                     </div>
                                 </div>
                                 <div class="notification__icons ">
@@ -62,11 +61,11 @@
                             </div></a>
                             <!-- end single notifications -->
 
-                            <a href="order-page">
+                            <a href="{{route('home')}}">
                                 <div class="notification">
                                     <div class="notification__info">
                                         <div class="info_avatar">
-                                            <img src="images/notification_head4.png" alt="user-images">
+                                            <img src="{{asset('images/notification_head.png')}}" alt="user-images">
                                         </div>
                                         <div class="info">
                                             <p><a href="">Sakhawat</a>
@@ -81,11 +80,6 @@
                                     </div>
                                 </div></a>
                             <!-- end single notifications -->
-
-
-
-
-
 
                             <!-- pagination -->
                             <div class="pagination-area pagination-area2">
