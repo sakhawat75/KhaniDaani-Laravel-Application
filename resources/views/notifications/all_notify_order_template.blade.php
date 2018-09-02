@@ -46,28 +46,28 @@
             %>
             </div>
             <div class="info">
-              <p>
+              <div>
                   <% if(notify.data.noti_type == 'chef') { %>
-                  <a href="#" id="temp_name"><%= notify.data.order.buyer_fullname %></a>
-                    <span>Has Ordered your dish</span>
+                  <span>You have recieved an order from <a href="#" id="temp_name"><%= notify.data.order.buyer_fullname %></a></span>
                   <% } %>
 
                   <% if(notify.data.noti_type == 'user') { %>
-                  <a href="#" id="temp_name">You</a>
-                    <span>Have Ordered a dish</span>
+                  <a href="#" id="temp_name">Your</a>
+                    <span>Order is Placed Successfully</span>
                   <% } %>
 
                   <% if(notify.data.noti_type == 'dsp') { %>
                   <a href="#" id="temp_name"><%= notify.data.order.buyer_fullname %></a>
                     <span>Has Choosen you as deliverer for</span>
                   <% } %>
-
-                  <a href="{{ route('home') }}/dishes/<%= notify.data.order.dish_id %>">
+                  
+                  <div>
+                  <a href="{{ route('home') }}/dishes/<%= notify.data.order.dish_id %>">Dish Name: 
                     <%= notify.data.order.dish_name %>
-                  </a>
+                  </a></div>
                   <br>
                   What about unique order id {eg. 182082001} it's mean 2018/8/20 order no 1.
-                </p>
+                </div>
                 <p class="time"><%= moment.utc(notify.data.order.created_at).fromNow() %></p>
             </div>
         </div>
