@@ -16,6 +16,7 @@ Route::get('/messages/all', 'NotificationsController@messages')->name('messages.
 Route::get('/messages/compose', 'NotificationsController@compose')->name('messages.compose');
 
 Route::get('/notifications/all', 'NotificationsController@notifications')->name('notifications.all');
+Route::get('/notifications/mark_as_read', 'NotificationsController@mark_as_read')->name('notifications.mark_as_read');
 
 Route::get('/', 'ViewController@index')->name('home');
 

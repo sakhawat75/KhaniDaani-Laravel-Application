@@ -141,7 +141,9 @@ class RestApiController extends Controller
     public function allNotification(){
 	    $user = User::find(auth()->id());
 
-		return new NotificationCollection( $user->notifications);
+
+	    return response()->json( $user->notifications()->simplePaginate(5));
+		// return new NotificationCollection( $user->notifications);
     }
 
     public function get_profile_image($id) {

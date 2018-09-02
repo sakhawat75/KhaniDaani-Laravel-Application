@@ -581,6 +581,25 @@
             loadNotifications();
         }, 30000);
 
+        $(document).on('click','.notification', function (e) {
+            // clearInterval(myInterval);
+            var noti = $(this).data('notification');
+
+            $.ajax({
+                url: "{{ route('home') }}/notifications/mark_as_read",
+                data: {'notification': noti}
+            }).done( function (res) {
+                console.log(res);
+            });
+        });
+        
+        /*$(document).on('mouseleave','.notification', function (e) {
+            setInterval(function(){
+                loadNotifications();
+            }, 30000);
+        });*/
+
+
       @endauth
     });
   </script>

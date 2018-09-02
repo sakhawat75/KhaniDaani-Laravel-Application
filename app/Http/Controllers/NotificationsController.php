@@ -17,4 +17,17 @@ class notificationsController extends Controller
     public function compose() {
         return view('messages.compose');
     }
+
+    public function mark_as_read(Request $request) {
+
+    	if($request->has('notification')) {
+    		$notification_id = $request->input('notification');
+    	}
+    	
+    	$user = auth()->user();
+        $notification = $user->notifications()->where('id',$notification_id)->first();
+        $notification->markAsRead();
+
+        // return response()->json('Notification Marked as read successfully' . $notification);
+    }
 }
