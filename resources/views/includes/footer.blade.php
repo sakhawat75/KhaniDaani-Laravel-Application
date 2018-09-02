@@ -1,6 +1,5 @@
 <footer class="footer-area">
     <div class="footer-big section--padding">
-        <!-- start .container -->
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6">
@@ -24,13 +23,8 @@
                             </li>
                         </ul>
                     </div>
-                    <!-- end /.info-footer -->
                 </div>
-                <!-- end /.col-md-3 -->
-
                 <div class="col-lg-5 col-md-6">
-                    <!-- end /.footer-menu -->
-
                     <div class="footer-menu">
                         <h4 class="footer-widget-title text--white">Help and FAQs</h4>
                         <ul>
@@ -51,10 +45,7 @@
                             </li>
                         </ul>
                     </div>
-                    <!-- end /.footer-menu -->
                 </div>
-                <!-- end /.col-md-5 -->
-
                 <div class="col-lg-4 col-md-12">
                     <div class="newsletter">
                         <h4 class="footer-widget-title text--white">Newsletter</h4>
@@ -67,8 +58,6 @@
                                 </div>
                             </form>
                         </div>
-
-                        <!-- start .social -->
                         <div class="social social--color--filled">
                             <ul>
                                 <li>
@@ -90,17 +79,11 @@
 
                             </ul>
                         </div>
-                        <!-- end /.social -->
                     </div>
-                    <!-- end /.newsletter -->
                 </div>
-                <!-- end /.col-md-4 -->
             </div>
-            <!-- end /.row -->
         </div>
-        <!-- end /.container -->
     </div>
-    <!-- end /.footer-big -->
 
     <div class="mini-footer">
         <div class="container">
@@ -111,7 +94,7 @@
                             <a href="#">KhaniDaani</a>. All rights reserved.
                         </p>
                     </div>
-
+                    
                     <div class="go_top">
                         <span class="lnr lnr-chevron-up"></span>
                     </div>
