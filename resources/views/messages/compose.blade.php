@@ -1,4 +1,4 @@
-@extends ('layouts.master') @section ('title', 'Messages') @section ('content')
+@extends ('layouts.master') @section ('title', 'Compose') @section ('content')
 
     <section class="breadcrumb-area">
         <div class="container">
@@ -14,7 +14,7 @@
                             </li>
                         </ul>
                     </div>
-                    <h1 class="page-title">Messages</h1>
+                    <h1 class="page-title">Compose messages.</h1>
                 </div>
                 <!-- end /.col-md-12 -->
             </div>
@@ -55,7 +55,7 @@
                             <div class="messaging_action">
                                 <span class="lnr lnr-sync"></span>
 
-                                <a href="{{route('messages.compose')}}" class="btn btn--round btn--sm">
+                                <a href="message-compose.html" class="btn btn--round btn--sm">
                                     <span class="lnr lnr-pencil"></span>
                                     <span class="text">Compose</span>
                                 </a>
@@ -71,7 +71,7 @@
                             </div>
 
                             <div class="messages">
-                                <div class="message">
+                                <div class="message active">
                                     <div class="message__actions_avatar">
                                         <div class="avatar">
                                             <img src="{{ asset('/images/notification_head4.png')}}" alt="">
@@ -85,9 +85,6 @@
                                                 <p>KhaniDaani 2</p>
                                                 <span class="lnr lnr-envelope"></span>
                                             </div>
-
-                                            <span class="time">Just now</span>
-                                            <p>Hello John, wlecome to khanidaani.....</p>
                                         </div>
                                     </div>
                                     <!-- end /.message_data -->
@@ -96,7 +93,7 @@
 
 
 
-                                <div class="message active">
+                                <div class="message">
                                     <div class="message__actions_avatar">
                                         <div class="avatar">
                                             <img src="{{ asset('/images/notification_head4.png')}}" alt="">
@@ -119,7 +116,7 @@
                                 </div>
                                 <!-- end /.message -->
 
-                                <div class="message active">
+                                <div class="message">
                                     <div class="message__actions_avatar">
                                         <div class="avatar">
                                             <img src="{{ asset('/images/notification_head4.png')}}" alt="">
@@ -154,151 +151,25 @@
                 <div class="col-lg-7">
                     <div class="chat_area cardify">
                         <div class="chat_area--title">
-                            <h3>Message with
-                                <span class="name">KhaniDaani 2</span>
-                            </h3>
-                            <div class="message_toolbar">
-                                <a href="#">
-                                    <span class="lnr lnr-flag"></span>
-                                </a>
-                                <a href="#" id="drop1" class="dropdown-trigger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <img src="{{asset('/images/menu_icon.png')}}" class="dropdown-trigger" alt="Menu icon">
-                                </a>
-
-                                <ul class="custom_dropdown dropdown-menu" aria-labelledby="drop1">
-                                    <li>
-                                        <a href="#">Mark as unread</a>
-                                    </li>
-                                </ul>
-                                <!-- end /.dropdown -->
-                            </div>
-                            <!-- end /.message_toolbar -->
+                            <h3>Compose New Message</h3>
                         </div>
                         <!-- end /.chat_area--title -->
 
-                        <div class="chat_area--conversation">
-                            <div class="conversation">
-                                <div class="head">
-                                    <div class="chat_avatar">
-                                        <img src="{{ asset('/images/notification_head4.png')}}" alt="Notification avatar">
-                                    </div>
 
-                                    <div class="name_time">
-                                        <div>
-                                            <h4>User</h4>
-                                            <p>Mar 2, 2017 at 2:14 pm</p>
-                                        </div>
-                                    </div>
-                                    <!-- end /.name_time -->
-                                </div>
-                                <!-- end /.head -->
-
-                                <div class="body">
-                                    <p>Faucibus rutrum. Phasellus sodales vulputate urna, vel accumsan augue egestas ac. Donec
-                                        vitae leo at sem lobortis porttitor eu conse quat risus. Mauris sed congue orci.
-                                        Donec ultrices faucibus rutrum. Phasellus sodales vulputate urna, vel accumsan augue.</p>
-                                </div>
-                                <!-- end /.body -->
-
-                            </div>
-                            <!-- end /.conversation -->
-
-
-
-
-
-
-
-
-
-                            <div class="conversation">
-                                <div class="head">
-                                    <div class="chat_avatar">
-                                        <img src="{{ asset('/images/notification_head4.png')}}" alt="Notification avatar">
-                                    </div>
-
-                                    <div class="name_time">
-                                        <div>
-                                            <h4>KhaniDaani</h4>
-                                            <p>Mar 2, 2017 at 2:14 pm</p>
-                                        </div>
-                                        <span class="email">Me</span>
-                                    </div>
-                                    <!-- end /.name_time -->
-                                </div>
-                                <!-- end /.head -->
-
-                                <div class="body">
-                                    <p>Faucibus rutrum. Phasellus sodales vulputate urna, vel accumsan augue egestas ac. Donec
-                                        vitae leo at sem lobortis porttitor eu conse quat risus. Mauris sed congue orci.
-                                        Donec ultrices faucibus rutrum. Phasellus sodales vulputate urna, vel accumsan augue.</p>
-                                </div>
-                                <!-- end /.body -->
-
-                            </div>
-                            <!-- end /.conversation -->
-
-                            <div class="conversation">
-                                <div class="head">
-                                    <div class="chat_avatar">
-                                        <img src="{{ asset('/images/notification_head4.png')}}" alt="Notification avatar">
-                                    </div>
-
-                                    <div class="name_time">
-                                        <div>
-                                            <h4>User</h4>
-                                            <p>Mar 2, 2017 at 2:14 pm</p>
-                                        </div>
-                                    </div>
-                                    <!-- end /.name_time -->
-                                </div>
-                                <!-- end /.head -->
-
-                                <div class="body">
-                                    <p>Faucibus rutrum. Phasellus sodales vulputate urna, vel accumsan augue egestas ac. Donec
-                                        vitae leo at sem lobortis porttitor.</p>
-                                    <div class="attachments">
-                                        <div class="attachment_head">
-                                            <p>
-                                                <span class="lnr lnr-paperclip"></span> 2 Attachments</p>
-                                            <a href="#">
-                                                <span class="lnr lnr-download"></span> Download</a>
-                                        </div>
-
-                                        <div class="attachment">
-                                            <ul>
-                                                <li>
-                                                    <a href="images/att_av.jpg" class="venobox">
-                                                        <img src="{{ asset('/images/notification_head4.png')}}" alt="image attachment">
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="images/att_av2.jpg" class="venobox">
-                                                        <img src="{{ asset('/images/notification_head4.png')}}" alt="image attachment">
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end /.body -->
-                            </div>
-                            <!-- end /.conversation -->
-
-                        </div>
-                        <!-- end /.chat_area--conversation -->
-
-                        <div class="message_composer">
+                        <div class="message_composer composing">
+                            <input type="text" class="recipient_field" placeholder="KhaniDaani 2">
                             <div class="composer_field" id="trumbowyg-demo"></div>
                             <!-- end /.trumbowyg-demo -->
 
                             <div class="attached"></div>
 
                             <div class="btns">
-                                <button class="btn send btn--sm btn--round">Reply</button>
+                                <button class="btn send btn--sm btn--round">Send</button>
                                 <label for="att">
                                     <input type="file" class="attachment_field" id="att" multiple>
                                     <span class="lnr lnr-paperclip"></span>Attachment</label>
+
+                                <button class="btn btn--round btn--sm cancel_btn">Cancel</button>
                             </div>
                             <!-- end /.message_composer -->
                         </div>

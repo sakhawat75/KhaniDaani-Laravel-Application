@@ -13,4 +13,8 @@ class notificationsController extends Controller
     public function messages() {
         return view('messages.all');
     }
+
+    public function compose() {
+        return view('messages.compose');
+    }
 }
