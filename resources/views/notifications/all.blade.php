@@ -1,4 +1,4 @@
-@extends ('layouts.master') @section ('title', '404') @section ('content')
+@extends ('layouts.master') @section ('title', 'All Notification') @section ('content')
 
     <section class="breadcrumb-area">
         <div class="container">
@@ -7,7 +7,7 @@
                     <div class="breadcrumb">
                         <ul>
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="{{route('home')}}">Home</a>
                             </li>
                             <li class="active">
                                 <a href="#">Notifications</a>
@@ -19,7 +19,6 @@
             </div>
         </div>
     </section>
-
 
     <section class="dashboard-area">
 
@@ -49,7 +48,7 @@
                                     <div class="info">
                                         <p><a href="">Sakhawat</a>
                                             <span>Order your dish</span>
-                                            <a href="order-page">Indian butter chicken</a>
+                                            <a href="#">Indian butter chicken</a>
                                             <br>
                                         </p>
                                         <p class="time">Just now</p>
@@ -70,7 +69,7 @@
                                         <div class="info">
                                             <p><a href="">Sakhawat</a>
                                                 <span>Review the order</span>
-                                                <a href="order-page">Indian butter chicken</a>
+                                                <a href="#">Indian butter chicken</a>
                                             </p>
                                             <p class="time">2 days ago</p>
                                         </div>
@@ -109,7 +108,5 @@
         </div>
         <!-- end /.dashboard_menu_area -->
     </section>
-
-
 
 @endsection
