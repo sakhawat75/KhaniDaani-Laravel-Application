@@ -1,4 +1,4 @@
-@extends ('layouts.master') @section ('title', '404') @section ('content')
+@extends ('layouts.master') @section ('title', 'all notification') @section ('content')
 
     <section class="breadcrumb-area">
         <div class="container">
@@ -37,14 +37,14 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="cardify notifications_module">
+                        <div class="cardify notifications_module" id="all_noti_dynamic">
 
-                            <a href="order-page">
+                            {{-- <a href="order-page">
                             <div class="notification">
-                                <span class="line"></span> <! The line will show up if it's not clicked once (optional) -->
+                                <span class="line"></span> <!-- The line will show up if it's not clicked once (optional) -->
                                 <div class="notification__info">
                                     <div class="info_avatar">
-                                        <img src="images/notification_head4.png" alt="user-images">
+                                        <img src="{{asset('images/notification_head4.png')}}" alt="user-images">
                                     </div>
                                     <div class="info">
                                         <p><a href="">Sakhawat</a>
@@ -66,7 +66,7 @@
                                 <div class="notification">
                                     <div class="notification__info">
                                         <div class="info_avatar">
-                                            <img src="images/notification_head4.png" alt="user-images">
+                                            <img src="{{asset('images/notification_head4.png')}}" alt="user-images">
                                         </div>
                                         <div class="info">
                                             <p><a href="">Sakhawat</a>
@@ -79,12 +79,8 @@
                                     <div class="notification__icons ">
                                         <span class="lnr lnr-star loved noti_icon"></span>
                                     </div>
-                                </div></a>
+                                </div></a> --}}
                             <!-- end single notifications -->
-
-
-
-
 
 
                             <!-- pagination -->
@@ -119,3 +115,49 @@
 
 
 @endsection
+
+@push('scripts-footer-bottom-2')
+  @include ('notifications.all_notify_order_template')
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+        
+        moment.tz.setDefault('Europe/London');
+
+        _.templateSettings.variable = "notify";
+        var template = _.template(
+            $('#all_notify_order_template').html()
+ 
+       );
+
+        var renderNotification = function(notifis) {
+              _.each(notifis.data, function(notify) {
+                  $('#all_noti_dynamic').append(template(notify));
+              });
+          };
+
+    @auth
+        function loadNotifications() {
+            
+                $.ajax({
+                    url: "{{ route('api.all_notifications') }}",
+                    cached: false
+                }).done( function (res) {
+                    $('#all_noti_dynamic').html(' ');
+                    renderNotification(res);
+                });
+        }
+
+        loadNotifications();
+
+        var myInterval;
+
+        myInterval = setInterval(function(){
+            loadNotifications();
+        }, 30000);
+
+      @endauth
+    });
+  </script>
+@endpush

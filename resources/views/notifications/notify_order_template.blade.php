@@ -64,7 +64,9 @@
             		<span>Has Choosen you as deliverer for</span>
             	<% } %>
 
-            	<p><a href="{{ route('home') }}/dishes/<%= notify.data.order.dish_id %>">Indian Butter chiken</a></p>
+            	<p><a href="{{ route('home') }}/dishes/<%= notify.data.order.dish_id %>">
+                <%= notify.data.order.dish_name %>
+              </a></p>
             </p>
             <p class="time">
               <%= moment.utc(notify.data.order.created_at).fromNow() %>
