@@ -67,7 +67,8 @@
             	<p><a href="{{ route('home') }}/dishes/<%= notify.data.order.dish_id %>">Indian Butter chiken</a></p>
             </p>
             <p class="time">
-            	<%= moment(notify.data.created_at).fromNow() %>
+              <%= moment.utc(notify.data.order.created_at).fromNow() %>
+            	<% console.log('now: ' + notify.data.order.created_at); %>
             </p>
           </div>
         </div>
