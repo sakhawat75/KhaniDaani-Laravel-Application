@@ -31,11 +31,12 @@
           			
 
           			if(notify.data.noti_type == 'user') {
-          			
+          			  var id = notify.data.order.dish_user_id;
+                  getImageURL(id);
           			}
 
           			if(notify.data.noti_type == 'dsp') { 
-          				var id = notify.data.order.buyer_user_id;
+          				var id = notify.data.order.dish_user_id;
           				getImageURL(id);
           			}
 

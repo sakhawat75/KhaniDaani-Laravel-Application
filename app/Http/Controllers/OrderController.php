@@ -60,7 +60,9 @@ class OrderController extends Controller
 		$order->buyer_contact_n = $request->input('buyer_contact_n');
 		$order->buyer_cn_opt = $request->input('buyer_cn_opt');
 		$order->dish_id = $dish->id;
+		$order->dish_user_id = $dish->profile->id;
 		$order->dsp_id = $dsp->id;
+		$order->dsp_user_id = $dsp->user->id;
 		$order->dsp_service_charge = $dsp->service_charge;
 		$order->dish_price = $dish->dish_price;
 		$order->khanidaani_charge = $after_percentage;

@@ -49,7 +49,10 @@ class DatabaseSeeder extends Seeder
         $this->command->info("Areas table has been seeded");
 
 	    $this->call(UsersTableSeeder::class);
-	    $this->command->info("Users table has been seeded");
+        $this->command->info("Users table has been seeded");
+
+        /*$this->call(ProfilesTableSeeder::class);
+	    $this->command->info("Profile table has been seeded");*/
 
         $this->call(SystemVariablesSeeder::class);
 	    $this->command->info("SystemVariables table has been seeded");

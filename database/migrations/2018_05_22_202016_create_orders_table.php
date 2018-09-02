@@ -20,7 +20,9 @@ class CreateOrdersTable extends Migration
 	        $table->string('buyer_contact_n');
 	        $table->string('buyer_cn_opt')->nullable();
 	        $table->integer('dish_id');
+	        $table->integer('dish_user_id');
 	        $table->integer('dsp_id');
+	        $table->integer('dsp_user_id');
 	        $table->double('dsp_service_charge');
 	        $table->double('dish_price');
 	        $table->double('khanidaani_charge');
