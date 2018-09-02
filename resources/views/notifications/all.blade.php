@@ -1,4 +1,4 @@
-@extends ('layouts.master') @section ('title', 'All notification') @section ('content')
+@extends ('layouts.master') @section ('title', 'all notification') @section ('content')
 
     <section class="breadcrumb-area">
         <div class="container">
