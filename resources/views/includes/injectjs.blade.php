@@ -30,5 +30,6 @@
     <script src="{{ URL::to('/') }}/js/app.js"></script>
 
     @stack('scripts-footer-bottom')
+    @stack('scripts-footer-bottom-2')
 
     <!-- endinject -->

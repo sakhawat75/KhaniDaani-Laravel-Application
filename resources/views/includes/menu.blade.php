@@ -29,7 +29,7 @@
                     <li class="has_dropdown">
                         <div class="icon_wrap">
                             <span class="lnr lnr-alarm"></span>
-                            <span class="notification_count noti" id="count_notification"></span>
+                            <span class="notification_count noti" id="count_notification">0</span>
                         </div>
 
                         <div class="dropdown notification--dropdown">

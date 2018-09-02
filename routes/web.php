@@ -71,6 +71,7 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::get( '/order/confirm/{dsp}/{dish}', 'OrderController@confirm')->name( 'order.confirm');
 	Route::get( '/order/store', 'OrderController@storeOrder')->name( 'order.store');
 	Route::get( '/order/status/{order}', 'OrderController@status')->name( 'order.status');
+	Route::get('api/all_notifications', 'RestApiController@allNotification')->name( 'api.all_notifications');
 });
 
 Route::get('/tz', function(){
