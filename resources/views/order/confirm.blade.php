@@ -157,7 +157,7 @@
                                 <ul>
                                     <li>
                                         <div class="custom-radio">
-                                            <input type="radio" id="opt3" class="" name="payment_type" VALUE="khanidaani_balance">
+                                            <input type="radio" id="opt3" class="" name="payment_type" VALUE="khanidaani_balance" checked="checked">
                                             <label for="opt3">
                                                 <span class="circle"></span>Khanidaani Balance</label>
                                         </div>

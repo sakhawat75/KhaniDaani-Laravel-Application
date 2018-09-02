@@ -484,6 +484,7 @@
 
 @push('scripts-footer-bottom')
   @include ('notifications.notify_order_template')
+  @include ('notifications.notify_dish_ready_template')
   <script type="text/javascript">
     $(document).ready(function () {
         $.ajax({
@@ -530,12 +531,27 @@
         _.templateSettings.variable = "notify";
         var template = _.template(
             $('#notify_order_template').html()
- 
-       );
+        );
 
 		var renderNotification = function(notifis) {
 			var unread_count = 0;
               _.each(notifis.data, function(notify) {
+                  
+                  if(notify.type == "App\\Notifications\\NotifyOrder") {
+                    template = _.template(
+                        $('#notify_order_template').html()
+                    );
+                    
+                  } else if(notify.type == "App\\Notifications\\NotifyDishReady") {
+                    template = _.template(
+                      $('#notify_dish_ready_template').html()
+                    );
+                    
+                  } else {
+                    console.log("from else: type: " + notify.type);
+                  }
+
+
                   $('#noti_dynamic').append(template(notify));
                   if(notify.read_at == null) {
                   	unread_count++;
@@ -552,6 +568,7 @@
                     cached: false
                 }).done( function (res) {
                     $('#noti_dynamic').html(' ');
+
                     renderNotification(res);
                 });
         }

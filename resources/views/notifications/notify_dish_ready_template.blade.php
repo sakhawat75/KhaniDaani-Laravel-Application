@@ -1,11 +1,12 @@
-<script type="text/template" class="template" id="notify_order_template">
+<script type="text/template" class="template" id="notify_dish_ready_template">
 
   <a href="{{ route('home') }}/order/status/<%= notify.data.order.id %>"> 
   	<div class="notifications_module">
       <div class="notification">
         <div class="notification__info">
           <div class="info_avatar">
-          	<img src="{{ asset('/images/notification_head4.png')}}" alt="" id="noti_pi_<%= notify.id %>" class="img_test">
+            <% var rand = Math.floor((Math.random() * 9999999999) + 1); %>
+          	<img src="{{ asset('/images/notification_head4.png')}}" alt="" id="noti_pi_<%= rand %>" class="img_test">
 
           	<%
           		$(document).ready(function () {
@@ -17,9 +18,9 @@
 			            type: "GET",
 			            dataType: "json",
 				        }).done( function (json) {
-				        	var selector = "#noti_pi_" + notify.id;
+				        	var selector = "#noti_pi_" + rand;
 				        	//console.log("Selector: " + selector);
-				            $(selector).attr('src', '{{ URL::to('/') }}/storage/images/profile_image/'+json);
+                    $(selector).attr('src', '{{ URL::to('/') }}/storage/images/profile_image/'+json);
 				           
 				        });
           			}
@@ -50,17 +51,17 @@
           <div class="info">
             <p>
             	<% if(notify.data.noti_type == 'chef') { %>
-            		<span>You have recieved an order from <a href="#" id="temp_name"><%= notify.data.order.buyer_fullname %></a></span>
+            		<span><a href="{{ route('home') }}/profile/<%= notify.data.order.buyer_user_id %>" id="temp_name">DSP</a> has been notified for collecting the Dish</span>
             	<% } %>
 
             	<% if(notify.data.noti_type == 'user') { %>
-            	<a href="#" id="temp_name">Your</a>
-            		<span>Order is Placed Successfully</span>
+            		<span>
+                  Chef is ready with your ordered dish. Delivery Servicer is on the way.
+                </span>
             	<% } %>
 
             	<% if(notify.data.noti_type == 'dsp') { %>
-            	<a href="#" id="temp_name"><%= notify.data.order.buyer_fullname %></a>
-            		<span>Has Choosen you as deliverer for</span>
+            		<span>The Dish is Ready .Collect the dish from (chef) and deliver it to (buyer)</span>
             	<% } %>
 
             	<p><a href="{{ route('home') }}/dishes/<%= notify.data.order.dish_id %>">Dish Name: 

@@ -12,6 +12,7 @@ use App\Order;
 use App\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use App\Notifications\NotifyDishReady;
 
 class RestApiController extends Controller
 {
@@ -96,12 +97,24 @@ class RestApiController extends Controller
 
     	if ($request->has( 'order_id')) {
     		$order_id = $request->input('order_id');
+
     		$order = Order::find($order_id);
+    		$buyer = $order->buyer;
+			$dsp = $order->dsp->user;
+			$chef = $order->dish->profile->user;
+
     		if($order->dish->profile_id == auth()->id()) {
 			    if($request->has( 'chef_is_dish_ready')){
 
 				    $order->chef_is_dish_ready = 1;
 				    $order->save();
+				    
+
+				    $buyer->notify( new NotifyDishReady( $order, 'user'));
+				    $chef->notify(new NotifyDishReady( $order, 'chef'));
+				    $dsp->notify(new NotifyDishReady( $order, 'dsp'));
+
+				    
 			    }
 		    }
 		    if($order->buyer_user_id == auth()->id()) {
@@ -119,6 +132,8 @@ class RestApiController extends Controller
 			    }
 		    }
 	    }
+
+	    return response()->json('order updated successfully');
 
     }
 

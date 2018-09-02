@@ -133,6 +133,21 @@
 
         var renderNotification = function(notifis) {
               _.each(notifis.data, function(notify) {
+
+                if(notify.type == "App\\Notifications\\NotifyOrder") {
+                    template = _.template(
+                        $('#all_notify_order_template').html()
+                    );
+                    
+                  } else if(notify.type == "App\\Notifications\\NotifyDishReady") {
+                    template = _.template(
+                      $('#notify_dish_ready_template').html()
+                    );
+                    
+                  } else {
+                    console.log("from else: type: " + notify.type);
+                  }
+
                   $('#all_noti_dynamic').append(template(notify));
               });
           };

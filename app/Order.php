@@ -16,4 +16,9 @@ class Order extends Model
 	{
 		return $this->belongsTo( DeliveryService::class, 'dsp_id', 'id')->withDefault();
 	}
+
+	public function buyer ()
+	{
+		return $this->belongsTo( User::class, 'buyer_user_id', 'id')->withDefault();
+	}
 }
