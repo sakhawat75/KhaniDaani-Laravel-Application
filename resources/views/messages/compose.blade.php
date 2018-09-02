@@ -16,15 +16,10 @@
                     </div>
                     <h1 class="page-title">Compose messages.</h1>
                 </div>
-                <!-- end /.col-md-12 -->
             </div>
-            <!-- end /.row -->
         </div>
-        <!-- end /.container -->
     </section>
-    <!--================================
-            START MESSAGE AREA
-    =================================-->
+    
     <section class="message_area">
         <div class="container">
             <div class="row">
@@ -47,7 +42,6 @@
                                         <a href="#">
                                             <span class="lnr lnr-dice"></span>Sent</a>
                                     </li>
-
                                 </ul>
                             </div>
                             <!-- end /.messaging_menu -->
@@ -90,9 +84,7 @@
                                     <!-- end /.message_data -->
                                 </div>
                                 <!-- end /.message -->
-
-
-
+                                
                                 <div class="message">
                                     <div class="message__actions_avatar">
                                         <div class="avatar">
@@ -182,6 +174,5 @@
             <!-- end /.row -->
         </div>
     </section>
-
 
 @endsection
