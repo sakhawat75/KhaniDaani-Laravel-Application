@@ -13,6 +13,8 @@
 
 Route::get('/messages/all', 'NotificationsController@messages')->name('messages.all');
 
+Route::get('/messages/compose', 'NotificationsController@compose')->name('messages.compose');
+
 Route::get('/notifications/all', 'NotificationsController@notifications')->name('notifications.all');
 
 Route::get('/', 'ViewController@index')->name('home');

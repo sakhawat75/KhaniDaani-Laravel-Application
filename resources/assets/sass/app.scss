@@ -3799,7 +3799,7 @@ span.counter {
         &.active{
           background: #f5fafe;
         }
-        max-height: 1094px;
+        max-height: 700px;
         overflow-Y: scroll;
         margin-right: 2px;
         .message__actions_avatar{
@@ -3867,7 +3867,7 @@ span.counter {
           }
         }
         .message{
-          padding: 30px;
+          padding: 10px;
           border-bottom: 1px solid $borderColor;
           &.active{
             background: #f5fafe;
@@ -3939,12 +3939,15 @@ span.counter {
     }
 
     .chat_area--conversation{
-      padding: 30px;
+      padding: 15px;
+      max-height: 700px;
+      overflow-Y: scroll;
+      margin-right: 2px;
       .conversation{
         border-bottom: 1px solid $borderColor;
         padding-bottom: 26px;
         &+.conversation{
-          padding-top: 30px;
+          padding-top: 15px;
         }
       }
       .chat_avatar {

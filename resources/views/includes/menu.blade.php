@@ -132,7 +132,7 @@
                         <div class="icon_wrap"> <span class="lnr lnr-envelope"></span> <span class="notification_count msg">1</span> </div>
                         <div class="dropdown messaging--dropdown">
                             <div class="dropdown_module_header">
-                                <h4>Messages</h4> <a href="message.html">View All</a> </div>
+                                <h4>Messages</h4> <a href="{{route('messages.all')}}">View All</a> </div>
 
                             <!-- add upto 5 massages in the dropdown menue -->
 

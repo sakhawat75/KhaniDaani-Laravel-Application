@@ -22460,7 +22460,7 @@ span.counter {
 .messaging_sidebar .messaging__contents .messages,
 .recent_message .messaging__contents .messages,
 .recent_message .dashboard__content .messages {
-  max-height: 1094px;
+  max-height: 700px;
   overflow-Y: scroll;
   margin-right: 2px;
 }
@@ -22579,7 +22579,7 @@ span.counter {
 .messaging_sidebar .messaging__contents .messages .message,
 .recent_message .messaging__contents .messages .message,
 .recent_message .dashboard__content .messages .message {
-  padding: 30px;
+  padding: 10px;
   border-bottom: 1px solid #ececec;
 }
 
@@ -22671,7 +22671,10 @@ span.counter {
 
 .chat_area .chat_area--conversation,
 .recent_message .dashboard__content .chat_area--conversation {
-  padding: 30px;
+  padding: 15px;
+  max-height: 700px;
+  overflow-Y: scroll;
+  margin-right: 2px;
 }
 
 .chat_area .chat_area--conversation .conversation,
@@ -22682,7 +22685,7 @@ span.counter {
 
 .chat_area .chat_area--conversation .conversation + .conversation,
 .recent_message .dashboard__content .chat_area--conversation .conversation + .conversation {
-  padding-top: 30px;
+  padding-top: 15px;
 }
 
 .chat_area .chat_area--conversation .chat_avatar,
