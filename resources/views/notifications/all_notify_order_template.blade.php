@@ -1,7 +1,9 @@
 <script type="text/template" class="template" id="all_notify_order_template">
 
   <a href="{{ route('home') }}/order/status/<%= notify.data.order.id %>" class="noti_box">
-    <div class="notification" data-notification="<%= notify.id %>">
+    <div class="notification  <% if(notify.read_at == null) { %>
+          unread_notification
+      <% } %>" data-notification="<%= notify.id %>">
         <span class="line"></span>
         <div class="notification__info">
             <div class="info_avatar">

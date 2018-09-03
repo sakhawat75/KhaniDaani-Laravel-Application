@@ -2,7 +2,9 @@
 
   <a href="{{ route('home') }}/order/status/<%= notify.data.order.id %>" class="noti_box"> 
   	<div class="notifications_module">
-      <div class="notification" data-notification="<%= notify.id %>">
+      <div class="notification  <% if(notify.read_at == null) { %>
+          unread_notification
+      <% } %>" data-notification="<%= notify.id %>">
         <div class="notification__info">
           <div class="info_avatar">
             <% var rand = Math.floor((Math.random() * 9999999999) + 1); %>

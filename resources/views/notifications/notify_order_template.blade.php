@@ -2,7 +2,9 @@
 
   <a href="{{ route('home') }}/order/status/<%= notify.data.order.id %>" class="noti_box"> 
   	<div class="notifications_module">
-      <div class="notification" data-notification="<%= notify.id %>">
+      <div class="notification  <% if(notify.read_at == null) { %>
+          unread_notification
+      <% } %>" data-notification="<%= notify.id %>">
         <div class="notification__info">
           <div class="info_avatar">
           	<img src="{{ asset('/images/notification_head4.png')}}" alt="" id="noti_pi_<%= notify.id %>" class="img_test">

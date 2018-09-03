@@ -1,3 +1,11 @@
+@push ('head-css')
+  <style type="text/css">
+    .notification {
+      background: #faffd7;
+    }
+  </style>
+@endpush
+
 <div class="menu-area">
   <!-- start .top-menu-area -->
   <div class="top-menu-area">
@@ -526,6 +534,7 @@
   <script type="text/javascript">
     $(document).ready(function () {
 
+      var noti_refresh_time = 300000;
     	moment.tz.setDefault('Europe/London');
 
         _.templateSettings.variable = "notify";
@@ -556,6 +565,7 @@
                   if(notify.read_at == null) {
                   	unread_count++;
                   }
+                  console.log("read at: " + notify.read_at);
               });
               $("#count_notification").text(unread_count);
           };
@@ -579,7 +589,7 @@
 
         myInterval = setInterval(function(){
             loadNotifications();
-        }, 30000);
+        }, noti_refresh_time);
 
         $(document).on('click','.notification', function (e) {
             // clearInterval(myInterval);
@@ -603,4 +613,9 @@
       @endauth
     });
   </script>
+  <style type="text/css">
+    .unread_notification {
+      background: #faffd7;
+    }
+  </style>
 @endpush
