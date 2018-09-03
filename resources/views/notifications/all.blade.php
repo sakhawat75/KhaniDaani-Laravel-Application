@@ -112,6 +112,10 @@
         <!-- end /.dashboard_menu_area -->
     </section>
 
+    <div class="ajax-load text-center" style="display:none">
+        <p><img src="http://demo.itsolutionstuff.com/plugin/loader.gif">Loading More post</p>
+    </div>
+
 
 
 @endsection
@@ -122,7 +126,7 @@
   <script type="text/javascript">
     $(document).ready(function () {
 
-        
+        var next_page;
         moment.tz.setDefault('Europe/London');
 
         _.templateSettings.variable = "notify";
@@ -132,35 +136,45 @@
        );
 
         var renderNotification = function(notifis) {
+
               _.each(notifis.data, function(notify) {
+              if(notify.type == "App\\Notifications\\NotifyOrder") {
+                  template = _.template(
+                      $('#all_notify_order_template').html()
+                  );
+                  
+                } else if(notify.type == "App\\Notifications\\NotifyDishReady") {
+                  template = _.template(
+                    $('#notify_dish_ready_template').html()
+                  );
+                  
+                } else {
+                  console.log("from else: type: " + notify.type);
+                }
 
-                if(notify.type == "App\\Notifications\\NotifyOrder") {
-                    template = _.template(
-                        $('#all_notify_order_template').html()
-                    );
-                    
-                  } else if(notify.type == "App\\Notifications\\NotifyDishReady") {
-                    template = _.template(
-                      $('#notify_dish_ready_template').html()
-                    );
-                    
-                  } else {
-                    console.log("from else: type: " + notify.type);
-                  }
+                $('#all_noti_dynamic').append(template(notify));
+            });
 
-                  $('#all_noti_dynamic').append(template(notify));
-              });
+              if(notifis.next_page_url == null) {
+                $('#all_noti_dynamic').append('<p class="text-center px-5 py-3">No more Notification</p>');
+              } 
+              
           };
 
     @auth
+
+        $('.footer-area').remove();
         function loadNotifications() {
             
                 $.ajax({
                     url: "{{ route('api.all_notifications') }}",
-                    cached: false
+                    /*async: false,*/
+                    /*cached: false*/
                 }).done( function (res) {
                     $('#all_noti_dynamic').html(' ');
                     renderNotification(res);
+                    next_page = res.next_page_url;
+                    console.log("npu: " + next_page);
                 });
         }
 
@@ -168,11 +182,70 @@
 
         var myInterval;
 
-        myInterval = setInterval(function(){
+        /*myInterval = setInterval(function(){
             loadNotifications();
-        }, 30000);
+        }, 30000);*/
+
+
+        
+        //infinity scroll
+        
+        $(window).scroll(function() {
+            
+            if($(window).scrollTop() + $(window).height() >= $(document).height()) {
+                // page_no++;
+                if(next_page) {
+                    loadMoreData(next_page);
+                }
+                
+            }
+
+        });
+
+
+        function loadMoreData(last_id){
+        console.log("lmd npu: " + next_page);
+          $.ajax(
+                {
+                    url: last_id,
+                    type: "get",
+                    /*async: false,*/
+                    beforeSend: function()
+                    {
+                        $('.ajax-load').show();
+                    }
+                })
+                .done(function(res)
+                {
+                    
+                    console.log("lmd done npu: " + next_page);
+                    console.log("lmd done res: " + res.prev_page_url);
+                    $('.ajax-load').hide();
+                    
+                    next_page = res.next_page_url;
+                    renderNotification(res);
+                    
+                })
+                .fail(function(jqXHR, ajaxOptions, thrownError)
+                {
+                    alert('server not responding...');
+                });
+          }
+
 
       @endauth
     });
   </script>
+
+  <style type="text/css">
+    .ajax-load{
+
+            background: #e1e1e1;
+
+            padding: 10px 0px;
+
+            width: 100%;
+
+        }
+  </style>
 @endpush

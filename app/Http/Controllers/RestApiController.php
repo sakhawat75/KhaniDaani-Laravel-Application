@@ -142,7 +142,7 @@ class RestApiController extends Controller
 	    $user = User::find(auth()->id());
 
 
-	    return response()->json( $user->notifications()->simplePaginate(5));
+	    return response()->json( $user->notifications()->simplePaginate(3));
 		// return new NotificationCollection( $user->notifications);
     }
 

@@ -565,7 +565,7 @@
                   if(notify.read_at == null) {
                   	unread_count++;
                   }
-                  console.log("read at: " + notify.read_at);
+                  
               });
               $("#count_notification").text(unread_count);
           };
