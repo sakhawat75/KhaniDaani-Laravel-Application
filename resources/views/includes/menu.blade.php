@@ -137,14 +137,18 @@
                         </div>
                     </li>
                     <li class="has_dropdown">
-                        <div class="icon_wrap"> <span class="lnr lnr-envelope"></span> <span class="notification_count msg">1</span> </div>
+                        <div class="icon_wrap"> <span class="lnr lnr-envelope"></span> <span class="notification_count msg" id="count_msg">0</span> </div>
                         <div class="dropdown messaging--dropdown">
                             <div class="dropdown_module_header">
                                 <h4>Messages</h4> <a href="{{route('messages.all')}}">View All</a> </div>
 
+                            <div class="msg_dynamic">
+                              
+                            </div>
+
                             <!-- add upto 5 massages in the dropdown menue -->
 
-                            <div class="messages">
+                            {{-- <div class="messages">
                                 <a href="#" class="message recent">
                                     <div class="message__actions_avatar">
                                         <div class="avatar"> <img src="{{ asset('/images/notification_head4.png')}}" alt=""> </div>
@@ -178,7 +182,7 @@
                                     <!-- end /.message_data -->
                                 </a>
                                 <!-- end /.message -->
-                            </div>
+                            </div> --}}
                         </div>
                     </li>
                 </ul>
@@ -493,6 +497,7 @@
 @push('scripts-footer-bottom')
   @include ('notifications.notify_order_template')
   @include ('notifications.notify_dish_ready_template')
+  @include ('messages.message_preview_template')
   <script type="text/javascript">
     $(document).ready(function () {
         $.ajax({
@@ -542,33 +547,33 @@
             $('#notify_order_template').html()
         );
 
-		var renderNotification = function(notifis) {
-			var unread_count = 0;
-              _.each(notifis.data, function(notify) {
-                  
-                  if(notify.type == "App\\Notifications\\NotifyOrder") {
-                    template = _.template(
-                        $('#notify_order_template').html()
-                    );
-                    
-                  } else if(notify.type == "App\\Notifications\\NotifyDishReady") {
-                    template = _.template(
-                      $('#notify_dish_ready_template').html()
-                    );
-                    
-                  } else {
-                    console.log("from else: type: " + notify.type);
-                  }
+		    var renderNotification = function(notifis) {
+			    var unread_count = 0;
+            _.each(notifis.data, function(notify) {
+              
+              if(notify.type == "App\\Notifications\\NotifyOrder") {
+                template = _.template(
+                    $('#notify_order_template').html()
+                );
+                
+              } else if(notify.type == "App\\Notifications\\NotifyDishReady") {
+                template = _.template(
+                  $('#notify_dish_ready_template').html()
+                );
+                
+              } else {
+                console.log("from else: type: " + notify.type);
+              }
 
 
-                  $('#noti_dynamic').append(template(notify));
-                  if(notify.read_at == null) {
-                  	unread_count++;
-                  }
-                  
-              });
-              $("#count_notification").text(unread_count);
-          };
+              $('#noti_dynamic').append(template(notify));
+              if(notify.read_at == null) {
+              	unread_count++;
+              }
+                
+            });
+            $("#count_notification").text(unread_count);
+        };
 
 	@auth
         function loadNotifications() {
@@ -610,12 +615,67 @@
         });*/
 
 
+        //messaging
+        var msg_template = _.template(
+            $('#message_preview_template').html()
+        );
+
+        var renderMessages = function(notifis) {
+          var unread_count_msg = 0;
+            _.each(notifis.data, function(notify) {
+
+              $('.msg_dynamic').append(msg_template(notify));
+
+              _.each(notify.mb, function (m_body) {
+                if(m_body.read_at == null) {
+                  unread_count_msg++;
+                }
+
+              });
+                
+            });
+            $("#count_msg").text(unread_count_msg);
+        };
+
+
+        function loadMessages() {
+            
+                $.ajax({
+                    url: "{{ route('messages.getMessages') }}",
+                    cached: false
+                }).done( function (res) {
+                    $('.msg_dynamic').html(' ');
+                    // console.log('msg: ' + res.data[0].mb[0].body);
+                     renderMessages(res);
+                    /*$.each( res.data, function( key, value ) {
+                      console.log('msg_id: ' + value.id);
+                      //console.log('msg_body: ' + value.mb[0].body);
+                      $.each(value.mb, function(index, m_body) {
+                          console.log('msg_body: ' + m_body.body);
+                      });
+                    });*/
+                });
+        }
+
+        loadMessages();
+
       @endauth
     });
   </script>
   <style type="text/css">
     .unread_notification {
       background: #faffd7;
+    } 
+
+    .dropdown.messaging--dropdown .message .message_data .name_time .name span.msg_unread_count {
+        font-size: 13px;
+        margin: 0;
+        font-weight: bold;
     }
+
+    .dropdown.messaging--dropdown .message .message__actions_avatar .avatar img {
+        border-radius: 50%;
+    }
+
   </style>
 @endpush

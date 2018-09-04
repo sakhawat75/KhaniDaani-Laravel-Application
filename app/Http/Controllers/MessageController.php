@@ -113,4 +113,13 @@ class MessageController extends Controller
     {
         //
     }
+
+    public function getMessages(Request $req)
+    {
+        $user = auth()->user();
+
+        $messages = Message::where('sender_id', 1)->orWhere('recipient_id', 1)->orderBy('created_at')->with('mb')->with('sender')->with('recipient')->paginate(3);
+
+        return $messages;
+    }
 }

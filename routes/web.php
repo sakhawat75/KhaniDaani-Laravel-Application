@@ -77,6 +77,7 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::get('api/all_notifications', 'RestApiController@allNotification')->name( 'api.all_notifications');
 
 	//Meassage
+	Route::get( '/messages/getMessages', 'MessageController@getMessages')->name( 'messages.getMessages');
 	Route::resource('messages', 'MessageController');
 });
 
