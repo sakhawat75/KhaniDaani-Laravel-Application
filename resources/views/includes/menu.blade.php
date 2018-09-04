@@ -534,7 +534,7 @@
   <script type="text/javascript">
     $(document).ready(function () {
 
-      var noti_refresh_time = 300000;
+      var noti_refresh_time = 15000;
     	moment.tz.setDefault('Europe/London');
 
         _.templateSettings.variable = "notify";

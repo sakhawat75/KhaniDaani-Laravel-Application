@@ -444,8 +444,12 @@
                   <p>Joined {{ $dish->profile->created_at->toFormattedDateString() }}</p>
                 </div>
                 <div class="author-badges">
-                    <div class="author-btn"> <a href="#" class="btn btn--md btn--round">Follow</a> </div>
+                    <div class="author-btn"> <a href="#" class="btn btn--md btn--round" data-toggle="modal" data-target="#messageModal">Message Chef</a> </div>
                 </div>
+
+                
+
+
                 <!-- end /.author -->
               </div>
               <!-- end /.author-infos -->
@@ -471,4 +475,52 @@
         END SINGLE PRODUCT DESCRIPTION AREA
     ===============================================-->
 
+
+    <!-- Modal for sending message -->
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="messageModalLabel">Message Chef</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <form action="" method="post" id="send_msg">
+
+              <div class="form-group">
+                <label for="msgText">Type your message Below</label>
+                <textarea class="form-control" id="msgText" placeholder="I want to buy your dish" name="body"></textarea>
+                <button type="submit" class="btn btn-primary px-3 py-1 d-none" form="send_msg" id="submit-form">Send</button>
+              </div>
+
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <label for="submit-form" tabindex="0"  class="btn btn-primary px-3 py-1">Send</label>
+
+            <button type="button" class="btn btn-secondary px-3 py-1" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
 @endsection
+
+@push('scripts-footer-bottom')
+<style type="text/css">
+  #messageModalLabel {
+    margin-bottom: 0;
+  }
+  #messageModal .modal-header {
+    display: inherit;
+  }
+</style>
+
+<script type="text/javascript">
+  
+</script>
+
+@endpush

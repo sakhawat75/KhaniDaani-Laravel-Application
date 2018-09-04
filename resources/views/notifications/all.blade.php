@@ -126,6 +126,7 @@
   <script type="text/javascript">
     $(document).ready(function () {
 
+        var noti_refresh_time = 15000;
         var next_page;
         moment.tz.setDefault('Europe/London');
 
@@ -180,11 +181,11 @@
 
         loadNotifications();
 
-        var myInterval;
+       /* var myInterval;
 
-        /*myInterval = setInterval(function(){
+        myInterval = setInterval(function(){
             loadNotifications();
-        }, 30000);*/
+        }, noti_refresh_time);*/
 
 
         
@@ -193,7 +194,6 @@
         $(window).scroll(function() {
             
             if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-                // page_no++;
                 if(next_page) {
                     loadMoreData(next_page);
                 }
