@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Message;
+use App\MessageBody;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -33,9 +34,39 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $r)
     {
         //
+        if($r->has('sender_id')) {
+            $sender_id = $r->input('sender_id');
+        } else {
+            return;
+        }
+        if($r->has('recipient_id')) {
+            $recipient_id = $r->input('recipient_id');
+        } else {
+            return;
+        }
+        if($r->has('body')) {
+            $body = $r->input('body');
+        } else {
+            return;
+        }
+
+        $message = Message::updateOrCreate([
+            'sender_id' => $sender_id,
+            'recipient_id' => $recipient_id,
+        ], [
+            'sender_id' => $sender_id,
+            'recipient_id' => $recipient_id,
+        ]);
+
+        $message_body = MessageBody::create([
+            'message_id' => $message->id,
+            'sender_id' => $message->sender_id,
+            'body' => $body,
+        ]);
+        return response()->json("Message Sent Successfully");
     }
 
     /**
