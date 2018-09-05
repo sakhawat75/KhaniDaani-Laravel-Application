@@ -53,6 +53,8 @@ class MessageController extends Controller
             return;
         }
 
+
+
         $message = Message::updateOrCreate([
             'sender_id' => $sender_id,
             'recipient_id' => $recipient_id,
@@ -118,7 +120,7 @@ class MessageController extends Controller
     {
         $user = auth()->user();
 
-        $messages = Message::where('sender_id', 1)->orWhere('recipient_id', 1)->orderBy('created_at')->with('mb')->with('sender')->with('recipient')->paginate(3);
+        $messages = Message::where('sender_id', $user->id)->orWhere('recipient_id', $user->id)->orderBy('created_at')->with('mb')->with('sender')->with('recipient')->paginate(3);
 
         return $messages;
     }

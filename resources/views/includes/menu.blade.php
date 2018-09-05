@@ -677,5 +677,9 @@
         border-radius: 50%;
     }
 
+    .dropdown.messaging--dropdown .message .message_data {
+        width: 86%;
+    }
+
   </style>
 @endpush
