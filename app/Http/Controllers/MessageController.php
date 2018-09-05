@@ -39,6 +39,9 @@ class MessageController extends Controller
         //
         if($r->has('sender_id')) {
             $sender_id = $r->input('sender_id');
+            if ($sender_id != auth()->id()) {
+                return;
+            }
         } else {
             return;
         }
@@ -53,19 +56,22 @@ class MessageController extends Controller
             return;
         }
 
+        $message = Message::where('sender_id', $recipient_id)->where('recipient_id', $sender_id)->first();
 
+        if ($message === null) {
+            $message = Message::updateOrCreate([
+                'sender_id' => $sender_id,
+                'recipient_id' => $recipient_id,
+            ], [
+                'sender_id' => $sender_id,
+                'recipient_id' => $recipient_id,
+            ]);
+        }
 
-        $message = Message::updateOrCreate([
-            'sender_id' => $sender_id,
-            'recipient_id' => $recipient_id,
-        ], [
-            'sender_id' => $sender_id,
-            'recipient_id' => $recipient_id,
-        ]);
 
         $message_body = MessageBody::create([
             'message_id' => $message->id,
-            'sender_id' => $message->sender_id,
+            'sender_id' => $sender_id,
             'body' => $body,
         ]);
         return response()->json("Message Sent Successfully");

@@ -627,9 +627,12 @@
               $('.msg_dynamic').append(msg_template(notify));
 
               _.each(notify.mb, function (m_body) {
-                if(m_body.read_at == null) {
-                  unread_count_msg++;
+                if({{ auth()->id() }} != m_body.sender_id) {
+                  if(m_body.read_at == null) {
+                    unread_count_msg++;
+                  }
                 }
+                
 
               });
                 

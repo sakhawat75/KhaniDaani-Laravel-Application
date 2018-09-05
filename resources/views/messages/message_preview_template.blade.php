@@ -1,6 +1,24 @@
 <script type="text/template" class="template" id="message_preview_template">
 
-  <div class="messages">
+  <% 
+    var unread_msg = 0;
+    var last_msg;
+    var last_created;
+    _.each(notify.mb, function(m_body) {
+        
+        if({{ auth()->id() }} != m_body.sender_id) {
+          if(m_body.read_at == null) {
+            unread_msg++;
+          }
+        }
+        last_msg = m_body.body;
+        last_created = m_body.created_at;
+    });
+  %>
+
+  <div class="messages <% if(unread_msg > 0) { %>
+          unread_notification
+      <% } %>">
       <a href="#" class="message recent">
           <div class="message__actions_avatar">
               <div class="avatar"> <img src="{{ asset('/images/notification_head4.png')}}" alt="sender image" id="msg_pi_<%= notify.id %>">
@@ -44,20 +62,10 @@
                   <div class="name">
                       <p><%= notify.sender.name %></p> <span class="lnr lnr-envelope"></span>
                       <span class="msg_unread_count">
-                          <% 
-                            var unread_msg = 0;
-                            var last_msg;
-                            var last_created;
-                            _.each(notify.mb, function(m_body) {
-                                
-                                if(m_body.read_at == null) {
-                                    unread_msg++;
-                                }
-                                last_msg = m_body.body;
-                                last_created = m_body.created_at;
-                            });
-                          %>
-                          <%= unread_msg %>
+                          
+                          <% if(unread_msg != 0) { %>
+                              <%= unread_msg %>
+                          <% } %>
                       </span> </div> <span class="time"><%= moment.utc(last_created).fromNow() %></span>
                   <p><%= last_msg %></p>
               </div>
