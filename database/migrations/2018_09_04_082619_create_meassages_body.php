@@ -18,7 +18,7 @@ class CreateMeassagesBody extends Migration
             $table->integer('message_id');
             $table->integer('sender_id');
             $table->string('body');
-            $table->date('read_at')->nullable();
+            $table->dateTime('read_at')->nullable();
             $table->timestamps();
         });
     }

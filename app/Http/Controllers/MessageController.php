@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Message;
 use App\MessageBody;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class MessageController extends Controller
 {
@@ -74,6 +75,10 @@ class MessageController extends Controller
             'sender_id' => $sender_id,
             'body' => $body,
         ]);
+
+        $message->updated_at = Carbon::now();
+        $message->save();
+
         return response()->json("Message Sent Successfully");
     }
 
@@ -126,7 +131,7 @@ class MessageController extends Controller
     {
         $user = auth()->user();
 
-        $messages = Message::where('sender_id', $user->id)->orWhere('recipient_id', $user->id)->orderBy('created_at')->with('mb')->with('sender')->with('recipient')->paginate(3);
+        $messages = Message::where('sender_id', $user->id)->orWhere('recipient_id', $user->id)->orderBy('updated_at', 'desc')->with('mb')->with('sender')->with('recipient')->paginate(3);
 
         return $messages;
     }

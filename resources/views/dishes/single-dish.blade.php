@@ -511,7 +511,7 @@
     <div id="snackbar">Snackbar</div>
 @endsection
 
-@push('scripts-footer-bottom')
+@push('scripts-footer-bottom-2')
 <style type="text/css">
   #messageModalLabel {
     margin-bottom: 0;
@@ -530,6 +530,51 @@
         setTimeout(function () {
             $('#snackbar').removeClass('show');
         }, 1600);
+    }
+
+
+    //messaging
+    var msg_template = _.template(
+        $('#message_preview_template').html()
+    );
+
+    var renderMessages = function(notifis) {
+      var unread_count_msg = 0;
+        _.each(notifis.data, function(notify) {
+
+          $('.msg_dynamic').append(msg_template(notify));
+
+          _.each(notify.mb, function (m_body) {
+            if({{ auth()->id() }} != m_body.sender_id) {
+              if(m_body.read_at == null) {
+                unread_count_msg++;
+              }
+            }
+            
+
+          });
+            
+        });
+        $("#count_msg").text(unread_count_msg);
+    };
+    //load messages
+    var loadMessages = function () {
+        
+            $.ajax({
+                url: "{{ route('messages.getMessages') }}",
+                cached: false
+            }).done( function (res) {
+                $('.msg_dynamic').html(' ');
+                // console.log('msg: ' + res.data[0].mb[0].body);
+                 renderMessages(res);
+                /*$.each( res.data, function( key, value ) {
+                  console.log('msg_id: ' + value.id);
+                  //console.log('msg_body: ' + value.mb[0].body);
+                  $.each(value.mb, function(index, m_body) {
+                      console.log('msg_body: ' + m_body.body);
+                  });
+                });*/
+            });
     }
 
     //send message
@@ -551,6 +596,7 @@
       }).done( function(data) {
           console.log("data: " + data);
           snackbar('Message Sent Successfully');
+          loadMessages();
 
       });
     });

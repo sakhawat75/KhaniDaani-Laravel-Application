@@ -641,7 +641,7 @@
         };
 
 
-        function loadMessages() {
+        var loadMessages = function () {
             
                 $.ajax({
                     url: "{{ route('messages.getMessages') }}",
