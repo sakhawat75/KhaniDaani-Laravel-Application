@@ -29,7 +29,7 @@
                         <div class="messaging_menu">
                             <a href="#" id="drop2" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 <span class="lnr lnr-inbox"></span>Inbox
-                                <span class="msg">3</span>
+                                <span class="msg" id="all_unread_count">3</span>
                                 <span class="lnr lnr-chevron-down"></span>
                             </a>
 
@@ -65,8 +65,8 @@
                             <span class="lnr lnr-magnifier"></span>
                         </div>
 
-                        <div class="messages">
-                            <div class="message">
+                        <div class="messages" id="all_msg_dynamic">
+                           {{--  <div class="message">
                                 <div class="message__actions_avatar">
                                     <div class="avatar">
                                         <img src="{{ asset('/images/notification_head4.png')}}" alt="">
@@ -128,7 +128,7 @@
                                     </div>
                                 </div>
                                 <!-- end /.message_data -->
-                            </div>
+                            </div> --}}
                             <!-- end /.message -->
 
                         </div>
@@ -166,7 +166,10 @@
                     <!-- end /.chat_area--title -->
 
                     <div class="chat_area--conversation">
-                        <div class="conversation">
+                        <div class="text-center">
+                            <h2 class="my-5">Click on left pane to view conversation</h2>
+                        </div>
+                        {{-- <div class="conversation">
                             <div class="head">
                                 <div class="chat_avatar">
                                     <img src="{{ asset('/images/notification_head4.png')}}" alt="Notification avatar">
@@ -189,9 +192,9 @@
                             </div>
                             <!-- end /.body -->
                         </div>
-                        <!-- end /.conversation -->
+                        <!-- end /.conversation --> --}}
 
-                        <div class="conversation">
+                        {{-- <div class="conversation">
                             <div class="head">
                                 <div class="chat_avatar">
                                     <img src="{{ asset('/images/notification_head4.png')}}" alt="Notification avatar">
@@ -214,9 +217,9 @@
                             </div>
                             <!-- end /.body -->
                         </div>
-                        <!-- end /.conversation -->
+                        <!-- end /.conversation --> --}}
 
-                        <div class="conversation">
+                        {{-- <div class="conversation">
                             <div class="head">
                                 <div class="chat_avatar">
                                     <img src="{{ asset('/images/notification_head4.png')}}" alt="Notification avatar">
@@ -259,20 +262,20 @@
                             </div>
                             <!-- end /.body -->
                         </div>
-                        <!-- end /.conversation -->
+                        <!-- end /.conversation --> --}}
                     </div>
                     <!-- end /.chat_area--conversation -->
 
-                    <div class="message_composer">
+                    <div class="message_composer d-none">
                         <div class="composer_field" id="trumbowyg-demo"></div>
                         <!-- end /.trumbowyg-demo -->
                         <div class="attached"></div>
 
                         <div class="btns">
-                            <button class="btn send btn--sm btn--round">Reply</button>
-                            <label for="att">
+                            <button class="btn send btn--sm btn--round" id="reply_msg">Reply</button>
+                            {{-- <label for="att">
                                 <input type="file" class="attachment_field" id="att" multiple>
-                                <span class="lnr lnr-paperclip"></span>Attachment</label>
+                                <span class="lnr lnr-paperclip"></span>Attachment</label> --}}
                         </div>
                         <!-- end /.message_composer -->
                     </div>
@@ -286,5 +289,164 @@
     </div>
 </section>
 
-
+@include ('messages.all_message_preview_template')
+@include ('messages.msg_single_box_template')
 @endsection
+
+@push('scripts-footer-bottom-2')
+
+<script type="text/javascript">
+    
+    $(document).ready( function() {
+        //messaging
+        _.templateSettings.variable = "notify";
+        var loaded_msg;
+        var user_name;
+        var recipient_id
+        var sender_id
+        var your_pic = "{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}";
+        var else_pic;
+
+        var all_msg_template = _.template(
+            $('#all_message_preview_template').html()
+        );
+
+        var renderAllMessages = function(notifis) {
+          var unread_count_msg = 0;
+            _.each(notifis.data, function(notify) {
+
+              $('#all_msg_dynamic').append(all_msg_template(notify));
+
+              _.each(notify.mb, function (m_body) {
+                if({{ auth()->id() }} != m_body.sender_id) {
+                  if(m_body.read_at == null) {
+                    unread_count_msg++;
+                  }
+                }
+                
+
+              });
+                
+            });
+            $("#all_unread_count").text(unread_count_msg);
+        };
+
+
+        var loadAllMessages = function () {
+            
+                $.ajax({
+                    url: "{{ route('messages.getAllMessages') }}",
+                    cached: false
+                }).done( function (res) {
+                    loaded_msg = res;
+                    $('#all_msg_dynamic').html(' ');
+                    // console.log('msg: ' + res.data[0].mb[0].body);
+                     renderAllMessages(res);
+                    /*$.each( res.data, function( key, value ) {
+                      console.log('msg_id: ' + value.id);
+                      //console.log('msg_body: ' + value.mb[0].body);
+                      $.each(value.mb, function(index, m_body) {
+                          console.log('msg_body: ' + m_body.body);
+                      });
+                    });*/
+                });
+        }
+
+        loadAllMessages();
+
+
+        var msg_single_box_template = _.template(
+            $('#msg_single_box_template').html()
+        );
+
+        var renderSingleMessage = function (res) {
+
+            _.each(res, function(notify) {
+
+              $('.chat_area--conversation').append(msg_single_box_template({
+                    notify: notify, 
+                    user_name: user_name,
+                    else_pic: else_pic,
+                    your_pic: your_pic,
+                    }
+                ));
+                
+            });
+
+
+        }
+
+        var loadSingleMsg = function(message_id, sender_id, recipient_id) {
+            $.ajax({
+                url: "{{ route('messages.getSingleMessages') }}",
+                data: {
+                    message_id: message_id,
+                    sender_id: sender_id,
+                    recipient_id: recipient_id,
+                },
+                cached: false
+            }).done( function (res) {                    
+                 renderSingleMessage(res);
+            });
+        };
+
+        $(document).on('click', '.message', function (e) {
+            //e.preventDefault();
+            var msg_id = $(this).data('message_id');
+            sender_id = $(this).data('sender_id');
+            recipient_id = $(this).data('recipient_id');
+
+            user_name = $(this).data('user_name');
+            else_pic = $('#all_msg_pi_'+msg_id).attr('src');
+            console.log(your_pic);
+
+            $('.chat_area--title h3 .name').text(user_name);
+            $('.chat_area--conversation').html('');
+            $('.message_composer').removeClass('d-none');
+            $('.message').removeClass('active');
+            $(this).addClass('active');
+
+            loadSingleMsg(msg_id, sender_id, recipient_id);
+        
+        } );
+
+        $("#reply_msg").click(function (e) {
+            e.preventDefault();
+            var body = $('#trumbowyg-demo').html();
+            $('#trumbowyg-demo').html('');
+            console.log(body);
+            var r_id = recipient_id;
+            if(r_id == {{auth()->id()}}) {
+                r_id = sender_id;
+            }
+            $.ajax({
+              url: '{{ route('messages.store') }}',
+              method: "POST",
+              data: {
+                '_token': '{{ csrf_token() }}',
+                'sender_id': {{ auth()->id() }},
+                'recipient_id': r_id,
+                'body': body,
+              },
+            }).done( function(data) {
+                console.log("data: " + data);
+                // snackbar('Message Sent Successfully');
+
+                $('.chat_area--conversation').append(msg_single_box_template({
+                    notify: data, 
+                    user_name: user_name,
+                    else_pic: else_pic,
+                    your_pic: your_pic,
+                    }
+                ));
+
+                loadAllMessages();
+
+            });
+
+        });
+    });
+
+</script>
+
+@endpush

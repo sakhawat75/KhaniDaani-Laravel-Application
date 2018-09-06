@@ -78,6 +78,8 @@ Route::group(['middleware' => 'auth'], function (){
 
 	//Meassage
 	Route::get( '/messages/getMessages', 'MessageController@getMessages')->name( 'messages.getMessages');
+	Route::get( '/messages/getAllMessages', 'MessageController@getAllMessages')->name( 'messages.getAllMessages');
+	Route::get( '/messages/getSingleMessages', 'MessageController@getSingleMessages')->name( 'messages.getSingleMessages');
 	Route::resource('messages', 'MessageController');
 });
 

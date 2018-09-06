@@ -79,7 +79,7 @@ class MessageController extends Controller
         $message->updated_at = Carbon::now();
         $message->save();
 
-        return response()->json("Message Sent Successfully");
+        return response()->json($message_body);
     }
 
     /**
@@ -134,5 +134,58 @@ class MessageController extends Controller
         $messages = Message::where('sender_id', $user->id)->orWhere('recipient_id', $user->id)->orderBy('updated_at', 'desc')->with('mb')->with('sender')->with('recipient')->paginate(3);
 
         return $messages;
+    }
+
+    public function getAllMessages(Request $req)
+    {
+        $user = auth()->user();
+
+        $messages = Message::where('sender_id', $user->id)->orWhere('recipient_id', $user->id)->orderBy('updated_at', 'desc')->with('mb')->with('sender')->with('recipient')->paginate(10);
+
+        return $messages;
+    }
+
+    public function getSingleMessages(Request $r)
+    {
+        $user = auth()->user();
+
+        if($r->has('sender_id')) {
+            $sender_id = $r->input('sender_id');  
+        } else {
+            return;
+        }
+
+        if($r->has('recipient_id')) {
+            $recipient_id = $r->input('recipient_id');
+            
+        } else {
+            return;
+        }
+
+        if($r->has('message_id')) {
+            $message_id = $r->input('message_id');  
+        } else {
+            return;
+        }
+
+        if ($sender_id == $user->id || $recipient_id == $user->id) {
+            $message = Message::find($message_id);
+
+            if(($message->recipient_id != $recipient_id) || ($message->sender_id != $sender_id))
+            {
+                return;
+            }
+
+            $msg_body = $message->mb;
+
+            foreach ($msg_body as $mb) {
+                $mb->read_at = Carbon::now();
+                $mb->save();
+            }
+
+            return $msg_body;
+        }
+
+        return;
     }
 }

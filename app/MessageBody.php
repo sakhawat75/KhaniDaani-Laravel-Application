@@ -9,4 +9,9 @@ class MessageBody extends Model
     //
     protected $table = "messages_body";
     protected $fillable = ['message_id', 'sender_id', 'body', 'read_at'];
+
+    public function message ()
+    {
+    	return $this->belongsTo( Body::class );
+    }
 }

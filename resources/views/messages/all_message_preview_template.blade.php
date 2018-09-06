@@ -5,53 +5,56 @@
     var unread_msg = 0;
     var last_msg;
     var last_created;
-
     var img_id = notify.recipient_id;
     var user_name = notify.recipient.name;
-    if({{ auth()->id() }} == notify.recipient_id) { 
-      img_id = notify.sender_id;
-      user_name = notify.sender.name;
-    }
-
     _.each(notify.mb, function(m_body) {
         
-        if(m_body.read_at == null) {
+        if({{ auth()->id() }} != m_body.sender_id) {
+          if(m_body.read_at == null) {
             unread_msg++;
+          }
         }
         last_msg = m_body.body;
         last_created = m_body.created_at;
     });
   %>
+
+  <%
+    $(document).ready(function () {
+
+
+      function getImageURL(id) {
+        $.ajax({
+        url: "{{ route('home')}}/api/user/" + id + "/profile_image",
+        type: "GET",
+        dataType: "json",
+      }).done( function (json) {
+        var selector = "#all_msg_pi_" + notify.id;
+          {{-- console.log("Selector: " + selector); --}}
+          $(selector).attr('src', '{{ URL::to('/') }}/storage/images/profile_image/'+json);
+         
+      });
+      }
+      
+      
+      if({{ auth()->id() }} == notify.recipient_id) { 
+        img_id = notify.sender_id;
+        user_name = notify.sender.name;
+      }
+
+      getImageURL(img_id);
+    
+    });
+    
+
+  %>
   
 
-  <div class="message active">
+  <div class="message <% if(unread_msg > 0) { %>
+          unread_notification
+      <% } %>"  data-message_id="<%= notify.id %>" data-sender_id="<%= notify.sender_id %>" data-recipient_id="<%= notify.recipient_id %>" data-user_name="<%= user_name %>" id="all_msg_<%= notify.id %>"> 
       <div class="message__actions_avatar">
-          <div class="avatar"> <img src="{{ asset('/images/notification_head4.png')}}" alt="sender image" id="msg_pi_<%= notify.id %>">
-                  
-                      <%
-                        $(document).ready(function () {
-
-
-                          function getImageURL(id) {
-                            $.ajax({
-                            url: "{{ route('home')}}/api/user/" + id + "/profile_image",
-                            type: "GET",
-                            dataType: "json",
-                          }).done( function (json) {
-                            var selector = "#msg_pi_" + notify.id;
-                              {{-- console.log("Selector: " + selector); --}}
-                              $(selector).attr('src', '{{ URL::to('/') }}/storage/images/profile_image/'+json);
-                             
-                          });
-                          }
-                          
-                          
-                          getImageURL(img_id);
-                        
-                        });
-                        
-
-                      %>
+          <div class="avatar"> <img src="{{ asset('/images/notification_head4.png')}}" alt="sender image" id="all_msg_pi_<%= notify.id %>">
 
               </div>
       </div>
@@ -63,7 +66,9 @@
 
                   <span class="lnr lnr-envelope"></span>
                   <span class="msg_unread_count">
-                      <%= unread_msg %>
+                      <% if(unread_msg != 0) { %>
+                              <%= unread_msg %>
+                          <% } %>
                   </span>
 
               </div>

@@ -191,7 +191,7 @@
               <!--start .author-author__info-->
             <div class="author-author__info inline has_dropdown">
                 <div class="author__avatar ">
-                  <img src="{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="user avatar" style="height: 60px;width: 60px;border-radius: 50%;">
+                  <img src="{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="user avatar" style="height: 60px;width: 60px;border-radius: 50%;" id="auth_prfl_img">
                 </div>
                 
             <div class="autor__info">
