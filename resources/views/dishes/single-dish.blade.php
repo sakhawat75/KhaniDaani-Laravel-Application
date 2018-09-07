@@ -190,7 +190,7 @@
                                 <div class="pull-left">
                                   <div class="media-heading">
                                     <a href="author.html">
-                                      <h4>Mr.Mango</h4>
+                                      <h4>{{ $rating->order->buyer_fullname }}</h4>
                                     </a>
                                     <span>{{ $rating->created_at->diffForHumans() }}</span>
                                   </div>
