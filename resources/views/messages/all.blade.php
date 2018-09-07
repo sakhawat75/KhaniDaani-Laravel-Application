@@ -304,7 +304,7 @@
         var user_name;
         var recipient_id
         var sender_id
-        var your_pic = "{{ URL::to('/') }}/storage/images/profile_image/{{ $profile->profile_image }}";
+        var your_pic = "{{ URL::to('/') }}/storage/images/profile_image/{{ auth()->user()->profile->profile_image }}";
         var else_pic;
 
         var all_msg_template = _.template(

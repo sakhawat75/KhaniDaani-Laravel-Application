@@ -5,8 +5,6 @@
 
 @section ('content')
 
-  <body class="single-dish">
-
     <!--================================
         START BREADCRUMB AREA
     =================================-->
@@ -501,12 +499,17 @@
           </div>
 
           <div class="modal-body">
-            <form action="" method="post" id="send_msg">
+            <form action="{{ route('messages.store_with_auth') }}" method="post" id="send_msg">
+              @csrf
+              <input type="hidden" name="sender_id" value="{{ auth()->id() }}">
+              <input type="hidden" name="recipient_id" value="{{ $dish->profile_id }}">
 
               <div class="form-group">
                 <label for="msgText">Type your message Below</label>
                 <textarea class="form-control" id="msgText" placeholder="I want to buy your dish" name="body"></textarea>
               </div>
+
+              {{-- <button type="submit" id="submit-form" class="d-none">send</button> --}}
 
             </form>
           </div>
@@ -597,6 +600,7 @@
       var body = $('#msgText').val();
       $('#msgText').val(' ');
 
+      @auth
       $.ajax({
         url: '{{ route('messages.store') }}',
         method: "POST",
@@ -612,6 +616,9 @@
           loadMessages();
 
       });
+      @else
+        snackbar('Please log in first to send message');
+      @endauth
     });
   });
 </script>

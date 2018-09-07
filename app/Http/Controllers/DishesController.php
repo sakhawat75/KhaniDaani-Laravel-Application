@@ -81,8 +81,10 @@ class DishesController extends Controller
 	    	$i++;
 	    }
 
+	    if($i != 0) {
+			$avg_rating = $rating_sum / $i;
+	    }
 	    
-	    $avg_rating = $rating_sum / $i;
 	    // echo "avg_Rating: " . $avg_rating . "<br>";
 
 	    $half_star = false;

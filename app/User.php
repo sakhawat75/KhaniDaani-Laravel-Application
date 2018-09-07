@@ -62,6 +62,11 @@ class User extends Authenticatable
         return $this->hasMany( Order::class );
     }
 
+    public function ratings ()
+    {
+        return $this->hasMany( Rating::class, 'chef_id', 'id' );
+    }
+
     public function sentMessages ()
     {
         return $this->hasMany( Message::class, 'sender_id', 'id' );

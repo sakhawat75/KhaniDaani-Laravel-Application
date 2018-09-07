@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
 
-	    view()->composer('*', function($view)
+	    /*view()->composer('*', function($view)
 	    {
 		    if (Auth::check()) {
 			    $id = auth()->id();
@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
 			    $view->with('profile', null);
 		    }
 	    });
-
+*/
 	    view()->composer( 'layouts.index', function ( $view ){
 			$view->with('dishes', \App\Dish::latestDishes(6));
 	    });

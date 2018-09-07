@@ -80,6 +80,7 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::get( '/messages/getMessages', 'MessageController@getMessages')->name( 'messages.getMessages');
 	Route::get( '/messages/getAllMessages', 'MessageController@getAllMessages')->name( 'messages.getAllMessages');
 	Route::get( '/messages/getSingleMessages', 'MessageController@getSingleMessages')->name( 'messages.getSingleMessages');
+	Route::post( '/messages/store_with_auth', 'MessageController@store_with_auth')->name( 'messages.store_with_auth');
 	Route::resource('messages', 'MessageController');
 });
 

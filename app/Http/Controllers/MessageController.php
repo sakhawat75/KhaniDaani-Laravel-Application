@@ -82,6 +82,53 @@ class MessageController extends Controller
         return response()->json($message_body);
     }
 
+ public function store_with_auth(Request $r)
+    {
+        //
+        if($r->has('sender_id')) {
+            $sender_id = $r->input('sender_id');
+            if ($sender_id != auth()->id()) {
+                return;
+            }
+        } else {
+            return;
+        }
+        if($r->has('recipient_id')) {
+            $recipient_id = $r->input('recipient_id');
+        } else {
+            return;
+        }
+        if($r->has('body')) {
+            $body = $r->input('body');
+        } else {
+            return;
+        }
+
+        $message = Message::where('sender_id', $recipient_id)->where('recipient_id', $sender_id)->first();
+
+        if ($message === null) {
+            $message = Message::updateOrCreate([
+                'sender_id' => $sender_id,
+                'recipient_id' => $recipient_id,
+            ], [
+                'sender_id' => $sender_id,
+                'recipient_id' => $recipient_id,
+            ]);
+        }
+
+
+        $message_body = MessageBody::create([
+            'message_id' => $message->id,
+            'sender_id' => $sender_id,
+            'body' => $body,
+        ]);
+
+        $message->updated_at = Carbon::now();
+        $message->save();
+
+        return redirect()->back();
+    }
+
     /**
      * Display the specified resource.
      *

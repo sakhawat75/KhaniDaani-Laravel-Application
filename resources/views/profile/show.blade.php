@@ -1,6 +1,6 @@
 @extends ('layouts.master') @section ('title', 'Profile') @section ('content')
 
-<body class="cehfdish">
+
     <!--================================
         START BREADCRUMB AREA
     =================================-->
@@ -78,7 +78,7 @@
                                         <textarea name="message" class="text_field" id="author-message" placeholder="Your message..."></textarea>
                                     </div>
                                     <div class="msg_submit">
-                                        <button type="submit" class="btn btn--md btn--round">send message</button>
+                                        <button type="submit" class="btn btn--md btn--round"  id="send_msg">send message</button>
                                     </div>
                                 </form>
                             </div>
@@ -98,19 +98,25 @@
                         <div class="col-md-4 col-sm-4">
                             <div class="author-info pcolorbg">
                                 <p>Total sales</p>
-                                <h3>0</h3> </div>
+                                <h3>{{ $total_sales }}</h3> </div>
                         </div>
                         <div class="col-md-4 col-sm-4">
                             <div class="author-info scolorbg">
                                 <p>Total Ratings</p>
                                 <div class="rating product--rating">
                                     <ul>
-                                        <li> <span class="fa fa-star-o"></span> </li>
-                                        <li> <span class="fa fa-star-o"></span> </li>
-                                        <li> <span class="fa fa-star-o"></span> </li>
-                                        <li> <span class="fa fa-star-o"></span> </li>
-                                        <li> <span class="fa fa-star-o"></span> </li>
-                                    </ul> <span class="rating__count">(0)</span> </div>
+                                        @for ($i=1; $i <= 5; $i++)
+                        
+                                          <li>
+                                            @if($i <= $total_ratings)
+                                              <span class="fa fa-star"></span>
+                                            @else
+                                              <span class="fa fa-star-o"></span>
+                                            @endif
+                                          </li>
+
+                                        @endfor
+                                    </ul> <span class="rating__count">({{ $total_ratings_count }})</span> </div>
                             </div>
                         </div>
                         <!-- SALE STATUS -->
@@ -173,7 +179,9 @@
                             </div>
                             
                             <!-- end /.single-product -->
-                        </div> @foreach($dishes as $dish)
+                        </div> 
+
+                        @foreach($dishes as $dish)
                         <div class="col-lg-6 col-md-6">
                             <!-- start .single-product -->
                             <div class="product product--card">
@@ -203,11 +211,17 @@
                                     </div>
                                     <div class="rating product--rating pull-right">
                                         <ul>
-                                            <li> <span class="fa fa-star-o"></span> </li>
-                                            <li> <span class="fa fa-star-o"></span> </li>
-                                            <li> <span class="fa fa-star-o"></span> </li>
-                                            <li> <span class="fa fa-star-o"></span> </li>
-                                            <li> <span class="ffa fa-star-o"></span> </li>
+                                            @for ($i=1; $i <= 5; $i++)
+                                                                                            
+                                              <li>
+                                                @if($i <= round($dish->avg_rating))
+                                                  <span class="fa fa-star"></span>
+                                                @else
+                                                  <span class="fa fa-star-o"></span>
+                                                @endif
+                                              </li>
+
+                                            @endfor
                                         </ul>
                                     </div>
                                 </div>
@@ -224,5 +238,121 @@
             <!-- end /.row -->
         </div>
     </section>
-</body> 
+    <div id="snackbar">Snackbar</div>
+
 @endsection
+
+
+@push ('head-css')
+  <style type="text/css">
+    #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+      }
+
+      #snackbar.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.3s, fadeout 0.3s 1.3s;
+        animation: fadein 0.3s, fadeout 0.3s 1.3s;
+      }
+
+      @-webkit-keyframes fadein {
+        from {
+          bottom: 0;
+          opacity: 0;
+        }
+        to {
+          bottom: 30px;
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadein {
+        from {
+          bottom: 0;
+          opacity: 0;
+        }
+        to {
+          bottom: 30px;
+          opacity: 1;
+        }
+      }
+
+      @-webkit-keyframes fadeout {
+        from {
+          bottom: 30px;
+          opacity: 1;
+        }
+        to {
+          bottom: 0;
+          opacity: 0;
+        }
+      }
+
+      @keyframes fadeout {
+        from {
+          bottom: 30px;
+          opacity: 1;
+        }
+        to {
+          bottom: 0;
+          opacity: 0;
+        }
+      }
+  </style>
+@endpush
+
+
+@push('scripts-footer-bottom-2')
+<style type="text/css">
+  
+</style>
+
+<script type="text/javascript">
+  $(document).ready( function () {
+    //snackbar
+    function snackbar($msg) {
+        $('#snackbar').html($msg);
+        $('#snackbar').toggleClass('show');
+        setTimeout(function () {
+            $('#snackbar').removeClass('show');
+        }, 1600);
+    }
+
+
+    //send message
+    $('#send_msg').click(function(e) {
+        e.preventDefault();
+      var body = $('#author-message').val();
+      $('#author-message').val(' ');
+
+      $.ajax({
+        url: '{{ route('messages.store') }}',
+        method: "POST",
+        data: {
+          '_token': '{{ csrf_token() }}',
+          'sender_id': {{ auth()->id() }},
+          'recipient_id': {{ $profile->id }},
+          'body': body,
+        },
+      }).done( function(data) {
+          console.log("data: " + data);
+          snackbar('Message Sent Successfully');
+
+      });
+    });
+  });
+</script>
+
+@endpush

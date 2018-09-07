@@ -47,15 +47,24 @@ class ProfileController extends Controller
 
 	public function show($profile) {
 
-    	$user_id = $profile;
-		$user = User::find($user_id);
-		$profile = Profile::where('user_id', $user_id)->first();
+		$user = User::find($profile);
+		$profile = Profile::where('user_id', $profile)->first();
 		if(!$profile) {
 			return redirect()->route( 'home');
 		}
 		$dishes = $profile->dish;
 
-    	return view('profile.show', compact('profile', 'dishes', 'user'));
+		$total_sales = 0;
+		$total_ratings = round($user->ratings->avg('rating'));
+		$total_ratings_count = count($user->ratings);
+
+		foreach ($dishes as $dish) {
+		 	$total_sales += count($dish->completed_orders);
+		 }
+
+		 // echo $profile->id;
+
+    	return view('profile.show', compact('profile', 'dishes', 'user', 'total_sales', 'total_ratings', 'total_ratings_count'));
     }
 
 	public function edit($profile)
