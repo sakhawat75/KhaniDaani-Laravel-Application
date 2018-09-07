@@ -16,7 +16,8 @@ class RatingController extends Controller
 	    	    ['order_id' => $order->id],
 	    	    [
                     'order_id' => $order->id,
-	    	    	'chef_id' => $order->dish_user_id,
+                    'chef_id' => $order->dish_user_id,
+	    	    	'dish_id' => $order->dish_id,
 	    	    	'type' => 'dish',
 	    	    	'rating' => $request->input('rating'),
 	    	    	'comment' => $request->input('rating_comment'),
@@ -26,6 +27,9 @@ class RatingController extends Controller
 
         $order->rating = $rating->rating;
         $order->save();
+        $dish = $order->dish;
+        $dish->avg_rating = $dish->ratings->avg('rating');
+        $dish->save();
     	
 
     	return redirect()->back();

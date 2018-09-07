@@ -17,8 +17,8 @@ class CreateRatingsTable extends Migration
             $table->increments('id');
             $table->integer('order_id');
             $table->integer('chef_id');
-            /*$table->integer('dish_id');
-            $table->integer('dsp_id');*/
+            $table->integer('dish_id');
+            // $table->integer('dsp_id');
             $table->string('type');
             $table->integer('rating');
             $table->text('comment');

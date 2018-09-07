@@ -28,11 +28,17 @@
                 </div>
                 <div class="rating product--rating pull-right">
                     <ul>
-                        <li> <span class="fa fa-star"></span> </li>
-                        <li> <span class="fa fa-star"></span> </li>
-                        <li> <span class="fa fa-star"></span> </li>
-                        <li> <span class="fa fa-star"></span> </li>
-                        <li> <span class="fa fa-star-half-o"></span> </li>
+                        @for ($i=1; $i <= 5; $i++)
+                                                
+                          <li>
+                            @if($i <= round($dish->avg_rating))
+                              <span class="fa fa-star"></span>
+                            @else
+                              <span class="fa fa-star-o"></span>
+                            @endif
+                          </li>
+
+                          @endfor
                     </ul>
                 </div>
             </div>

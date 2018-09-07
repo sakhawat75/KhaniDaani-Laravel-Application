@@ -13,5 +13,10 @@ class Rating extends Model
     {
     	return $this->belongsTo( Order::class, 'order_id', 'id');
     }
+
+    /*public function avg_rating()		
+    {
+    	return satic::$this->avg('rating');
+    }*/
     
 }

@@ -63,4 +63,16 @@ class Dish extends Model
     	return static::latest()->limit($limit)->get();
     }
 
+    public function orders() {
+    	return $this->hasMany(Order::class, 'dish_id', 'id');
+    }
+
+    public function completed_orders() {
+    	return $this->hasMany(Order::class, 'dish_id', 'id')->where('is_order_completed', 1);
+    }
+
+    public function ratings() {
+    	return $this->hasMany(Rating::class, 'dish_id', 'id');
+    }
+
 }

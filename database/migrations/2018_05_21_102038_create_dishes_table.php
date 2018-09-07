@@ -29,6 +29,7 @@ class CreateDishesTable extends Migration
             $table->text('dish_image_1');
             $table->text('dish_image_2');
             $table->text('dish_image_3');
+            $table->decimal('avg_rating', 10, 2)->default(0.0);
             $table->boolean('is_approved');
             $table->text('item_tags');
             $table->rememberToken();

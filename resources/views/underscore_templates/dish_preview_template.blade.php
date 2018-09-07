@@ -40,11 +40,13 @@
         </div>
         <div class="rating product--rating pull-right">
           <ul>
-            <li><span class="fa fa-star"></span></li>
-            <li><span class="fa fa-star"></span></li>
-            <li><span class="fa fa-star"></span></li>
-            <li><span class="fa fa-star"></span></li>
-            <li><span class="fa fa-star-half-o"></span></li>
+            <% for(var i=1; i<=5; i++) { 
+              if(i <= Math.round(dish.avg_rating)) { %>
+                <li><span class="fa fa-star"></span></li>
+              <% } else { %>
+                <li><span class="fa fa-star-o"></span></li>
+              <% }
+             } %>
           </ul>
         </div>
       </div>

@@ -366,13 +366,13 @@
                     <li>
                       <p>
                         <span class="lnr lnr-heart scolor"></span>Total Delivery Option</p>
-                      <span>7</span>
+                      <span>6</span>
                     </li>
-                    <li>
+                    {{-- <li>
                       <p>
                         <span class="lnr lnr-cart scolor"></span>Delivery Charge</p>
-                      <span>5-6</span>
-                    </li>
+                      <span>{{  }}</span>
+                    </li> --}}
                   </ul>
 
                 </div>
@@ -394,18 +394,18 @@
                   <li>
                     <p>
                       <span class="lnr lnr-cart pcolor"></span>Total Sales</p>
-                    <span>0</span>
+                    <span>{{ count($dish->completed_orders) }}</span>
                   </li>
                   <li>
                     <p>
                       <span class="lnr lnr-heart scolor"></span>Favorites</p>
                     <span>0</span>
                   </li>
-                  <li>
+                  {{-- <li>
                     <p>
                       <span class="lnr lnr-bubble mcolor3"></span>Comments</p>
                     <span>0</span>
-                  </li>
+                  </li> --}}
                 </ul>
 
 
