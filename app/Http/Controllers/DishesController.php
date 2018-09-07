@@ -7,6 +7,7 @@ use App\Dish;
 
 use App\Profile;
 use App\User;
+use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Storage;
@@ -69,7 +70,46 @@ class DishesController extends Controller
 	    $dish = Dish::find($id);
 	    $profile = $dish->profile;
 
-        return view('dishes.single-dish', compact( 'profile', 'dish'));
+	    $ratings = Rating::where('chef_id', $profile->id)->paginate(10);
+
+	    $avg_rating = 0;
+	    $rating_sum = 0;
+	    $i = 0;
+
+	    foreach ($ratings as $rating) {
+	    	$rating_sum += $rating->rating;
+	    	$i++;
+	    }
+
+	    
+	    $avg_rating = $rating_sum / $i;
+	    // echo "avg_Rating: " . $avg_rating . "<br>";
+
+	    $half_star = false;
+
+    	$rounded_avg_rating = round($avg_rating);
+    	if(abs($rounded_avg_rating - $avg_rating) >= .25 ) {
+    		$half_star = true;
+    	}
+
+    	if($half_star) {
+    		if(($avg_rating - $rounded_avg_rating) < 0) {
+    			$avg_rating = $rounded_avg_rating - 1;
+    		} else {
+    			$avg_rating = $rounded_avg_rating;
+    		}
+    		
+    	} else {
+    		$avg_rating = $rounded_avg_rating;
+    	}
+	   
+
+	    /*echo "avg_Rating: " . $avg_rating . "<br>";
+	    echo "rounded_avg_rating: " . $rounded_avg_rating . "<br>";
+	    echo "half_star: " . $half_star . "<br>";*/
+	    
+
+        return view('dishes.single-dish', compact( 'profile', 'dish', 'ratings', 'avg_rating', 'half_star'));
     }
 
     public function edit($id)

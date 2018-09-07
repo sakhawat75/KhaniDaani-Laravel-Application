@@ -15,13 +15,17 @@ class RatingController extends Controller
     		$rating = Rating::updateOrCreate(
 	    	    ['order_id' => $order->id],
 	    	    [
-	    	    	'order_id' => $order->id,
+                    'order_id' => $order->id,
+	    	    	'chef_id' => $order->dish_user_id,
 	    	    	'type' => 'dish',
 	    	    	'rating' => $request->input('rating'),
 	    	    	'comment' => $request->input('rating_comment'),
 	    	    ]
 	    	);
     	}
+
+        $order->rating = $rating->rating;
+        $order->save();
     	
 
     	return redirect()->back();

@@ -16,6 +16,7 @@ class CreateRatingsTable extends Migration
         Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('order_id');
+            $table->integer('chef_id');
             /*$table->integer('dish_id');
             $table->integer('dsp_id');*/
             $table->string('type');
