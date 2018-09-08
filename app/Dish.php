@@ -60,7 +60,11 @@ class Dish extends Model
     }
 
     public static function latestDishes($limit) {
-    	return static::latest()->limit($limit)->get();
+        return static::latest()->limit($limit)->get();
+    }
+
+    public static function highestRatedDishes($limit) {
+        return static::where('avg_rating', '>', 4.5)->orderBy('avg_rating')->limit($limit)->get();
     }
 
     public function orders() {
