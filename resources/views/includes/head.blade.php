@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ URL::to('/') }}/css/trumbowyg.min.css">
     {{-- <link rel="stylesheet" href="{{ URL::to('/') }}/css/bootstrap/bootstrap.min.css"> --}}
     <link rel="stylesheet" href="{{ URL::to('/') }}/css/app.css">
+    <link rel="stylesheet" href="{{ URL::to('/') }}/css/new.css">
 
     <script src="{{ URL::to('/') }}/js/vendor/jquery/jquery-1.12.3.js"></script>
 

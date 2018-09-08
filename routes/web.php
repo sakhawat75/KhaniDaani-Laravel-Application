@@ -20,6 +20,8 @@ Route::get('/notifications/mark_as_read', 'NotificationsController@mark_as_read'
 
 Route::get('/', 'ViewController@index')->name('home');
 
+Route::get('/profile/pickerspoint', 'ProfileController@pickerspoint')->name('profile.pickerspoint');
+
 Route::get('/profile/cashout', 'ProfileController@cashout')->name('profile.cashout');
 
 Route::get('/profile', 'ProfileController@index')->name('profile.index');
@@ -41,6 +43,8 @@ Route::put( '/profile/{profile}', 'ProfileController@update')->name('profile.upd
 
 Route::get( '/search/livedish', 'SearchController@livedish')->name( 'search.livedish');
 Route::post( '/search/livedish', 'SearchController@search_livedish')->name( 'search.livedish');
+
+Route::get( '/pickerspoint/addpp', 'PickersPointController@addpp')->name( 'pickerspoint.addpp');
 
 Route::get( '/delivery/AddService', 'DeliveryServiceController@create')->name( 'delivery.create');
 Route::post( '/delivery/AddService', 'DeliveryServiceController@AddService')->name( 'delivery.AddService');

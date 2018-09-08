@@ -1,11 +1,11 @@
 @extends ('layouts.master')
 
 
-@section ('title', 'Chef Dish')
+@section ('title', 'Pikers Point')
 
 @section ('content')
 
-<body class="cehfdish">
+    <body class="cehfdish">
 
     <!--================================
           START BREADCRUMB AREA
@@ -74,7 +74,6 @@
                                 <li> <a href="{{ route('profile.show', ['profile' => $profile->id]) }}">User Profile</a> </li>
                                 <li> <a href="{{ route('profile.chefdishes', [ 'profile' => $profile->id]) }}">Chef Dish</a> </li>
                                 <li> <a href="{{ route('profile.chefdelivery', ['user' => $profile->user]) }}">Chef Delivery Option</a> </li>
-                                <li> <a href="{{ route('profile.pickerspoint', ['user' => $profile->user]) }}">Pickers point</a> </li>
                             </ul>
                         </div>
                     </aside>
@@ -106,43 +105,39 @@
 
                         <!-- SALE STATUS -->
                         <div class="col-md-4 col-sm-4">
-                                                    <div class="author-info mcolorbg4">
-                                                        <p>Total Dish</p>
-                                                        <h3>{{ count($dishes) }}</h3> </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4">
-                                                    <div class="author-info pcolorbg">
-                                                        <p>Total sales</p>
-                                                        <h3>{{ $total_sales }}</h3> </div>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4">
-                                                    <div class="author-info scolorbg">
-                                                        <p>Total Ratings</p>
-                                                        <div class="rating product--rating">
-                                                            <ul>
-                                                                @for ($i=1; $i <= 5; $i++)
-                                                
-                                                                  <li>
-                                                                    @if($i <= $total_ratings)
-                                                                      <span class="fa fa-star"></span>
-                                                                    @else
-                                                                      <span class="fa fa-star-o"></span>
-                                                                    @endif
-                                                                  </li>
+                            <div class="author-info mcolorbg4">
+                                <p>Total Dish</p>
+                                <h3>{{ count($dishes) }}</h3> </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="author-info pcolorbg">
+                                <p>Total sales</p>
+                                <h3>{{ $total_sales }}</h3> </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="author-info scolorbg">
+                                <p>Total Ratings</p>
+                                <div class="rating product--rating">
+                                    <ul>
+                                        @for ($i=1; $i <= 5; $i++)
 
-                                                                @endfor
-                                                            </ul> <span class="rating__count">({{ $total_ratings_count }})</span> </div>
-                                                    </div>
-                                                </div>
+                                            <li>
+                                                @if($i <= $total_ratings)
+                                                    <span class="fa fa-star"></span>
+                                                @else
+                                                    <span class="fa fa-star-o"></span>
+                                                @endif
+                                            </li>
+
+                                        @endfor
+                                    </ul> <span class="rating__count">({{ $total_ratings_count }})</span> </div>
+                            </div>
+                        </div>
                         <!-- SALE STATUS -->
 
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="filter-bar clearfix filter-bar2">
-                                    <div class="filter__option filter--text pull-left">
-                                        <p>
-                                            <span>All dishes</p>
-                                    </div>
 
                                     <div class="pull-right">
                                         <div class="filter__option filter--dropdown">
@@ -183,57 +178,8 @@
                             </div>
                             <!-- end /.col-md-12 -->
 
-                            @foreach($dishes as $dish)
-                            <div class="col-lg-6 col-md-6">
-                                <!-- start .single-product -->
-                                <div class="product product--card">
-                                    <div class="product__thumbnail">
-                                        <div class="aspect_ratio"> <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_thumbnail }}" alt="Product Image" class="ratio_img"> </div>
-                                        <div class="prod_btn"> 
-                                        <a href="{{ route('dishes.show', ['id' => $dish]) }}" class="transparent btn--sm btn--round">More Info</a> 
-                                        </div>
-                                        <!-- end /.prod_btn -->
-                                    </div>
-                                    <!-- end /.product__thumbnail -->
-                                    <div class="product-desc">
-                                        <a href="{{ route('dishes.show', ['id' => $dish]) }}" class="product_title">
-                                            <h4> {{ $dish->dish_name }} </h4> </a>
-                                        <ul class="titlebtm">
-                                            <li> <img class="auth-img" src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="author image">
-                                                <p> <a href="#">{{ $user->name }}</a> </p>
-                                            </li>
-                                            <li class="product_cat"> <a href="#">
-                              From <span>{{ $profile->city }}, </span><span>{{ $profile->area }}</span></a> </li>
-                                        </ul>
-                                    </div>
-                                    <!-- end /.product-desc -->
-                                    <div class="product-purchase">
-                                        <div class="price_love"> <span>৳{{ $dish->dish_price }}</span>
-                                            <p> <span class="lnr lnr-heart"></span> 0</p>
-                                        </div>
-                                        <div class="rating product--rating pull-right">
-                                            <ul>
-                                                @for ($i=1; $i <= 5; $i++)
-                                                                                                
-                                                  <li>
-                                                    @if($i <= round($dish->avg_rating))
-                                                      <span class="fa fa-star"></span>
-                                                    @else
-                                                      <span class="fa fa-star-o"></span>
-                                                    @endif
-                                                  </li>
 
-                                                @endfor
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- end /.product-purchase -->
-                                </div>
-                                <!-- end /.single-product -->
-                            </div> 
-                            @endforeach
-
-                        <!-- Pikers Point Start -->
+                            <!-- Pikers Point Start -->
 
                             <div class="col-md-6 col-sm-6" data-wow-delay="0.5s">
                                 <a class="strip_list grid" href="#">
@@ -284,6 +230,8 @@
                                 </a><!-- End strip_list-->
                             </div><!-- End col-md-6-->
                             <!-- Pikers Point End -->
+
+
 
                         </div>
                         <!-- end /.row -->
