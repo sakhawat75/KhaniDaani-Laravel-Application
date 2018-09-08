@@ -27,6 +27,11 @@
                         <a href="{{ route('delivery.AddService') }}">
                             <span class="lnr lnr-upload"></span>Add Service</a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('pickerspoint.add') }}">
+                            <span class="lnr lnr-upload"></span>Add Pickers Point</a>
+                    </li>
                 </ul>
                 <!-- end /.dashboard_menu -->
             </div>
