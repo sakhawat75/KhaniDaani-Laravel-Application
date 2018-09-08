@@ -16,16 +16,49 @@ class ProfileController extends Controller
         return view('profile.cashout');
     }
     
-    public function chefdelivery(User $user) {
+    public function chefdelivery($profile) {
 
+    	$user = User::find($profile);
+    	
     	$dsps = $user->delivery_services;
 
+		$profile = Profile::where('user_id', $profile)->first();
+		if(!$profile) {
+			return redirect()->route( 'home');
+		}
+		$dishes = $profile->dish;
+
+		$total_sales = 0;
+		$total_ratings = round($user->ratings->avg('rating'));
+		$total_ratings_count = count($user->ratings);
+
+		foreach ($dishes as $dish) {
+		 	$total_sales += count($dish->completed_orders);
+		 }
+
+
     	//return response()->json($dsps) ;
-        return view('profile.chefdelivery', compact( 'dsps'));
+        return view('profile.chefdelivery', compact( 'dsps', 'profile', 'dishes', 'user', 'total_sales', 'total_ratings', 'total_ratings_count'));
     }
 
-    public function chefdishes() {
-        return view('profile.chefdishes');
+    public function chefdishes($profile) {
+
+    	$user = User::find($profile);
+		$profile = Profile::where('user_id', $profile)->first();
+		if(!$profile) {
+			return redirect()->route( 'home');
+		}
+		$dishes = $profile->dish;
+
+		$total_sales = 0;
+		$total_ratings = round($user->ratings->avg('rating'));
+		$total_ratings_count = count($user->ratings);
+
+		foreach ($dishes as $dish) {
+		 	$total_sales += count($dish->completed_orders);
+		 }
+
+        return view('profile.chefdishes', compact('profile', 'dishes', 'user', 'total_sales', 'total_ratings', 'total_ratings_count'));
     }
     
 	public function __construct() {

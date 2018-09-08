@@ -28,7 +28,7 @@ Route::get('/profile/create', 'ProfileController@create')->name('profile.create'
 
 Route::post('/profile', 'ProfileController@store')->name( 'profile.store');
 
-Route::get( '/profile/chefdishes', 'ProfileController@chefdishes')->name('profile.chefdishes');
+Route::get( '/profile/chefdishes/{profile}', 'ProfileController@chefdishes')->name('profile.chefdishes');
 
 Route::get( '/profile/{user}/chefdelivery', 'ProfileController@chefdelivery')->name('profile.chefdelivery');
 

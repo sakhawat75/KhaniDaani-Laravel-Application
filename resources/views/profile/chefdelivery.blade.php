@@ -77,8 +77,8 @@
                         </div>
                         <div class="sidebar-card author-menu">
                             <ul>
-                                <li> <a href="{{ route('profile.show', ['profile' => $profile]) }}">User Profile</a> </li>
-                                <li> <a href= "{{ route('profile.chefdishes') }}" >Chef Dish</a> </li>
+                                <li> <a href="{{ route('profile.show', ['profile' => $profile->id]) }}">User Profile</a> </li>
+                                <li> <a href="{{ route('profile.chefdishes', [ 'profile' => $profile->id]) }}">Chef Dish</a> </li>
                                 <li> <a href="{{ route('profile.chefdelivery', ['user' => $profile->user]) }}">Chef Delivery Option</a> </li>
                             </ul>
                         </div>
@@ -113,13 +113,13 @@
                         <div class="col-md-4 col-sm-4">
                             <div class="author-info mcolorbg4">
                                 <p>Total Dish</p>
-                                <h3>3</h3>
+                                <h3>{{ count($dishes) }}</h3>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4">
                             <div class="author-info pcolorbg">
                                 <p>Total sales</p>
-                                <h3>0</h3>
+                                <h3>{{ $total_sales }}</h3>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-4">
@@ -127,23 +127,18 @@
                                 <p>Total Ratings</p>
                                 <div class="rating product--rating">
                                     <ul>
-                                        <li>
-                                            <span class="fa fa-sta-o"></span>
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-star-o"></span>
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-star-o"></span>
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-star-o"></span>
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-star-o"></span>
-                                        </li>
-                                    </ul>
-                                    <span class="rating__count">(0)</span>
+                                        @for ($i=1; $i <= 5; $i++)
+                        
+                                          <li>
+                                            @if($i <= $total_ratings)
+                                              <span class="fa fa-star"></span>
+                                            @else
+                                              <span class="fa fa-star-o"></span>
+                                            @endif
+                                          </li>
+
+                                        @endfor
+                                    </ul> <span class="rating__count">({{ $total_ratings_count }})</span> </div>
                                 </div>
                             </div>
                         </div>

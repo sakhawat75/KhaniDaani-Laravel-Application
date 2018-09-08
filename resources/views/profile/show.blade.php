@@ -62,8 +62,8 @@
                         </div>
                         <div class="sidebar-card author-menu">
                             <ul>
-                                <li> <a href="{{ route('profile.show', ['profile' => auth()->id()]) }}">User Profile</a> </li>
-                                <li> <a href="{{ route('profile.chefdishes') }}">Chef Dish</a> </li>
+                                <li> <a href="{{ route('profile.show', ['profile' => $profile->id]) }}">User Profile</a> </li>
+                                <li> <a href="{{ route('profile.chefdishes', [ 'profile' => $profile->id]) }}">Chef Dish</a> </li>
                                 <li> <a href="{{ route('profile.chefdelivery', ['user' => $profile->user]) }}">Chef Delivery Option</a> </li>
                             </ul>
                         </div>
@@ -133,6 +133,8 @@
                         </div>
                     </div>
                     <!-- end /.row -->
+
+                    
                     <div class="row">
                         <div class="col-md-12">
                             <div class="product-title-area">
@@ -166,7 +168,7 @@
                             <div class="price_love"> <span>৳00</span>
                                 <p> <span class="lnr lnr-heart "></span> 0</p>
                             </div>
-                            <div class="rating product--rating pull-right">
+                            {{-- <div class="rating product--rating pull-right">
                                 <ul>
                                     <li> <span class="fa fa-star-o"></span> </li>
                                     <li> <span class="fa fa-star-o"></span> </li>
@@ -174,7 +176,7 @@
                                     <li> <span class="fa fa-star-o"></span> </li>
                                     <li> <span class="fa fa-star-o"></span> </li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                             </div>
                             
