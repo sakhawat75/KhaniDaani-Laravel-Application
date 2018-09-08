@@ -50,7 +50,7 @@
                                 <div class="author_avatar"> <img src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="Presenting the broken author avatar :D"> </div>
                                 <div class="author">
                                     <h4>
-                                        s
+                                        {{ $profile->user->name }}
                                     </h4>
                                     <p>Joined {{ $profile->created_at->toFormattedDateString() }}</p>
                                 </div>
@@ -74,7 +74,6 @@
                                 <li> <a href="{{ route('profile.show', ['profile' => $profile->id]) }}">User Profile</a> </li>
                                 <li> <a href="{{ route('profile.chefdishes', [ 'profile' => $profile->id]) }}">Chef Dish</a> </li>
                                 <li> <a href="{{ route('profile.chefdelivery', ['user' => $profile->user]) }}">Chef Delivery Option</a> </li>
-                                <li> <a href="{{ route('profile.pickerspoint', ['user' => $profile->user]) }}">Pickers point</a> </li>
                             </ul>
                         </div>
                     </aside>
@@ -200,7 +199,7 @@
                                             <h4> {{ $dish->dish_name }} </h4> </a>
                                         <ul class="titlebtm">
                                             <li> <img class="auth-img" src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="author image">
-                                                <p> <a href="#">{{ $user->name }}</a> </p>
+                                                <p> <a href="{{ route('profile.show', [ 'profile' => $profile->id]) }}">{{ $user->name }}</a> </p>
                                             </li>
                                             <li class="product_cat"> <a href="#">
                               From <span>{{ $profile->city }}, </span><span>{{ $profile->area }}</span></a> </li>
@@ -231,18 +230,55 @@
                                 </div>
                                 <!-- end /.single-product -->
                             </div> 
-                            @endforeach
+                            @endforeach 
 
-                        <!-- Pikers Point Start -->
 
-                            <div class="col-md-6 col-sm-6" data-wow-delay="0.5s">
-                                <a class="strip_list grid" href="#">
-                                    <div class="desc">
-                                        <div class="thumb_strip">
-                                            <img src="" alt="">
+
+                           {{--  <div class="col-lg-6 col-md-6">
+                                <!-- start .single-product -->
+                                <div class="product product--card">
+
+                                    <div class="product__thumbnail">
+                                        <div class="aspect_ratio">
+                                            <img src="{{ asset('images/d.jpg') }}" alt="Product Image" class="ratio_img">
                                         </div>
 
-                                        <div class="rating">
+                                        <div class="prod_btn">
+                                            <a href="#" class="transparent btn--sm btn--round">More
+                                                Info
+                                            </a>
+                                        </div>
+                                        <!-- end /.prod_btn -->
+                                    </div>
+                                    <!-- end /.product__thumbnail -->
+
+                                    <div class="product-desc">
+                                        <a href="" class="product_title">
+                                            <h4>Special Veg nonveg Pizza </h4>
+                                        </a>
+                                        <ul class="titlebtm">
+                                            <li>
+                                                <img class="auth-img" src="{{ asset('images/1.jpg') }}" alt="author image">
+                                                <p>
+                                                    <a href="#">name</a>
+                                                </p>
+                                            </li>
+                                            <li class="product_cat">
+                                                <a href="#">
+                                                    From <span>Sylhet</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- end /.product-desc -->
+
+                                    <div class="product-purchase">
+                                        <div class="price_love">
+                                            <span>৳500</span>
+                                            <p>
+                                                <span class="lnr lnr-heart"></span> 48</p>
+                                        </div>
+
+                                        <div class="rating product--rating">
                                             <ul>
                                                 <li>
                                                     <span class="fa fa-star"></span>
@@ -257,33 +293,17 @@
                                                     <span class="fa fa-star"></span>
                                                 </li>
                                                 <li>
-                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star-half-o"></span>
                                                 </li>
                                             </ul>
                                         </div>
-
-                                        <h3 class="pp_title">Showpno</h3>
-                                        <div class="type">
-                                            Department store
-                                        </div>
-                                        <div class="location">
-                                            Silmark Tower, Sibgonj Upshahar Point, Sylhet <br>
-                                        </div>
-                                        <div class="hours">
-                                            <span class="opening">Opens @ 9:00 AM.</span><span class="closing"> Close @ 5:00 PM</span>
-                                        </div>
-
-                                        <div class="freelance-status">
-                                            <div class="custom-radio">
-                                                <input type="radio" id="opt1" class="" name="filter_opt" checked>
-                                                <label for="opt1">
-                                                    <span class="circle"></span>Pikers Pint</label>
-                                            </div>
-                                        </div>
                                     </div>
-                                </a><!-- End strip_list-->
-                            </div><!-- End col-md-6-->
-                            <!-- Pikers Point End -->
+                                    <!-- end /.product-purchase -->
+                                </div>
+                                <!-- end /.single-product -->
+                            </div>
+                            <!-- end /.col-md-6 --> --}}
+
 
                         </div>
                         <!-- end /.row -->
