@@ -134,7 +134,7 @@
                     </div>
                     <!-- end /.row -->
 
-                    
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="product-title-area">
@@ -200,7 +200,7 @@
                                         <h4> {{ $dish->dish_name }} </h4> </a>
                                     <ul class="titlebtm">
                                         <li> <img class="auth-img" src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="author image">
-                                            <p> <a href="#">{{ $user->name }}</a> </p>
+                                            <p> <a href="{{ route('profile.show', [ 'profile' => $profile->id]) }}">{{ $user->name }}</a> </p>
                                         </li>
                                         <li class="product_cat"> <a href="#">
                           From <span>{{ $profile->city }}, </span><span>{{ $profile->area }}</span></a> </li>

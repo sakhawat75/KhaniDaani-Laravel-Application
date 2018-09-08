@@ -56,7 +56,7 @@
                                 <div class="author_avatar"> <img src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="Presenting the broken author avatar :D"> </div>
                                 <div class="author">
                                     <h4>
-                                         NiruGupta
+                                        {{ $profile->user->name }}
                                     </h4>
                                     <p>Joined {{ $profile->created_at->toFormattedDateString() }}</p>
                                 </div>
@@ -205,7 +205,7 @@
                                             <div class="author">
                                                 <img class="auth-img" src="{{ route('home') }}/storage/images/profile_image/{{ $dsp->user->profile->profile_image }}" alt="author image">
                                                 <p>
-                                                    <a href="#">{{ $dsp->user->name }}</a>
+                                                    <a href="{{ route('profile.show', [ 'profile' => $profile->id]) }}">{{ $dsp->user->name }}</a>
                                                 </p>
                                             </div>
                                             <!-- end /.author -->

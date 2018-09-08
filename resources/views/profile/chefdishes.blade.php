@@ -50,7 +50,7 @@
                                 <div class="author_avatar"> <img src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="Presenting the broken author avatar :D"> </div>
                                 <div class="author">
                                     <h4>
-                                        s
+                                        {{ $profile->user->name }}
                                     </h4>
                                     <p>Joined {{ $profile->created_at->toFormattedDateString() }}</p>
                                 </div>
@@ -199,7 +199,7 @@
                                             <h4> {{ $dish->dish_name }} </h4> </a>
                                         <ul class="titlebtm">
                                             <li> <img class="auth-img" src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="author image">
-                                                <p> <a href="#">{{ $user->name }}</a> </p>
+                                                <p> <a href="{{ route('profile.show', [ 'profile' => $profile->id]) }}">{{ $user->name }}</a> </p>
                                             </li>
                                             <li class="product_cat"> <a href="#">
                               From <span>{{ $profile->city }}, </span><span>{{ $profile->area }}</span></a> </li>
@@ -233,7 +233,7 @@
                             @endforeach 
 
 
-                            
+
                            {{--  <div class="col-lg-6 col-md-6">
                                 <!-- start .single-product -->
                                 <div class="product product--card">
