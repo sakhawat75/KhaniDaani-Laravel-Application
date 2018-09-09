@@ -26,6 +26,8 @@ Route::get('/profile/pickerspoint', 'ProfileController@pickerspoint')->name('pro
 
 Route::get('/profile/cashout', 'ProfileController@cashout')->name('profile.cashout');
 
+Route::get('/profile/add_balance', 'ProfileController@add_balance')->name('profile.add_balance');
+
 Route::get('/profile', 'ProfileController@index')->name('profile.index');
 
 Route::get('/profile/create', 'ProfileController@create')->name('profile.create');

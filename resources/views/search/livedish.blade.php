@@ -54,22 +54,7 @@
       <div class="col-md-12">
 
         <div class="filter-bar">
-          <div class="filter__option filter--dropdown">
-            <a href="#" id="drop1" class="dropdown-trigger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-               aria-expanded="false">Dish Type
-              <span class="lnr lnr-chevron-down"></span>
-            </a>
-            <ul class="custom_dropdown custom_drop2 dropdown-menu" aria-labelledby="drop1">
-              <li>
-                <a href="#">Live Foods
-                  <span>35</span>
-                </a>
-                <a href="#">Exportable Foods
-                  <span>35</span>
-                </a>
-              </li>
-            </ul>
-          </div>
+
           <!-- end /.filter__option -->
           <div class="filter__option filter--dropdown">
             <a href="#" id="drop2" class="dropdown-trigger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
