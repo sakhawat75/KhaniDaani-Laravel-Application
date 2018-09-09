@@ -449,7 +449,6 @@
             $('#select_rating').barrating({
                 theme: 'fontawesome-stars',
                 onSelect: function (value, text, event) {
-                    console.log('rating clicked');
                     if (typeof(event) !== 'undefined') {
                         // rating was selected by a user
                         console.log(event.target);

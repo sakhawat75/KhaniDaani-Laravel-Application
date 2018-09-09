@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class PickersPointController extends Controller
 
 {
-    public function pickerspoint() {
+    public function addpp() {
            return view('pickerspoint.addpp');
        }
+       
 }
