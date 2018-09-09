@@ -16,6 +16,10 @@ class ProfileController extends Controller
         return view('profile.cashout');
     }
 
+    public function add_balance() {
+        return view('profile.add_balance');
+    }
+
     public function pickerspoint($profile) {
 
         $user = User::find($profile);

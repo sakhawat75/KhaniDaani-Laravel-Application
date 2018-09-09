@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="pull-right">
-                            <a href="add-payment-method.html" class="btn btn--round btn--md">Add Payment Method</a>
+                            <a href="{{route('profile.add_balance')}}" class="btn btn--round btn--md">Add Balance</a>
                         </div>
                     </div>
                     <!-- end /.dashboard_title_area -->
