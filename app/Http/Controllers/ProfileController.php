@@ -15,9 +15,27 @@ class ProfileController extends Controller
     public function cashout() {
         return view('profile.cashout');
     }
-    public function pickerspoint() {
-        return view('profile.pickerspoint');
+
+    public function pickerspoint($profile) {
+
+        $user = User::find($profile);
+        $profile = Profile::where('user_id', $profile)->first();
+        if(!$profile) {
+            return redirect()->route( 'home');
+        }
+        $dishes = $profile->dish;
+
+        $total_sales = 0;
+        $total_ratings = round($user->ratings->avg('rating'));
+        $total_ratings_count = count($user->ratings);
+
+        foreach ($dishes as $dish) {
+            $total_sales += count($dish->completed_orders);
+        }
+
+        return view('profile.pickerspoint', compact('profile', 'dishes', 'user', 'total_sales', 'total_ratings', 'total_ratings_count'));
     }
+
     
     public function chefdelivery($profile) {
 

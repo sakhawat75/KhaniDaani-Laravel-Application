@@ -73,7 +73,8 @@
                             <ul>
                                 <li> <a href="{{ route('profile.show', ['profile' => $profile->id]) }}">User Profile</a> </li>
                                 <li> <a href="{{ route('profile.chefdishes', [ 'profile' => $profile->id]) }}">Chef Dish</a> </li>
-                                <li> <a href="{{ route('profile.chefdelivery', ['user' => $profile->user]) }}">Chef Delivery Option</a> </li>
+                                <li> <a href="{{ route('profile.chefdelivery', ['user' => $profile->user]) }}">Delivery Option</a> </li>
+                                <li> <a href="{{ route('profile.pickerspoint', ['user' => $profile->user]) }}">Pickers Point</a> </li>
                             </ul>
                         </div>
                     </aside>
