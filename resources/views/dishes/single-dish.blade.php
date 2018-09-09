@@ -450,7 +450,9 @@
 
                 <div class="author">
                   <h4>
-                    {{{ $dish->profile->user_name }}}
+                    <a href="{{ route('profile.show', ['profile' => $dish->profile->id]) }}">
+                      {{ $dish->profile->user_name }}
+                    </a>
                   </h4>
                   <p>Joined {{ $dish->profile->created_at->toFormattedDateString() }}</p>
                 </div>

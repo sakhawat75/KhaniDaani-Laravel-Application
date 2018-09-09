@@ -630,6 +630,7 @@
                 if({{ auth()->id() }} != m_body.sender_id) {
                   if(m_body.read_at == null) {
                     unread_count_msg++;
+
                   }
                 }
                 

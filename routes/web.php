@@ -22,7 +22,7 @@ Route::get('/notifications/mark_as_read', 'NotificationsController@mark_as_read'
 
 Route::get('/', 'ViewController@index')->name('home');
 
-Route::get('/profile/pickerspoint', 'ProfileController@pickerspoint')->name('profile.pickerspoint');
+Route::get('/profile/pickerspoint/{profile}', 'ProfileController@pickerspoint')->name('profile.pickerspoint');
 
 Route::get('/profile/cashout', 'ProfileController@cashout')->name('profile.cashout');
 

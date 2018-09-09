@@ -11,7 +11,11 @@ class RatingController extends Controller
     //
     public function store(Order $order, Request $request)
     {
+
+
     	if(auth()->id() == $order->buyer_user_id) {
+
+
     		$rating = Rating::updateOrCreate(
 	    	    ['order_id' => $order->id],
 	    	    [
