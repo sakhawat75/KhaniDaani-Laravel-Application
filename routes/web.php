@@ -11,6 +11,8 @@
 |
 */
 
+Route::get( '/pickerspoint/addpp', 'PickersPointController@addpp')->name( 'pickerspoint.addpp');
+
 Route::get('/messages/all', 'NotificationsController@messages')->name('messages.all');
 
 Route::get('/messages/compose', 'NotificationsController@compose')->name('messages.compose');
@@ -44,7 +46,6 @@ Route::put( '/profile/{profile}', 'ProfileController@update')->name('profile.upd
 Route::get( '/search/livedish', 'SearchController@livedish')->name( 'search.livedish');
 Route::post( '/search/livedish', 'SearchController@search_livedish')->name( 'search.livedish');
 
-Route::get( '/pickerspoint/addpp', 'PickersPointController@addpp')->name( 'pickerspoint.addpp');
 
 Route::get( '/delivery/AddService', 'DeliveryServiceController@create')->name( 'delivery.create');
 Route::post( '/delivery/AddService', 'DeliveryServiceController@AddService')->name( 'delivery.AddService');

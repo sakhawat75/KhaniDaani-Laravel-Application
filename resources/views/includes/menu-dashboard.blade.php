@@ -29,7 +29,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('pickerspoint.add') }}">
+                        <a href="{{ route('pickerspoint.addpp') }}">
                             <span class="lnr lnr-upload"></span>Add Pickers Point</a>
                     </li>
                 </ul>
