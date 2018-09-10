@@ -17,11 +17,10 @@ class CitiesTableSeeder extends Seeder
             array('id' => '2','name' => 'Chattogram' ),
             array('id' => '3','name' => 'Sylhet' ),
             array('id' => '4','name' => 'Khulna' ),
-            array('id' => '5','name' => 'Vegetables' ),
-            array('id' => '6','name' => 'Barisal'),
-            array('id' => '7','name' => 'Rajshahi' ),
-            array('id' => '8','name' => 'Rangpur' ),
-            array('id' => '9','name' => 'Mymensingh' ),
+            array('id' => '5','name' => 'Barisal'),
+            array('id' => '6','name' => 'Rajshahi' ),
+            array('id' => '7','name' => 'Rangpur' ),
+            array('id' => '8','name' => 'Mymensingh' ),
         ));
            
     }

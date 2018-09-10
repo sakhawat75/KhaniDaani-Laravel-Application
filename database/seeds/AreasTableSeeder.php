@@ -16,7 +16,7 @@ class AreasTableSeeder extends Seeder
             array('id' => '1','name' => 'Mirpur', 'city_id' => '1' ),
             array('id' => '2','name' => 'Dhanmondi', 'city_id' => '1'),
             array('id' => '3','name' => 'Uttara', 'city_id' => '1' ),
-            array('id' => '4','name' => 'Gushan', 'city_id' => '1' ),
+            array('id' => '4','name' => 'Gulshan', 'city_id' => '1' ),
             array('id' => '5','name' => 'Banani', 'city_id' => '1' ),
             array('id' => '6','name' => 'Mothijeel', 'city_id' => '1' ),
             array('id' => '7','name' => 'Other', 'city_id' => '1' ),
@@ -66,17 +66,13 @@ class AreasTableSeeder extends Seeder
 
             array('id' => '46','name' => 'Rangpur city', 'city_id' => '7' ),
             array('id' => '47','name' => 'Kurigram', 'city_id' => '7' ),
-            array('id' => '48','name' => 'DInajpur', 'city_id' => '7'),
+            array('id' => '48','name' => 'Dinajpur', 'city_id' => '7'),
 
             array('id' => '49','name' => 'Patuakhali', 'city_id' => '8' ),
             array('id' => '50','name' => 'Bhola', 'city_id' => '8' ),
             array('id' => '51','name' => 'Pirojpur', 'city_id' => '8'),
-            array('id' => '52','name' => 'Other', 'city_id' => '8' ),
-
-            array('id' => '53','name' => 'Mymensinsh city', 'city_id' => '9' ),
-            array('id' => '54','name' => 'Bhola', 'city_id' => '9' ),
-            array('id' => '55','name' => 'Chole esho', 'city_id' => '9'),
-            array('id' => '56','name' => 'Other', 'city_id' => '9' )
+            array('id' => '52','name' => 'Mymensinsh city', 'city_id' => '8' ),
+            array('id' => '53','name' => 'Other', 'city_id' => '8' ),
           
         ));
     }

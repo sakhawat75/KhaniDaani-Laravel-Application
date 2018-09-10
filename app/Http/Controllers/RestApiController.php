@@ -52,6 +52,27 @@ class RestApiController extends Controller
 	 */
 	public function jsonSearchDish(Request $request) {
 		$dishes = Dish::query();
+
+		if ($request->has( 'city')) {
+			$city = $request->input('city');
+			if ($city != '') {
+				$dishes->with('profile')->whereHas('profile', function($q) use (&$city) {
+					$q->where('city', $city);
+				});
+			}
+
+		}
+
+		if ($request->has( 'area')) {
+			$area = $request->input('area');
+			if ($area != '') {
+				$dishes->with('profile')->whereHas('profile', function($q) use (&$area) {
+					$q->where('area', $area);
+				});
+			}
+
+		}
+
 		if ($request->has( 'dish_category')) {
 			$dish_category = $request->input('dish_category');
 			if ($dish_category != '') {
