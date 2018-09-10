@@ -28,9 +28,6 @@
                 <li>
                   <a href="#">Home</a>
                 </li>
-                <li class="active">
-                  <a href="#">All Dishes</a>
-                </li>
               </ul>
             </div>
           </div>
@@ -55,19 +52,13 @@
 
         <div class="filter-bar">
 
-          <!-- end /.filter__option -->
+          <!-- end /.filter__option
           <div class="filter__option filter--dropdown">
             <a href="#" id="drop2" class="dropdown-trigger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                aria-expanded="false">Filter By
               <span class="lnr lnr-chevron-down"></span>
             </a>
             <ul class="custom_dropdown dropdown-menu" aria-labelledby="drop2">
-              <li>
-                <a href="#">Trending items</a>
-              </li>
-              <li>
-                <a href="#">Popular items</a>
-              </li>
               <li>
                 <a href="#">New items</a>
               </li>
@@ -79,7 +70,7 @@
               </li>
             </ul>
           </div>
-          <!-- end /.filter__option -->
+          <!-- end /.filter__option
           <div class="filter__option filter--dropdown filter--range">
             <a href="#" id="drop3" class="dropdown-trigger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                aria-expanded="false">Price Range
@@ -91,9 +82,30 @@
               </div>
             </div>
           </div>
-          <!-- end /.filter__option -->
+           end /.filter__option -->
+
           <form action="{{ route('search.livedish') }}" method="post">
             @csrf
+
+              <div class="filter__option filter--select">
+                  <div class="select-wrap">
+                      <select name="price">
+                          <option value="">City</option>
+                          <option value="">Sylhet</option>
+                      </select>
+                      <span class="lnr lnr-chevron-down"></span>
+                  </div>
+              </div>
+
+              <div class="filter__option filter--select">
+                  <div class="select-wrap">
+                      <select name="price">
+                          <option value="low">Area</option>
+                          <option value="high">Shibgong</option>
+                      </select>
+                      <span class="lnr lnr-chevron-down"></span>
+                  </div>
+              </div>
 
 
             <div class="filter__option filter--select">
@@ -113,10 +125,9 @@
                 </select>
                 <span class="lnr lnr-chevron-down"></span></div>
             </div>
-
-            <button class="btn btn--round py-2 px-3">Search</button>
           </form>
         </div>
+
       </div>
     </div>
   </div>
@@ -129,15 +140,113 @@
     FOUND DISH
 =================================-->
 <section class="products section--padding2">
-  <div class="container scroll" >
-    <!-- start .row -->
-    <div class="row" id="dish_result">
-      @include('includes.dish_preview')
-    </div>
     <div class="container">
-      {{ $dishes->links() }}
+        <div class="row">
+
+            <div class="col-lg-4">
+                <aside class="sidebar product--sidebar">
+
+                    <div class="sidebar-card card--slider">
+                        <a class="card-title" href="#collapse3" role="button" data-toggle="" aria-expanded="false" aria-controls="collapse3">
+                            <h4>Range Price
+                                <span class="lnr lnr-chevron-down"></span>
+                            </h4>
+                        </a>
+                        <div class="collapse show collapsible-content" id="collapse3">
+                            <div class="card-content">
+                                <div class="range-slider price-range"></div>
+
+                                <div class="price-ranges">
+                                    <span class="from rounded">৳200</span>
+                                    <span class="to rounded">৳500</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card card--filter">
+                        <a class="card-title" href="#collapse1" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapse1">
+                            <h4>Filter Price
+                                <span class="lnr lnr-chevron-down"></span>
+                            </h4>
+                        </a>
+                        <div class="collapse show collapsible-content" id="collapse1">
+                            <ul class="card-content">
+
+                                <li>
+                                    <div class="custom-checkbox2">
+                                        <input type="checkbox" id="opt3" class="" name="filter_opt">
+                                        <label for="opt3">
+                                            <span class="circle"></span>Low to high</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="custom-checkbox2">
+                                        <input type="checkbox" id="opt4" class="" name="filter_opt">
+                                        <label for="opt4">
+                                            <span class="circle"></span>High to low</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-card card--filter">
+                        <a class="card-title" href="#collapse2" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapse2">
+                            <h4>Filter Dishes
+                                <span class="lnr lnr-chevron-down"></span>
+                            </h4>
+                        </a>
+                        <div class="collapse show collapsible-content" id="collapse2">
+                            <ul class="card-content">
+
+                                <li>
+                                    <div class="custom-checkbox2">
+                                        <input type="checkbox" id="opt3" class="" name="filter_opt">
+                                        <label for="opt3">
+                                            <span class="circle"></span>New Dish</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="custom-checkbox2">
+                                        <input type="checkbox" id="opt4" class="" name="filter_opt">
+                                        <label for="opt4">
+                                            <span class="circle"></span>Best Chef</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="custom-checkbox2">
+                                        <input type="checkbox" id="opt5" class="" name="filter_opt">
+                                        <label for="opt5">
+                                            <span class="circle"></span>Best Dish</label>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+
+
+            </div>
+
+            <div class="col-lg-8">
+
+                <div class="container scroll" >
+                    <!-- start .row -->
+                    <div class="row" id="dish_result">
+                        @include('includes.dish_preview')
+                    </div>
+                    <div class="container">
+                        {{ $dishes->links() }}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </div>
-  </div>
+
 
   {{--<div class="row">
       <div class="col-md-12">

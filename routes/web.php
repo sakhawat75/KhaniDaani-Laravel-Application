@@ -91,6 +91,17 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::resource('messages', 'MessageController');
 });
 
-Route::get('/tz', function(){
-	dd(date_default_timezone_get());
+
+
+Route::get('command/storage_link', function () {
+    $exitCode = Artisan::call('storage:link');
+    echo $exitCode;
+    //
 });
+
+Route::get('command/migrate_fresh', function () {
+    $exitCode = Artisan::call('migrate:fresh');
+    echo $exitCode;
+    //
+});
+
