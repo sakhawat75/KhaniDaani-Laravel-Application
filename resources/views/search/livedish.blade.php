@@ -89,9 +89,11 @@
 
               <div class="filter__option filter--select">
                   <div class="select-wrap">
-                      <select name="price">
-                          <option value="">City</option>
-                          <option value="">Sylhet</option>
+                      <select name="city" id="city" class="text_field">
+                        <option value="" selected="selected">All Cities</option>
+                        @foreach($cities as $city)
+                          <option value="{{ $city->name }}">{{ $city->name }}</option>
+                        @endforeach
                       </select>
                       <span class="lnr lnr-chevron-down"></span>
                   </div>
@@ -99,9 +101,8 @@
 
               <div class="filter__option filter--select">
                   <div class="select-wrap">
-                      <select name="price">
-                          <option value="low">Area</option>
-                          <option value="high">Shibgong</option>
+                      <select name="areas" id="areas" class="text_field">
+
                       </select>
                       <span class="lnr lnr-chevron-down"></span>
                   </div>
@@ -157,8 +158,8 @@
                                 <div class="range-slider price-range"></div>
 
                                 <div class="price-ranges">
-                                    <span class="from rounded">৳200</span>
-                                    <span class="to rounded">৳500</span>
+                                    <span class="from rounded" id="min_price">৳200</span>
+                                    <span class="to rounded" id="max_price">৳500</span>
                                 </div>
                             </div>
                         </div>
@@ -306,6 +307,12 @@
           );
 
           var renderDishes = function(dishes) {
+                      console.log('dish data: ' + dishes.data);
+                      if($.isEmptyObject(dishes.data)) {
+                          // console.log('if dishes: ' + dishes);
+                        $('#dish_result').append('<h1>Sorry! no result found</h1>');
+                      }
+
               _.each(dishes.data, function(dish) {
                   $('#dish_result').prepend(template(dish));
               });
@@ -317,8 +324,10 @@
           $('#dish_subcategory').empty();
           $('#dish_subcategory').append('<option value="" selected>All Sub Category</option>');
 
+          $('#areas').append('<option value="" selected>All Areas</option>');
+
           $("#dish_category").on('change', function (e) {
-              console.log(e);
+              // console.log(e);
               $('#dish_subcategory').empty();
               $('#dish_subcategory').prepend('<option value="" selected>All Sub Category</option>');
               let cat_name = e.target.value;
@@ -342,15 +351,46 @@
               clearTimeout(timer);
               timer = setTimeout(function () {
                   callAjax();
-                  console.log('Min Price: ' + min_price);
-                  console.log('Max Price: ' + max_price);
+                  // console.log('Min Price: ' + min_price);
+                  // console.log('Max Price: ' + max_price);
               }, 500);
           });
+
+
+          //Cities
+           $("#city").off('change');
+
+          $("#city").on('change', function (e) {
+              // console.log(e);
+              $('#areas').empty();
+              $('#areas').prepend('<option value="" selected>All Areas</option>');
+              let city_name = e.target.value;
+
+              $.get('/ajax-areas?city_name=' + city_name, function (data) {
+
+                  $.each(data, function (index, subCatObj) {
+                      $('#areas').append('<option value="' + subCatObj.name + '">' + subCatObj.name + '</option>');
+                  });
+              });
+
+              callAjax();
+          });
+
+          //areas
+           $("#areas").off('change');
+          $("#areas").on('change', function (e) {
+
+              callAjax();
+          });
+
+
 
           function callAjax() {
               let keyword = $('#onpage_search').val();
               let cat_name = $('#dish_category').val();
               let subcat_name = $('#dish_subcategory').val();
+              let city = $('#city').val();
+              let area = $('#areas').val();
 
               // console.log('Keyword: ' + keyword);
 
@@ -362,12 +402,15 @@
                       keyword: keyword,
                       min_price: min_price,
                       max_price: max_price,
+                      city: city,
+                      area: area,
                   },
                   type: "GET",
                   dataType: "json",
               }).done( function (dishes) {
                   $('#dish_result').html('');
                   $('ul.pagination').hide();
+
                   renderDishes(dishes);
               });
           }
@@ -383,8 +426,8 @@
                   clearTimeout(timer);
                   timer = setTimeout(function () {
                       callAjax();
-                      console.log('Min Price: ' + min_price);
-                      console.log('Max Price: ' + max_price);
+                      // console.log('Min Price: ' + min_price);
+                      // console.log('Max Price: ' + max_price);
                   }, 1000);
 
               }

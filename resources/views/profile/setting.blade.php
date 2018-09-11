@@ -135,13 +135,13 @@
                      <div class="form-group">
                         <label for="prohead">Full Address one<sup>*</sup></label>
 
-                        <input type="text" id="prohead" class="text_field" placeholder="Ex: House No, Road no, Block" name="address">
+                        <input type="text" id="prohead" class="text_field" placeholder="Ex: House No, Road no, Block" name="address" value="{{ $profile->address }}">
                     </div>
 
                     <div class="form-group">
                       <label for="prohead">Adress Hint</label>
 
-                      <input type="text" id="prohead" class="text_field" placeholder="Noticeable hint for delivery purpose" name="address_hint">
+                      <input type="text" id="prohead" class="text_field" placeholder="Noticeable hint for delivery purpose" name="address_hint" value="{{ $profile->address_hint }}">
                     </div>
 
                   </div>

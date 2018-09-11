@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use App\City;
 
 class UsersTableSeeder extends Seeder
 {
@@ -25,6 +26,15 @@ class UsersTableSeeder extends Seeder
         $faker = Faker::create();
         $user_name = array('Legal_Buyer', 'Royal_Chef', 'Fast_Deliverer');
         $full_name = array('Hussain Juned', 'Sakhawat', 'Haider Nurain');
+
+        $cities = City::all();
+        $city = array();
+        $i = 0;
+        foreach ($cities as $c) {
+            $city[$i] = $c->name;
+            $i++;
+        }
+
         for( $i=0; $i<3; $i++ )
         {
             DB::table('profiles')->insert(array(
@@ -35,7 +45,7 @@ class UsersTableSeeder extends Seeder
                     'fullname' => $full_name[$i],
                     'mobile_no' => $faker->phoneNumber,
                     'dob' => $faker->date($format = 'Y-m-d', $max = 'now'),
-                    'city' => $faker->city,
+                    'city' => $faker->randomElement($city),
                     'area' => $faker->secondaryAddress,
                     'address' => $faker->address,
                     'address_hint' => $faker->streetName,                    
@@ -153,7 +163,7 @@ class UsersTableSeeder extends Seeder
         $user = factory(App\User::class, 15)->create()
         ->each(function ($u){
 	        $dsp = factory(App\DeliveryService::class, 3)->create(['user_id' => $u->id]);
-	        $profile = factory(App\Profile::class, 1)->create(['user_id' => $u->id])
+	        $profile = factory(App\Profile::class, 1)->create(['user_id' => $u->id, 'user_name' => $u->name])
 	        ->each(function ($p) use ($u){
 		       $dish = factory(App\Dish::class, 5)->create(['profile_id' => $p->id]);
 	        });
