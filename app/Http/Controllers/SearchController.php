@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function livedish() {
+    public function livedish(Request $request) {
         $dishes = Dish::paginate(8);
         $categories = Category::all();
         $cities = City::all();
 
-        return view('search.livedish', compact('dishes', 'categories', 'cities'));
+        return view('search.livedish', compact('dishes', 'categories', 'cities', 'request'));
     }
 
     public function search_livedish(Request $request)

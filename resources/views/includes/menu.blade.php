@@ -14,7 +14,7 @@
       <!-- start .row -->
       <div class="row"> <!-- temp_min-height -->
         <!-- start .col-md-3 -->
-        <div class="col-lg-3 col-md-3 col-6 v_middle">
+        <div class="col-lg-4 col-md-4 col-5 v_middle">
           <div class="logo">
             <a href="{{ route('home') }}">
               <img src="{{ URL::to('/') }}/images/logo/full_logo.png" alt="logo image" class="img-fluid">
@@ -22,7 +22,78 @@
           </div>
         </div>
         <!-- end /.col-md-3 -->
-        <div class="col-lg-8 offset-lg-1 col-md-9 col-6 v_middle">
+
+
+          <div class="col-lg-4 col-md-2 col-4 mbl_noti">
+              <div class="author__notification_area mr-0">
+                  <ul style="
+    margin-top: 24px;
+">
+                      <li class="has_dropdown py-0 pl-0 pr-2 ">
+                          <div class="icon_wrap">
+                              <span class="lnr lnr-alarm"></span>
+                              <span class="notification_count noti" id="count_notification">0</span>
+                          </div>
+
+                          <div class="dropdown notification--dropdown">
+
+                              <div class="dropdown_module_header">
+                                  <h4>Notifications</h4>
+                                  <a href="http://127.0.0.1:8000/notifications/all">View All</a>
+                              </div>
+
+                              <div id="noti_dynamic"> </div>
+
+                              <!-- end /.dropdown -->
+                          </div>
+                      </li>
+                      <li class="has_dropdown py-0 pr-0 pl-2">
+                          <div class="icon_wrap"> <span class="lnr lnr-envelope"></span> <span class="notification_count msg" id="count_msg">0</span> </div>
+                          <div class="dropdown messaging--dropdown">
+                              <div class="dropdown_module_header">
+                                  <h4>Messages</h4> <a href="http://127.0.0.1:8000/messages/all">View All</a> </div>
+
+                              <div class="msg_dynamic">
+
+
+
+
+
+                                  <div class="messages " data-message_id="1" data-sender_id="2" data-recipient_id="2" id="all_msg_prev_1">
+                                      <a href="#" class="message recent">
+                                          <div class="message__actions_avatar">
+                                              <div class="avatar"> <img src="http://127.0.0.1:8000/storage/images/profile_image/PP_1536649201.jpg" alt="sender image" id="msg_pi_1">
+
+                                              </div>
+                                          </div>
+
+                                          <div class="message_data">
+                                              <div class="name_time">
+                                                  <div class="name">
+                                                      <p>Royal_Chef</p> <span class="lnr lnr-envelope"></span>
+                                                      <span class="msg_unread_count">
+
+
+                      </span> </div> <span class="time">7 minutes ago</span>
+                                                  <p>46346</p>
+                                              </div>
+                                          </div>
+                                      </a>
+                                  </div>
+
+                              </div>
+
+                              <!-- add upto 5 massages in the dropdown menue -->
+
+
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+
+
+        <div class="col-lg-4 col-md-6 col-3 v_middle">
           <!-- start .author-area -->
           <div class="author-area">
             @guest
@@ -278,7 +349,7 @@
               </div>
               <!--end /.author-author__info-->
               
-            <div class="author__notification_area">
+           {{-- <div class="author__notification_area">
                 <ul>
                     <li>
                         <a href="notification.html">
@@ -297,7 +368,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div>--}}
 
               <div class="dropdown dropdown--author">
                 <ul>
@@ -373,9 +444,9 @@
           <div class="navbar-header">
             <!-- start mainmenu__search -->
             <div class="mainmenu__search">
-              <form action="#">
+              <form action="{{ route('search.livedish') }}" method="get">
                 <div class="searc-wrap">
-                  <input type="text" placeholder="Search Dishes">
+                  <input type="text" placeholder="Search Dishes" name="keyword">
                   <button type="submit" class="search-wrap__btn">
                     <span class="lnr lnr-magnifier"></span>
                   </button>

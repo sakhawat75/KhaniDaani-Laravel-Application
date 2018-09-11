@@ -38,6 +38,7 @@ class MessageController extends Controller
     public function store(Request $r)
     {
         //
+
         if($r->has('sender_id')) {
             $sender_id = $r->input('sender_id');
             if ($sender_id != auth()->id()) {
@@ -51,6 +52,11 @@ class MessageController extends Controller
         } else {
             return;
         }
+
+        if($sender_id == $recipient_id) {
+            return;
+        }
+
         if($r->has('body')) {
             $body = $r->input('body');
         } else {

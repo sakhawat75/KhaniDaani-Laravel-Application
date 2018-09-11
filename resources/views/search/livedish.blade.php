@@ -16,10 +16,10 @@
               <h3>
                 Total <span>5</span> live dishes for our KhaniDaani community</h3></div>
             <div class="search__field">
-              <form action="#">
+              <form action="{{ route('search.livedish') }}" method="get">
                 <div class="field-wrapper">
-                  <input class="relative-field rounded" type="text" placeholder="Search your Dishes" id="onpage_search">
-                  <button class="btn btn--round" type="submit">Search</button>
+                  <input class="relative-field rounded" type="text" placeholder="Search your Dishes" id="onpage_search" name="keyword">
+                  <button class="btn btn--round" type="submit" id="search_scroll">Search</button>
                 </div>
               </form>
             </div>
@@ -45,7 +45,7 @@
 <!--================================
     START FILTER AREA
 =================================-->
-<div class="filter-area">
+<div class="filter-area" id="filter-area">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -300,6 +300,11 @@
           var min_price = 0;
           var max_price = 0;
           var timer;
+          var keyword;
+          var cat_name;
+          var subcat_name;
+          var city ;
+          var area;
 
 
           var template = _.template(
@@ -307,7 +312,7 @@
           );
 
           var renderDishes = function(dishes) {
-                      console.log('dish data: ' + dishes.data);
+                     // console.log('dish data: ' + dishes.data);
                       if($.isEmptyObject(dishes.data)) {
                           // console.log('if dishes: ' + dishes);
                         $('#dish_result').append('<h1>Sorry! no result found</h1>');
@@ -317,6 +322,17 @@
                   $('#dish_result').prepend(template(dish));
               });
           };
+
+
+          @if($request->has('keyword'))
+                keyword = '{{ $request->input('keyword')  }}';
+                $("#onpage_search").val(keyword);
+                callAjax();
+                  $('html, body').animate({
+                      scrollTop: $("#filter-area").offset().top
+                  }, 700);
+          @endif
+
 
           $('#dish_category').prepend('<option value="" selected>All Category</option>');
 
@@ -347,7 +363,7 @@
               callAjax();
           });
 
-          $('#onpage_search').on('input', function (event) {
+          $('#onpage_search').on('input change', function (event) {
               clearTimeout(timer);
               timer = setTimeout(function () {
                   callAjax();
@@ -386,14 +402,18 @@
 
 
           function callAjax() {
-              let keyword = $('#onpage_search').val();
-              let cat_name = $('#dish_category').val();
-              let subcat_name = $('#dish_subcategory').val();
-              let city = $('#city').val();
-              let area = $('#areas').val();
+              keyword = $('#onpage_search').val();
+              cat_name = $('#dish_category').val();
+              subcat_name = $('#dish_subcategory').val();
+              city = $('#city').val();
+              area = $('#areas').val();
 
               // console.log('Keyword: ' + keyword);
 
+              callSearch();
+          }
+
+          function callSearch() {
               $.ajax({
                   url: "{{ route('api.search.dish') }}",
                   data: {
@@ -434,6 +454,12 @@
 
           });
 
+          $("#search_scroll").click(function(e) {
+              e.preventDefault();
+              $('html, body').animate({
+                  scrollTop: $("#dish_result").offset().top
+              }, 700);
+          });
 
       });
 

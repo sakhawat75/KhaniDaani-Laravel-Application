@@ -229,7 +229,8 @@
     var $featuredProd2 = $('.prod-slider2');
     $featuredProd2.owlCarousel({
         items: 1,
-        autoplay: false
+        autoplay: true,
+        loop: true,
     });
     customTrigger('.prod_slide_prev', '.prod_slide_next', $featuredProd2);
 

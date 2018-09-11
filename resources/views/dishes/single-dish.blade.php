@@ -102,7 +102,7 @@
                 </div>
 
 
-                <div class=" item-action item_social_share">
+                {{--<div class=" item-action item_social_share">
                   <a href="#" class="btn btn--round btn--lg btn--icon">
                     <span class="lnr lnr-heart"></span>Add To Favorites
                   </a>
@@ -127,7 +127,7 @@
                   </div>
                   <!-- end /.social-->
 
-                </div>
+                </div>--}}
               </div>
               <!-- end /.item__action -->
             </div>
@@ -158,13 +158,13 @@
                   <div class="tab-content-wrapper">
                     <p> {!! $dish->dish_description !!} </p>
 
-                    <h2>Dish Ingredients</h2>
+                    {{--<h2>Dish Ingredients</h2>
                     <ul>
                       <li>Peanut oil</li>
                       <li>Natural yogurt</li>
                       <li>Black pepper</li>
                       <li>Cornflour</li>
-                    </ul>
+                    </ul>--}}
                   </div>
                 </div>
 
@@ -457,7 +457,12 @@
                   <p>Joined {{ $dish->profile->created_at->toFormattedDateString() }}</p>
                 </div>
                 <div class="author-badges">
-                    <div class="author-btn"> <a href="#" class="btn btn--md btn--round" data-toggle="modal" data-target="#messageModal">Message Chef</a> </div>
+                    <div class="author-btn"> <button class="btn btn--md btn--round" data-toggle="modal" data-target="#messageModal"
+                      @if(auth()->id() == $profile->user_id)
+                      aria-disabled="true" disabled="disabled"
+
+                        @endif
+                      >Message Chef</button> </div>
                 </div>
 
                 

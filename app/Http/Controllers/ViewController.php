@@ -14,7 +14,7 @@ class ViewController extends Controller
 {
     public function index() {
     	$dishes = Dish::latestDishes( 6);
-    	$featured_dishes = FeaturedDish::orderBy('updated_at', 'desc')->with('dish')->limit(3)->get();
+    	$featured_dishes = FeaturedDish::orderBy('updated_at', 'desc')->with('dish')->limit(5)->get();
     	if(Auth::check()) {
 		    $user = User::find(auth()->id());
 		    $profile = Profile::where('user_id', $user->id)->first();
