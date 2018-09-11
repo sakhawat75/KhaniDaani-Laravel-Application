@@ -147,7 +147,7 @@ $("#screenshot3").change(function () {
 
 // dynamically add dish subcategory with JSON
 $("#dish_category").on('change', function (e) {
-    console.log(e);
+    // console.log(e);
 
     var cat_name = e.target.value;
 
@@ -165,7 +165,7 @@ $("#dish_category").trigger('change');
 
 // dynamically add dish subcategory with JSON
 $("#city").on('change', function (e) {
-    console.log(e);
+    // console.log(e);
 
     var city_name = e.target.value;
 

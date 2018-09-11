@@ -6068,3 +6068,9 @@ span.counter {
 .brdr_btm{
     border-bottom: 1px solid $borderColor;
 }
+
+@media (min-width: 768px) {
+  .mbl_noti ul {
+    display: none;
+  }
+}

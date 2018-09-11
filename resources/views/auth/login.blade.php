@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-  <body class="login-page">
+
     <!--================================
         START BREADCRUMB AREA
     =================================-->
@@ -50,7 +50,7 @@
                 <div class="login--form">
                   <div class="form-group">
                     <label for="user_name">Email Adress</label>
-                    <input id="email" type="email" class="text_field{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                    <input id="email" type="email" class="form-control text_field{{ $errors->has('email') ? ' is-invalid' : '' }}"
                            name="email" value="{{ old('email') }}" required autofocus placeholder="Enter your email...">
 
                     @if ($errors->has('email'))
@@ -63,7 +63,7 @@
                   <div class="form-group">
                     <label for="pass">Password</label>
                     <input id="password" type="password"
-                           class="text_field{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
+                           class="form-control text_field{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
                            required placeholder="Enter your password...">
 
                     @if ($errors->has('password'))
@@ -90,7 +90,7 @@
                     <p class="recover">Lost your
                       <a href="{{ route('recover-pass') }}">username</a>
                       or
-                      <a href="pass-recovery.html">password</a>
+                      <a href="{{ route('recover-pass') }}">password</a>
                       ?
                     </p>
                     <p class="signup">Don't have an

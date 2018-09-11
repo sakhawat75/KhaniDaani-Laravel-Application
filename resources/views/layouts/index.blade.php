@@ -57,7 +57,7 @@
           <div class="col-sm-12">
             <!-- start .search_box -->
             <div class="search_box">
-              <form action="#">
+              <form action="{{ route('search.livedish') }}" method="get">
                 <input type="text" class="text_field" placeholder="Search your Dishes">
                 <div class="search__select">
                   <select name="category" class="select--field" id="cat">

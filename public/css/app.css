@@ -26230,7 +26230,7 @@ span.counter {
   }
 
   .logo {
-    padding: 10px 14px 10px 0;
+    padding: 0;
   }
 
   .logo img {
@@ -28076,5 +28076,11 @@ span.counter {
 
 .brdr_btm {
   border-bottom: 1px solid #ececec;
+}
+
+@media (min-width: 768px) {
+  .mbl_noti ul {
+    display: none;
+  }
 }
 
