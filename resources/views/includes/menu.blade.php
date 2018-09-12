@@ -97,7 +97,7 @@
           <!-- start .author-area -->
           <div class="author-area">
             @guest
-              <a href="{{ route('register') }}" class="author-area__seller-btn inline my-4">Become a Member</a>
+              <a href="{{ route('register') }}" class="author-area__seller-btn inline my-4 a-mem">Become a Member</a>
               <a href="{{ route('login') }}" class="author-area__seller-btn inline">Login</a>
             @endguest
 
@@ -468,23 +468,7 @@
                   <a href="{{route('home')}}">HOME</a>
                 </li>
                 <li class="has_dropdown">
-                  <a href="#">all dishes</a>
-                  <div class="dropdown dropdown--menu">
-                    <ul>
-                      <li>
-                        <a href="{{ route('search.livedish') }}">Live Dishes</a>
-                      </li>
-                      <li>
-                        <a href="all-products.html">Frozen</a>
-                      </li>
-                      <li>
-                        <a href="#">Sale Dishes</a>
-                      </li>
-                      <li>
-                        <a href="#">Feature Dishes</a>
-                      </li>
-                    </ul>
-                  </div>
+                  <a href="{{ route('search.livedish') }}">Search Dishes</a>
                 </li>
                 <li class="has_dropdown">
                   <a href="#">Dish categories</a>
@@ -521,31 +505,8 @@
                   </div>
                 </li>
 
-                <li class="has_megamenu">
-                  <a href="#">Area</a>
-                  <div class="dropdown_megamenu">
-                    <div class="megamnu_module">
-                      <div class="menu_items">
-                        <div class="menu_column">
-                          <ul id="area_ul">
-                            <li class="title">Sylhet</li>
-                            {{--<li>
-                              <a href="all-products.html">Zindabazar</a>
-                            </li>
-                            <li>
-                              <a href="all-products-list.html">Upashahr</a>
-                            </li>
-                            <li>
-                              <a href="category-grid.html">Shibgonj</a>
-                            </li>--}}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
                 <li>
-                  <a href="contact.html">Help</a>
+                  <a href="">Help</a>
                 </li>
               </ul>
             </div>

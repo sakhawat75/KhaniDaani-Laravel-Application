@@ -17656,8 +17656,8 @@ div#ui-datepicker-div tbody tr td a:hover {
 
 .feature_title {
   border-bottom: 1px solid #ececec;
-  padding-bottom: 20px;
-  margin-bottom: 65px;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 /*--- feature 1 ---*/
@@ -18089,6 +18089,7 @@ ul.nav-tabs.nav--tabs2 li a::before {
 
 .author-area {
   float: right;
+  margin-top: 10px;
 }
 
 .author-area.not_logged_in .join {
@@ -18491,7 +18492,7 @@ ul.nav-tabs.nav--tabs2 li a::before {
 }
 
 .hero-area + section {
-  padding-top: 187px;
+  padding-top: 5px;
 }
 
 .hero--1 {
@@ -26102,6 +26103,21 @@ span.counter {
 /* 767 */
 
 @media screen and (max-width: 767px) {
+  .section-title {
+    display: none;
+  }
+
+  .hero__content__title {
+    margin-left: -23px;
+    margin-right: 74px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+  }
+
+  .hero__content__title p {
+    display: none;
+  }
+
   .container {
     width: 450px;
   }
@@ -26409,7 +26425,7 @@ span.counter {
 
   /* menu area */
 
-  .author-area {
+  .a-mem {
     display: none;
   }
 

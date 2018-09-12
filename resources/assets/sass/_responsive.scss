@@ -914,6 +914,22 @@ $ipad: 992px;
 
 /* 767 */
 @media  screen and (max-width: $tablet - 1) {
+
+  .section-title{
+    display: none;
+  }
+
+  .hero__content__title{
+    margin-left: -23px;
+    margin-right: 74px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    p{
+      display: none;
+    }
+
+  }
+
   .container{
     width: 450px;
   }
@@ -1159,7 +1175,7 @@ $ipad: 992px;
   }
 
   /* menu area */
-  .author-area{
+  .a-mem{
     display: none;
   }
 
