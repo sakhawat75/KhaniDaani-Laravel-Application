@@ -58,7 +58,7 @@
         <div class="row">
           <div class="container">
             @include('includes.success_message')
-            @include('includes.messeages')
+            @include('includes.error_messeages')
           </div>
           <div class="col-lg-8 col-md-7">
             <form action="{{ route('dishes.store') }}" method="post" enctype="multipart/form-data">

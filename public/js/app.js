@@ -181,6 +181,8 @@ $("#city").on('change', function (e) {
 // To trigger the category select option
 $("#areas").trigger('change');
 
+$('div.max-length').maxlength();
+
 // To add ck-editor in textarea
 // CKEDITOR.replace('article-ckeditor');
 

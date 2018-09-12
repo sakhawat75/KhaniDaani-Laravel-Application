@@ -23,6 +23,7 @@
     <script src="{{ asset('js/vendor/moment-with-locales.min.js') }}"></script>
     <script src="{{ asset('js/vendor/moment-timezone.min.js') }}"></script>
     <script src="{{ asset('js/vendor/underscore-min.js') }}"></script>
+    <script src="{{ asset('js/vendor/jQuery.maxlength.js') }}"></script>
     <script src="{{ URL::to('/') }}/js/main.js"></script>
     {{--<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBeySPFGz7DIUTrReCRQT6HYaMM0ia0knA"></script>--}}
     {{--<script src="{{ URL::to('/') }}/js/map.js"></script>--}}

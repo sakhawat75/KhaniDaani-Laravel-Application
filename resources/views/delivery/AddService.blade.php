@@ -38,7 +38,7 @@
     <section class="dashboard-area">
 
         @include( 'includes.menu-dashboard' )
-        @include('includes.messeages')
+        @include('includes.error_messeages')
 
         <div class="dashboard_contents">
             <div class="container">

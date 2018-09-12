@@ -1,4 +1,6 @@
 <?php
+
+// @formatter:off
 /**
  * A helper file for your Eloquent Models
  * Copy the phpDocs from this file to the correct Model,
@@ -62,6 +64,14 @@ namespace App{
  * @mixin \Eloquent
  */
 	class City extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\DeleteItWhenSee
+ *
+ */
+	class DeleteItWhenSee extends \Eloquent {}
 }
 
 namespace App{
@@ -146,8 +156,74 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Dish whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Dish whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property float $avg_rating
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Order[] $completed_orders
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Order[] $orders
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Rating[] $ratings
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Dish whereAvgRating($value)
  */
 	class Dish extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\FeaturedDish
+ *
+ * @property int $id
+ * @property int $dish_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Dish $dish
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\FeaturedDish whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\FeaturedDish whereDishId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\FeaturedDish whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\FeaturedDish whereUpdatedAt($value)
+ */
+	class FeaturedDish extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\Message
+ *
+ * @property int $id
+ * @property int $sender_id
+ * @property int $recipient_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\MessageBody[] $mb
+ * @property-read \App\User $recipient
+ * @property-read \App\User $sender
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Message whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Message whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Message whereRecipientId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Message whereSenderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Message whereUpdatedAt($value)
+ */
+	class Message extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\MessageBody
+ *
+ * @property int $id
+ * @property int $message_id
+ * @property int $sender_id
+ * @property string $body
+ * @property string|null $read_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Message $message
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MessageBody whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MessageBody whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MessageBody whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MessageBody whereMessageId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MessageBody whereReadAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MessageBody whereSenderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\MessageBody whereUpdatedAt($value)
+ */
+	class MessageBody extends \Eloquent {}
 }
 
 namespace App{
@@ -160,7 +236,10 @@ namespace App{
  * @property string $buyer_contact_n
  * @property string|null $buyer_cn_opt
  * @property int $dish_id
+ * @property int $dish_user_id
+ * @property string $dish_name
  * @property int $dsp_id
+ * @property int $dsp_user_id
  * @property float $dsp_service_charge
  * @property float $dish_price
  * @property float $khanidaani_charge
@@ -171,13 +250,14 @@ namespace App{
  * @property string $payment_type
  * @property int $delivery_time
  * @property int|null $rating
- * @property int|null $chef_is_dish_ready
+ * @property int $chef_is_dish_ready
  * @property int|null $chef_is_dish_delivered
  * @property int|null $dsp_is_dish_recieved
  * @property int|null $dsp_is_dish_delivered
- * @property int|null $is_order_complited
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
+ * @property int|null $is_order_completed
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\User $buyer
  * @property-read \App\Dish $dish
  * @property-read \App\DeliveryService $dsp
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereBuyerCnOpt($value)
@@ -191,13 +271,16 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDeliveryAddressHint($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDeliveryTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDishId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDishName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDishPrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDishUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDspId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDspIsDishDelivered($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDspIsDishRecieved($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDspServiceCharge($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereDspUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereIsOrderComplited($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereIsOrderCompleted($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereKhanidaaniCharge($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order wherePaymentType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order wherePreparationTime($value)
@@ -206,6 +289,14 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereUpdatedAt($value)
  */
 	class Order extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\PickersPoint
+ *
+ */
+	class PickersPoint extends \Eloquent {}
 }
 
 namespace App{
@@ -263,6 +354,25 @@ namespace App{
 /**
  * App\Rating
  *
+ * @property int $id
+ * @property int $order_id
+ * @property int $chef_id
+ * @property int $dish_id
+ * @property string $type
+ * @property int $rating
+ * @property string $comment
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Order $order
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Rating whereChefId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Rating whereComment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Rating whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Rating whereDishId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Rating whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Rating whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Rating whereRating($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Rating whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Rating whereUpdatedAt($value)
  */
 	class Rating extends \Eloquent {}
 }
@@ -293,8 +403,8 @@ namespace App{
  *
  * @property int $id
  * @property int $service_percentage
- * @property \Carbon\Carbon|null $created_at
- * @property \Carbon\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\SystemVariables whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\SystemVariables whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\SystemVariables whereServicePercentage($value)
@@ -325,6 +435,11 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Order[] $orders
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Rating[] $ratings
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Message[] $receivedMessages
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Message[] $sentMessages
  */
 	class User extends \Eloquent {}
 }

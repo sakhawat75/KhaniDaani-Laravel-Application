@@ -38,10 +38,11 @@
     <section class="dashboard-area">
 
         @include( 'includes.menu-dashboard' )
-        @include('includes.messeages')
+
 
         <div class="dashboard_contents">
             <div class="container">
+                @include('includes.error_messeages')
                 @include('includes.success_message')
                 <div class="row">
                     <div class="col-lg-8 col-md-7">
@@ -55,19 +56,20 @@
                                 <!-- end /.module_title -->
                                 <div class="modules__content">
 
-                                    <div class="form-group">
+                                    <div class="form-group max-length">
                                         <label for="shop_name">Shop Name
-                                            <span>(Max 50 characters)</span>
+                                            <span> (Max 50 characters) </span>
                                         </label>
                                         <input name="name" type="text" id="shop_name" class="text_field"
-                                               placeholder="Enter your Shop name here..." maxlength = "50" >
+                                               placeholder="Enter your Shop name here..." maxlength = "50" required>
+
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group max-length">
                                         <label for="shop_type">Shop Type
-                                            <span>(eg. Departmental Store )</span>
+                                            <span> (eg. Departmental Store )</span>
                                         </label>
                                         <input name="type" type="text" id="shop_type" class="text_field"
-                                               placeholder="Enter your Shop Type here..."  maxlength = "20">
+                                               placeholder="Enter your Shop Type here..."  maxlength = "20" required>
                                     </div>
 
                                     {{-- <div class="form-group no-margin">
@@ -95,7 +97,7 @@
                                                     <label for="sh_start">Open Time</label>
                                                     <input type="time" name="open_at" id="sh_start"
                                                            class="text_field"
-                                                           placeholder="Start Time">
+                                                           placeholder="Start Time" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -106,7 +108,7 @@
                                                 <div class="input-group">
                                                     <label for="sh_close">Close Time</label>
                                                     <input type="time" id="sh_close" class="text_field"
-                                                           placeholder="End Time" name="close_at">
+                                                           placeholder="End Time" name="close_at" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -118,10 +120,21 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="service_charge">Servcie Charge <span>(In taka)</span>
+                                                <label for="service_charge">Servcie Charge <span>(Within 10-50 taka)</span>
                                                 </label>
-                                                <input name="charge" type="number" id="service_charge" class="text_field"
-                                                       placeholder="10-50" min="10" max="50">
+                                                {{--<input name="charge" type="number" id="service_charge" class="text_field"
+                                                       placeholder="10-50" min="10" max="50" required>--}}
+                                                <select name="charge" id="service_charge">
+                                                    <option value="10">10</option>
+                                                    <option value="15">15</option>
+                                                    <option value="20">20</option>
+                                                    <option value="25">25</option>
+                                                    <option value="30">30</option>
+                                                    <option value="35">35</option>
+                                                    <option value="40">40</option>
+                                                    <option value="45">45</option>
+                                                    <option value="50">50</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -142,28 +155,28 @@
                                 <div class="information__set toggle_module collapse show" id="collapse2">
                                     <div class="modules__content">
 
-                                        <div class="form-group">
+                                        <div class="form-group max-length">
                                             <label for="full_address">Full Address One*</label>
                                             <div class="input-group">
                                                 <textarea name="address" id="full_address"
                                                        class="text_field"
-                                                          placeholder="77128 Amber FlatsCormierfurt, NV 26057-0467"  maxlength = "100"></textarea>
+                                                          placeholder="77128 Amber FlatsCormierfurt, NV 26057-0467"  maxlength = "100" required></textarea>
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group max-length">
                                             <label for="address_hint">Adress Hint</label>
                                             <div class="input-group">
-                                                <input name="address_hint" type="number" id="address_hint"
-                                                       class="text_field" placeholder="Amelia Station">
+                                                <input name="address_hint" type="text" id="address_hint"
+                                                       class="text_field" placeholder="Amelia Station"  maxlength = "50" required>
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group max-length">
                                             <label for="phone_number">Phone No</label>
                                             <div class="input-group">
                                                 <input name="phone" type="tel" id="phone_number"
-                                                       class="text_field" placeholder="01711966966">
+                                                       class="text_field" placeholder="01711966966"  maxlength = "11" required>
                                             </div>
                                         </div>
 

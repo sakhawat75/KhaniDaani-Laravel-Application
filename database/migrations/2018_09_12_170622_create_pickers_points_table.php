@@ -15,6 +15,7 @@ class CreatePickersPointsTable extends Migration
     {
         Schema::create('pickers_points', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
             $table->string('name');
             $table->string('type');
             $table->time('open_at');

@@ -11,10 +11,10 @@
             options
         );
 
-        var counterElm = '<span class="text-limit">' +
+        var counterElm = '<span class="text-limit">(' +
             '<span data-val-length="target"></span>' +
             '<span data-val-length="max"></span>' +
-            '</span>';
+            ')</span>';
 
         return this.each(function () {
             var $wrap = $(this);
