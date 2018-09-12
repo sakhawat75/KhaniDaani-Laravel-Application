@@ -50,41 +50,40 @@
 
                             <div class="upload_modules">
                                 <div class="modules__title">
-                                    <h3>Add Delivery Service Detail</h3>
+                                    <h3>Add Pickers Point Detail</h3>
                                 </div>
                                 <!-- end /.module_title -->
                                 <div class="modules__content">
 
                                     <div class="form-group">
-                                        <label for="product_name">Service Title
-                                            <span>(Max 100 characters)</span>
+                                        <label for="product_name">Shop Name
+                                            <span>(Max 50 characters)</span>
+                                        </label>
+                                        <input name="service_title" type="text" id="product_name" class="text_field"
+                                               placeholder="Enter your product name here...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="product_name">Shop Type
+                                            <span>(eg. Departmental Store )</span>
                                         </label>
                                         <input name="service_title" type="text" id="product_name" class="text_field"
                                                placeholder="Enter your product name here...">
                                     </div>
 
-                                    <div class="form-group no-margin">
+                                   {{-- <div class="form-group no-margin">
                                         <label for="product_name">Service Description
                                             <span>(Describe Everything in detail)</span>
                                         </label>
                                         <textarea name="service_description" rows="10" class="form-control"
                                                   placeholder="max 1000 character" id="article-ckeditor"></textarea>
-                                    </div>
+                                    </div>--}}
                                 </div>
 
-                                <div class="modules__content">
-                                    <div class="form-group">
-                                        <label for="tags">Service Area
-                                            <span>(Max 10 Area)</span>
-                                        </label>
-                                        <textarea name="service_area" id="tags" class="text_field" placeholder="Now input just one area as string"></textarea>
-                                    </div>
-                                </div>
                             </div>
 
                             <div class="upload_modules with--addons">
                                 <div class="modules__title">
-                                    <h3>Service Hours</h3>
+                                    <h3>Open Hours & Charge</h3>
                                 </div>
                                 <!-- end /.module_title -->
 
@@ -112,14 +111,23 @@
 
                                     </div>
                                     <!-- end /.row -->
+
+                                    <div class="form-group">
+                                        <label for="product_name">Servcie Charge <span>(In taka)</span>
+                                        </label>
+                                        <input name="service_title" type="text" id="product_name" class="text_field"
+                                               placeholder="10-50">
+                                    </div>
                                 </div>
                                 <!-- end /.modules__content -->
                             </div>
 
+                            Note: Fetch below information from profile setting also allow them edit if it's needed.
+
                             <div class="upload_modules">
                                 <a class="toggle_title" href="#collapse2" role="button" data-toggle="collapse"
                                    aria-expanded="false" aria-controls="collapse2">
-                                    <h4>Service Pricing & Timing
+                                    <h4>Contacts
                                         <span class="lnr lnr-chevron-down"></span>
                                     </h4>
                                 </a>
@@ -128,37 +136,29 @@
                                     <div class="modules__content">
 
                                         <div class="form-group">
-                                            <label for="">Servcie Charge <span>(In taka)</span></label>
+                                            <label for="">Full Address One*</label>
                                             <div class="input-group">
                                                 <input name="service_charge" type="number" id="rlicense"
-                                                       class="text_field" value="৳500">
+                                                       class="text_field" placeholder="77128 Amber FlatsCormierfurt, NV 26057-0467">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="preperation_time">Min Delivery Time<span> (In Hour)</span></label>
-                                            <div class="select-wrap select-wrap2">
-                                                <select name="min_delivery_time" id="preperation_time"
-                                                        class="text_field">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                </select>
-                                                <span class="lnr lnr-chevron-down"></span>
+                                            <label for="">Adress Hint</label>
+                                            <div class="input-group">
+                                                <input name="service_charge" type="number" id="rlicense"
+                                                       class="text_field" placeholder="Amelia Station">
                                             </div>
                                         </div>
+
                                         <div class="form-group">
-                                            <label for="preperation_time">Max Delivery Time <span> (In Hour)</span></label>
-                                            <div class="select-wrap select-wrap2">
-                                                <select name="max_delivery_time" id="preperation_time"
-                                                        class="text_field">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                </select>
-                                                <span class="lnr lnr-chevron-down"></span>
+                                            <label for="">Phone No</label>
+                                            <div class="input-group">
+                                                <input name="service_charge" type="number" id="rlicense"
+                                                       class="text_field" placeholder="01711966966">
                                             </div>
                                         </div>
+
                                     </div>
                                     <!-- end /.modules__content -->
                                 </div>
