@@ -189,25 +189,6 @@
                                             <img src="" alt="">
                                         </div>
 
-                                        <div class="rating">
-                                            <ul>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                            </ul>
-                                        </div>
 
                                         <h3 class="pp_title">Showpno</h3>
                                         <div class="type">
@@ -219,14 +200,23 @@
                                         <div class="hours">
                                             <span class="opening">Opens @ 9:00 AM.</span><span class="closing"> Close @ 5:00 PM</span>
                                         </div>
+                                        <br>
 
-                                        <div class="freelance-status">
-                                            <div class="custom-radio">
-                                                <input type="radio" id="opt1" class="" name="filter_opt" checked>
-                                                <label for="opt1">
-                                                    <span class="circle"></span>Pikers Pint</label>
+                                        <div class="product-purchase">
+                                            <div class="price_love"> <span>৳50</span>
+                                                <p> <span class="lnr lnr-heart"></span> 0</p>
+                                            </div>
+                                            <div class="rating product--rating pull-right">
+                                                <ul>
+                                                    <li><span class="fa fa-star-o"></span></li>
+                                                    <li><span class="fa fa-star-o"></span></li>
+                                                    <li><span class="fa fa-star-o"></span></li>
+                                                    <li><span class="fa fa-star-o"></span></li>
+                                                    <li><span class="fa fa-star-o"></span></li>
+                                                </ul>
                                             </div>
                                         </div>
+
                                     </div>
                                 </a><!-- End strip_list-->
                             </div><!-- End col-md-6-->
