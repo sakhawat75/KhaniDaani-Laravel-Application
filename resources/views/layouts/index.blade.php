@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
 
-@section ('title', 'Welcome')
+@section ('title', 'Freelance based cooking services')
 
 @section ('content')
 
@@ -10,7 +10,7 @@
 =================================-->
   <section class="hero-area hero--2 bgimage">
     <div class="bg_image_holder">
-      <img src="{{ route('home') }}/images/hero_area_bg3.jpg" alt="kd">
+      <img src="/images/hero_area_bg3.jpg" alt="area bd missing">
     </div>
 
     <!-- start hero-content -->
@@ -48,7 +48,7 @@
     <!-- end hero-content -->
 
     <!--start search-area -->
-    <div class="search-area">
+{{--    <div class="search-area">
       <!-- start .container -->
       <div class="container">
         <!-- start .container -->
@@ -86,7 +86,7 @@
         <!-- end /.row -->
       </div>
       <!-- end /.container -->
-    </div>
+    </div>--}}
     <!--start /.search-area -->
   </section>
   <!--================================
@@ -384,7 +384,7 @@
         <div class="col-md-12">
           <div class="product-title-area">
             <div class="product__title">
-              <h2>Newest Release Products</h2>
+              <h2>New Dishes</h2>
             </div>
 
             <div class="filter__menu">
@@ -510,7 +510,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="more-product">
-            <a href="all-products.html" class="btn btn--lg btn--round">All New Products</a>
+            <a href="{{route('search.livedish')}}" class="btn btn--lg btn--round">All New Dishes</a>
           </div>
         </div>
         <!-- end ./col-md-12 -->
@@ -528,14 +528,14 @@
   =================================-->
   <section class="call-to-action bgimage">
     <div class="bg_image_holder">
-      <img src="images/calltobg.jpg" alt="">
+      <img src="/images/calltobg.jpg" alt="zz">
     </div>
     <div class="container content_above">
       <div class="row">
         <div class="col-md-12">
           <div class="call-to-wrap">
-            <h1 class="text--white">Ready to Join Our KhaniDaani Community!</h1>
-            <h4 class="text--white">Subtitle</h4>
+            <h1 class="text--white">Ready to Join KhaniDaani!</h1>
+            <h4 class="text--white">Start selling selling your dishes and get variety of foods. </h4>
             <a href="{{ route('register') }}" class="btn btn--lg btn--round btn--white callto-action-btn">Join Us
               Today
             </a>
