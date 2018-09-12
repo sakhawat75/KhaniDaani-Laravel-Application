@@ -1,18 +1,13 @@
 @extends ('layouts.master')
 
-
 @section ('title', 'Freelance based cooking services')
 
 @section ('content')
 
-  <!--================================
-    START HERO AREA
-=================================-->
   <section class="hero-area hero--2 bgimage">
     <div class="bg_image_holder">
       <img src="/images/hero_area_bg3.jpg" alt="area bd missing">
     </div>
-
     <!-- start hero-content -->
     <div class="hero-content">
       <!-- start .contact_wrapper -->
@@ -29,11 +24,10 @@
                 </h1>
                 <p class="tagline">Earn money by delivering those dishes.</p>
               </div>
-
               <!-- start .hero__btn-area-->
               <div class="hero__btn-area">
-                <a href="#" class="btn btn--round btn--lg">View All Dishes</a>
-                <a href="#" class="btn btn--round btn--lg">Popular Dishes</a>
+                <a href="{{ route('search.livedish') }}" class="btn btn--round btn--lg">View All Dishes</a>
+                <a href="{{ route('search.livedish') }}" class="btn btn--round btn--lg">Popular Dishes</a>
               </div>
               <!-- end .hero__btn-area-->
             </div>
@@ -90,16 +84,11 @@
     <!--start /.search-area -->
   </section>
   <!--================================
-      END HERO AREA
-  =================================-->
-
-  <!--================================
-      START FEATURED PRODUCT AREA
+      START FEATURED DISHES AREA
   =================================-->
   <section class="featured-products bgcolor2 section--padding">
     <div class="container">
       <div class="row">
-        <!-- start col-md-12 -->
         <div class="col-md-12">
           <div class="section-title">
             <h1>Our Featured
@@ -108,256 +97,85 @@
             <p>Subtitle</p>
           </div>
         </div>
-        <!-- end /.col-md-12 -->
       </div>
 
       <div class="row">
         <div class="col-md-12">
           <div class="featured-product-slider prod-slider2">
-
             @foreach($featured_dishes as $fd)
-
-                <div class="featured__single-slider">
-                  <div class="featured__preview-img">
-                    <img src="{{ route('home') }}/storage/images/dish_images/{{ $fd->dish->dish_image_1 }}" alt="Featured products" class="img-fluid">
+              <div class="featured__single-slider">
+                <div class="featured__preview-img">
+                  <img src="{{ route('home') }}/storage/images/dish_images/{{ $fd->dish->dish_image_1 }}"
+                       alt="Featured products" class="img-fluid">
+                </div>
+                <!-- end /.featured__preview-img -->
+                <div class="featured__product-description">
+                  <div class="product-desc desc--featured">
+                    <a href="{{ route('home')}}" class="product_title">
+                      <h4>{{ $fd->dish->dish_name }}</h4>
+                    </a>
+                    <ul class="titlebtm">
+                      <li>
+                        <img class="auth-img"
+                             src="{{ route('home') }}/storage/images/profile_image/{{ $fd->dish->profile->profile_image }}"
+                             alt="author image">
+                        <p>
+                          <a href="#">{{ $fd->dish->profile->user_name }}</a>
+                        </p>
+                      </li>
+                    </ul>
+                    <p>{!! $fd->dish->dish_description !!}</p>
                   </div>
-                  <!-- end /.featured__preview-img -->
 
-                  <div class="featured__product-description">
-                    <div class="product-desc desc--featured">
-                      <a href="{{ route('home')}}" class="product_title">
-                        <h4>{{ $fd->dish->dish_name }}</h4>
-                      </a>
-                      <ul class="titlebtm">
+                  <div class="product_data">
+                    <div class="tags tags--round">
+                      <ul>
                         <li>
-                          <img class="auth-img" src="{{ route('home') }}/storage/images/profile_image/{{ $fd->dish->profile->profile_image }}" alt="author image">
-                          <p>
-                            <a href="#">{{ $fd->dish->profile->user_name }}</a>
-                          </p>
+                          <a href="#">{{ $fd->dish->dish_category }}</a>
+                        </li>
+                        <li>
+                          <a href="#">{{ $fd->dish->dish_subcategory }}</a>
                         </li>
                       </ul>
-                      <!-- end /.titlebtm -->
-
-                      <p>{!! $fd->dish->dish_description !!}</p>
                     </div>
-                    <!-- end /.product-desc -->
-
-                    <div class="product_data">
-                      <div class="tags tags--round">
+                    <!-- end /.tags -->
+                    <div class="product-purchase featured--product-purchase">
+                      <div class="price_love">
+                        <span>৳{{ $fd->dish->dish_price }}</span>
+                        <p>
+                          <span class="lnr lnr-heart"></span>0</p>
+                      </div>
+                      <div class="sell">
+                        <p>
+                          <span class="lnr lnr-cart"></span>
+                          <span>{{ count($fd->dish->completed_orders) }}</span>
+                        </p>
+                      </div>
+                      {{--Start Rating Area--}}
+                      <div class="rating product--rating">
                         <ul>
-                          <li>
-                            <a href="#">{{ $fd->dish->dish_category }}</a>
-                          </li>
-                          <li>
-                            <a href="#">{{ $fd->dish->dish_subcategory }}</a>
-                          </li>
+                          @for ($i=1; $i <= 5; $i++)
+                            @if($i <= round($fd->dish->avg_rating))
+                              <li>
+                                <span class="fa fa-star"></span>
+                              </li>
+                            @else
+                              <li>
+                                <span class="fa fa-star-o"></span>
+                              </li>
+                            @endif
+                          @endfor
                         </ul>
                       </div>
-                      <!-- end /.tags -->
-                      <div class="product-purchase featured--product-purchase">
-                        <div class="price_love">
-                          <span>৳{{ $fd->dish->dish_price }}</span>
-                          <p>
-                            <span class="lnr lnr-heart"></span>0</p>
-                        </div>
-                        <div class="sell">
-                          <p>
-                            <span class="lnr lnr-cart"></span>
-                            <span>{{ count($fd->dish->completed_orders) }}</span>
-                          </p>
-                        </div>
-
-                        <div class="rating product--rating">
-                          <ul>
-                            @for ($i=1; $i <= 5; $i++)
-                              @if($i <= round($fd->dish->avg_rating))
-                                  <li>
-                                    <span class="fa fa-star"></span>
-                                  </li>
-                              @else
-                                  <li>
-                                    <span class="fa fa-star-o"></span>
-                                  </li>
-                              @endif
-                            @endfor
-                            
-                          </ul>
-                        </div>
-                      </div>
-                      <!-- end /.product-purchase -->
+                      {{--End Rating Area--}}
                     </div>
+                    <!-- end /.product-purchase -->
                   </div>
-                  <!-- end /.featured__product-description -->
                 </div>
-                <!--end /.featured__single-slider-->
-            
+                <!-- end /.featured__product-description -->
+              </div>
+              <!--end /.featured__single-slider-->
             @endforeach
-
-
-           {{--  <div class="featured__single-slider">
-              <div class="featured__preview-img">
-                <img src="{{ route('home') }}/images/f1.jpg" alt="Featured products" class="img-fluid">
-              </div>
-              <!-- end /.featured__preview-img -->
-
-              <div class="featured__product-description">
-                <div class="product-desc desc--featured">
-                  <a href="{{ route('home')}}" class="product_title">
-                    <h4>Indina Butter Chicken</h4>
-                  </a>
-                  <ul class="titlebtm">
-                    <li>
-                      <img class="auth-img" src="{{ route('home') }}/images/auth.jpg" alt="author image">
-                      <p>
-                        <a href="#">KhaniDaani</a>
-                      </p>
-                    </li>
-                  </ul>
-                  <!-- end /.titlebtm -->
-
-                  <p>Chicken Makhani is one of my favorite Indian dishes. It is a full flavored dish that complements
-                    the chicken well. It can be made as mild or spicy as you wish by adjusting the cayenne. Serve with
-                    basmati rice and naan bread.</p>
-                </div>
-                <!-- end /.product-desc -->
-
-                <div class="product_data">
-                  <div class="tags tags--round">
-                    <ul>
-                      <li>
-                        <a href="#">pizza</a>
-                      </li>
-                      <li>
-                        <a href="#">pasta</a>
-                      </li>
-                      <li>
-                        <a href="#">roast</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <!-- end /.tags -->
-                  <div class="product-purchase featured--product-purchase">
-                    <div class="price_love">
-                      <span>৳320</span>
-                      <p>
-                        <span class="lnr lnr-heart"></span> 90</p>
-                    </div>
-                    <div class="sell">
-                      <p>
-                        <span class="lnr lnr-cart"></span>
-                        <span>16</span>
-                      </p>
-                    </div>
-
-                    <div class="rating product--rating">
-                      <ul>
-                        <li>
-                          <span class="fa fa-star"></span>
-                        </li>
-                        <li>
-                          <span class="fa fa-star"></span>
-                        </li>
-                        <li>
-                          <span class="fa fa-star"></span>
-                        </li>
-                        <li>
-                          <span class="fa fa-star"></span>
-                        </li>
-                        <li>
-                          <span class="fa fa-star"></span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- end /.product-purchase -->
-                </div>
-              </div>
-              <!-- end /.featured__product-description -->
-            </div>
-            end /.featured__single-slider
-
-
-            <div class="featured__single-slider">
-              <div class="featured__preview-img">
-                <img src="images/f1.jpg" alt="Featured products" class="img-fluid">
-              </div>
-              <!-- end /.featured__preview-img -->
-
-              <div class="featured__product-description">
-                <div class="product-desc desc--featured">
-                  <a href="{{ route('home')}}" class="product_title">
-                    <h4>Indina Butter Chicken</h4>
-                  </a>
-                  <ul class="titlebtm">
-                    <li>
-                      <img class="auth-img" src="images/auth.jpg" alt="author image">
-                      <p>
-                        <a href="#">KhaniDaani</a>
-                      </p>
-                    </li>
-                  </ul>
-                  <!-- end /.titlebtm -->
-
-                  <p>Chicken Makhani is one of my favorite Indian dishes. It is a full flavored dish that complements
-                    the chicken well. It can be made as mild or spicy as you wish by adjusting the cayenne. Serve with
-                    basmati rice and naan bread.</p>
-                </div>
-                <!-- end /.product-desc -->
-
-                <div class="product_data">
-                  <div class="tags tags--round">
-                    <ul>
-                      <li>
-                        <a href="#">pizza</a>
-                      </li>
-                      <li>
-                        <a href="#">pasta</a>
-                      </li>
-                      <li>
-                        <a href="#">roast</a>
-                      </li>
-                    </ul>
-                  </div>
-                  <!-- end /.tags -->
-                  <div class="product-purchase featured--product-purchase">
-                    <div class="price_love">
-                      <span>৳320</span>
-                      <p>
-                        <span class="lnr lnr-heart"></span> 90</p>
-                    </div>
-                    <div class="sell">
-                      <p>
-                        <span class="lnr lnr-cart"></span>
-                        <span>16</span>
-                      </p>
-                    </div>
-
-                    <div class="rating product--rating">
-                      <ul>
-                        <li>
-                          <span class="fa fa-star"></span>
-                        </li>
-                        <li>
-                          <span class="fa fa-star"></span>
-                        </li>
-                        <li>
-                          <span class="fa fa-star"></span>
-                        </li>
-                        <li>
-                          <span class="fa fa-star"></span>
-                        </li>
-                        <li>
-                          <span class="fa fa-star"></span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <!-- end /.product-purchase -->
-                </div>
-              </div>
-              <!-- end /.featured__product-description -->
-            </div>
-            <!--end /.featured__single-slider--> --}}
           </div>
           <span class="lnr lnr-chevron-left prod_slide_prev"></span>
           <span class="lnr lnr-chevron-right prod_slide_next"></span>
@@ -368,12 +186,11 @@
     <!-- end /.featured-product-slider -->
   </section>
   <!--================================
-      END FEATURED PRODUCT AREA
+      END FEATURED DISH AREA
   =================================-->
 
-
   <!--================================
-      START PRODUCTS AREA
+      START New Dish AREA
   =================================-->
   <section class="products section--padding">
     <!-- start container -->
@@ -386,7 +203,6 @@
             <div class="product__title">
               <h2>New Dishes</h2>
             </div>
-
             <div class="filter__menu">
               <p>Filter by:</p>
               <div class="filter__menu_icon">
@@ -394,22 +210,12 @@
                    aria-expanded="false">
                   <img class="svg" src="images/svg/menu.svg" alt="menu icon">
                 </a>
-
                 <ul class="filter_dropdown dropdown-menu" aria-labelledby="drop1">
                   <li>
                     <a href="#">Trending items</a>
                   </li>
                   <li>
                     <a href="#">Best seller</a>
-                  </li>
-                  <li>
-                    <a href="#">Best rating</a>
-                  </li>
-                  <li>
-                    <a href="#">Low price</a>
-                  </li>
-                  <li>
-                    <a href="#">High price</a>
                   </li>
                 </ul>
               </div>
@@ -427,7 +233,6 @@
             <div class="col-lg-4 col-md-4">
               <!-- start .single-product -->
               <div class="product product--card">
-
                 <div class="product__thumbnail">
                   <div class="aspect_ratio">
                     <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_thumbnail }}"
@@ -442,7 +247,6 @@
                   <!-- end /.prod_btn -->
                 </div>
                 <!-- end /.product__thumbnail -->
-
                 <div class="product-desc">
                   <a href="{{ route('dishes.show', ['id' => $dish]) }}" class="product_title">
                     <h4> {{ $dish->dish_name }} </h4>
@@ -475,27 +279,23 @@
                     </p>
                   </div>
 
+                  {{--Start Rating Area--}}
                   <div class="rating product--rating">
                     <ul>
-                      <li>
-                        <span class="fa fa-star-o"></span>
-                      </li>
-                      <li>
-                        <span class="fa fa-star-o"></span>
-                      </li>
-                      <li>
-                        <span class="fa fa-star-o"></span>
-                      </li>
-                      <li>
-                        <span class="fa fa-star-o"></span>
-                      </li>
-                      <li>
-                        <span class="fa fa-star-o"></span>
-                      </li>
+                      @for ($i=1; $i <= 5; $i++)
+                        @if($i <= round($fd->dish->avg_rating))
+                          <li>
+                            <span class="fa fa-star"></span>
+                          </li>
+                        @else
+                          <li>
+                            <span class="fa fa-star-o"></span>
+                          </li>
+                        @endif
+                      @endfor
                     </ul>
                   </div>
-
-                  
+                  {{--End Rating Area--}}
                 </div>
                 <!-- end /.product-purchase -->
               </div>
@@ -503,7 +303,6 @@
             </div>
           @endforeach
         @endif
-
       </div>
 
       <!-- start .row -->
@@ -520,7 +319,7 @@
     <!-- end /.container -->
   </section>
   <!--================================
-      END PRODUCTS AREA
+      END New Dish AREA
   =================================-->
 
   <!--================================
@@ -547,5 +346,4 @@
   <!--================================
       END CALL TO ACTION AREA
   =================================-->
-
 @endsection
