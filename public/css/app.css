@@ -21940,12 +21940,6 @@ span.counter {
           align-items: center;
 }
 
-.upload_modules.with--addons .input-group input,
-.with--addons.withdraw_module .input-group input {
-  width: calc(100% - 30px);
-  margin-left: 15px;
-}
-
 /* DASHBOARD EDIT PAGE */
 
 .dashboard-edit .product .product__thumbnail:before {

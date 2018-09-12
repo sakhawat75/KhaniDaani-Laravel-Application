@@ -10,7 +10,7 @@
                     <div class="breadcrumb">
                         <ul>
                             <li>
-                                <a href="index.html">Home</a>
+                                <a href="{{ route('home') }}">Home</a>
                             </li>
                             <li>
                                 <a href="dashboard.html">Dashboard</a>
@@ -45,7 +45,7 @@
                 @include('includes.success_message')
                 <div class="row">
                     <div class="col-lg-8 col-md-7">
-                        <form action="{{ route('delivery.AddService') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('pickerspoint.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <div class="upload_modules">
@@ -56,27 +56,27 @@
                                 <div class="modules__content">
 
                                     <div class="form-group">
-                                        <label for="product_name">Shop Name
+                                        <label for="shop_name">Shop Name
                                             <span>(Max 50 characters)</span>
                                         </label>
-                                        <input name="service_title" type="text" id="product_name" class="text_field"
-                                               placeholder="Enter your product name here...">
+                                        <input name="name" type="text" id="shop_name" class="text_field"
+                                               placeholder="Enter your Shop name here..." maxlength = "50" >
                                     </div>
                                     <div class="form-group">
-                                        <label for="product_name">Shop Type
+                                        <label for="shop_type">Shop Type
                                             <span>(eg. Departmental Store )</span>
                                         </label>
-                                        <input name="service_title" type="text" id="product_name" class="text_field"
-                                               placeholder="Enter your product name here...">
+                                        <input name="type" type="text" id="shop_type" class="text_field"
+                                               placeholder="Enter your Shop Type here..."  maxlength = "20">
                                     </div>
 
-                                   {{-- <div class="form-group no-margin">
-                                        <label for="product_name">Service Description
-                                            <span>(Describe Everything in detail)</span>
-                                        </label>
-                                        <textarea name="service_description" rows="10" class="form-control"
-                                                  placeholder="max 1000 character" id="article-ckeditor"></textarea>
-                                    </div>--}}
+                                    {{-- <div class="form-group no-margin">
+                                         <label for="product_name">Service Description
+                                             <span>(Describe Everything in detail)</span>
+                                         </label>
+                                         <textarea name="service_description" rows="10" class="form-control"
+                                                   placeholder="max 1000 character" id="article-ckeditor"></textarea>
+                                     </div>--}}
                                 </div>
 
                             </div>
@@ -92,7 +92,9 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="time" name="service_hours_start" id="rlicense" class="text_field"
+                                                    <label for="sh_start">Open Time</label>
+                                                    <input type="time" name="open_at" id="sh_start"
+                                                           class="text_field"
                                                            placeholder="Start Time">
                                                 </div>
                                             </div>
@@ -102,8 +104,9 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="time" id="exlicense" class="text_field"
-                                                           placeholder="End Time" name="service_hours_end">
+                                                    <label for="sh_close">Close Time</label>
+                                                    <input type="time" id="sh_close" class="text_field"
+                                                           placeholder="End Time" name="close_at">
                                                 </div>
                                             </div>
                                         </div>
@@ -112,11 +115,15 @@
                                     </div>
                                     <!-- end /.row -->
 
-                                    <div class="form-group">
-                                        <label for="product_name">Servcie Charge <span>(In taka)</span>
-                                        </label>
-                                        <input name="service_title" type="text" id="product_name" class="text_field"
-                                               placeholder="10-50">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="service_charge">Servcie Charge <span>(In taka)</span>
+                                                </label>
+                                                <input name="charge" type="number" id="service_charge" class="text_field"
+                                                       placeholder="10-50" min="10" max="50">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- end /.modules__content -->
@@ -136,25 +143,26 @@
                                     <div class="modules__content">
 
                                         <div class="form-group">
-                                            <label for="">Full Address One*</label>
+                                            <label for="full_address">Full Address One*</label>
                                             <div class="input-group">
-                                                <input name="service_charge" type="number" id="rlicense"
-                                                       class="text_field" placeholder="77128 Amber FlatsCormierfurt, NV 26057-0467">
+                                                <textarea name="address" id="full_address"
+                                                       class="text_field"
+                                                          placeholder="77128 Amber FlatsCormierfurt, NV 26057-0467"  maxlength = "100"></textarea>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="">Adress Hint</label>
+                                            <label for="address_hint">Adress Hint</label>
                                             <div class="input-group">
-                                                <input name="service_charge" type="number" id="rlicense"
+                                                <input name="address_hint" type="number" id="address_hint"
                                                        class="text_field" placeholder="Amelia Station">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="">Phone No</label>
+                                            <label for="phone_number">Phone No</label>
                                             <div class="input-group">
-                                                <input name="service_charge" type="number" id="rlicense"
+                                                <input name="phone" type="tel" id="phone_number"
                                                        class="text_field" placeholder="01711966966">
                                             </div>
                                         </div>
@@ -164,8 +172,6 @@
                                 </div>
                             </div>
                             <!-- end /.upload_modules -->
-
-
 
 
                             <button type="submit" class="btn btn--round btn--fullwidth btn--lg">Submit Your Item for
@@ -185,19 +191,22 @@
                                 <div class="card_content">
                                     <div class="card_info">
                                         <h4>Image Upload</h4>
-                                        <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut sceleris que the
+                                        <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut
+                                            sceleris que the
                                             mattis interdum.</p>
                                     </div>
 
                                     <div class="card_info">
                                         <h4>File Upload</h4>
-                                        <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut sceleris que the
+                                        <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut
+                                            sceleris que the
                                             mattis interdum.</p>
                                     </div>
 
                                     <div class="card_info">
                                         <h4>Vector Upload</h4>
-                                        <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut sceleris que the
+                                        <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut
+                                            sceleris que the
                                             mattis interdum.</p>
                                     </div>
                                 </div>
@@ -210,7 +219,8 @@
                                 </div>
 
                                 <div class="card_content">
-                                    <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceler isque the mattis, leo
+                                    <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceler
+                                        isque the mattis, leo
                                         quam aliquet congue.</p>
                                     <ul>
                                         <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
@@ -228,7 +238,8 @@
                                 </div>
 
                                 <div class="card_content">
-                                    <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceler isque the mattis, leo
+                                    <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceler
+                                        isque the mattis, leo
                                         quam aliquet congue.</p>
                                     <ul>
                                         <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
