@@ -77,4 +77,8 @@ class User extends Authenticatable
         return $this->hasMany( Message::class, 'recipient_id', 'id' );
     }
 
+    public function pickerspoints()
+    {
+        return $this->hasMany(PickersPoint::class);
+    }
 }

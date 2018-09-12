@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\City;
 use App\DeliveryService;
+use App\PickersPoint;
 use \App\User;
 use Illuminate\Http\Request;
 use \App\Profile;
@@ -37,7 +38,9 @@ class ProfileController extends Controller
             $total_sales += count($dish->completed_orders);
         }
 
-        return view('profile.pickerspoint', compact('profile', 'dishes', 'user', 'total_sales', 'total_ratings', 'total_ratings_count'));
+        $pickerspoints = PickersPoint::where('user_id', $user->id)->paginate(4);
+
+        return view('profile.pickerspoint', compact('profile', 'dishes', 'user', 'total_sales', 'total_ratings', 'total_ratings_count', 'pickerspoints'));
     }
 
     
