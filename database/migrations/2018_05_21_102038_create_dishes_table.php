@@ -19,6 +19,9 @@ class CreateDishesTable extends Migration
             $table->integer('dsp_1')->nullable();
             $table->integer('dsp_2')->nullable();
             $table->integer('dsp_3')->nullable();
+            $table->integer('pp1')->nullable();
+            $table->integer('pp2')->nullable();
+            $table->integer('pp3')->nullable();
             $table->string('dish_category');
             $table->string('dish_subcategory');
             $table->string('dish_name');
@@ -31,7 +34,7 @@ class CreateDishesTable extends Migration
             $table->text('dish_image_3');
             $table->decimal('avg_rating', 10, 2)->default(0.0);
             $table->boolean('is_approved');
-            $table->text('item_tags');
+//            $table->text('item_tags');
             $table->rememberToken();
             $table->timestamps();
         });

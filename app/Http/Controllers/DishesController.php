@@ -38,6 +38,38 @@ class DishesController extends Controller
 
     public function store(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'dish_category' => 'required|string|max:50',
+            'dish_subcategory' => 'required|string|max:50',
+            'preparation_time' => 'required|integer|min:1|max:4',
+            'dish_name' => 'required|string|max:50|min:3',
+            'dish_price' => 'required|integer|min:10|max:9999',
+            'dish_description' => 'required|max:1000|string|min:20',
+            'dsp_1' => 'nullable|integer|min:1',
+            'dsp_2' => 'nullable|integer|min:1',
+            'dsp_3' => 'nullable|integer|min:1',
+            'pp1' => 'nullable|integer|min:1',
+            'pp2' => 'nullable|integer|min:1',
+            'pp3' => 'nullable|integer|min:1',
+            'dish_thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'dish_image_1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'dish_image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'dish_image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'avg_rating' => 'nullable',
+            'is_approved' => 'nullable|boolean',
+
+        ]);
+
+        if(!$request->input('dsp_1') && !$request->input('dsp_2')
+            && !$request->input('dsp_3') && !$request->input('pp1')
+            && !$request->input('pp2') && !$request->input('pp3')
+        ) {
+            return redirect()->back()->withErrors(['Error', 'Please Input at least one dsp or pickerspoint id']);
+        } /*else {
+            return redirect()->back()->with('success', 'You have Inputed at least one dsp or pickerspoint id');
+        }*/
+
 	    $id = auth()->id();
 	    $profile = Profile::where('user_id', $id)->first();
 
@@ -49,10 +81,13 @@ class DishesController extends Controller
 	    $dish->dish_name = $request->input('dish_name');
 	    $dish->dish_price = $request->input('dish_price');
 	    $dish->dish_description = $request->input('dish_description');
-	    $dish->item_tags = $request->input('item_tags');
+//	    $dish->item_tags = $request->input('item_tags');
 	    $dish->dsp_1 = $request->input('dsp_1');
 	    $dish->dsp_2 = $request->input('dsp_2');
 	    $dish->dsp_3 = $request->input('dsp_3');
+	    $dish->pp1 = $request->input('pp1');
+	    $dish->pp2 = $request->input('pp2');
+	    $dish->pp3 = $request->input('pp3');
 
 	    $this->upload_image( $request, $dish, 'dish_images', 'dish_thumbnail', false);
 	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_1', false);
@@ -60,9 +95,9 @@ class DishesController extends Controller
 	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_3', false);
 
 	    $dish->save();
-	    session()->flash('success', 'Dish has been created successfully');
+//	    session()->flash('success', 'Dish has been created successfully');
 
-	    return redirect()->route( 'profile.show', [ 'profile' => $profile ]);
+	    return redirect()->route( 'profile.show', [ 'profile' => $profile ])->with('success', 'Dish has been created successfully');
     }
 
     public function show($id)

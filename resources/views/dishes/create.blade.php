@@ -74,6 +74,7 @@
                     <label for="dish_category">Select Category</label>
                     <div class="select-wrap select-wrap2">
                       <select name="dish_category" id="dish_category" class="text_field">
+                        <option value="" selected>Select Category</option>
                         @foreach($categories as $category)
                           <option value="{{ $category->name }}">{{ $category->name }}</option>
                         @endforeach
@@ -96,7 +97,7 @@
                       <span>(Max 100 characters)</span>
                     </label>
                     <input name="dish_name" type="text" id="product_name" class="text_field"
-                           placeholder="Enter your product name here...">
+                           placeholder="Enter your product name here..." required>
                   </div>
 
                   <div class="form-group">
@@ -104,7 +105,7 @@
                     <div class="select-wrap select-wrap2">
                       <label for="preparation_time"></label>
                       <select name="preparation_time" id="preparation_time" class="text_field">
-                        <option value="1">1 Hour</option>
+                        <option value="1" selected>1 Hour</option>
                         <option value="2">2 Hour</option>
                         <option value="3">3 Hour</option>
                         <option value="4">4 Hour</option>
@@ -114,10 +115,10 @@
                   </div>
 
 
-                  <div class="form-group no-margin">
+                  <div class="form-group no-margin max-length">
                     <p class="label">Product Description</p>
                     <textarea name="dish_description" rows="10" class="form-control"
-                              placeholder="max 1000 character" id="article-ckeditor"></textarea>
+                              placeholder="min 20 and max 1000 character" id="article-ckeditor" maxlength="1000" minlength="20" required></textarea>
                   </div>
                 </div>
                 <!-- end /.modules__content -->
@@ -136,7 +137,7 @@
                       <div class="form-group">
                         <div class="input-group">
                           <span class="input-group-addon">৳</span>
-                          <input name="dish_price" type="number" id="rlicense" class="text_field" placeholder="00.00">
+                          <input name="dish_price" type="number" id="rlicense" class="text_field" placeholder="00.00" required min="10" max="9999">
                         </div>
                       </div>
                     </div>
@@ -154,12 +155,12 @@
                   <div class="form-group">
                     <div class="upload_wrapper">
                       <p>Upload Thumbnail
-                        <span>(JPEG or PNG 100x100px)</span>
+                        <span>(JPEG or PNG 100x100px) *Required</span>
                       </p>
 
                       <div class="custom_upload">
                         <label for="dish_thumbnail1">
-                          <input type="file" id="dish_thumbnail1" class="files" name="dish_thumbnail">
+                          <input type="file" id="dish_thumbnail1" class="files" name="dish_thumbnail" required>
                           <span class="btn btn--round btn--sm">Choose File</span>
                         </label>
                       </div>
@@ -194,12 +195,12 @@
                   <div class="form-group">
                     <div class="upload_wrapper">
                       <p>Upload 1st Dish Image
-                        <span>(JPG or PNG)</span>
+                        <span>(JPG or PNG)  *Required</span>
                       </p>
 
                       <div class="custom_upload">
                         <label for="screenshot1">
-                          <input type="file" id="screenshot1" class="files" name="dish_image_1">
+                          <input type="file" id="screenshot1" class="files" name="dish_image_1" required>
                           <span class="btn btn--round btn--sm">Choose File</span>
                         </label>
                       </div>
@@ -304,7 +305,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="number" id="dsp_1" class="text_field" placeholder="dsp_1" name="dsp_1">
+                          <input type="number" id="dsp_1" class="text_field" placeholder="id of dsp_1" name="dsp_1" min="1">
                         </div>
                       </div>
                     </div>
@@ -313,7 +314,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="number" id="dsp_2" class="text_field" placeholder="dsp_2" name="dsp_2">
+                          <input type="number" id="dsp_2" class="text_field" placeholder="id of dsp_2" name="dsp_2" min="1">
                         </div>
                       </div>
                     </div>
@@ -322,7 +323,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="number" id="dsp_3" class="text_field" placeholder="dsp_3" name="dsp_3">
+                          <input type="number" id="dsp_3" class="text_field" placeholder="id of dsp_3" name="dsp_3" min="1">
                         </div>
                       </div>
                     </div>
@@ -347,7 +348,8 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="text" id="single_use" class="text_field" placeholder="username">
+                          <label for="pp1">Pickers Point 1</label>
+                          <input type="number" id="pp1" class="text_field" placeholder="id" name="pp1" min="1">
                         </div>
                       </div>
                     </div>
@@ -355,7 +357,8 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="text" id="double_use" class="text_field" placeholder="username">
+                          <label for="pp2">Pickers Point 2</label>
+                          <input type="number" id="pp2" name="pp2" class="text_field" placeholder="id" min="1">
                         </div>
                       </div>
                     </div>
@@ -363,7 +366,8 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <div class="input-group">
-                          <input type="text" id="multi_user" class="text_field" placeholder="username">
+                          <label for="pp3">Pickers Point 3</label>
+                          <input type="number" id="pp3" name="pp3" class="text_field" placeholder="id" min="1">
                         </div>
                       </div>
                     </div>
@@ -373,7 +377,7 @@
                 <!-- end /.modules__content -->
               </div>
 
-              <div class="upload_modules">
+              {{--<div class="upload_modules">
                 <div class="modules__title">
                   <h3>Searching Tags</h3>
                 </div>
@@ -390,7 +394,7 @@
                   </div>
                 </div>
                 <!-- end /.upload_modules -->
-              </div>
+              </div>--}}
               <!-- end /.upload_modules -->
               <button type="submit" class="btn btn--round btn--fullwidth btn--lg">Submit Your Item for
                 Review
