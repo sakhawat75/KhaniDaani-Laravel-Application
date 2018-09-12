@@ -142,7 +142,7 @@
                                 <!-- end /.modules__content -->
                             </div>
 
-                            Note: Fetch below information from profile setting also allow them edit if it's needed.
+                            {{--Note: Fetch below information from profile setting also allow them edit if it's needed.--}}
 
                             <div class="upload_modules">
                                 <a class="toggle_title" href="#collapse2" role="button" data-toggle="collapse"
