@@ -160,6 +160,7 @@
 
                       <div class="custom_upload">
                         <label for="dish_thumbnail1">
+                            {{-- TODO Resize Image bofore saving on server --}}
                           <input type="file" id="dish_thumbnail1" class="files" name="dish_thumbnail" accept="image/*" required>
                           <span class="btn btn--round btn--sm">Choose File</span>
                         </label>

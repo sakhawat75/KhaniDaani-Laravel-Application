@@ -143,7 +143,7 @@
                             </div>
 
                             {{--Note: Fetch below information from profile setting also allow them edit if it's needed.--}}
-
+                            {{-- TODO Fetch below information from profile --}}
                             <div class="upload_modules">
                                 <a class="toggle_title" href="#collapse2" role="button" data-toggle="collapse"
                                    aria-expanded="false" aria-controls="collapse2">
