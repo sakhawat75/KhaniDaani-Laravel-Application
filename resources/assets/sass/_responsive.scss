@@ -919,6 +919,18 @@ $ipad: 992px;
     display: none;
   }
 
+  .breadcrumb-area{
+    display: none;
+  }
+
+  .message-card {
+    display: none;
+  }
+
+  .dashboard_menu_area{
+    display: none;
+  }
+
   .hero__content__title{
     margin-left: -23px;
     margin-right: 74px;
@@ -2713,6 +2725,6 @@ $ipad: 992px;
     }
   }
   .badges.community-badges .author-badges .badge-single {
-    width: 100%;
+    width: 50%;
   }
 }

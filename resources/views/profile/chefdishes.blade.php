@@ -90,7 +90,7 @@
                                         <textarea name="message" class="text_field" id="author-message" placeholder="Your message..."></textarea>
                                     </div>
                                     <div class="msg_submit">
-                                        <button type="submit" class="btn btn--md btn--round">send message</button>
+                                        <button type="submit" class="btn btn--md btn--round">Send message</button>
                                     </div>
                                 </form>
                             </div>
@@ -137,11 +137,11 @@
                         <!-- SALE STATUS -->
 
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12" id="chefdish">
                                 <div class="filter-bar clearfix filter-bar2">
                                     <div class="filter__option filter--text pull-left">
                                         <p>
-                                            <span>All dishes</p>
+                                            <span> {{ $profile->user->name }}</span> All Dishes</p>
                                     </div>
 
                                     <div class="pull-right">
