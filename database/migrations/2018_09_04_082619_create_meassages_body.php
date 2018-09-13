@@ -30,6 +30,6 @@ class CreateMeassagesBody extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('messages_body');
     }
 }

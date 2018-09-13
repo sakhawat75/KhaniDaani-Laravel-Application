@@ -146,7 +146,7 @@ class UsersTableSeeder extends Seeder
             //        'dish_image_2' => $faker->imageUrl($width = 640, $height = 480),
             //        'dish_image_3' => $faker->imageUrl($width = 640, $height = 480),
                     'is_approved' => $faker->boolean,                    
-                    'item_tags' =>$faker->name,
+//                    'item_tags' =>$faker->name,
                     'remember_token' => str_random(10),
                     'dsp_1' => 1,
                     'dsp_2' => 2,
