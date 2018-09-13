@@ -22,9 +22,12 @@ class CreateOrdersTable extends Migration
 	        $table->integer('dish_id');
 	        $table->integer('dish_user_id');
 	        $table->string('dish_name');
-	        $table->integer('dsp_id');
-	        $table->integer('dsp_user_id');
-	        $table->double('dsp_service_charge');
+	        $table->integer('dsp_id')->nullable();
+	        $table->integer('pp_id')->nullable();
+	        $table->integer('dsp_user_id')->nullable();
+	        $table->integer('pp_user_id')->nullable();
+	        $table->double('dsp_service_charge')->nullable();
+	        $table->double('pp_service_charge')->nullable();
 	        $table->double('dish_price');
 	        $table->double('khanidaani_charge');
 	        $table->double('total_price');

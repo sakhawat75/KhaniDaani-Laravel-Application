@@ -37,14 +37,16 @@
         END BREADCRUMB AREA
     =================================-->
 
-    @if($flash = session('success'))
+    {{--@if($flash = session('success'))
      <div class="alert alert-success" role="alert">{{ $flash }}</div>
-    @endif
+    @endif--}}
     <!--============================================
         START SINGLE PRODUCT DESCRIPTION AREA
     ==============================================-->
     <section class="single-product-desc">
       <div class="container">
+        @include ('includes.success_message')
+        @include ('includes.error_messeages')
         <div class="row">
           <div class="col-lg-8">
             <div class="item-preview">
@@ -379,7 +381,11 @@
                 <div class="purchase-button">
                   <form action="{{ route('order.selectdsp', ['dish' => $dish]) }}" method="get">
                     {{ csrf_field() }}
-                    <button type="submit" class="btn btn--lg btn--round">Order Now</button>
+                    <button type="submit" class="btn btn--lg btn--round"
+                    @if(auth()->id() == $dish->profile->user_id)
+                      disabled="disabled"
+                    @endif
+                    >Order Now</button>
                   </form>
                   {{--<a href="{{ route('order.selectdsp') }}" class="btn btn--lg btn--round">Order Now</a>--}}
                 </div>

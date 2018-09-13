@@ -4,7 +4,7 @@
 
 @section ('content')
 
-<!--================================
+    <!--================================
         START BREADCRUMB AREA
     =================================-->
     <section class="breadcrumb-area">
@@ -32,10 +32,10 @@
     <!--================================
         END BREADCRUMB AREA
     =================================-->
-    
-        <!--================================
-            START DASHBOARD AREA
-    =================================-->
+
+    <!--================================
+        START DASHBOARD AREA
+=================================-->
     <section class="dashboard-area">
         <div class="dashboard_contents">
             <div class="container">
@@ -44,7 +44,7 @@
 
                     <input type="hidden" name="buyer_user_id" value="{{ auth()->id() }}">
                     <input type="hidden" name="dish_id" value="{{ $dish->id }}">
-                    <input type="hidden" name="dsp_id" value="{{ $dsp->id }}">
+                    <input type="hidden" name="pp_id" value="{{ $pp->id }}">
 
 
                     <div class="row">
@@ -61,8 +61,8 @@
                                         <span>৳{{ $dish->dish_price }}</span>
                                     </li>
                                     <li class="item">
-                                        <a href="{{ route('profile.show', ['profile' => $dsp->user->profile->id]) }}" target="_blank">Dsp username: {{ $dsp->user->name }}</a>
-                                        <span>৳{{ $dsp->service_charge }}</span>
+                                        <a href="{{ route('profile.show', ['profile' => $pp->user->profile->id]) }}" target="_blank">Pickers Point username: {{ $pp->user->name }}</a>
+                                        <span>৳{{ $pp->charge }}</span>
                                     </li>
                                     <li>
                                         <p>Transaction Fees:</p>
@@ -70,7 +70,7 @@
                                     </li>
                                     <li class="total_ammount">
                                         <p>Total</p>
-                                        <span>৳{{ ($dish->dish_price + $dsp->service_charge + 2) }}</span>
+                                        <span>৳{{ ($dish->dish_price + $pp->charge + 2) }}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -89,7 +89,7 @@
                                             </label>
                                             @auth
                                                 <input type="text" id="buyer_fullname" class="text_field" value="{{ auth()->user()->profile->fullname }}" name="buyer_fullname">
-                                                @else
+                                            @else
                                                 <input type="text" id="buyer_fullname" class="text_field" placeholder="Enter your name here" name="buyer_fullname">
 
                                             @endauth
@@ -171,7 +171,7 @@
                                             <label for="opt2">
                                                 <span class="circle"></span>Bkash</label>
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <input id="card_number" type="text" class="text_field" placeholder="Enter your bkash trasaction number here...">
                                         </div>
@@ -200,20 +200,20 @@
                                                 <div class="form-group">
                                                     <div class="select-wrap select-wrap2">
                                                         <select name="months" id="name">
-                                                        <option value="">Month</option>
-                                                        <option value="jan">jan</option>
-                                                        <option value="feb">Feb</option>
-                                                        <option value="mar">Mar</option>
-                                                        <option value="apr">Apr</option>
-                                                        <option value="may">May</option>
-                                                        <option value="jun">Jun</option>
-                                                        <option value="jul">Jul</option>
-                                                        <option value="aug">Aug</option>
-                                                        <option value="sep">Sep</option>
-                                                        <option value="oct">Oct</option>
-                                                        <option value="nov">Nov</option>
-                                                        <option value="dec">Dec</option>
-                                                    </select>
+                                                            <option value="">Month</option>
+                                                            <option value="jan">jan</option>
+                                                            <option value="feb">Feb</option>
+                                                            <option value="mar">Mar</option>
+                                                            <option value="apr">Apr</option>
+                                                            <option value="may">May</option>
+                                                            <option value="jun">Jun</option>
+                                                            <option value="jul">Jul</option>
+                                                            <option value="aug">Aug</option>
+                                                            <option value="sep">Sep</option>
+                                                            <option value="oct">Oct</option>
+                                                            <option value="nov">Nov</option>
+                                                            <option value="dec">Dec</option>
+                                                        </select>
                                                         <span class="lnr lnr-chevron-down"></span>
                                                     </div>
                                                     <!-- end /.select-wrap -->
@@ -226,20 +226,20 @@
                                                 <div class="form-group">
                                                     <div class="select-wrap select-wrap2">
                                                         <select name="years" id="years">
-                                                        <option value="">Year</option>
-                                                        <option value="28">2028</option>
-                                                        <option value="27">2027</option>
-                                                        <option value="26">2026</option>
-                                                        <option value="25">2025</option>
-                                                        <option value="24">2024</option>
-                                                        <option value="23">2023</option>
-                                                        <option value="22">2022</option>
-                                                        <option value="21">2021</option>
-                                                        <option value="20">2020</option>
-                                                        <option value="19">2019</option>
-                                                        <option value="18">2018</option>
-                                                        <option value="17">2017</option>
-                                                    </select>
+                                                            <option value="">Year</option>
+                                                            <option value="28">2028</option>
+                                                            <option value="27">2027</option>
+                                                            <option value="26">2026</option>
+                                                            <option value="25">2025</option>
+                                                            <option value="24">2024</option>
+                                                            <option value="23">2023</option>
+                                                            <option value="22">2022</option>
+                                                            <option value="21">2021</option>
+                                                            <option value="20">2020</option>
+                                                            <option value="19">2019</option>
+                                                            <option value="18">2018</option>
+                                                            <option value="17">2017</option>
+                                                        </select>
                                                         <span class="lnr lnr-chevron-down"></span>
                                                     </div>
                                                     <!-- end /.select-wrap -->
@@ -280,9 +280,9 @@
     <!--================================
             END DASHBOARD AREA
     =================================-->
-    
-    
-    
+
+
+
 
 
 

@@ -71,7 +71,7 @@ class PickersPointController extends Controller
 
 
 
-        return redirect()->back()->with('success', 'New PickersPoint is Created Successfully');
+        return redirect()->route('profile.pickerspoint', ['profile' => $user->id])->with('success', 'New PickersPoint is Created Successfully');
 
     }
 

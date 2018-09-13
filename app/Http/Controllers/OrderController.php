@@ -6,6 +6,7 @@ use App\DeliveryService;
 use App\Dish;
 use App\Notifications\NotifyOrder;
 use App\Order;
+use App\PickersPoint;
 use App\SystemVariables;
 use App\User;
 use Illuminate\Http\Request;
@@ -13,15 +14,37 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
 	public function selectdsp( Dish $dish ) {
-		$dsps =   DeliveryService::where('id', $dish->dsp_1)->orWhere('id', $dish->dsp_2)->orWhere('id', $dish->dsp_3)->get();
-		return view('order.selectdsp', compact( 'dsps', 'dish'));
+	    if(auth()->id() == $dish->profile->user_id) {
+	        return redirect()->back()->withErrors(['Error:', 'You can not buy your own dish']);
+        }
+
+        $dsps =   DeliveryService::where('id', $dish->dsp_1)->orWhere('id', $dish->dsp_2)->orWhere('id', $dish->dsp_3)->get();
+		$pps =   PickersPoint::where('id', $dish->pp1)->orWhere('id', $dish->pp2)->orWhere('id', $dish->pp3)->get();
+
+	    return view('order.selectdsp', compact( 'dsps', 'dish', 'pps'));
 	}
 
 	public function confirm(DeliveryService $dsp, Dish $dish) {
 
 //     	return response()->json($dsp);
-		return view('order.confirm', compact( 'dsp', 'dish'));
+        $system = SystemVariables::first();
+        $percentage = $system->service_percentage / 100;
+        $after_percentage = round($dish->dish_price * $percentage);
+
+        return view('order.confirm', compact( 'dsp', 'dish', 'after_percentage', 'system'));
 	}
+
+    public function confirm_pp (PickersPoint $pp, Dish $dish) {
+
+//     	return response()->json($dsp);
+
+        $system = SystemVariables::first();
+        $percentage = $system->service_percentage / 100;
+//        $after_percentage = round(($pp->charge + $dish->dish_price) * $percentage);
+
+        $after_percentage = round($dish->dish_price * $percentage);
+        return view('order.confirm_pp', compact( 'pp', 'dish', 'after_percentage', 'system'));
+    }
 
 	public function status(Order $order) {
 
@@ -49,10 +72,12 @@ class OrderController extends Controller
 		$user = User::find(auth()->id());
 		$dish = Dish::find($request->input('dish_id'));
 		$dsp = DeliveryService::find($request->input('dsp_id'));
+
+		$pp = PickersPoint::find($request->input('pp_id'));
 		$system = SystemVariables::first();
 		$percentage = $system->service_percentage / 100;
-		$after_percentage = ($dsp->service_charge + $dish->dish_price) * $percentage;
 
+        $after_percentage = round($dish->dish_price * $percentage);
 
 		$order = new Order();
 		$order->buyer_user_id = auth()->id();
@@ -62,23 +87,38 @@ class OrderController extends Controller
 		$order->dish_id = $dish->id;
 		$order->dish_user_id = $dish->profile->id;
 		$order->dish_name = $dish->dish_name;
-		$order->dsp_id = $dsp->id;
-		$order->dsp_user_id = $dsp->user->id;
-		$order->dsp_service_charge = $dsp->service_charge;
+
+		if($dsp != null) {
+            $order->dsp_id = $dsp->id;
+            $order->dsp_user_id = $dsp->user->id;
+            $order->dsp_service_charge = $dsp->service_charge;
+            $order->total_price = $dsp->service_charge + $dish->dish_price + $after_percentage;
+            $order->delivery_time = $dsp->max_delivery_time;
+        }
+
+		if($pp != null) {
+            $order->pp_id = $pp->id;
+            $order->pp_user_id = $pp->user->id;
+            $order->pp_service_charge = $pp->charge;
+            $order->total_price = $pp->charge + $dish->dish_price + $after_percentage;
+
+        }
+
 		$order->dish_price = $dish->dish_price;
 		$order->khanidaani_charge = $after_percentage;
-		$order->total_price = $dsp->service_charge + $dish->dish_price + $after_percentage;
 		$order->preparation_time = $dish->preparation_time;
 		$order->delivery_address = $request->input('delivery_address');
 		$order->delivery_address_hint = $request->input('delivery_address_hint');
 		$order->payment_type = $request->input('payment_type');
-		$order->delivery_time = $dsp->max_delivery_time;
 
 		$order->save();
 
 		$user->notify( new NotifyOrder( $order, 'user'));
 		$dish->profile->user->notify(new NotifyOrder( $order, 'chef'));
-		$dsp->user->notify(new NotifyOrder( $order, 'dsp'));
+
+        if($dsp != null) {
+            $dsp->user->notify(new NotifyOrder($order, 'dsp'));
+        }
 
 		return redirect()->route( 'order.status', $order);
 

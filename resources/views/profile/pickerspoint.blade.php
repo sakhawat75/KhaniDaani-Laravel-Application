@@ -180,7 +180,9 @@
 
 
                             @foreach($pickerspoints as $pp)
-                                @include('pickerspoint.pp_preview')
+                                <div class="col-md-6 col-sm-6" data-wow-delay="0.5s">
+                                    @include('pickerspoint.pp_preview')
+                                </div>
                             @endforeach
 
 
