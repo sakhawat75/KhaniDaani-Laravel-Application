@@ -266,31 +266,57 @@
 
                         </div>
                         <!-- end /.row -->
-                    <section class="featured-restaurants">
+                    <section class="delivery-service">
                         <div class="">
                             <div class="row">
 
-                                    <div class="col-md-12 single-restaurant">
-                                        <div class="restaurant-wrap">
+                                    <div class="col-md-12 single-dsp">
+                                        <div class="dsp-wrap">
                                             <div class="row">
                                                 <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
-                                                    <a class="restaurant-logo" href="#"> <img src="http://placehold.it/95x95" alt="Restaurant logo"> </a>
+                                                    <a class="dsp-images" href="#"> <img src="http://placehold.it/250x250" alt="dsp profile"> </a>
+                                                    <div class="dsp-username">
+                                                        <h5>
+                                                            <a href="{{ route('profile.show', [ 'profile' => $profile->id]) }}">{{ $dsp->user->name }}</a>
+                                                        </h5>
+                                                    </div>
                                                 </div>
                                                 <!--end:col -->
                                                 <div class="col-xs-12 col-sm-9 col-md-12 col-lg-9">
-                                                    <h5>Hellow world delivery service</h5>
-                                                    <span>Burgers, American, Sandwiches, Fast Food, BBQ</span>
-                                                    <div class="bottom-part">
-                                                        <div class="cost"><i class="fa fa-check"></i> Min $ 10,00</div>
-                                                        <div class="mins"><i class="fa fa-motorcycle"></i> 30 min</div>
-                                                        <div class="ratings"> <span>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </span> (122) </div>
+                                                    <a href="#"><h5 class="dsp-title">Hellow world delivery services</h5></a>
+                                                    <p class="dsp-description">Quia enim officia officiis ab quam. Et ipsam iste fugiat quas quia. Ullam ab consequatur quod eaque. Totam consectetur nesciunt autem molestias ex earum.</p>
+                                                    <p class="dsp-area">Service Area: <span></span></p>
+
+                                                </div>
+                                                <div class="col-md-12">
+                                                <div class="bottom-part">
+                                                    <div class="btm-part-2">
+                                                    <div class="cost"><i class="fa fa-check"></i> Service charge:  ৳100</div>
+                                                    <div class="mins"><i class="fa fa-motorcycle"></i> 1hrs - 2hrs</div>
+
+                                                    <div class="rating product--rating">
+                                                        <ul>
+                                                            <li>
+                                                                <span class="fa fa-star-o"></span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="fa fa-star-o"></span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="fa fa-star-o"></span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="fa fa-star-o"></span>
+                                                            </li>
+                                                            <li>
+                                                                <span class="fa fa-star-o"></span>
+                                                            </li>
+                                                        </ul>
+                                                        <span class="rating__count">(0)</span>
                                                     </div>
+
+                                                    </div>
+                                                </div>
                                                 </div>
                                                 <!-- end:col -->
                                             </div>
