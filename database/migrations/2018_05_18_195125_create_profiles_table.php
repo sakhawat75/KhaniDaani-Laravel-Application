@@ -28,11 +28,12 @@ class CreateProfilesTable extends Migration
             $table->string('cover_image')->default('authcvr.jpg');
             $table->string('profile_image')->default('author-avatar.jpg');;
             $table->text('description');
-            $table->decimal('avgRating', 2, 2);
-            $table->decimal('communicationRating', 2, 2);
-            $table->decimal('presentationRating', 2, 2);
-            $table->decimal('timingRating', 2, 2);
-            $table->decimal('describeRating', 2, 2);
+            $table->decimal('avgRating', 2, 2)->nullable();
+            $table->decimal('communicationRating', 2, 2)->nullable();
+            $table->decimal('presentationRating', 2, 2)->nullable();
+            $table->decimal('timingRating', 2, 2)->nullable();
+            $table->decimal('describeRating', 2, 2)->nullable();
+            $table->decimal('balance', 10, 2)->default(0);
             $table->timestamps();
 
             //$table->foreign( 'user_id')->references('id')->on('users')->onDelete('cascade');

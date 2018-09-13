@@ -57,20 +57,22 @@
 
                                 <ul>
                                     <li class="item">
-                                        <a href="{{ route('dishes.show', ['id' => $dish->id]) }}" target="_blank">Dish title: {{ $dish->dish_name }} </a>
+                                        <a href="{{ route('dishes.show', ['id' => $dish->id]) }}" target="_blank">Dish
+                                            title: {{ $dish->dish_name }} </a>
                                         <span>৳{{ $dish->dish_price }}</span>
                                     </li>
                                     <li class="item">
-                                        <a href="{{ route('profile.show', ['profile' => $pp->user->profile->id]) }}" target="_blank">Pickers Point username: {{ $pp->user->name }}</a>
+                                        <a href="{{ route('profile.show', ['profile' => $pp->user->profile->id]) }}"
+                                           target="_blank">Pickers Point username: {{ $pp->user->name }}</a>
                                         <span>৳{{ $pp->charge }}</span>
                                     </li>
                                     <li>
                                         <p>Transaction Fees:</p>
-                                        <span>{{ $after_percentage }}৳ ({{$system->service_percentage}}% charge)</span>
+                                        <span>৳{{ $khanidaani_charge }} ({{$system->service_percentage}}% charge)</span>
                                     </li>
                                     <li class="total_ammount">
                                         <p>Total</p>
-                                        <span>৳{{ ($dish->dish_price + $pp->charge + 2) }}</span>
+                                        <span>৳{{ $total }}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -88,9 +90,12 @@
                                                 <sup>*</sup>
                                             </label>
                                             @auth
-                                                <input type="text" id="buyer_fullname" class="text_field" value="{{ auth()->user()->profile->fullname }}" name="buyer_fullname">
+                                                <input type="text" id="buyer_fullname" class="text_field"
+                                                       value="{{ auth()->user()->profile->fullname }}"
+                                                       name="buyer_fullname">
                                             @else
-                                                <input type="text" id="buyer_fullname" class="text_field" placeholder="Enter your name here" name="buyer_fullname">
+                                                <input type="text" id="buyer_fullname" class="text_field"
+                                                       placeholder="Enter your name here" name="buyer_fullname">
 
                                             @endauth
                                         </div>
@@ -101,9 +106,12 @@
                                             <sup>*</sup>
 
                                             @auth
-                                                <input type="text" id="delivery_address" name="delivery_address" class="text_field" value="{{ auth()->user()->profile->address }}">
+                                                <input type="text" id="delivery_address" name="delivery_address"
+                                                       class="text_field"
+                                                       value="{{ auth()->user()->profile->address }}">
                                             @else
-                                                <input type="text" id="delivery_address" name="delivery_address" class="text_field" placeholder="Address line one">
+                                                <input type="text" id="delivery_address" name="delivery_address"
+                                                       class="text_field" placeholder="Address line one">
 
                                             @endauth
                                         </div>
@@ -112,9 +120,13 @@
                                             <label for="delivery_address_hint">Address Hint</label>
                                             <sup>*</sup>
                                             @auth
-                                                <input type="text" id="delivery_address_hint" name="delivery_address_hint" class="text_field" value="{{ auth()->user()->profile->address_hint }}">
+                                                <input type="text" id="delivery_address_hint"
+                                                       name="delivery_address_hint" class="text_field"
+                                                       value="{{ auth()->user()->profile->address_hint }}">
                                             @else
-                                                <input type="text" id="delivery_address_hint" name="delivery_address_hint" class="text_field" placeholder="Address line two">
+                                                <input type="text" id="delivery_address_hint"
+                                                       name="delivery_address_hint" class="text_field"
+                                                       placeholder="Address line two">
 
                                             @endauth
                                         </div>
@@ -126,9 +138,12 @@
                                                         <sup>*</sup>
                                                     </label>
                                                     @auth
-                                                        <input type="text" id="buyer_contact_n" name="buyer_contact_n" class="text_field" value="{{ auth()->user()->profile->mobile_no }}">
+                                                        <input type="text" id="buyer_contact_n" name="buyer_contact_n"
+                                                               class="text_field"
+                                                               value="{{ auth()->user()->profile->mobile_no }}">
                                                     @else
-                                                        <input type="text" id="buyer_contact_n" name="buyer_contact_n" class="text_field" placeholder="Mobile No 1">
+                                                        <input type="text" id="buyer_contact_n" name="buyer_contact_n"
+                                                               class="text_field" placeholder="Mobile No 1">
 
                                                     @endauth
                                                 </div>
@@ -137,7 +152,8 @@
                                                 <div class="form-group">
                                                     <label for="buyer_cn_opt" name="buyer_cn_opt">Mobile no (Optional)
                                                     </label>
-                                                    <input type="number" id="buyer_cn_opt" name="buyer_cn_opt" class="text_field" placeholder="Mobile no 2">
+                                                    <input type="number" id="buyer_cn_opt" name="buyer_cn_opt"
+                                                           class="text_field" placeholder="Mobile no 2">
                                                 </div>
                                             </div>
                                         </div>
@@ -157,23 +173,42 @@
                                 <ul>
                                     <li>
                                         <div class="custom-radio">
-                                            <input type="radio" id="opt3" class="" name="payment_type" VALUE="khanidaani_balance" checked="checked">
-                                            <label for="opt3">
-                                                <span class="circle"></span>Khanidaani Balance</label>
+                                            @if (auth()->user()->profile->balance > $total)
+                                                <input type="radio" id="opt3" class="" name="payment_type" VALUE="khanidaani_balance">
+                                                <label for="opt3">
+                                                    <span class="circle"></span>Khanidaani Balance</label>
+                                                <p>Balance
+                                                    <span class="bold">৳{{ auth()->user()->profile->balance }}</span>
+                                                </p>
+                                                <div id="opt3_msg" class="d-none">
+                                                    <p class="w-50 mt-3 float-left">After Buying your balance will become</p>
+                                                    <p>({{ auth()->user()->profile->balance }} - {{ $total }}) = <span class="bold">৳{{ auth()->user()->profile->balance - $total}}</span> </p>
+                                                </div>
+                                            @else
+                                                <input type="radio" id="opt3" class="" name="payment_type" VALUE="khanidaani_balance" disabled>
+                                                <label for="opt3">
+                                                    <span class="circle"></span>Khanidaani Balance</label>
+                                                <p>Balance
+                                                    <span class="bold">৳{{ auth()->user()->profile->balance }}</span>
+                                                </p>
+                                                <div class="alert alert-danger" id="opt3_msg">
+                                                    You Do Not Have Enough KhaniDhaani Balance to Buy this Item. Please Use Other Payment System Instead
+                                                </div>
+                                            @endif
                                         </div>
-                                        <p>Balance
-                                            <span class="bold">৳180</span>
-                                        </p>
+
                                     </li>
                                     <li>
                                         <div class="custom-radio">
-                                            <input type="radio" id="opt2" class="" name="payment_type" value="bkash">
+                                            <input type="radio" id="opt2" class="" name="payment_type" value="bkash"
+                                                   checked>
                                             <label for="opt2">
                                                 <span class="circle"></span>Bkash</label>
                                         </div>
 
                                         <div class="form-group">
-                                            <input id="card_number" type="text" class="text_field" placeholder="Enter your bkash trasaction number here...">
+                                            <input id="card_number" type="text" class="text_field"
+                                                   placeholder="Enter your bkash trasaction number here...">
                                         </div>
                                         {{--<a href="{{ route('order.status') }}" class="btn btn--round btn--default">Continue & Order</a>--}}
 
@@ -181,7 +216,8 @@
                                     </li>
                                     <li>
                                         <div class="custom-radio">
-                                            <input type="radio" id="opt1" class="" name="payment_type" value="credit_card">
+                                            <input type="radio" id="opt1" class="" name="payment_type"
+                                                   value="credit_card">
                                             <label for="opt1">
                                                 <span class="circle"></span>Credit Card</label>
                                         </div>
@@ -190,7 +226,8 @@
                                     <div class="payment_info modules__content">
                                         <div class="form-group">
                                             <label for="card_number">Card Number</label>
-                                            <input id="card_number" type="text" class="text_field" placeholder="Enter your card number here...">
+                                            <input id="card_number" type="text" class="text_field"
+                                                   placeholder="Enter your card number here...">
                                         </div>
 
                                         <!-- lebel for date selection -->
@@ -254,10 +291,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="cv_code">CVV Code</label>
-                                                    <input id="cv_code" type="text" class="text_field" placeholder="Enter code here...">
+                                                    <input id="cv_code" type="text" class="text_field"
+                                                           placeholder="Enter code here...">
                                                 </div>
 
-                                                <button type="submit" class="btn btn--round btn--default">Continue & Order</button>
+                                                <button type="submit" class="btn btn--round btn--default">Continue &
+                                                    Order
+                                                </button>
 
                                                 {{--<button type="submit" class="btn btn--round btn--default">Confirm Order</button>--}}
                                             </div>
@@ -283,7 +323,16 @@
 
 
 
-
-
-
 @endsection
+
+@push('scripts-footer-bottom')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#opt3').on('click', function (e) {
+                // e.preventDefault();
+                $('#opt3_msg').removeClass('d-none');
+                $('#opt3_msg').show();
+            });
+        });
+    </script>
+@endpush

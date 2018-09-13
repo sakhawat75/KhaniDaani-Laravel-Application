@@ -29,9 +29,10 @@ class OrderController extends Controller
 //     	return response()->json($dsp);
         $system = SystemVariables::first();
         $percentage = $system->service_percentage / 100;
-        $after_percentage = round($dish->dish_price * $percentage);
+        $khanidaani_charge = round($dish->dish_price * $percentage);
+        $total = $dsp->service_charge + $dish->dish_price + $khanidaani_charge;
 
-        return view('order.confirm', compact( 'dsp', 'dish', 'after_percentage', 'system'));
+        return view('order.confirm', compact( 'dsp', 'dish', 'khanidaani_charge', 'system', 'total'));
 	}
 
     public function confirm_pp (PickersPoint $pp, Dish $dish) {
@@ -40,10 +41,12 @@ class OrderController extends Controller
 
         $system = SystemVariables::first();
         $percentage = $system->service_percentage / 100;
-//        $after_percentage = round(($pp->charge + $dish->dish_price) * $percentage);
+//        $khanidaani_charge = round(($pp->charge + $dish->dish_price) * $percentage);
 
-        $after_percentage = round($dish->dish_price * $percentage);
-        return view('order.confirm_pp', compact( 'pp', 'dish', 'after_percentage', 'system'));
+        $khanidaani_charge = round($dish->dish_price * $percentage);
+        $total = $pp->charge + $dish->dish_price + $khanidaani_charge;
+
+        return view('order.confirm_pp', compact( 'pp', 'dish', 'khanidaani_charge', 'system', 'total'));
     }
 
 	public function status(Order $order) {

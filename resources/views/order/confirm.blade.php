@@ -66,11 +66,11 @@
                                     </li>
                                     <li>
                                         <p>Transaction Fees:</p>
-                                        <span>{{ $after_percentage }}৳ ({{$system->service_percentage}}% charge)</span>
+                                        <span>৳{{ $khanidaani_charge }} ({{$system->service_percentage}}% charge)</span>
                                     </li>
                                     <li class="total_ammount">
                                         <p>Total</p>
-                                        <span>৳{{ ($dish->dish_price + $dsp->service_charge + 2) }}</span>
+                                        <span>৳{{ $total }}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -157,17 +157,34 @@
                                 <ul>
                                     <li>
                                         <div class="custom-radio">
-                                            <input type="radio" id="opt3" class="" name="payment_type" VALUE="khanidaani_balance" checked="checked">
-                                            <label for="opt3">
-                                                <span class="circle"></span>Khanidaani Balance</label>
+                                            @if (auth()->user()->profile->balance > $total)
+                                                <input type="radio" id="opt3" class="" name="payment_type" VALUE="khanidaani_balance">
+                                                <label for="opt3">
+                                                    <span class="circle"></span>Khanidaani Balance</label>
+                                                <p>Balance
+                                                    <span class="bold">৳{{ auth()->user()->profile->balance }}</span>
+                                                </p>
+                                                <div id="opt3_msg" class="d-none">
+                                                    <p class="w-50 mt-3 float-left">After Buying your balance will become</p>
+                                                    <p>({{ auth()->user()->profile->balance }} - {{ $total }}) = <span class="bold">৳{{ auth()->user()->profile->balance - $total}}</span> </p>
+                                                </div>
+                                            @else
+                                                <input type="radio" id="opt3" class="" name="payment_type" VALUE="khanidaani_balance" disabled>
+                                                <label for="opt3">
+                                                    <span class="circle"></span>Khanidaani Balance</label>
+                                                <p>Balance
+                                                    <span class="bold">৳{{ auth()->user()->profile->balance }}</span>
+                                                </p>
+                                                <div class="alert alert-danger" id="opt3_msg">
+                                                    You Do Not Have Enough KhaniDhaani Balance to Buy this Item. Please Use Other Payment System Instead
+                                                </div>
+                                            @endif
                                         </div>
-                                        <p>Balance
-                                            <span class="bold">৳180</span>
-                                        </p>
+
                                     </li>
                                     <li>
                                         <div class="custom-radio">
-                                            <input type="radio" id="opt2" class="" name="payment_type" value="bkash">
+                                            <input type="radio" id="opt2" class="" name="payment_type" value="bkash" checked>
                                             <label for="opt2">
                                                 <span class="circle"></span>Bkash</label>
                                         </div>
@@ -280,10 +297,18 @@
     <!--================================
             END DASHBOARD AREA
     =================================-->
-    
-    
-    
-
 
 
 @endsection
+
+@push('scripts-footer-bottom')
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#opt3').on('click', function (e) {
+                // e.preventDefault();
+                $('#opt3_msg').removeClass('d-none');
+                $('#opt3_msg').show();
+            });
+        });
+    </script>
+@endpush
