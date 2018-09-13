@@ -118,11 +118,11 @@ a.btn_filter#grid{
     text-align:center;
     box-sizing: border-box;
 }
-.featured-restaurants .restaurant-listing {
+.delivery-service .restaurant-listing {
     margin-bottom: 50px;
     margin-top: 25px;
 }
-.featured-restaurants .restaurant-wrap {
+.delivery-service .dsp-wrap {
     border: 1px solid #eaebeb;
     border-radius: 3px;
     padding: 15px;
@@ -131,35 +131,34 @@ a.btn_filter#grid{
     width: 100%;
 }
 @media (min-width: 280px) and (max-width: 580px) {
-    .featured-restaurants {
+    .delivery-service {
         padding: 50px 0 20px;
         position: relative;
     }
-    .featured-restaurants .title-block {
+    .delivery-service .title-block {
         margin-bottom: 15px;
     }
-    .featured-restaurants .title-block h4 {
+    .delivery-service .title-block h4 {
         font-size: 21px
     }
 }
 
-.featured-restaurants:before {
+.delivery-service:before {
     position: absolute;
     top: -81px;
     left: 50px;
-    background: url(../images/chilly.png);
     width: 103px;
     height: 151px;
     content: "";
 }
 
 @media (min-width: 280px) and (max-width: 580px) {
-    .featured-restaurants:before {
+    .delivery-service:before {
         display: none
     }
 }
 
-.featured-restaurants .restaurant-wrap {
+.delivery-service .dsp-wrap {
     border: 1px solid #eaebeb;
     border-radius: 3px;
     padding: 15px;
@@ -168,70 +167,75 @@ a.btn_filter#grid{
     width: 100%;
 }
 
-.featured-restaurants .restaurant-logo {
+.delivery-service .restaurant-logo {
     border-radius: 3px;
 }
 
-.featured-restaurants .restaurant-logo img {
+.delivery-service .restaurant-logo img {
     width: 95px;
     height: auto;
     border: 1px solid #eaebeb;
 }
 
 @media (min-width: 320px) and (max-width: 543px) {
-    .restaurant-wrap {
+    .dsp-wrap {
         /* text-align:center */
     }
-    .featured-restaurants .restaurant-logo img {
+    .delivery-service .dsp-images img {
         width: 85px;
         margin-bottom: 15px;
     }
 }
 
-.featured-restaurants .restaurant-wrap h5 {
+.delivery-service .dsp-wrap h5 {
     margin-top: 5px;
     font-weight: 600;
 }
 
-.featured-restaurants .restaurant-wrap h5 a {
+.delivery-service .dsp-wrap h5 a {
     color: #25282b;
 }
 
-.featured-restaurants .bottom-part {
-    margin-top: 5px
+.delivery-service .bottom-part {
+    margin-top: 5px;
+    border-top: 1px solid #ececec;
+}
+.btm-part-2{
+    margin-top: 5px;
 }
 
-.featured-restaurants .cost,
-.featured-restaurants .mins,
-.featured-restaurants .ratings {
-    font-size: 12px;
+.delivery-service .cost,
+.delivery-service .mins,
+.delivery-service .dsp-id,
+.delivery-service .rating {
+    font-size: 16px;
     display: inline-block;
 }
 
-.featured-restaurants .cost,
-.featured-restaurants .mins {
+.delivery-service .cost,
+.delivery-service .mins {
     margin-right: 1rem;
 }
 
-.featured-restaurants .ratings span i {
+.delivery-service .ratings span i {
     color: #f30;
 }
 
-.featured-restaurants .ratings .fa-star-o {}
+.delivery-service .ratings .fa-star-o {}
 
 .restaurants-filter ul li {
     display: inline-block;
     padding: 0 .5rem;
 }
 
-.featured-restaurants .restaurants-filter ul li a {
+.delivery-service .restaurants-filter ul li a {
     font-weight: 400;
     color: #414551;
     font-size: 16px;
     text-transform: capitalize;
 }
 
-.featured-restaurants .restaurants-filter ul li a:hover {
+.delivery-service .restaurants-filter ul li a:hover {
     color: #e8500e;
 }
 
@@ -244,16 +248,16 @@ a.btn_filter#grid{
     }
 }
 
-.featured-restaurants .featured-restaurants h4 {
+.delivery-service .delivery-service h4 {
     margin-bottom: 45px;
 }
 
-.featured-restaurants .restaurant-listing {
+.delivery-service .restaurant-listing {
     margin-bottom: 50px;
     margin-top: 25px;
 }
 
-.featured-restaurants .single-restaurant {
+.delivery-service .single-dsp {
     margin-bottom: 30px;
 }
 
@@ -270,26 +274,32 @@ a.btn_filter#grid{
 }
 
 @media (min-width: 320px) and (max-width: 543px) {
-    .featured-restaurants .restaurant-wrap {
+    .delivery-service .dsp-wrap {
+        text-align: center;
+
         margin-bottom: 10px;
     }
     .add-restaurants {
-        text-align: center
+        text-align: center;
     }
     .add-restaurants a.btn.theme-btn {
-        display: block
+        display: block;
     }
 }
 
-@media (min-width: 544px) and (max-width: 767px) {}
+@media (min-width: 544px) and (max-width: 767px) {
+    .delivery-service .dsp-wrap {
+        text-align: center;
+    }
+}
 
 @media (min-width: 768px) and (max-width: 991px) {
-    .featured-restaurants .restaurant-wrap {
-        text-align: center
+    .delivery-service .dsp-wrap {
+        text-align: center;
     }
 }
 
-.featured-restaurants .restaurant-wrap {
+.delivery-service .dsp-wrap {
     border: 1px solid #eaebeb;
     border-radius: 3px;
     padding: 15px;
@@ -297,5 +307,32 @@ a.btn_filter#grid{
     float: left;
     width: 100%;
 }
+
+.dsp-description
+{
+    text-align: left;
+    margin-top: 5px;
+}
+.dsp-title{
+    margin-bottom: 5px;
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.dsp-area{
+    color:#7347c1 ;
+    text-align: left;
+}
+.dsp-username
+{
+    text-align: center;
+    margin-top: 2px;
+}
+
+.dsp-id{
+    float: left;
+}
+
+
 
 
