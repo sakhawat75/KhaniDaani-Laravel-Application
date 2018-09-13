@@ -3,17 +3,22 @@
 
 @include ('includes.head')
 
-<body class="home3">
+<body class="">
 <!--================================
         START MENU AREA
     =================================-->
-    <!-- start menu-area -->
     @include ('includes.menu')
     <!--================================
         END MENU AREA
     =================================-->
 
+<!--================================
+        START CONTENT AREA
+    =================================-->
     @yield ('content')
+<!--================================
+        END CONTENT AREA
+    =================================-->
 
     <!--================================
         START FOOTER AREA
@@ -27,7 +32,7 @@
 
     <!-- inject:js -->
     @include ('includes.injectjs')
-    <!-- endinject -->
+    <!-- end inject -->
 </body>
 
 </html>
