@@ -5,7 +5,6 @@
 
 @section ('content')
 
-    <body class="cehfdish">
 
     <!--================================
           START BREADCRUMB AREA
@@ -180,47 +179,9 @@
                             <!-- end /.col-md-12 -->
 
 
-                            <!-- Pikers Point Start -->
-
-                            <div class="col-md-6 col-sm-6" data-wow-delay="0.5s">
-                                <a class="strip_list grid" href="#">
-                                    <div class="desc">
-                                        <div class="thumb_strip">
-                                            <img src="" alt="">
-                                        </div>
-
-
-                                        <h3 class="pp_title">Showpno</h3>
-                                        <div class="type">
-                                            Department store
-                                        </div>
-                                        <div class="location">
-                                            Silmark Tower, Sibgonj Upshahar Point, Sylhet <br>
-                                        </div>
-                                        <div class="hours">
-                                            <span class="opening">Opens @ 9:00 AM.</span><span class="closing"> Close @ 5:00 PM</span>
-                                        </div>
-                                        <br>
-
-                                        <div class="product-purchase">
-                                            <div class="price_love"> <span>৳50</span>
-                                                <p> <span class="lnr lnr-heart"></span> 0</p>
-                                            </div>
-                                            <div class="rating product--rating pull-right">
-                                                <ul>
-                                                    <li><span class="fa fa-star-o"></span></li>
-                                                    <li><span class="fa fa-star-o"></span></li>
-                                                    <li><span class="fa fa-star-o"></span></li>
-                                                    <li><span class="fa fa-star-o"></span></li>
-                                                    <li><span class="fa fa-star-o"></span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </a><!-- End strip_list-->
-                            </div><!-- End col-md-6-->
-                            <!-- Pikers Point End -->
+                            @foreach($pickerspoints as $pp)
+                                @include('pickerspoint.pp_preview')
+                            @endforeach
 
 
 
@@ -230,7 +191,7 @@
                     </div>
                     <!-- end /.row -->
                     <div class="pagination-area pagination--right">
-                        <nav class="navigation pagination" role="navigation">
+                        {{--<nav class="navigation pagination" role="navigation">
                             <div class="nav-links">
                                 <a class="prev page-numbers" href="#">
                                     <span class="lnr lnr-arrow-left"></span>
@@ -242,7 +203,8 @@
                                     <span class="lnr lnr-arrow-right"></span>
                                 </a>
                             </div>
-                        </nav>
+                        </nav>--}}
+                        {{ $pickerspoints->links() }}
                     </div>
 
                 </div>
@@ -253,5 +215,5 @@
 
         </div>
     </section>
-    </body>
+
 @endsection

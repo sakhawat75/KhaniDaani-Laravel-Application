@@ -3356,8 +3356,8 @@ span.counter {
         .input-group{
             align-items: center;
             input{
-                width: calc(100% - 30px);
-                margin-left: 15px;
+
+
             }
         }
     }
@@ -6074,4 +6074,8 @@ span.counter {
   .mbl_noti ul {
     display: none;
   }
+}
+
+.text-limit {
+  color: #b0b0b0;
 }

@@ -17669,7 +17669,7 @@ div#ui-datepicker-div tbody tr td a:hover {
 
 .feature .feature__title {
   padding-top: 30px;
-  padding-bottom: 24px;
+  padding-bottom: 15px;
 }
 
 .feature:hover {
@@ -21939,12 +21939,6 @@ span.counter {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.upload_modules.with--addons .input-group input,
-.with--addons.withdraw_module .input-group input {
-  width: calc(100% - 30px);
-  margin-left: 15px;
 }
 
 /* DASHBOARD EDIT PAGE */
@@ -28098,5 +28092,9 @@ span.counter {
   .mbl_noti ul {
     display: none;
   }
+}
+
+.text-limit {
+  color: #b0b0b0;
 }
 

@@ -41,7 +41,7 @@
 
     <div class="container">
         @include('includes.success_message')
-        @include('includes.messeages')
+        @include('includes.error_messeages')
     </div>
 
 

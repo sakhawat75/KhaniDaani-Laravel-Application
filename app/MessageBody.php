@@ -12,6 +12,6 @@ class MessageBody extends Model
 
     public function message ()
     {
-    	return $this->belongsTo( Body::class );
+    	return $this->belongsTo( Message::class );
     }
 }

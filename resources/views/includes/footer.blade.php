@@ -7,26 +7,21 @@
                         <div class="info__logo">
                             <img src="{{ route('home') }}/images/logo/full_logo.png" alt="footer logo">
                         </div>
-                        <p class="info--text">KhaniDaani Into</p>
                         <ul class="info-contact">
                             <li>
-                                <span class="lnr lnr-phone info-icon"></span>
-                                <span class="info">Phone: +01700000000</span>
-                            </li>
-                            <li>
                                 <span class="lnr lnr-envelope info-icon"></span>
-                                <span class="info">support@khanidaani.com</span>
+                                <span class="info">info@khanidaani.com</span>
                             </li>
                             <li>
                                 <span class="lnr lnr-map-marker info-icon"></span>
-                                <span class="info">Sylhet</span>
+                                <span class="info">HQ: Sylhet, Bangladesh</span>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6">
                     <div class="footer-menu">
-                        <h4 class="footer-widget-title text--white">Help and FAQs</h4>
+                        <h4 class="footer-widget-title">Help and FAQs</h4>
                         <ul>
                             <li>
                                 <a href="#">How to Join Us</a>
@@ -37,31 +32,15 @@
                             <li>
                                 <a href="#">Buying and Selling</a>
                             </li>
-                            <li>
-                                <a href="#">Copyright Notice</a>
-                            </li>
-                            <li>
-                                <a href="#">Refund Policy</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">
                     <div class="newsletter">
-                        <h4 class="footer-widget-title text--white">Newsletter</h4>
-                        <p>Subscribe to get the latest news, update and offer information. Don't worry, we won't send spam!</p>
-                        <div class="newsletter__form">
-                            <form action="#">
-                                <div class="field-wrapper">
-                                    <input class="relative-field rounded" type="text" placeholder="Enter email">
-                                    <button class="btn btn--round" type="submit">Submit</button>
-                                </div>
-                            </form>
-                        </div>
                         <div class="social social--color--filled">
                             <ul>
                                 <li>
-                                    <a href="#">
+                                    <a href="">
                                             <span class="fa fa-facebook"></span>
                                         </a>
                                 </li>

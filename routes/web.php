@@ -12,8 +12,8 @@
 */
 
 Route::get( '/pickerspoint/addpp', 'PickersPointController@addpp')->name( 'pickerspoint.addpp');
+Route::resource('pickerspoint', 'PickersPointController');
 
-Route::get('/messages/all', 'NotificationsController@messages')->name('messages.all');
 
 Route::get('/messages/compose', 'NotificationsController@compose')->name('messages.compose');
 
@@ -57,6 +57,7 @@ Auth::routes();
 Route::get( '/dishes/purchase', 'DishesController@purchase')->name( 'dishes.purchase');
 Route::get( '/dishes/manage', 'DishesController@manage')->name( 'dishes.manage');
 Route::get( '/dishes/editdish', 'DishesController@editdish')->name( 'dishes.editdish');
+
 Route::resource( '/dishes', 'DishesController');
 
 Route::get('/ajax-subcat', 'RestApiController@jsonSubCat');
@@ -84,7 +85,8 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::get('api/all_notifications', 'RestApiController@allNotification')->name( 'api.all_notifications');
 
 	//Meassage
-	Route::get( '/messages/getMessages', 'MessageController@getMessages')->name( 'messages.getMessages');
+    Route::get('/messages/all', 'NotificationsController@messages')->name('messages.all');
+    Route::get( '/messages/getMessages', 'MessageController@getMessages')->name( 'messages.getMessages');
 	Route::get( '/messages/getAllMessages', 'MessageController@getAllMessages')->name( 'messages.getAllMessages');
 	Route::get( '/messages/getSingleMessages', 'MessageController@getSingleMessages')->name( 'messages.getSingleMessages');
 	Route::post( '/messages/store_with_auth', 'MessageController@store_with_auth')->name( 'messages.store_with_auth');

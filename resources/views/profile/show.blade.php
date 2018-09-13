@@ -25,16 +25,15 @@
     <!--================================
       END BREADCRUMB AREA
   =================================-->
-   @include( 'includes.menu-dashboard' ) @if($flash = session('success'))
-    <div class="alert alert-default" role="alert">{{ $flash }}</div> @endif @if($flash = session('prf_updated'))
-    <div class="alert alert-default" role="alert"><span class="alert_icon lnr lnr-checkmark-circle"></span>{{ $flash }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span class="lnr lnr-cross" aria-hidden="true"></span> </button>
-    </div> @endif
+   @include( 'includes.menu-dashboard' )
+
     <!--================================
         START PROFILE AREA
     =================================-->
     <section class="author-profile-area">
         <div class="container">
+            @include('includes.success_message')
+            @include('includes.error_messeages')
             <div class="row">
                 <div class="col-lg-4 col-md-12">
                     <aside class="sidebar sidebar_author">
