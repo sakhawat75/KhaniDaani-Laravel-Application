@@ -152,7 +152,7 @@
                         </p>
                       </div>
                       {{--Start Rating Area--}}
-                      <div class="rating product--rating">
+                      {{--<div class="rating product--rating">
                         <ul>
                           @for ($i=1; $i <= 5; $i++)
                             @if($i <= round($fd->dish->avg_rating))
@@ -166,7 +166,7 @@
                             @endif
                           @endfor
                         </ul>
-                      </div>
+                      </div>--}}
                       {{--End Rating Area--}}
                     </div>
                     <!-- end /.product-purchase -->
@@ -280,7 +280,7 @@
                   </div>
 
                   {{--Start Rating Area--}}
-                  <div class="rating product--rating">
+                  {{--<div class="rating product--rating">
                     <ul>
                       @for ($i=1; $i <= 5; $i++)
                         @if($i <= round($fd->dish->avg_rating))
@@ -294,7 +294,21 @@
                         @endif
                       @endfor
                     </ul>
-                  </div>
+                  </div>--}}{{--<div class="rating product--rating">
+                    <ul>
+                      @for ($i=1; $i <= 5; $i++)
+                        @if($i <= round($fd->dish->avg_rating))
+                          <li>
+                            <span class="fa fa-star"></span>
+                          </li>
+                        @else
+                          <li>
+                            <span class="fa fa-star-o"></span>
+                          </li>
+                        @endif
+                      @endfor
+                    </ul>
+                  </div>--}}
                   {{--End Rating Area--}}
                 </div>
                 <!-- end /.product-purchase -->

@@ -9,11 +9,11 @@
                     </li>
                     <li class="{{ request()->is(route('profile.edit', ['profile' => auth()->id()])) ? 'active' : '' }}">
                         <a href="{{ route('profile.edit', ['profile' => auth()->id()]) }}">
-                                    <span class="lnr lnr-cog"></span>Profile Setting</a>
+                                    <span class="lnr lnr-cog"></span>Setting</a>
                     </li>
                     <li>
                         <a href="{{ route('dishes.purchase') }}">
-                                    <span class="lnr lnr-cart"></span>Purchase</a>
+                                    <span class="lnr lnr-cart"></span>Purchased</a>
                     </li>
                     <li class="{{ request()->is('profile_setting') ? 'active' : '' }}">
                         <a href="{{ route('dishes.manage') }}">
@@ -21,16 +21,16 @@
                     </li>
                     <li>
                         <a href="{{ route('profile.cashout') }}">
-                                    <span class="lnr lnr-briefcase"></span>Withdrawals</a>
+                                    <span class="lnr lnr-briefcase"></span>Payment</a>
                     </li>
                     <li>
                         <a href="{{ route('delivery.AddService') }}">
-                            <span class="lnr lnr-upload"></span>Add Service</a>
+                            <span class="lnr lnr-upload"></span>Add Delivery</a>
                     </li>
 
                     <li>
                         <a href="{{ route('pickerspoint.addpp') }}">
-                            <span class="lnr lnr-upload"></span>Add Pickers Point</a>
+                            <span class="lnr lnr-upload"></span>Host Pickers Point</a>
                     </li>
                 </ul>
                 <!-- end /.dashboard_menu -->

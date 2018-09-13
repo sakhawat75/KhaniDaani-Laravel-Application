@@ -1,5 +1,8 @@
-@extends ('layouts.master') @section ('title', 'Profile') @section ('content')
+@extends ('layouts.master')
 
+@section ('title', 'Profile')
+
+@section ('content')
 
     <!--================================
         START BREADCRUMB AREA
@@ -11,7 +14,7 @@
                     <div class="breadcrumb">
                         <ul>
                             <li> <a href="{{ route('home') }}">Home</a> </li>
-                            <li class="active"> <a href="#">Profile</a> </li>
+                            <li class="active"> <a>Profile </li>
                         </ul>
                     </div>
                     <h1 class="page-title">{{ $user->name }}
@@ -25,44 +28,63 @@
     <!--================================
       END BREADCRUMB AREA
   =================================-->
-   @include( 'includes.menu-dashboard' )
+    {{-- TODO If user visiting other profile then don't show dashboard menu this function will same for chefdish,delivery,pickerspoint--}}
+   @include( 'includes.menu-dashboard')
 
     <!--================================
         START PROFILE AREA
     =================================-->
     <section class="author-profile-area">
-        <div class="container">
+        <div class="container"  id="profile">
             @include('includes.success_message')
             @include('includes.error_messeages')
             <div class="row">
                 <div class="col-lg-4 col-md-12">
-                    <aside class="sidebar sidebar_author">
+                    <aside class="sidebar sidebar_author" >
                         <div class="author-card sidebar-card">
                             <div class="author-infos">
                                 <div class="author_avatar"> <img src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="Presenting the broken author avatar :D"> </div>
-                                <div class="author">
-                                    <h4>
+                                <div class="author"><h4>
                                 {{ $user->name }} {{--{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}--}}
                             </h4>
                                     <p>Joined {{ $profile->created_at->toFormattedDateString() }}</p>
                                 </div>
                                 <div class="author-badges">
-                                    <div class="author-btn"> <a href="#" class="btn btn--md btn--round">Follow</a> </div>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <span data-toggle="tooltip" data-placement="bottom" title="Have up to 10 dish for sale">
+                                                <img src="{{ URL::to('/') }}/images/svg/have_dish.png"" alt="" class="svg">
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span data-toggle="tooltip" data-placement="bottom" title="Have delivery option">
+                                                <img src="{{ URL::to('/') }}/images/svg/delivery.png" alt="" class="svg">
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span data-toggle="tooltip" data-placement="bottom" title="Hosting his place for dish collection">
+                                                <img src="{{ URL::to('/') }}/images/svg/pcikerpoint.png" alt="" class="svg">
+                                            </span>
+                                        </li>
+
+                                    </ul>
                                 </div>
+
+
+
                                 <!-- end /.author -->
                             </div>
                             <!-- end /.author-infos -->
                             <div class="freelance-status">
-                                <div class="custom-radio">
-                                    <input type="radio" id="opt1" class="" name="filter_opt" checked>
-                                    <label for="opt1"> <span class="circle"></span>Khanidaani Chef</label>
+                                <div class="author-badges">
+                                    <div class="author-btn"> <a href="#" class="btn btn--md btn--round">Send Massage</a> </div>
                                 </div>
                             </div>
                         </div>
                         <div class="sidebar-card author-menu">
                             <ul>
-                                <li> <a href="{{ route('profile.show', ['profile' => $profile->id]) }}">User Profile</a> </li>
-                                <li> <a href="{{ route('profile.chefdishes', [ 'profile' => $profile->id]) }}">Chef Dish</a> </li>
+                                <li> <a href="{{ route('profile.show', ['profile' => $profile->id]) }} #profile">User Profile</a> </li>
+                                <li> <a href="{{ route('profile.chefdishes', [ 'profile' => $profile->id]) }} #chefdish">Chef Dish</a> </li>
                                 <li> <a href="{{ route('profile.chefdelivery', ['user' => $profile->user]) }}">Delivery Option</a> </li>
                                 <li> <a href="{{ route('profile.pickerspoint', ['user' => $profile->user]) }}">Pickers Point</a> </li>
                             </ul>

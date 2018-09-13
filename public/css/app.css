@@ -1,9 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@import url(https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700);/*!
- * Bootstrap v4.1.1 (https://getbootstrap.com/)
- * Copyright 2011-2018 The Bootstrap Authors
- * Copyright 2011-2018 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@import url(https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700);
 
 :root {
   --blue: #007bff;
@@ -10424,11 +10419,6 @@ a.text-dark:focus {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-/**                              **
-**       TABLE OF CONTENTS       **
-**                               **
------------------------------------*/
-
 /*
   01.COMMON
     -- reset
@@ -13168,10 +13158,6 @@ h6 {
 .product--list .product-purchase .sell {
   float: none;
   display: block;
-}
-
-.product--list-small {
-  height: 209px;
 }
 
 .product--list-small .product__thumbnail {
@@ -26107,6 +26093,18 @@ span.counter {
     display: none;
   }
 
+  .breadcrumb-area {
+    display: none;
+  }
+
+  .message-card {
+    display: none;
+  }
+
+  .dashboard_menu_area {
+    display: none;
+  }
+
   .hero__content__title {
     margin-left: -23px;
     margin-right: 74px;
@@ -28019,7 +28017,7 @@ span.counter {
   }
 
   .badges.community-badges .author-badges .badge-single {
-    width: 100%;
+    width: 50%;
   }
 }
 
@@ -28096,5 +28094,9 @@ span.counter {
 
 .text-limit {
   color: #b0b0b0;
+}
+
+.freelance-status {
+  text-align: center;
 }
 

@@ -4,8 +4,8 @@
     <!-- viewport meta -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="MartPlace - Complete Online Multipurpose Marketplace HTML Template">
-    <meta name="keywords" content="app, app landing, product landing, digital, material, html5">
+    <meta name="description" content="KhaniDaani - Freelance based cooking services">
+    <meta name="keywords" content="KhaniDaani, khanidaani, foods, freelancing, chef, html5">
 
 
     <title>KhaniDaani - @yield ('title') </title>
