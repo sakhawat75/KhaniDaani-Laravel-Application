@@ -160,7 +160,7 @@
 
                       <div class="custom_upload">
                         <label for="dish_thumbnail1">
-                          <input type="file" id="dish_thumbnail1" class="files" name="dish_thumbnail" required>
+                          <input type="file" id="dish_thumbnail1" class="files" name="dish_thumbnail" accept="image/*" required>
                           <span class="btn btn--round btn--sm">Choose File</span>
                         </label>
                       </div>
@@ -200,7 +200,7 @@
 
                       <div class="custom_upload">
                         <label for="screenshot1">
-                          <input type="file" id="screenshot1" class="files" name="dish_image_1" required>
+                          <input type="file" id="screenshot1" class="files" name="dish_image_1" accept="image/*" required>
                           <span class="btn btn--round btn--sm">Choose File</span>
                         </label>
                       </div>
@@ -233,7 +233,7 @@
 
                       <div class="custom_upload">
                         <label for="screenshot2">
-                          <input type="file" id="screenshot2" class="files" name="dish_image_2">
+                          <input type="file" id="screenshot2" class="files" name="dish_image_2" accept="image/*">
                           <span class="btn btn--round btn--sm">Choose File</span>
                         </label>
                       </div>
@@ -266,7 +266,7 @@
 
                       <div class="custom_upload">
                         <label for="screenshot3">
-                          <input type="file" id="screenshot3" class="files" name="dish_image_3">
+                          <input type="file" id="screenshot3" class="files" name="dish_image_3" accept="image/*">
                           <span class="btn btn--round btn--sm">Choose File</span>
                         </label>
                       </div>
