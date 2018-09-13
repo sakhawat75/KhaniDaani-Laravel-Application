@@ -50,7 +50,7 @@ class PickersPointController extends Controller
             'charge' => 'required|integer|min:10|max:50',
             'address' => 'required|max:100',
             'address_hint' => 'required|max:50',
-            'phone' => 'required|numeric|size:11',
+            'phone' => 'required',
 
         ]);
 
