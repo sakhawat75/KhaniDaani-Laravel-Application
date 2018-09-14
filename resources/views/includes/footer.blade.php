@@ -1,4 +1,5 @@
 <footer class="footer-area">
+
     <div class="footer-big section--padding">
         <div class="container">
             <div class="row">
@@ -62,7 +63,6 @@
             </div>
         </div>
     </div>
-
     <div class="mini-footer">
         <div class="container">
             <div class="row">
@@ -72,7 +72,6 @@
                             <a href="#">KhaniDaani</a>. All rights reserved.
                         </p>
                     </div>
-                    
                     <div class="go_top">
                         <span class="lnr lnr-chevron-up"></span>
                     </div>

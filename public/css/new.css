@@ -332,6 +332,37 @@ a.btn_filter#grid{
 .dsp-id{
     float: left;
 }
+.s-dish-rating{
+    padding-top: 0px;
+}
+
+@media screen and (max-width: 767px){
+    .has_dropdown .dropdown {
+        top: calc(100% + 20px);
+        margin-left: -158px;
+    }
+    .dropdown.messaging--dropdown {
+        padding: 0;
+        width: 370px;
+        right: -139px;
+    }
+    .dropdown.messaging--dropdown:before {
+        right: 139px;
+        bottom: 100%;
+    }
+}
+
+@media (max-width: 991px) {
+    .dropdown.notification--dropdown {
+        right: -171px;
+        left: auto;
+    }
+
+    .dropdown.notification--dropdown:before {
+        right: 180px;
+        left: auto;
+    }
+}
 
 
 
