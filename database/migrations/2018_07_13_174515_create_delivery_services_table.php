@@ -25,7 +25,7 @@ class CreateDeliveryServicesTable extends Migration
             $table->integer('min_delivery_time');
             $table->integer('max_delivery_time');
             $table->timestamps();
-
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
     }

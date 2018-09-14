@@ -131,32 +131,12 @@
 
 <section class="products section--padding2">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-
-
-
+        <div class="row dsp_result delivery-service">
+            <div class="col-md-12">
+                <h3 class="text-center">Please Select A City From Dropdown Menu or Type in The Search Box to Start Searching</h3>
             </div>
         </div>
     </div>
-
-
-    {{--<div class="row">
-        <div class="col-md-12">
-            --}}{{--<div class="pagination-area categorised_item_pagination">
-                <nav class="navigation pagination" role="navigation">
-                    <div class="nav-links">
-                        <a class="prev page-numbers" href="#"> <span class="lnr lnr-arrow-left"></span> </a> <a class="page-numbers current" href="#">1</a> <a class="page-numbers" href="#">2</a> <a class="page-numbers" href="#">3</a>
-                        <a class="next page-numbers" href="#"> <span class="lnr lnr-arrow-right"></span> </a>
-                    </div>
-                </nav>
-            </div>--}}{{--
-            <div class="container">
-                {{ $dishes->links() }}
-            </div>
-
-        </div>
-    </div>--}}
 </section>
 <!--================================
     END PRODUCTS AREA
@@ -186,11 +166,59 @@
 @endsection
 
 @push('scripts-footer-bottom')
+    @include ('delivery.dsp_preview_template')
+
     <script type="text/javascript">
+        _.templateSettings.variable = 'dsp';
+        var timer;
+        var keyword;
+        var city;
+        var area;
+
+        var template = _.template(
+            $('#dsp_template').html()
+        );
 
         function callSearchDspApi() {
+            keyword = $('#onpage_search').val();
+            city = $('#city').val();
+            area = $('#areas').val();
 
+            // console.log('Keyword: ' + keyword);
+
+            callDspSearch();
         }
+
+        function callDspSearch() {
+            $.ajax({
+                url: "{{ route('api.search.dsp') }}",
+                data: {
+                    keyword: keyword,
+                    city: city,
+                    area: area,
+                },
+                type: "GET",
+                dataType: "json",
+            }).done( function (dsp) {
+                $('.dsp_result').html('');
+                $('ul.pagination').hide();
+
+                renderDsp(dsp);
+            });
+        }
+
+        function renderDsp(dsp) {
+            // console.log('dish data: ' + dishes.data);
+            if($.isEmptyObject(dsp.data)) {
+                // console.log('if dishes: ' + dishes);
+                $('.dsp_result').append('<h1>Sorry! no result found</h1>');
+            }
+
+            _.each(dsp.data, function(dsp) {
+                $('.dsp_result').append(template(dsp));
+            });
+        }
+
 
         $(document).ready( function () {
             //Cities
@@ -217,6 +245,22 @@
             $("#areas").on('change', function (e) {
 
                 callSearchDspApi();
+            });
+
+            $('#onpage_search').on('input change', function (event) {
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    callSearchDspApi();
+                    // console.log('Min Price: ' + min_price);
+                    // console.log('Max Price: ' + max_price);
+                }, 500);
+            });
+
+            $("#search_scroll").click(function(e) {
+                e.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $(".dsp_result").offset().top
+                }, 700);
             });
         });
     </script>
