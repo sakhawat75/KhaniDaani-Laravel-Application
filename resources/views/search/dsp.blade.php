@@ -15,20 +15,13 @@
                         <div class="search__title">
                             <h3>
                                 Total <span>5</span> Delivery Services for our chef and foodies.</h3></div>
-                        <div class="search__field">
-                            <form action="{{ route('search.livedish') }}" method="get">
+                        <div class="search__field pb-3">
+                            <form action="{{ route('search.dsp') }}" method="get">
                                 <div class="field-wrapper">
-                                    <input class="relative-field rounded" type="text" placeholder="Search your Dishes" id="onpage_search" name="keyword">
+                                    <input class="relative-field rounded" type="text" placeholder="Search Available Delivery Services By Name" id="onpage_search" name="keyword">
                                     <button class="btn btn--round" type="submit" id="search_scroll">Search</button>
                                 </div>
                             </form>
-                        </div>
-                        <div class="breadcrumb">
-                            <ul>
-                                <li>
-                                    <a href="{{route('home')}}">Home</a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -84,14 +77,16 @@
                     </div>
                      end /.filter__option -->
 
-                    <form action="{{ route('search.livedish') }}" method="post">
+                    <form action="{{ route('search.dsp') }}" method="post">
 
 
                         <div class="filter__option filter--select">
                             <div class="select-wrap">
                                 <select name="city" id="city" class="text_field">
                                     <option value="" selected="selected">All Cities</option>
-
+                                    @foreach($cities as $city)
+                                        <option value="{{ $city->name }}">{{ $city->name }}</option>
+                                    @endforeach
                                 </select>
                                 <span class="lnr lnr-chevron-down"></span>
                             </div>
@@ -107,7 +102,7 @@
                         </div>
 
 
-                        <div class="filter__option filter--select">
+                        {{--<div class="filter__option filter--select">
                             <div class="select-wrap">
                                 <select name="dish_category" id="dish_category" class="text_field">
 
@@ -121,7 +116,7 @@
 
                                 </select>
                                 <span class="lnr lnr-chevron-down"></span></div>
-                        </div>
+                        </div>--}}
                     </form>
                 </div>
 
@@ -189,3 +184,40 @@
     END CALL TO ACTION AREA
 =================================-->
 @endsection
+
+@push('scripts-footer-bottom')
+    <script type="text/javascript">
+
+        function callSearchDspApi() {
+
+        }
+
+        $(document).ready( function () {
+            //Cities
+            $("#city").off('change');
+
+            $("#city").on('change', function (e) {
+                // console.log(e);
+                $('#areas').empty();
+                $('#areas').prepend('<option value="" selected>All Areas</option>');
+                let city_name = e.target.value;
+
+                $.get('/ajax-areas?city_name=' + city_name, function (data) {
+
+                    $.each(data, function (index, subCatObj) {
+                        $('#areas').append('<option value="' + subCatObj.name + '">' + subCatObj.name + '</option>');
+                    });
+                });
+
+                callSearchDspApi();
+            });
+
+            //areas
+            $("#areas").off('change');
+            $("#areas").on('change', function (e) {
+
+                callSearchDspApi();
+            });
+        });
+    </script>
+@endpush
