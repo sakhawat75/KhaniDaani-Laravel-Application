@@ -1,6 +1,4 @@
-    <!--//////////////////// JS GOES HERE ////////////////-->
-
-    <!-- inject:js -->
+<!-- inject:js -->
     @stack('scripts-footer-top')
 
     <script src="{{ URL::to('/') }}/js/vendor/jquery/popper.min.js"></script>
@@ -33,4 +31,4 @@
     @stack('scripts-footer-bottom')
     @stack('scripts-footer-bottom-2')
 
-    <!-- endinject -->
+<!-- endinject -->

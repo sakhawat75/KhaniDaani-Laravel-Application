@@ -26095,6 +26095,15 @@ span.counter {
 /* 767 */
 
 @media screen and (max-width: 767px) {
+  .dashboard_menu_area .dashboard_menu {
+    display: none;
+  }
+
+  .has_dropdown .dropdown {
+    top: calc(100% + 20px);
+    margin-left: -120px;
+  }
+
   .section-title {
     display: none;
   }
@@ -26107,7 +26116,7 @@ span.counter {
     display: none;
   }
 
-  .dashboard_menu_area {
+  .author-area-lg {
     display: none;
   }
 

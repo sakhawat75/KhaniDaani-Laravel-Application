@@ -2,7 +2,7 @@
     <div class="footer-big section--padding">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-12">
                     <div class="info-footer">
                         <div class="info__logo">
                             <img src="{{ route('home') }}/images/logo/full_logo.png" alt="footer logo">
@@ -19,9 +19,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-5 col-md-6">
+                <div class="col-lg-5 col-md-12">
                     <div class="footer-menu">
-                        <h4 class="footer-widget-title">Help and FAQs</h4>
+                        <h5 class="footer-widget-title">Help and FAQs</h5>
                         <ul>
                             <li>
                                 <a href="#">How to Join Us</a>
@@ -55,7 +55,6 @@
                                             <span class="fa fa-linkedin"></span>
                                         </a>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
