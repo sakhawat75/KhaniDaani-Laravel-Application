@@ -10504,10 +10504,6 @@ a.text-dark:focus {
 
 /* import style css */
 
-/*****************************
-	-- THEME
-*****************************/
-
 /* RESET CSS */
 
 /*****************************
@@ -10770,18 +10766,6 @@ a {
   display: table-cell;
   vertical-align: middle;
 }
-
-/*****************************
-	-- THEME
-*****************************/
-
-/*****************************
-	-- THEME
-*****************************/
-
-/*****************************
-	-- THEME
-*****************************/
 
 /*****************************
 	-- MIXINS
@@ -11607,10 +11591,6 @@ a {
 }
 
 /*****************************
-	-- THEME
-*****************************/
-
-/*****************************
 	-- MIXINS
 *****************************/
 
@@ -11732,14 +11712,6 @@ h6 {
 }
 
 /*****************************
-	-- PRODUCT SIDEBAR
-*****************************/
-
-/*****************************
-	-- THEME
-*****************************/
-
-/*****************************
 	-- MIXINS
 *****************************/
 
@@ -11753,7 +11725,7 @@ h6 {
   border-radius: 4px;
   -webkit-box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
   box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
-  margin-bottom: 30px;
+  margin-bottom: 18px;
 }
 
 .sidebar-card .card-title,
@@ -11946,9 +11918,8 @@ h6 {
 
 .sidebar--single-product .sidebar-card.card-pricing .price,
 .sidebar--single-product .card-pricing.item-preview .price {
-  padding: 30px 0;
+  padding: 30px;
   text-align: center;
-  margin-bottom: 5px;
   -webkit-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
           box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
@@ -12040,7 +12011,7 @@ h6 {
 
 .sidebar--single-product .sidebar-card.card--pricing2 .purchase-button,
 .sidebar--single-product .card--pricing2.item-preview .purchase-button {
-  padding: 0  30px 30px;
+  padding: 0  30px 21px;
 }
 
 .sidebar--single-product .card-title {
@@ -12080,7 +12051,6 @@ h6 {
 
 .sidebar--single-product .card--metadata .rating {
   text-align: center;
-  padding-top: 28px;
 }
 
 .sidebar--single-product .card--product-infos {
@@ -12494,10 +12464,6 @@ h6 {
 	---BUTTON
 *****************************/
 
-/*****************************
-	-- THEME
-*****************************/
-
 .btn--round {
   border-radius: 100px;
 }
@@ -12756,17 +12722,13 @@ h6 {
 }
 
 /*****************************
-	-- THEME
-*****************************/
-
-/*****************************
 	--- PRODUCTS
 *****************************/
 
 /* GENERAL PRODUCT STYLE */
 
 .products {
-  padding: 30px 0;
+  padding: 45px 0;
 }
 
 .product {
@@ -13572,10 +13534,6 @@ h6 {
 	--- ACCORDION
 *****************************/
 
-/*****************************
-	-- THEME
-*****************************/
-
 .accordion .accordion__single,
 .accordion .panel-default,
 .panel-group .accordion__single,
@@ -13697,10 +13655,6 @@ h6 {
 	--- MODAL
 *****************************/
 
-/*****************************
-	-- THEME
-*****************************/
-
 .modal .modal-header {
   padding: 40px 30px 30px;
   display: block;
@@ -13774,10 +13728,6 @@ h6 {
 
 /*****************************
 	-- TABLE
-*****************************/
-
-/*****************************
-	-- THEME
 *****************************/
 
 .table_module .table_header {
@@ -13955,18 +13905,6 @@ h6 {
 
 /*****************************
 	-- TIMELINE
-*****************************/
-
-/*****************************
-	-- THEME
-*****************************/
-
-/*****************************
-	-- THEME
-*****************************/
-
-/*****************************
-	-- THEME
 *****************************/
 
 /*****************************
@@ -14925,10 +14863,6 @@ h6 {
 	-- TEAM
 *****************************/
 
-/*****************************
-	-- THEME
-*****************************/
-
 .team_area {
   background: #f6f7fb;
 }
@@ -15219,18 +15153,6 @@ h6 {
 .pricing.yellow:before {
   background: #feb71d;
 }
-
-/*****************************
-	-- THEME
-*****************************/
-
-/*****************************
-	-- THEME
-*****************************/
-
-/*****************************
-	-- THEME
-*****************************/
 
 /*****************************
 	-- MIXINS
@@ -16655,10 +16577,6 @@ h6 {
 }
 
 /*****************************
-	-- THEME
-*****************************/
-
-/*****************************
 	--- DATE PICKER
 *****************************/
 
@@ -16748,10 +16666,6 @@ div#ui-datepicker-div tbody tr td a:hover {
   color: #f64646;
 }
 
-/*****************************
-	-- THEME
-*****************************/
-
 .alert {
   padding: 18px 30px;
   border-radius: 3px;
@@ -16805,18 +16719,6 @@ div#ui-datepicker-div tbody tr td a:hover {
 .alert .close:hover {
   opacity: .5;
 }
-
-/*****************************
-	-- THEME
-*****************************/
-
-/*****************************
-	-- THEME
-*****************************/
-
-/*****************************
-	-- THEME
-*****************************/
 
 /*****************************
 	-- MIXINS
@@ -18723,7 +18625,8 @@ ul.nav-tabs.nav--tabs2 li a::before {
 
 .more-product {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .more-product a {
@@ -19866,7 +19769,7 @@ span.counter {
 }
 
 .item-preview .item__preview-thumb {
-  padding: 30px;
+  padding: 11px;
 }
 
 .item-preview .item__preview-thumb .thumb-slider {
@@ -19933,7 +19836,7 @@ span.counter {
 }
 
 .item-preview .prev-thumb {
-  padding-bottom: 30px;
+  padding-bottom: 4px;
 }
 
 .item-preview .item_social_share {
@@ -19970,10 +19873,11 @@ span.counter {
   box-shadow: 0 2px 4px rgba(108, 111, 115, 0.1);
   border-radius: 4px;
   background: #fff;
+  margin-bottom: 30px;
 }
 
 .item-info .tab-content-wrapper {
-  padding: 30px;
+  padding: 15px;
 }
 
 .item-info .tab-content {
@@ -20261,7 +20165,7 @@ span.counter {
 }
 
 .more_product_area .section-title h1 {
-  margin-bottom: 0;
+  margin-bottom: 5px;
   font-size: 30px;
 }
 
@@ -25100,10 +25004,6 @@ span.counter {
 	RESPONSIVE
 *****************************/
 
-/*****************************
-	-- THEME
-*****************************/
-
 /*this is responsive scss*/
 
 /* 992 TO 1199 */
@@ -26095,7 +25995,11 @@ span.counter {
 /* 767 */
 
 @media screen and (max-width: 767px) {
-  .footer-area {
+  .footer-big {
+    display: none;
+  }
+
+  .mini-footer {
     display: none;
   }
 
@@ -26106,10 +26010,6 @@ span.counter {
   .has_dropdown .dropdown {
     top: calc(100% + 20px);
     margin-left: -120px;
-  }
-
-  .section-title {
-    display: none;
   }
 
   .breadcrumb-area {
@@ -28117,5 +28017,11 @@ span.counter {
 
 .freelance-status {
   text-align: center;
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 10px;
+  margin-top: 5px;
 }
 

@@ -24,6 +24,7 @@
                 <div class="col-lg-4 col-md-2 col-4 mbl_noti">
                     @auth
                     <div class="author__notification_area mr-0">
+
                         <ul style="margin-top: 24px;">
                             <li class="has_dropdown py-0 pl-0 pr-2 ">
                                 <div class="icon_wrap">
@@ -31,7 +32,7 @@
                                     <span class="notification_count noti count_notification" id="count_notification">0</span>
                                 </div>
 
-                                <div class="dropdown dropdown--menu">
+                                <div class="dropdown notification--dropdown">
                                     <div class="dropdown_module_header">
                                         <h4>Notifications</h4>
                                         <a href="{{ route('notifications.all') }}">View All</a>
@@ -65,7 +66,7 @@
 
                             <li class="has_dropdown py-0 pr-0 pl-2">
                                 <div class="icon_wrap"> <span class="lnr lnr-envelope"></span> <span class="notification_count count_msg msg" id="count_msg">0</span> </div>
-                                <div class="dropdown dropdown--menu">
+                                <div class="dropdown messaging--dropdown">
                                     <div class="dropdown_module_header">
                                         <h4>Messages</h4> <a href="{{ route('messages.all') }}">View All</a>
                                     </div>
@@ -349,13 +350,22 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
-                                <li class="has_dropdown">
+                                <li class="">
                                     <a href="{{route('home')}}">HOME</a>
                                 </li>
-                                <li class="has_dropdown">
+                                <li class="">
                                     <a href="{{ route('search.livedish') }}">Search Dishes</a>
                                 </li>
-                                <li class="has_dropdown">
+                                <li>
+                                    <a href="{{route('search.dsp')}}">Delivery Services list</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('search.pp')}}">Pickers Point list</a>
+                                </li>
+                                <li>
+                                    <a href="">Help</a>
+                                </li>
+                                {{--<li class="has_dropdown">
                                     <a href="#">Dish categories</a>
                                     <div class="dropdown dropdown--menu">
                                         <ul id="cat_ul">
@@ -388,11 +398,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                </li>
-
-                                <li>
-                                    <a href="">Help</a>
-                                </li>
+                                </li>--}}
                             </ul>
                         </div>
                         <!-- navbar-collapse -->

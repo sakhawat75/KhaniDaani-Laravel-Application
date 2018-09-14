@@ -1,13 +1,9 @@
 @extends ('layouts.master')
 
-@section ('title', 'Single Dish')
-
+@section ('title', 'Dish Details')
 
 @section ('content')
 
-    <!--================================
-        START BREADCRUMB AREA
-    =================================-->
     <section class="breadcrumb-area">
       <div class="container">
         <div class="row">
@@ -142,7 +138,7 @@
                   <ul class="nav nav-tabs nav--tabs2">
                     <li>
                       <a href="#product-details" class="active" aria-controls="product-details" role="tab"
-                         data-toggle="tab">Item Details
+                         data-toggle="tab">Details Info
                       </a>
                     </li>
                     <li>
@@ -189,7 +185,7 @@
                               <div class="clearfix">
                                 <div class="pull-left">
                                   <div class="media-heading">
-                                    <a href="author.html">
+                                    <a href="">
                                       <h4>{{ $rating->order->buyer_fullname }}</h4>
                                     </a>
                                     <span>{{ $rating->created_at->diffForHumans() }}</span>
@@ -321,8 +317,8 @@
                     </ul>
                     <!-- end /.media-list -->
 
-                    <div class="pagination-area pagination-area2">
-                      {{-- <nav class="navigation pagination " role="navigation">
+                    {{--<div class="pagination-area pagination-area2">
+                       <nav class="navigation pagination " role="navigation">
                         <div class="nav-links">
                           <a class="page-numbers current" href="#">1</a>
                           <a class="page-numbers" href="#">2</a>
@@ -331,10 +327,10 @@
                             <span class="lnr lnr-arrow-right"></span>
                           </a>
                         </div>
-                      </nav> --}}
+                      </nav>
 
                       {{ $ratings->links() }}
-                    </div>
+                    </div>--}}
                     <!-- end /.comment pagination area -->
                   </div>
                   <!-- end /.comments -->
@@ -351,10 +347,8 @@
               <div class="sidebar-card card-pricing card--pricing2">
                 <div class="price">
                   <h1>
-                    <sup>৳</sup>
-                    <span>{{ $dish->dish_price }}</span>
+                    ৳<span>{{ $dish->dish_price }}</span>
                   </h1>
-                  <br>
                 </div>
                 <div class="sidebar-card card--metadata">
                   <ul class="data">
@@ -405,22 +399,17 @@
                       <span class="lnr lnr-heart scolor"></span>Favorites</p>
                     <span>0</span>
                   </li>
-                  {{-- <li>
+                   <li>
                     <p>
-                      <span class="lnr lnr-bubble mcolor3"></span>Comments</p>
-                    <span>0</span>
-                  </li> --}}
-                </ul>
-
-
-                <div class="rating product--rating">
+                      <span class="lnr lnr-bubble mcolor3"></span>Rating</p>
+                    <span><div class="rating product--rating s-dish-rating">
                   <ul>
                     @for ($i=1; $i <= $avg_rating; $i++)
                       <li>
                         <span class="fa fa-star"></span>
                       </li>
                     @endfor
-                    
+
                     @if($half_star)
                       <li>
                         <span class="fa fa-star-half-o"></span>
@@ -438,12 +427,13 @@
                         </li>
                       @endfor
                     @endif
-                    
 
                   </ul>
-                  <span class="rating__count">( {{count($ratings)}} Ratings )</span>
-                </div>
-                <!-- end /.rating -->
+                  <span class="rating__count">( {{count($ratings)}})</span>
+                </div> </span>
+                  </li>
+                </ul>
+
               </div>
               <!-- end /.sidebar-card -->
               

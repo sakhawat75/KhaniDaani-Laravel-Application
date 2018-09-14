@@ -1,13 +1,9 @@
-// this file contains the style for sidebar and the content in sidebar
-/*****************************
-	-- PRODUCT SIDEBAR
-*****************************/
 @import "../common/mixins";
 .sidebar-card{
   background: #fff;
   border-radius: 4px;
   @include cardShadow;
-  margin-bottom: 30px;
+  margin-bottom: 18px;
   .card-title{
       padding:30px;
       border-bottom: 1px solid $borderColor;
@@ -81,9 +77,8 @@
     padding: 20px;
     &.card-pricing{
       .price{
-        padding: 30px 0;
+        padding: 30px;
         text-align: center;
-        margin-bottom: 5px;
         box-shadow: 0 4px 30px transparentize(#000,.9);
         h1{
           font-weight: 500;
@@ -142,7 +137,7 @@
         }
       }
       .purchase-button{
-        padding: 0  30px 30px;
+        padding: 0  30px 21px;
       }
     }
   }
@@ -181,7 +176,6 @@
     }
     .rating{
       text-align: center;
-      padding-top: 28px;
     }
   }
 
