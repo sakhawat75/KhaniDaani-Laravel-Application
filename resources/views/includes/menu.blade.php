@@ -18,58 +18,60 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <!-- mobile notification area -->
 
                 <div class="col-lg-4 col-md-2 col-4 mbl_noti">
+                    @auth
                     <div class="author__notification_area mr-0">
                         <ul style="margin-top: 24px;">
                             <li class="has_dropdown py-0 pl-0 pr-2 ">
                                 <div class="icon_wrap">
                                     <span class="lnr lnr-alarm"></span>
-                                    <span class="notification_count noti" id="count_notification">0</span>
+                                    <span class="notification_count noti count_notification" id="count_notification">0</span>
                                 </div>
 
                                 <div class="dropdown dropdown--menu">
                                     <div class="dropdown_module_header">
                                         <h4>Notifications</h4>
-                                        <a href="http://127.0.0.1:8000/notifications/all">View All</a>
+                                        <a href="{{ route('notifications.all') }}">View All</a>
                                     </div>
-                                    <div id="noti_dynamic"> 
-                                    
-                                    <a href="order-page">
-                                                <div class="notifications_module">
-                                                    <div class="notification">
-                                                        <div class="notification__info">
-                                                            <div class="info_avatar">
-                                                                <img src="images/notification_head4.png" alt="">
-                                                            </div>
-                                                            <div class="info">
-                                                                <p><a href="">Sakhawat</a>
-                                                                    <Span>Ordered your dish</Span>
-                                                                    <a href="dish">Indian Butter chiken</a>
-                                                                </p>
-                                                                <p class="time">Just now</p>
-                                                            </div>
+                                    <div id="noti_dynamic" class="noti_dynamic">
+
+                                        {{--<a href="order-page">
+                                            <div class="notifications_module">
+                                                <div class="notification">
+                                                    <div class="notification__info">
+                                                        <div class="info_avatar">
+                                                            <img src="images/notification_head4.png" alt="">
+                                                        </div>
+                                                        <div class="info">
+                                                            <p><a href="">Sakhawat</a>
+                                                                <Span>Ordered your dish</Span>
+                                                                <a href="dish">Indian Butter chiken</a>
+                                                            </p>
+                                                            <p class="time">Just now</p>
                                                         </div>
                                                     </div>
-                                                    <!-- end /.notificationsController -->
                                                 </div>
-                                            </a>
+                                                <!-- end /.notificationsController -->
+                                            </div>
+                                        </a>--}}
+
                                     </div>
                                     <!-- end /.dropdown -->
                                 </div>
                             </li>
-                            
+
                             <li class="has_dropdown py-0 pr-0 pl-2">
-                                <div class="icon_wrap"> <span class="lnr lnr-envelope"></span> <span class="notification_count msg" id="count_msg">0</span> </div>
+                                <div class="icon_wrap"> <span class="lnr lnr-envelope"></span> <span class="notification_count count_msg msg" id="count_msg">0</span> </div>
                                 <div class="dropdown dropdown--menu">
                                     <div class="dropdown_module_header">
-                                        <h4>Messages</h4> <a href="http://127.0.0.1:8000/messages/all">View All</a>
+                                        <h4>Messages</h4> <a href="{{ route('messages.all') }}">View All</a>
                                     </div>
 
                                     <div class="msg_dynamic">
-                                        <div class="messages " data-message_id="1" data-sender_id="2" data-recipient_id="2" id="all_msg_prev_1">
+                                        {{--<div class="messages " data-message_id="1" data-sender_id="2" data-recipient_id="2" id="all_msg_prev_1">
                                             <a href="#" class="message recent">
                                                 <div class="message__actions_avatar">
                                                     <div class="avatar"> <img src="http://127.0.0.1:8000/storage/images/profile_image/PP_1536649201.jpg" alt="sender image" id="msg_pi_1">
@@ -88,13 +90,14 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                        </div>
+                                        </div>--}}
                                     </div>
                                     <!-- add upto 5 massages in the dropdown menue -->
                                 </div>
                             </li>
                         </ul>
                     </div>
+                    @endauth
                 </div>
 
 
@@ -113,7 +116,7 @@
                                 <li class="has_dropdown">
                                     <div class="icon_wrap">
                                         <span class="lnr lnr-alarm"></span>
-                                        <span class="notification_count noti" id="count_notification">0</span>
+                                        <span class="notification_count noti count_notification" id="count_notification">0</span>
                                     </div>
 
                                     <div class="dropdown notification--dropdown">
@@ -122,35 +125,14 @@
                                             <a href="{{ route('notifications.all') }}">View All</a>
                                         </div>
 
-                                        <div id="noti_dynamic">
-                                            {{--
-                                            <!-- after order chef recieve this notification  -->
-                                            <a href="order-page">
-                                                <div class="notifications_module">
-                                                    <div class="notification">
-                                                        <div class="notification__info">
-                                                            <div class="info_avatar">
-                                                                <img src="images/notification_head4.png" alt="">
-                                                            </div>
-                                                            <div class="info">
-                                                                <p>
-                                                                    <a href="">Deliverer</a>
-                                                                    <span>recive your dish and he is on his way </span>
-                                                                    <a href="dish">Indian Butter chiken</a>
-                                                                </p>
-                                                                <p class="time">Just now</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end /.notificationsController -->
-                                                </div>
-                                            </a>--}}
+                                        <div id="noti_dynamic" class="noti_dynamic">
+
                                         </div>
                                         <!-- end /.dropdown -->
                                     </div>
                                 </li>
                                 <li class="has_dropdown">
-                                    <div class="icon_wrap"> <span class="lnr lnr-envelope"></span> <span class="notification_count msg" id="count_msg">0</span> </div>
+                                    <div class="icon_wrap"> <span class="lnr lnr-envelope"></span> <span class="notification_count msg count_msg" id="count_msg">0</span> </div>
                                     <div class="dropdown messaging--dropdown">
                                         <div class="dropdown_module_header">
                                             <h4>Messages</h4> <a href="{{route('messages.all')}}">View All</a>
@@ -159,28 +141,6 @@
                                         <div class="msg_dynamic">
 
                                         </div>
-
-                                        <!-- add upto 5 massages in the dropdown menue -->
-
-                                        {{-- 
-                                        <div class="messages">
-                                            <a href="#" class="message recent">
-                                                <div class="message__actions_avatar">
-                                                    <div class="avatar"> <img src="{{ asset('/images/notification_head4.png')}}" alt=""> </div>
-                                                </div>
-                                                <!-- add upto 5 massages in the dropdown menue -->
-                                                <div class="message_data">
-                                                    <div class="name_time">
-                                                        <div class="name">
-                                                            <p>KhaniDaani</p> <span class="lnr lnr-envelope"></span>
-                                                        </div> <span class="time">Just now</span>
-                                                        <p>Hello John Smith! Nunc placerat mi ...</p>
-                                                    </div>
-                                                </div>
-                                                <!-- end /.message_data -->
-                                            </a>
-                                            <!-- end /.message -->
-                                        </div> --}}
                                     </div>
                                 </li>
                             </ul>
@@ -523,13 +483,13 @@
                 }
 
 
-                $('#noti_dynamic').append(template(notify));
+                $('.noti_dynamic').append(template(notify));
                 if (notify.read_at == null) {
                     unread_count++;
                 }
 
             });
-            $("#count_notification").text(unread_count);
+            $(".count_notification").text(unread_count);
         };
 
         @auth
@@ -540,7 +500,7 @@
                 url: "{{ route('api.all_notifications') }}",
                 cached: false
             }).done(function(res) {
-                $('#noti_dynamic').html(' ');
+                $('.noti_dynamic').html(' ');
 
                 renderNotification(res);
             });
@@ -587,14 +547,9 @@
                 $('.msg_dynamic').append(msg_template(notify));
 
                 _.each(notify.mb, function(m_body) {
-                    if ({
-                            {
-                                auth() - > id()
-                            }
-                        } != m_body.sender_id) {
+                    if ( {{ auth() -> id() }} != m_body.sender_id) {
                         if (m_body.read_at == null) {
                             unread_count_msg++;
-
                         }
                     }
 
@@ -602,7 +557,7 @@
                 });
 
             });
-            $("#count_msg").text(unread_count_msg);
+            $(".count_msg").text(unread_count_msg);
         };
 
 
