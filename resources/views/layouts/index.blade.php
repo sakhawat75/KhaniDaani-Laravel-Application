@@ -111,7 +111,7 @@
                 <!-- end /.featured__preview-img -->
                 <div class="featured__product-description">
                   <div class="product-desc desc--featured">
-                    <a href="{{ route('home')}}" class="product_title">
+                    <a href="{{ route('dishes.show', ['id' => $fd->dish->id])}}" class="product_title">
                       <h4>{{ $fd->dish->dish_name }}</h4>
                     </a>
                     <ul class="titlebtm">
@@ -120,7 +120,7 @@
                              src="{{ route('home') }}/storage/images/profile_image/{{ $fd->dish->profile->profile_image }}"
                              alt="author image">
                         <p>
-                          <a href="#">{{ $fd->dish->profile->user_name }}</a>
+                          <a href="{{ route('profile.show', ['profile' => $fd->dish->profile->id]) }}">{{ $fd->dish->profile->user_name }}</a>
                         </p>
                       </li>
                     </ul>

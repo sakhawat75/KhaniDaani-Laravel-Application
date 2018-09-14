@@ -50,7 +50,7 @@ class PickersPointController extends Controller
             'charge' => 'required|integer|min:10|max:50',
             'address' => 'required|max:100',
             'address_hint' => 'required|max:50',
-            'phone' => 'required|numeric|size:11',
+            'phone' => 'required',
 
         ]);
 
@@ -71,7 +71,7 @@ class PickersPointController extends Controller
 
 
 
-        return redirect()->back()->with('success', 'New PickersPoint is Created Successfully');
+        return redirect()->route('profile.pickerspoint', ['profile' => $user->id])->with('success', 'New PickersPoint is Created Successfully');
 
     }
 

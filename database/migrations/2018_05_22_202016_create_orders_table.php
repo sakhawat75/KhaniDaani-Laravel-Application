@@ -22,9 +22,12 @@ class CreateOrdersTable extends Migration
 	        $table->integer('dish_id');
 	        $table->integer('dish_user_id');
 	        $table->string('dish_name');
-	        $table->integer('dsp_id');
-	        $table->integer('dsp_user_id');
-	        $table->double('dsp_service_charge');
+	        $table->integer('dsp_id')->nullable();
+	        $table->integer('pp_id')->nullable();
+	        $table->integer('dsp_user_id')->nullable();
+	        $table->integer('pp_user_id')->nullable();
+	        $table->double('dsp_service_charge')->nullable();
+	        $table->double('pp_service_charge')->nullable();
 	        $table->double('dish_price');
 	        $table->double('khanidaani_charge');
 	        $table->double('total_price');
@@ -32,7 +35,8 @@ class CreateOrdersTable extends Migration
 	        $table->integer('preparation_time');
 	        $table->text('delivery_address');
 	        $table->text('delivery_address_hint');
-	        $table->string('payment_type');
+	        $table->integer('payment_type');
+	        // 1 = khanidaani balance, 2 = bKash
 	        $table->integer('delivery_time');
 	        $table->integer('rating')->nullable();
 	        $table->boolean('chef_is_dish_ready')->default(0);

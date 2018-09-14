@@ -22987,6 +22987,7 @@ span.counter {
 
 .payment_options ul li .custom-radio {
   display: inline-block;
+  width: 100%;
 }
 
 .payment_options ul li .custom-radio label,

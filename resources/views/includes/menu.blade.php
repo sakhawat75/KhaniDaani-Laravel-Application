@@ -270,7 +270,7 @@
                 <a href="{{ route('profile.show', ['profile' => auth()->id()]) }}" class="">
                     {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
                 </a></p>
-                <p class="ammount">৳00.00</p>
+                <p class="ammount">৳ {{ auth()->user()->profile->balance }}</p>
             </div>
                   
             <div class="dropdown dropdown--author">
