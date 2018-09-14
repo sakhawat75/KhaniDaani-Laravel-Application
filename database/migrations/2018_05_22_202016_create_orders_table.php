@@ -35,7 +35,8 @@ class CreateOrdersTable extends Migration
 	        $table->integer('preparation_time');
 	        $table->text('delivery_address');
 	        $table->text('delivery_address_hint');
-	        $table->string('payment_type');
+	        $table->integer('payment_type');
+	        // 1 = khanidaani balance, 2 = bKash
 	        $table->integer('delivery_time');
 	        $table->integer('rating')->nullable();
 	        $table->boolean('chef_is_dish_ready')->default(0);

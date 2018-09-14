@@ -72,7 +72,7 @@ class OrderController extends Controller
 			return redirect()->back();
 		}
 
-		$user = User::find(auth()->id());
+		$user = auth()->user();
 		$dish = Dish::find($request->input('dish_id'));
 		$dsp = DeliveryService::find($request->input('dsp_id'));
 
@@ -97,9 +97,7 @@ class OrderController extends Controller
             $order->dsp_service_charge = $dsp->service_charge;
             $order->total_price = $dsp->service_charge + $dish->dish_price + $after_percentage;
             $order->delivery_time = $dsp->max_delivery_time;
-        }
-
-		if($pp != null) {
+        } else {
             $order->pp_id = $pp->id;
             $order->pp_user_id = $pp->user->id;
             $order->pp_service_charge = $pp->charge;
@@ -114,9 +112,17 @@ class OrderController extends Controller
 		$order->delivery_address_hint = $request->input('delivery_address_hint');
 		$order->payment_type = $request->input('payment_type');
 
-		$order->save();
+        if($order->payment_type == 1) {
+            if($user->profile->balance < $order->total_price) {
+                return redirect()->back()->withErrors(['Error', 'You dont have sufficient KhaniDaani Balance']);
+            }
+            $user->profile->balance = $user->profile->balance - $order->total_price;
+            $user->profile->save();
+        }
 
-		$user->notify( new NotifyOrder( $order, 'user'));
+        $order->save();
+
+        $user->notify( new NotifyOrder( $order, 'user'));
 		$dish->profile->user->notify(new NotifyOrder( $order, 'chef'));
 
         if($dsp != null) {

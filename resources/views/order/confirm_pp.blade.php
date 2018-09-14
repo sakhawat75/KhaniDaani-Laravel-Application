@@ -39,6 +39,8 @@
     <section class="dashboard-area">
         <div class="dashboard_contents">
             <div class="container">
+                @include('includes.error_messeages')
+                @include('includes.success_message')
                 <form action="{{ route('order.store') }}" class="setting_form" method="get">
                     {{ csrf_field() }}
 
@@ -174,7 +176,7 @@
                                     <li>
                                         <div class="custom-radio">
                                             @if (auth()->user()->profile->balance > $total)
-                                                <input type="radio" id="opt3" class="" name="payment_type" VALUE="khanidaani_balance">
+                                                <input type="radio" id="opt3" class="" name="payment_type" VALUE="1">
                                                 <label for="opt3">
                                                     <span class="circle"></span>Khanidaani Balance</label>
                                                 <p>Balance
@@ -185,7 +187,7 @@
                                                     <p>({{ auth()->user()->profile->balance }} - {{ $total }}) = <span class="bold">৳{{ auth()->user()->profile->balance - $total}}</span> </p>
                                                 </div>
                                             @else
-                                                <input type="radio" id="opt3" class="" name="payment_type" VALUE="khanidaani_balance" disabled>
+                                                <input type="radio" id="opt3" class="" name="payment_type" VALUE="1" disabled>
                                                 <label for="opt3">
                                                     <span class="circle"></span>Khanidaani Balance</label>
                                                 <p>Balance
@@ -200,7 +202,7 @@
                                     </li>
                                     <li>
                                         <div class="custom-radio">
-                                            <input type="radio" id="opt2" class="" name="payment_type" value="bkash"
+                                            <input type="radio" id="opt2" class="" name="payment_type" value="2"
                                                    checked>
                                             <label for="opt2">
                                                 <span class="circle"></span>Bkash</label>
@@ -217,7 +219,7 @@
                                     <li>
                                         <div class="custom-radio">
                                             <input type="radio" id="opt1" class="" name="payment_type"
-                                                   value="credit_card">
+                                                   value="3">
                                             <label for="opt1">
                                                 <span class="circle"></span>Credit Card</label>
                                         </div>
