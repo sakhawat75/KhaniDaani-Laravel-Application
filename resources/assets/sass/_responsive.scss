@@ -915,6 +915,10 @@ $ipad: 992px;
 /* 767 */
 @media  screen and (max-width: $tablet - 1) {
 
+  .footer-area{
+    display: none;
+  }
+
   .dashboard_menu_area .dashboard_menu{
     display: none;
   }

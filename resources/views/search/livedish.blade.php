@@ -14,7 +14,7 @@
           <div class="search">
             <div class="search__title">
               <h3>
-                Total <span>5</span> live dishes for our KhaniDaani community</h3></div>
+                Total <span>5</span> Dishes only for you.</h3></div>
             <div class="search__field">
               <form action="{{ route('search.livedish') }}" method="get">
                 <div class="field-wrapper">
@@ -26,7 +26,7 @@
             <div class="breadcrumb">
               <ul>
                 <li>
-                  <a href="#">Home</a>
+                  <a href="{{route('home')}}">Home</a>
                 </li>
               </ul>
             </div>
@@ -140,11 +140,11 @@
 <!--================================
     FOUND DISH
 =================================-->
-<section class="products section--padding2">
+<section class="products">
     <div class="container">
         <div class="row">
 
-            <div class="col-lg-4">
+            <div class="col-md-4">
                 <aside class="sidebar product--sidebar">
 
                     <div class="sidebar-card card--slider">
@@ -231,7 +231,7 @@
 
             </div>
 
-            <div class="col-lg-8">
+            <div class="col-md-8">
 
                 <div class="container scroll" >
                     <!-- start .row -->
