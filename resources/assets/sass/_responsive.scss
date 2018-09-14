@@ -915,7 +915,10 @@ $ipad: 992px;
 /* 767 */
 @media  screen and (max-width: $tablet - 1) {
 
-  .footer-area{
+  .footer-big{
+    display: none;
+  }
+  .mini-footer{
     display: none;
   }
 
@@ -927,9 +930,6 @@ $ipad: 992px;
     top: calc(100% + 20px);
     margin-left: -120px;}
 
-  .section-title{
-    display: none;
-  }
   .breadcrumb-area{
     display: none;
   }

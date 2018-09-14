@@ -611,7 +611,8 @@
 }
 .more-product{
   text-align: center;
-  margin-top: 30px;
+  margin-top: 5px;
+  margin-bottom: 10px;
   a{
   	transition: $transition;
   	&:hover{
@@ -1582,7 +1583,7 @@ span.counter {
 	}
   @extend .sidebar-card;
   .item__preview-thumb{
-    padding: 30px;
+    padding: 11px;
     .thumb-slider{
       width: calc(100% - 164px);
       @include vertically_middle;
@@ -1634,7 +1635,7 @@ span.counter {
   }
 
   .prev-thumb{
-    padding-bottom: 30px;
+    padding-bottom: 4px;
   }
 
   .item_social_share {
@@ -1670,8 +1671,9 @@ span.counter {
   @include cardShadow;
   border-radius: 4px;
   background: #fff;
+  margin-bottom: 30px;
   .tab-content-wrapper{
-      padding: 30px;
+      padding: 15px;
   }
   .tab-content {
     margin-top: 5px;
@@ -1937,7 +1939,7 @@ span.counter {
 .more_product_area{
   background: $bgcolor2;
   .section-title h1{
-    margin-bottom: 0;
+    margin-bottom: 5px;
     font-size: 30px;
   }
 }
@@ -6084,3 +6086,10 @@ span.counter {
 .freelance-status{
 text-align: center;
 }
+
+.section-title {
+  text-align: center;
+  padding-bottom: 10px;
+  margin-top: 5px;
+}
+
