@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+    public function dsp() {
+        return view('search.dsp');
+    }
+
+    public function pp() {
+        return view('search.pp');
+    }
+
     public function livedish(Request $request) {
         $dishes = Dish::paginate(8);
         $categories = Category::all();

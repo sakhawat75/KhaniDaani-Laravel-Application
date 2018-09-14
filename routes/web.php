@@ -45,6 +45,9 @@ Route::get('/profile/{profile}/edit', 'ProfileController@edit')->name('profile.e
 Route::put( '/profile/{profile}', 'ProfileController@update')->name('profile.update');
 
 
+Route::get( '/search/dsp', 'SearchController@dsp')->name( 'search.dsp');
+Route::get( '/search/pp', 'SearchController@pp')->name( 'search.pp');
+
 Route::get( '/search/livedish', 'SearchController@livedish')->name( 'search.livedish');
 Route::post( '/search/livedish', 'SearchController@search_livedish')->name( 'search.livedish');
 
