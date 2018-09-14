@@ -112,6 +112,7 @@
             <div class="filter__option filter--select">
               <div class="select-wrap">
                 <select name="dish_category" id="dish_category" class="text_field">
+                    <option value="" selected>Select Category</option>
                   @foreach($categories as $category)
                     <option value="{{ $category->name }}">{{ $category->name }}</option>
                   @endforeach
@@ -325,8 +326,9 @@
 
 
           @if($request->has('keyword'))
-                keyword = '{{ $request->input('keyword')  }}';
-                $("#onpage_search").val(keyword);
+                var kw = '{{ $request->input('keyword')  }}';
+                kw.trim();
+                $("#onpage_search").val(kw);
                 callAjax();
                   $('html, body').animate({
                       scrollTop: $("#filter-area").offset().top
