@@ -7,7 +7,7 @@
         <span class="line"></span>
         <div class="notification__info">
             <div class="info_avatar">
-                <img src="{{ asset('/images/notification_head4.png')}}" alt="" id="all_noti_pi_<%= notify.id %>" class="img_test">
+                <img src="{{ asset('/images/notification_head4.png')}}" alt="" class="all_noti_pi_<%= notify.id %> img_test">
 
             <%
               $(document).ready(function () {
@@ -19,7 +19,7 @@
                   type: "GET",
                   dataType: "json",
                 }).done( function (json) {
-                  var selector = "#all_noti_pi_" + notify.id;
+                  var selector = ".all_noti_pi_" + notify.id;
                   //console.log("Selector: " + selector);
                     $(selector).attr('src', '{{ URL::to('/') }}/storage/images/profile_image/'+json);
                    

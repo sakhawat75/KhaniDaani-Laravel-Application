@@ -369,6 +369,17 @@ a.btn_filter#grid{
     margin-bottom: 20px;
 }
 
-
-
+.author-card .author-infos .author-badges ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: justify;
+    justify-content: center;
+}
+.author-card .author-infos .author-badges ul li {
+    margin: 0 10px 10px 0px;
+}
 

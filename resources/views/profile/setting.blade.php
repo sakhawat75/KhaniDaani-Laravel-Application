@@ -95,10 +95,11 @@
                         <input type="text" id="prohead" class="text_field" placeholder="Ex: House No, Road no, Block" name="address" value="{{ $profile->address }}">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group max-length">
                       <label for="prohead">Adress Hint</label>
 
-                      <input type="text" id="prohead" class="text_field" placeholder="Noticeable hint for delivery purpose" name="address_hint" value="{{ $profile->address_hint }}">
+
+                      <input type="text" class="text_field" placeholder="min 20 and max 1000 character" maxlength="1000" minlength="20" name="address_hint" value="{{ $profile->address_hint }}">
                     </div>
 
                   </div>
@@ -133,9 +134,9 @@
                     </div>
                     <br>
 
-                    <div class="form-group">
+                    <div class="form-group max-length">
                       <h5 class="bold">Profile Description</h5> <br>
-                      <textarea name="description" id="article-ckeditor" class="text_field"
+                      <textarea name="description" id="article-ckeditor" class="text_field" maxlength="2000" minlength="10"
                       @if(empty($profile->description))
                         {!! "placeholder='Short brief about yourself or your account...'" !!}
                               @endif

@@ -184,7 +184,7 @@ $("#areas").trigger('change');
 $('div.max-length').maxlength();
 
 // To add ck-editor in textarea
-// CKEDITOR.replace('article-ckeditor');
+CKEDITOR.replace('article-ckeditor');
 
 /*
 $('ul.pagination').hide();

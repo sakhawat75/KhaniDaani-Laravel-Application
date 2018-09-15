@@ -453,42 +453,6 @@
     ===============================================-->
 
 
-    <!-- Modal for sending message -->
-    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="messageModalLabel">Message Chef</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
-          <div class="modal-body">
-            <form action="{{ route('messages.store_with_auth') }}" method="post" id="send_msg">
-              @csrf
-              <input type="hidden" name="sender_id" value="{{ auth()->id() }}">
-              <input type="hidden" name="recipient_id" value="{{ $dish->profile_id }}">
-
-              <div class="form-group">
-                <label for="msgText">Type your message Below</label>
-                <textarea class="form-control" id="msgText" placeholder="I want to buy your dish" name="body"></textarea>
-              </div>
-
-              {{-- <button type="submit" id="submit-form" class="d-none">send</button> --}}
-
-            </form>
-          </div>
-
-          <div class="modal-footer">
-            {{-- <label for="submit-form" tabindex="0"  class="btn btn-primary px-3 py-1">Send</label> --}}
-            <button type="button" class="btn btn-primary px-3 py-1" form="send_msg" id="submit-form">Send</button>
-
-            <button type="button" class="btn btn-secondary px-3 py-1" data-dismiss="modal">Cancel</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div id="snackbar">Snackbar</div>
 @endsection
@@ -505,15 +469,6 @@
 
 <script type="text/javascript">
   $(document).ready( function () {
-    //snackbar
-    function snackbar($msg) {
-        $('#snackbar').html($msg);
-        $('#snackbar').toggleClass('show');
-        setTimeout(function () {
-            $('#snackbar').removeClass('show');
-        }, 1600);
-    }
-
 
     //messaging
     var msg_template = _.template(
@@ -559,104 +514,6 @@
             });
     }
 
-    //send message
-    $('#submit-form').click(function(e) {
-      e.preventDefault();
-      $("#messageModal").modal('hide');
-      var body = $('#msgText').val();
-      $('#msgText').val(' ');
-
-      @auth
-      $.ajax({
-        url: '{{ route('messages.store') }}',
-        method: "POST",
-        data: {
-          '_token': '{{ csrf_token() }}',
-          'sender_id': {{ auth()->id() }},
-          'recipient_id': {{ $dish->profile_id }},
-          'body': body,
-        },
-      }).done( function(data) {
-          console.log("data: " + data);
-          snackbar('Message Sent Successfully');
-          loadMessages();
-
-      });
-      @else
-        snackbar('Please log in first to send message');
-      @endauth
-    });
   });
 </script>
-
-@endpush
-
-@push ('head-css')
-  <style type="text/css">
-    #snackbar {
-        visibility: hidden;
-        min-width: 250px;
-        margin-left: -125px;
-        background-color: #333;
-        color: #fff;
-        text-align: center;
-        border-radius: 2px;
-        padding: 16px;
-        position: fixed;
-        z-index: 1;
-        left: 50%;
-        bottom: 30px;
-        font-size: 17px;
-      }
-
-      #snackbar.show {
-        visibility: visible;
-        -webkit-animation: fadein 0.3s, fadeout 0.3s 1.3s;
-        animation: fadein 0.3s, fadeout 0.3s 1.3s;
-      }
-
-      @-webkit-keyframes fadein {
-        from {
-          bottom: 0;
-          opacity: 0;
-        }
-        to {
-          bottom: 30px;
-          opacity: 1;
-        }
-      }
-
-      @keyframes fadein {
-        from {
-          bottom: 0;
-          opacity: 0;
-        }
-        to {
-          bottom: 30px;
-          opacity: 1;
-        }
-      }
-
-      @-webkit-keyframes fadeout {
-        from {
-          bottom: 30px;
-          opacity: 1;
-        }
-        to {
-          bottom: 0;
-          opacity: 0;
-        }
-      }
-
-      @keyframes fadeout {
-        from {
-          bottom: 30px;
-          opacity: 1;
-        }
-        to {
-          bottom: 0;
-          opacity: 0;
-        }
-      }
-  </style>
 @endpush

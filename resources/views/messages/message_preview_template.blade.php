@@ -28,7 +28,7 @@
         type: "GET",
         dataType: "json",
       }).done( function (json) {
-        var selector = "#msg_pi_" + notify.id;
+        var selector = ".msg_pi_" + notify.id;
           {{-- console.log("Selector: " + selector); --}}
           $(selector).attr('src', '{{ URL::to('/') }}/storage/images/profile_image/'+json);
          
@@ -53,7 +53,7 @@
       <% } %>" data-message_id="<%= notify.id %>" data-sender_id="<%= notify.sender_id %>" data-recipient_id="<%= notify.recipient_id %>" id="all_msg_prev_<%= notify.id %>">
       <a href="#" class="message recent">
           <div class="message__actions_avatar">
-              <div class="avatar"> <img src="{{ asset('/images/notification_head4.png')}}" alt="sender image" id="msg_pi_<%= notify.id %>">
+              <div class="avatar"> <img src="{{ asset('/images/notification_head4.png')}}" alt="sender image" class="msg_pi_<%= notify.id %>">
 
               </div>
           </div>
