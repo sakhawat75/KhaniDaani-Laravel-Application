@@ -433,48 +433,11 @@
                 </div> </span>
                   </li>
                 </ul>
-
               </div>
               <!-- end /.sidebar-card -->
-              
-              <div class="author-card sidebar-card">
-              <div class="author-infos">
-                <div class="author_avatar">
-                  <img src="{{ route('home') }}/storage/images/profile_image/{{ $dish->profile->profile_image }}"
-                       alt="Presenting the broken author avatar :D">
-                </div>
-
-                <div class="author">
-                  <h4>
-                    <a href="{{ route('profile.show', ['profile' => $dish->profile->id]) }}">
-                      {{ $dish->profile->user_name }}
-                    </a>
-                  </h4>
-                  <p>Joined {{ $dish->profile->created_at->toFormattedDateString() }}</p>
-                </div>
-                <div class="author-badges">
-                    <div class="author-btn"> <button class="btn btn--md btn--round" data-toggle="modal" data-target="#messageModal"
-                      @if(auth()->id() == $profile->user_id)
-                      aria-disabled="true" disabled="disabled"
-
-                        @endif
-                      >Message Chef</button> </div>
-                </div>
-
-                
-
-
-                <!-- end /.author -->
-              </div>
-              <!-- end /.author-infos -->
-            <div class="freelance-status">
-                <div class="custom-radio">
-                    <input type="radio" id="opt1" class="" name="filter_opt" checked>
-                    <label for="opt1">
-                    <span class="circle"></span>Khanidaani Chef</label>
-                </div>
-            </div>
-        </div>
+              <aside class="sidebar sidebar_author" >
+                @include( 'includes.author_info' )
+              </aside>
               <!-- end /.author-card -->
             </aside>
             <!-- end /.aside -->

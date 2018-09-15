@@ -20211,7 +20211,7 @@ span.counter {
 
 .author-profile-area {
   background: #eff1f5;
-  padding: 70px 0;
+  padding: 50px 0;
 }
 
 .author-profile-area .product-title-area,
@@ -21501,7 +21501,7 @@ span.counter {
 .shortcode_modules .modules__content,
 .upload_modules .modules__content,
 .withdraw_module .modules__content {
-  padding: 30px 30px 40px;
+  padding: 30px 30px 20px;
 }
 
 .credit_modules .modules__content .subtitle,
