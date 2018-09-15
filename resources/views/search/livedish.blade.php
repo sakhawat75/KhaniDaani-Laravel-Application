@@ -376,7 +376,7 @@
 
 
           //Cities
-           $("#city").off('change');
+          $("#city").off('change');
 
           $("#city").on('change', function (e) {
               // console.log(e);

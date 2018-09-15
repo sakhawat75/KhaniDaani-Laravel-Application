@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 class SearchController extends Controller
 {
     public function dsp() {
-        return view('search.dsp');
+        $cities = City::all();
+        return view('search.dsp', compact('cities'));
     }
 
     public function pp() {

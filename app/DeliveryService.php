@@ -17,8 +17,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $service_hours_start
  * @property string $service_hours_end
  * @property float $service_charge
- * @property int $min_delivery_time
- * @property int $max_delivery_time
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read \App\User $user
@@ -42,6 +40,14 @@ class DeliveryService extends Model
     protected $fillable = ['service_title', 'service_description', 'service_area', 'service_charge', 'min_delivery_time', 'max_delivery_time', 'service_hours_start', 'service_hours_end'];
 
     public function user() {
-	 	return $this->belongsTo( User::class);
+	 	return $this->belongsTo( User::class, 'user_id');
+	}
+
+	public function profile() {
+	 	return $this->belongsTo( Profile::class, 'user_id', 'user_id');
+	}
+
+	public function scopeProfile($query) {
+
 	}
 }
