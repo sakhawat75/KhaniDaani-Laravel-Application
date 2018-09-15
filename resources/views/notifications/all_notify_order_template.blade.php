@@ -68,7 +68,7 @@
                     <%= notify.data.order.dish_name %>
                   </a></div>
                   <br>
-                  What about unique order id {eg. 182082001} it's mean 2018/8/20 order no 1.
+
                 </div>
                 <p class="time"><%= moment.utc(notify.data.order.created_at).fromNow() %></p>
             </div>
