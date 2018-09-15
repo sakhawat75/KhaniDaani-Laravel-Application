@@ -152,7 +152,7 @@
                         </p>
                       </div>
                       {{--Start Rating Area--}}
-                      {{--<div class="rating product--rating">
+                      <div class="rating product--rating">
                         <ul>
                           @for ($i=1; $i <= 5; $i++)
                             @if($i <= round($fd->dish->avg_rating))
@@ -166,7 +166,7 @@
                             @endif
                           @endfor
                         </ul>
-                      </div>--}}
+                      </div>
                       {{--End Rating Area--}}
                     </div>
                     <!-- end /.product-purchase -->
@@ -272,18 +272,18 @@
                   <div class="price_love">
                     <span>৳{{ $dish->dish_price }}</span>
                   </div>
-                  <div class="sell">
+                 {{-- <div class="sell">
                     <p>
                       <span class="lnr lnr-heart"></span>
                       <span>0</span>
                     </p>
-                  </div>
+                  </div>--}}
 
                   {{--Start Rating Area--}}
-                  {{--<div class="rating product--rating">
+                  <div class="rating product--rating">
                     <ul>
                       @for ($i=1; $i <= 5; $i++)
-                        @if($i <= round($fd->dish->avg_rating))
+                        @if($i <= round($dish->avg_rating))
                           <li>
                             <span class="fa fa-star"></span>
                           </li>
@@ -294,21 +294,7 @@
                         @endif
                       @endfor
                     </ul>
-                  </div>--}}{{--<div class="rating product--rating">
-                    <ul>
-                      @for ($i=1; $i <= 5; $i++)
-                        @if($i <= round($fd->dish->avg_rating))
-                          <li>
-                            <span class="fa fa-star"></span>
-                          </li>
-                        @else
-                          <li>
-                            <span class="fa fa-star-o"></span>
-                          </li>
-                        @endif
-                      @endfor
-                    </ul>
-                  </div>--}}
+                  </div>
                   {{--End Rating Area--}}
                 </div>
                 <!-- end /.product-purchase -->

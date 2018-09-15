@@ -3,7 +3,7 @@
         <div class="author_avatar"> <img src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="Presenting the broken author avatar :D"> </div>
         <div class="author">
             <h4>
-                {{--{{ $user->name }}--}} {{-- TODO problem with single dish page.--}}
+                {{ $profile->user->name }}
             </h4>
             <p>Joined {{ $profile->created_at->toFormattedDateString() }}</p>
         </div>

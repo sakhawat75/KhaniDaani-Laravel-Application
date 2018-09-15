@@ -7,7 +7,7 @@
 <!--================================
         START BREADCRUMB AREA
     =================================-->
-<section class="breadcrumb-area">
+<section class="breadcrumb-area title-hide">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -21,7 +21,9 @@
   =================================-->
 
 {{-- TODO If user visiting other profile then don't show dashboard menu this function will same for chefdish,delivery,pickerspoint--}}
-@include( 'includes.menu-dashboard')
+@if (auth()->id() == $profile->user->id)
+    @include( 'includes.menu-dashboard')
+@endif
 
 <!--================================
         START PROFILE AREA

@@ -121,6 +121,7 @@ class PickersPointController extends Controller
     }
 
     public function addpp() {
-        return view('pickerspoint.addpp');
+        $profile = auth()->user()->profile;
+        return view('pickerspoint.addpp', compact('profile'));
     }
 }

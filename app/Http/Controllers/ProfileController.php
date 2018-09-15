@@ -165,14 +165,14 @@ class ProfileController extends Controller
 	    $this->validate( $request, [
 			'fullname' => 'required|min:2|regex:/^[\pL\s\-\.]+$/u|max:190',
 		    'dob' => 'required|date',
-		    'mobile_no' => 'required|numeric',
+		    'mobile_no' => 'required|max:14',
 		    'description' => 'max:5000',
-		    'cover_image' => 'nullable|file|image|max:1024',
-		    'profile_image' => 'nullable|file|image|max:1024',
+		    'cover_image' => 'nullable|file|image|max:3072',
+		    'profile_image' => 'nullable|file|image|max:3072',
 		    'city' => 'required',
 		    'areas' => 'required',
-            'address' => 'required|max:5000',
-            'address_hint' => 'required|max:5000',
+            'address' => 'required|max:500|min:4',
+            'address_hint' => 'max:500',
 	    ]);
 
         if (request()->filled('city')) {

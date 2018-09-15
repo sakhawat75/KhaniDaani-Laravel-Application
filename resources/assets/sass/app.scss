@@ -2251,7 +2251,7 @@ span.counter {
 }
 
 .dashboard_contents{
-  padding: 70px 0;
+  padding: 50px 0;
   .dashboard_title_area{
     @extend .product-title-area;
   }
@@ -2736,7 +2736,6 @@ span.counter {
       color: #000;
     }
     .upload_btn{
-      float: right;
       padding-left: 18px;
       padding-top: 27px;
       .btn{

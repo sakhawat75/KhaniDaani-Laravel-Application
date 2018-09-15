@@ -20545,7 +20545,7 @@ span.counter {
 }
 
 .dashboard_contents {
-  padding: 70px 0;
+  padding: 50px 0;
 }
 
 /*DEFAULT DASHBOARD PAGE OR AREA*/
@@ -21049,7 +21049,6 @@ span.counter {
 }
 
 .profile_images .upload_btn {
-  float: right;
   padding-left: 18px;
   padding-top: 27px;
 }
@@ -26012,7 +26011,7 @@ span.counter {
     margin-left: -120px;
   }
 
-  .breadcrumb-area {
+  .title-hide {
     display: none;
   }
 
@@ -26750,10 +26749,6 @@ span.counter {
 
   .dashboard-area .dashboard__title .pull-right {
     float: none !important;
-  }
-
-  .dashboard-area .dashboard_menu_area {
-    padding: 10px 0;
   }
 
   .dashboard-area .dashboard_menu_area .dashboard_menu li a {

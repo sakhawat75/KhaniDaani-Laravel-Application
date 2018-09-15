@@ -160,7 +160,7 @@
                                             <div class="input-group">
                                                 <textarea name="address" id="full_address"
                                                        class="text_field"
-                                                          placeholder="77128 Amber FlatsCormierfurt, NV 26057-0467"  maxlength = "100" required></textarea>
+                                                          placeholder="77128 Amber FlatsCormierfurt, NV 26057-0467"  maxlength = "100" required>{{ $profile->address }}</textarea>
                                             </div>
                                         </div>
 
@@ -168,7 +168,7 @@
                                             <label for="address_hint">Adress Hint</label>
                                             <div class="input-group">
                                                 <input name="address_hint" type="text" id="address_hint"
-                                                       class="text_field" placeholder="Amelia Station"  maxlength = "50" required>
+                                                       class="text_field" placeholder="Amelia Station"  maxlength = "50" required value="{{ $profile->address_hint }}">
                                             </div>
                                         </div>
 
@@ -176,7 +176,7 @@
                                             <label for="phone_number">Phone No</label>
                                             <div class="input-group">
                                                 <input name="phone" type="tel" id="phone_number"
-                                                       class="text_field" placeholder="01711966966"  maxlength = "11" required>
+                                                       class="text_field" placeholder="01711966966"  maxlength = "11" required value="{{ $profile->mobile_no }}">
                                             </div>
                                         </div>
 
