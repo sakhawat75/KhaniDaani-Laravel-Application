@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Bikash;
 use App\DeliveryService;
 use App\Dish;
 use App\Notifications\NotifyOrder;
@@ -119,6 +120,24 @@ class OrderController extends Controller
             $user->profile->balance = $user->profile->balance - $order->total_price;
             $user->profile->save();
         }
+
+        if($order->payment_type == 2) {
+            $b_t_id = $request->input('b_t_id');
+            $b_amount = $request->input('b_amount');
+            $balance = Bikash::where('amount', $b_amount)->where('t_id', $b_t_id)->first();
+            if(empty($balance)) {
+                return redirect()->back()->withErrors('bKash Transaction Id and Amount Did Not Match.');
+            }
+
+            if($balance->is_recharged == 1) {
+                return redirect()->back()->withErrors('This Transaction Id Already Used.');
+            }
+
+            $balance->is_recharged = 1;
+            $balance->save();
+        }
+
+
 
         $order->save();
 

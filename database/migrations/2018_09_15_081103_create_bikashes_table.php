@@ -16,7 +16,7 @@ class CreateBikashesTable extends Migration
         Schema::create('bikashes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('amount');
-            $table->string('t_id');
+            $table->string('t_id')->unique();
             $table->boolean('is_recharged')->default(0); // 0 = not recharged, 1 = recharged
             $table->timestamps();
         });

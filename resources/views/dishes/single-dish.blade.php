@@ -355,7 +355,7 @@
                     <li>
                       <p>
                         <span class="lnr lnr-cart pcolor"></span>Preparation Time</p>
-                      <span>{{ $dish->preparation_time }}</span>
+                      <span>{{ $dish->preparation_time }} Hours</span>
                     </li>
                     <li>
                       <p>
@@ -394,11 +394,11 @@
                       <span class="lnr lnr-cart pcolor"></span>Total Sales</p>
                     <span>{{ count($dish->completed_orders) }}</span>
                   </li>
-                  <li>
+                 {{-- <li>
                     <p>
                       <span class="lnr lnr-heart scolor"></span>Favorites</p>
                     <span>0</span>
-                  </li>
+                  </li>--}}
                    <li>
                     <p>
                       <span class="lnr lnr-bubble mcolor3"></span>Rating</p>
