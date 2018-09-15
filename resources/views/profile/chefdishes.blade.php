@@ -7,7 +7,7 @@
     <!--================================
         START BREADCRUMB AREA
     =================================-->
-    <section class="breadcrumb-area">
+    <section class="breadcrumb-area title-hide">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

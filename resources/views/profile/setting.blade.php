@@ -13,53 +13,20 @@
       <div class="row">
         <div class="col-md-12">
           <div class="breadcrumb">
-            <ul>
-              <li>
-                <a href="{{ URL::to('/') }}">Home</a>
-              </li>
-              <li>
-                <a href="dashboard.html">Dashboard</a>
-              </li>
-              <li class="active">
-                <a href="#">Info</a>
-              </li>
-            </ul>
           </div>
-          <h1 class="page-title">Update Info</h1>
+          <h1 class="page-title">Update Your Profile Info</h1>
         </div>
-        <!-- end /.col-md-12 -->
       </div>
-      <!-- end /.row -->
     </div>
-    <!-- end /.container -->
   </section>
   <!--================================
       END BREADCRUMB AREA
   =================================-->
 
-  <!--================================
-          START DASHBOARD AREA
-  =================================-->
   <section class="dashboard-area">
-
-
-    <!-- end /.dashboard_menu_area -->
     @include( 'includes.menu-dashboard' )
-
     <div class="dashboard_contents">
       <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="dashboard_title_area">
-              <div class="dashboard__title">
-                <h3>Update Info for ordering dish</h3>
-              </div>
-            </div>
-          </div>
-          <!-- end /.col-md-12 -->
-        </div>
-        <!-- end /.row -->
-
           @include('includes.error_messeages')
         <form action="{{ route('profile.update', ['profile' => $profile->id])  }}" class="setting_form" method="post"
               enctype="multipart/form-data">
@@ -69,14 +36,14 @@
           <div class="row">
             <div class="col-lg-6">
               <div class="information_module">
-                <a class="toggle_title" href="#collapse2" role="button" data-toggle="collapse" aria-expanded="false"
-                   aria-controls="collapse1">
-                  <h4> Information for contacts
+                <a class="toggle_title" href="#collapse" role="button" data-toggle="collapse" aria-expanded="false"
+                   aria-controls="collapse">
+                  <h4> Basic Information
                     <span class="lnr lnr-chevron-down"></span>
                   </h4>
                 </a>
 
-                <div class="information__set toggle_module collapse show" id="collapse2">
+                <div class="information__set toggle_module collapse show" id="collapse">
                   <div class="information_wrapper form--fields">
                     <div class="form-group">
                       <label for="acname">Name
@@ -85,16 +52,6 @@
                       <input type="text" id="acname" class="text_field" value="{{ $profile->fullname }}" placeholder="Full Name or Nick name"
                              name="fullname">
                     </div>
-
-                    {{-- <div class="form-group">
-                        <label for="usrname">Username
-                            <sup>*</sup>
-                        </label>
-                        <input type="text" id="usrname" class="text_field" placeholder="Account name" value="">
-                        <p>Your MartPlace URL: https://khanidaani.com/
-                            <span>user</span>
-                        </p>
-                    </div> --}}
 
                     <div class="form-group">
                       <label for="mobile">Date of birth<sup>*</sup></label>
@@ -108,7 +65,7 @@
                     </div>
                     <!-- city selection -->
                     <div class="form-group">
-                      <label for="city">Select City</label>
+                      <label for="city">Select City<sup>*</sup></label>
                       <div class="select-wrap select-wrap2">
                         <select name="city" id="city" class="text_field">
                           @foreach($cities as $city)
@@ -138,10 +95,11 @@
                         <input type="text" id="prohead" class="text_field" placeholder="Ex: House No, Road no, Block" name="address" value="{{ $profile->address }}">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group max-length">
                       <label for="prohead">Adress Hint</label>
 
-                      <input type="text" id="prohead" class="text_field" placeholder="Noticeable hint for delivery purpose" name="address_hint" value="{{ $profile->address_hint }}">
+
+                      <input type="text" class="text_field" placeholder="min 20 and max 1000 character" maxlength="1000" minlength="20" name="address_hint" value="{{ $profile->address_hint }}">
                     </div>
 
                   </div>
@@ -155,42 +113,39 @@
 
             <div class="col-lg-6">
               <div class="information_module">
-                <a class="toggle_title" href="#collapse3" role="button" data-toggle="collapse" aria-expanded="false"
-                   aria-controls="collapse1">
+                <a class="toggle_title" href="#collapse2" role="button" data-toggle="collapse" aria-expanded="false"
+                   aria-controls="collapse2">
                   <h4>Profile Image & Cover
                     <span class="lnr lnr-chevron-down"></span>
                   </h4>
                 </a>
 
-                <div class="information__set profile_images toggle_module collapse show" id="collapse3">
+                <div class="information__set profile_images toggle_module collapse show" id="collapse2">
                   <div class="information_wrapper">
                     <div class="profile_image_area">
+                      <h5 class="bold">Profile Image</h5> <br>
                       <img src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}"
                            alt="Author profile area"
                            id="preview_profile_image" style="height: 100px;width: 100px;">
-                      <div class="img_info">
-                        <p class="bold">Profile Image</p>
-                        <p class="subtitle">JPG, GIF or PNG 100x100 px</p>
-                      </div>
-
-                      <label for="profile_photo" class="upload_btn">
+                      <label for="profile_photo" class="upload_btn profile_image_update">
                         <input type="file" id="profile_photo" name="profile_image">
                         <span class="btn btn--sm btn--round" aria-hidden="true">Choose Image</span>
                       </label>
                     </div>
                     <br>
 
-                    <div class="form-group">
-                      <label for="authbio">Profile Description</label>
-                      <textarea name="description" id="article-ckeditor" class="text_field"
+                    <div class="form-group max-length">
+                      <h5 class="bold">Profile Description</h5> <br>
+                      <textarea name="description" id="article-ckeditor" class="text_field" maxlength="2000" minlength="10"
                       @if(empty($profile->description))
                         {!! "placeholder='Short brief about yourself or your account...'" !!}
                               @endif
                       >{!! $profile->description !!}</textarea>
                     </div>
 
-                    {{--  <div class="prof_img_upload">
-                       <p class="bold">Cover Image</p>
+                      <div class="prof_img_upload">
+
+                        <h5 class="bold">Cover Image</h5> <br>
 
                        <div class="aspect_ratio">
                          <img src="{{ route('home') }}/storage/images/cover_image/{{ $profile->cover_image }}"
@@ -199,114 +154,16 @@
                        </div>
 
                        <div class="upload_title">
-                         <p>JPG, GIF or PNG 750x370 px</p>
                          <label for="dp" class="upload_btn">
                            <input type="file" id="dp" name="cover_image">
                            <span class="btn btn--sm btn--round" aria-hidden="true">Choose Image</span>
                          </label>
                        </div>
-                     </div> --}}
+                     </div>
                    </div>
                  </div>
                </div>
-               <!-- end /.information_module -->
-
-               {{-- <div class="information_module">
-                   <a class="toggle_title" href="#collapse4" role="button" data-toggle="collapse" aria-expanded="false" aria-controls="collapse1">
-                       <h4>Email Notification setting
-                           <span class="lnr lnr-chevron-down"></span>
-                       </h4>
-                   </a>
-
-                   <div class="information__set mail_setting toggle_module collapse" id="collapse4">
-                       <div class="information_wrapper">
-                           <div class="custom_checkbox">
-                               <input type="checkbox" id="opt1" class="" name="mail_rating_reminder" checked>
-                               <label for="opt1">
-                                   <span class="shadow_checkbox"></span>
-                                   <span class="radio_title">Rating Reminders</span>
-                                   <span class="desc">Send an email reminding me to rate an item after purchase</span>
-                               </label>
-                           </div>
-                           <!-- end /.custom-radio -->
-
-                           <div class="custom_checkbox">
-                               <input type="checkbox" id="opt2" class="" name="mail_update_noti" checked>
-                               <label for="opt2">
-                                   <span class="shadow_checkbox"></span>
-                                   <span class="radio_title">Item Update Notifications</span>
-                                   <span class="desc">Send an email when an item I've purchased is updated</span>
-                               </label>
-                           </div>
-                           <!-- end /.custom_checkbox -->
-
-                           <div class="custom_checkbox">
-                               <input type="checkbox" id="opt3" class="" name="mail_comment_noti" checked>
-                               <label for="opt3">
-                                   <span class="shadow_checkbox"></span>
-                                   <span class="radio_title">Item Comment Notifications</span>
-                                   <span class="desc">Send me an email when someone comments on one of my items</span>
-                               </label>
-                           </div>
-                           <!-- end /.custom_checkbox -->
-
-                           <div class="custom_checkbox">
-                               <input type="checkbox" id="opt4" class="" name="mail_item_review_noti" checked>
-                               <label for="opt4">
-                                   <span class="shadow_checkbox"></span>
-                                   <span class="radio_title">Item Review Notifications</span>
-                                   <span class="desc">Send me an email when my items are approved or rejected</span>
-                               </label>
-                           </div>
-                           <!-- end /.custom_checkbox -->
-
-                           <div class="custom_checkbox">
-                               <input type="checkbox" id="opt5" class="" name="mail_review_noti" checked>
-                               <label for="opt5">
-                                   <span class="shadow_checkbox"></span>
-                                   <span class="radio_title">Buyer Review Notifications</span>
-                                   <span class="desc">Send me an email when someone leaves a review with their rating</span>
-                               </label>
-                           </div>
-                           <!-- end /.custom_checkbox -->
-
-                           <div class="custom_checkbox">
-                               <input type="checkbox" id="opt6" class="" name="mail_support_noti" checked>
-                               <label for="opt6">
-                                   <span class="shadow_checkbox"></span>
-                                   <span class="radio_title">Support Notifications</span>
-                                   <span class="desc">Send me emails showing my soon to expire support entitlements</span>
-                               </label>
-                           </div>
-                           <!-- end /.custom_checkbox -->
-
-                           <div class="custom_checkbox">
-                               <input type="checkbox" id="opt7" class="" name="mail_weekly">
-                               <label for="opt7">
-                                   <span class="shadow_checkbox"></span>
-                                   <span class="radio_title">Weekly Summary Emails</span>
-                                   <span class="desc">Send me emails showing my soon to expire support entitlements</span>
-                               </label>
-                           </div>
-                           <!-- end /.custom_checkbox -->
-
-                           <div class="custom_checkbox">
-                               <input type="checkbox" id="opt8" class="" name="mail_newsletter">
-                               <label for="opt8">
-                                   <span class="shadow_checkbox"></span>
-                                   <span class="radio_title">MartPlace Newsletter</span>
-                                   <span class="desc">Get update about latest news, update and more.</span>
-                               </label>
-                           </div>
-                           <!-- end /.custom_checkbox -->
-                       </div>
-                       <!-- end /.information_wrapper -->
-                   </div>
-                   <!-- end /.information_module -->
-               </div>
-               <!-- end /.information_module --> --}}
             </div>
-            <!-- end /.col-md-6 -->
 
             <div class="col-md-12">
               <div class="dashboard_setting_btn">
@@ -324,7 +181,11 @@
     <!-- end /.dashboard_menu_area -->
   </section>
   <!--================================
-          END DASHBOARD AREA
-  =================================-->
+       START SELF-ADS AREA
+   =================================-->
+  @include('includes.self_ads')
+  <!--================================
+    END SELF-ADS AREA
+=================================-->
 
 @endsection

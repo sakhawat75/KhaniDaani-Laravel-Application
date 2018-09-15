@@ -20545,7 +20545,7 @@ span.counter {
 }
 
 .dashboard_contents {
-  padding: 70px 0;
+  padding: 50px 0;
 }
 
 /*DEFAULT DASHBOARD PAGE OR AREA*/
@@ -21049,7 +21049,6 @@ span.counter {
 }
 
 .profile_images .upload_btn {
-  float: right;
   padding-left: 18px;
   padding-top: 27px;
 }
@@ -26012,7 +26011,7 @@ span.counter {
     margin-left: -120px;
   }
 
-  .breadcrumb-area {
+  .title-hide {
     display: none;
   }
 
@@ -26750,10 +26749,6 @@ span.counter {
 
   .dashboard-area .dashboard__title .pull-right {
     float: none !important;
-  }
-
-  .dashboard-area .dashboard_menu_area {
-    padding: 10px 0;
   }
 
   .dashboard-area .dashboard_menu_area .dashboard_menu li a {
@@ -28023,5 +28018,75 @@ span.counter {
   text-align: center;
   padding-bottom: 10px;
   margin-top: 5px;
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.3s, fadeout 0.3s 1.3s;
+  animation: fadein 0.3s, fadeout 0.3s 1.3s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }
 

@@ -7,7 +7,7 @@
         <span class="line"></span>
         <div class="notification__info">
             <div class="info_avatar">
-                <img src="{{ asset('/images/notification_head4.png')}}" alt="" id="all_noti_pi_<%= notify.id %>" class="img_test">
+                <img src="{{ asset('/images/notification_head4.png')}}" alt="" class="all_noti_pi_<%= notify.id %> img_test">
 
             <%
               $(document).ready(function () {
@@ -19,7 +19,7 @@
                   type: "GET",
                   dataType: "json",
                 }).done( function (json) {
-                  var selector = "#all_noti_pi_" + notify.id;
+                  var selector = ".all_noti_pi_" + notify.id;
                   //console.log("Selector: " + selector);
                     $(selector).attr('src', '{{ URL::to('/') }}/storage/images/profile_image/'+json);
                    
@@ -68,7 +68,7 @@
                     <%= notify.data.order.dish_name %>
                   </a></div>
                   <br>
-                  What about unique order id {eg. 182082001} it's mean 2018/8/20 order no 1.
+
                 </div>
                 <p class="time"><%= moment.utc(notify.data.order.created_at).fromNow() %></p>
             </div>

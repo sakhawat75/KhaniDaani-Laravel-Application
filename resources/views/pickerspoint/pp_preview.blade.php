@@ -21,7 +21,9 @@
                         <span class="opening">Opens @ {{ date('h:i A', strtotime($pp->open_at) ) }}.</span><span class="closing"> Close @ {{ date('h:i A', strtotime($pp->close_at) ) }}</span>
                     </div>
                     <br>
-
+                    <div>
+                        <h4>PP ID: {{ $pp->id }}</h4>
+                    </div>
                     <div class="product-purchase">
                         <div class="price_love"> <span>৳{{ $pp->charge }}</span>
                             {{--<p> <span class="lnr lnr-heart"></span> 0</p>--}}

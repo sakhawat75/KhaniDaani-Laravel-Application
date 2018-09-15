@@ -7,7 +7,7 @@
                     <div class="breadcrumb">
                         <ul>
                             <li> <a href="{{ route('home') }}">Home</a> </li>
-                            <li> <a href="dashboard.html">Profile</a> </li>
+                            <li> <a href="">Profile</a> </li>
                             <li class="active"> <a href="#">Purchase Dish</a> </li>
                         </ul>
                     </div>
@@ -34,16 +34,19 @@
                 </div>
                 <!-- end /.row -->
 
-                <form action="#" name="add_credit_form">
+                <form action="{{ route('payment.add_balance') }}" name="add_credit_form" method="post">
+                    @csrf
                     <div class="row">
                         <div class="col-md-12">
+                            @include('includes.error_messeages')
+                            @include('includes.success_message')
                             <div class="credit_modules">
                                 <div class="modules__title">
-                                    <h3>Add Balance From KhaniDaani Card</h3>
+                                    <h3>Add Balance From bKash to KhaniDaani Balance</h3>
                                 </div>
 
                                 <div class="modules__content">
-                                    <p class="subtitle">Select Card amount:</p>
+                                    {{--<p class="subtitle">Select Card amount:</p>
                                     <div class="amounts">
                                         <ul>
                                             <li data-price="10">
@@ -80,7 +83,7 @@
                                     <br>
 
                                     <div class="or"></div>
-
+--}}
 
                                     <p class="subtitle">bKash:</p>
                                     <div class="row">
@@ -88,22 +91,22 @@
                                             <div class="custom_amount">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">৳</span>
-                                                    <input type="text" id="rlicense" class="text_field" placeholder="eg: 250">
+                                                    <input type="number" id="rlicense" class="text_field" placeholder="eg: 250" name="amount" min="100" max="2000" required>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <div class="form-group max-length">
                                                 <div class="input-group">
-                                                    <input type="number" id="cardnmbr" class="text_field" placeholder="TX25019687" name="">
+                                                    <input type="text" id="cardnmbr" class="text_field" placeholder="e.g TX25019687" name="t_id" maxlength="10" required>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <br>
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn--round btn--default">Submit</button>
+                                        <button type="submit" class="btn btn--round btn--default">Recharge</button>
                                     </div>
 
 

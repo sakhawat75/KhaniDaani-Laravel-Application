@@ -141,7 +141,7 @@ class RestApiController extends Controller
         {
             $keyword = $request->input('keyword');
             if ($keyword != '') {
-                $dsps->where('service_title','like', '%'. $keyword . '%');
+                $dsps->where('service_title','like', '%'. $keyword . '%')->orWhere('service_area','like', '%'. $keyword . '%')->orWhere('id','like', '%'. $keyword . '%');
             }
 
         }

@@ -45,7 +45,7 @@
                                 <h3>Select Delivery Services</h3>
                             </div>
                             <div class="modules__content">
-                                <div class="panel-group accordion" role="tablist" id="accordion">
+                                <div class="panel-group accordion delivery-service" role="tablist" id="accordion">
 
 
                                     @foreach($dsps as $dsp)
@@ -67,7 +67,7 @@
                                                  aria-labelledby="panel-one"
                                                  data-parent="#accordion">
                                                 <div class="panel-body">
-                                                    <div class="product-meta">
+                                                    {{--<div class="product-meta">
                                                         <div class="author">
                                                             <img class="auth-img"
                                                                  src="{{ route('home') }}/storage/images/profile_image/{{ $dsp->user->profile->profile_image }}"
@@ -97,15 +97,20 @@
                                                     </ul>
 
 
-                                                    <p>{!! $dsp->service_description !!}</p>
+                                                    <p>{!! $dsp->service_description !!}</p>--}}
+
+                                                    @include ('profile.dsp_preview')
                                                     <form action="{{ route( 'order.confirm', ['dsp' => $dsp, 'dish' => $dish] ) }}"
-                                                          method="get">
+                                                          method="get" class="">
                                                         {{ csrf_field() }}
                                                         <button type="submit" class="btn btn--lg btn--round">Continue &
                                                             Order
                                                         </button>
                                                     </form>
                                                     {{--<a href="{{ route( 'order.confirm', ['dsp' => $dsp, 'dish' => $dish] ) }}" class="btn btn--lg btn--round">Continue & Order</a>--}}
+
+
+
                                                 </div>
                                             </div>
                                         </div>

@@ -96,6 +96,11 @@ Route::group(['middleware' => 'auth'], function (){
 	Route::get( '/messages/getSingleMessages', 'MessageController@getSingleMessages')->name( 'messages.getSingleMessages');
 	Route::post( '/messages/store_with_auth', 'MessageController@store_with_auth')->name( 'messages.store_with_auth');
 	Route::resource('messages', 'MessageController');
+
+	// Payments
+//    Route::post( 'admin/payment/add_balance', 'PaymentController@add_balance')->name( 'admin.payment.add_balance');
+    Route::post( '/payment/add_balance', 'PaymentController@add_balance')->name( 'payment.add_balance');
+    Route::post( '/payment/withdraw', 'PaymentController@withdraw')->name( 'payment.withdraw');
 });
 
 

@@ -105,7 +105,7 @@ class DishesController extends Controller
 	    $dish = Dish::find($id);
 	    $profile = $dish->profile;
 
-	    $ratings = Rating::where('chef_id', $profile->id)->paginate(10);
+	    $ratings = Rating::where('chef_id', $profile->id)->where('dish_id', $dish->id)->get();
 
 	    $avg_rating = 0;
 	    $rating_sum = 0;

@@ -8,7 +8,7 @@
         <div class="notification__info">
           <div class="info_avatar">
             <% var rand = Math.floor((Math.random() * 9999999999) + 1); %>
-          	<img src="{{ asset('/images/notification_head4.png')}}" alt="" id="noti_pi_<%= rand %>" class="img_test">
+          	<img src="{{ asset('/images/notification_head4.png')}}" alt="" class="noti_pi_<%= rand %> img_test">
 
           	<%
           		$(document).ready(function () {
@@ -20,7 +20,7 @@
 			            type: "GET",
 			            dataType: "json",
 				        }).done( function (json) {
-				        	var selector = "#noti_pi_" + rand;
+				        	var selector = ".noti_pi_" + rand;
 				        	//console.log("Selector: " + selector);
                     $(selector).attr('src', '{{ URL::to('/') }}/storage/images/profile_image/'+json);
 				           

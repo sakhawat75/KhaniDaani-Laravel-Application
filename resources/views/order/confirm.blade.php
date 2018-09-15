@@ -192,7 +192,9 @@
                                         </div>
                                         
                                         <div class="form-group">
-                                            <input id="card_number" type="text" class="text_field" placeholder="Enter your bkash trasaction number here...">
+                                            <label for="">Amount: ৳{{ $total }}</label>
+                                            <input type="number" value="{{ $total }}" name="b_amount" hidden>
+                                            <input id="card_number" type="text" class="text_field" placeholder="Enter your bkash trasaction number here..." name="b_t_id">
                                         </div>
                                         {{--<a href="{{ route('order.status') }}" class="btn btn--round btn--default">Continue & Order</a>--}}
 

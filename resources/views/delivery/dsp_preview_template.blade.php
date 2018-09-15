@@ -39,7 +39,7 @@
                             <div class="mins"><i class="fa fa-motorcycle"></i> <%- dsp.min_delivery_time %> hrs - <%- dsp.max_delivery_time %> hrs
                             </div>
 
-                            <div class="rating product--rating">
+                            {{--<div class="rating product--rating">
                                 <ul>
                                     <li>
                                         <span class="fa fa-star-o"></span>
@@ -58,7 +58,7 @@
                                     </li>
                                 </ul>
                                 <span class="rating__count">(0)</span>
-                            </div>
+                            </div>--}}
 
                         </div>
                     </div>

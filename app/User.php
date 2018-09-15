@@ -81,4 +81,36 @@ class User extends Authenticatable
     {
         return $this->hasMany(PickersPoint::class);
     }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function isChef() {
+        $dishes = $this->profile->dish;
+        if(count($dishes) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isDsp() {
+        $dsps = $this->delivery_services;
+        if(count($dsps) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isPP() {
+        $pps = $this->pickerspoints;
+        if(count($pps) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

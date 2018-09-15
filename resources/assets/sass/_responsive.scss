@@ -930,10 +930,9 @@ $ipad: 992px;
     top: calc(100% + 20px);
     margin-left: -120px;}
 
-  .breadcrumb-area{
+  .title-hide {
     display: none;
   }
-
   .message-card {
     display: none;
   }
@@ -1586,7 +1585,6 @@ $ipad: 992px;
     }
   }
   .dashboard-area .dashboard_menu_area{
-    padding: 10px 0;
     .dashboard_menu li a{
       line-height: 20px;
     }
