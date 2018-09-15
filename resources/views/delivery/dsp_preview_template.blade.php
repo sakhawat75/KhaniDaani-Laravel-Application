@@ -24,11 +24,11 @@
                             <span class="bold text-primary"><%- dsp.id %></span>
                             <small class="ml-3">(Please Use This ID When Adding dsp in New Dish Upload)</small>
                         </p>
-
                     </div>
+                </div>
+                <div class="col-md-12">
                     <p class="dsp-description"><%- dsp.service_description %></p>
                     <p class="dsp-area">Service Area: <span><%- dsp.service_area %></span></p>
-
                 </div>
                 <div class="col-md-12">
                     <div class="bottom-part">
