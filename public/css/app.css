@@ -28090,3 +28090,8 @@ span.counter {
   }
 }
 
+.order-address h6 {
+  color: #f64646;
+  font-weight: bold;
+}
+

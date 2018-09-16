@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
                     <a class="dsp-images" href="{{ route('home') }}/profile/<%- dsp.profile.id %>"><img src="{{ route('home') }}/storage/images/profile_image/<%- dsp.profile.profile_image %>"
-                                                                                                                alt="dsp profile"> </a>
+                                                                                                                alt="dsp profile" >  </a>
                     <div class="dsp-username">
                         <h5>
                             <a href="{{ route('home') }}/profile/<%- dsp.profile.id %>"><%- dsp.profile.user_name %></a>
