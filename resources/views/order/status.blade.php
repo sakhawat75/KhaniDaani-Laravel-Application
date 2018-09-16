@@ -74,7 +74,17 @@
 @endpush
 
 @section ('content')
-	
+
+    <section class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-title">Order id: {{ $order->id }}</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
 	<div id="snackbar">Snackbar</div>
 
@@ -82,17 +92,6 @@
   <section class="dashboard-area">
     <div class="dashboard_contents">
       <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="dashboard_title_area">
-              <div class="pull-left">
-                <div class="dashboard__title">
-                  <h3>Your Order Status</h3></div>
-              </div>
-            </div>
-          </div>
-          <!-- end /.col-md-12 -->
-        </div>
         <div class="row">
           <div class="col-lg-8 col-md-7">
             <div class="dashboard_title_area">
@@ -102,19 +101,55 @@
                        class="step-title waves-effect waves-dark">Order Started
                   </div>
                   <div class="step-content">
-                    <h1><span id="chef_timer">Dish is ready</span></h1>
-                    {{---or-
-                    <h6>Dish is Ready Please Check delivery option</h6>--}}
+                      <div class="">
+
+                          <div class="">
+                              <div class="">
+                                  {{--@include( 'includes.dish_preview')--}}
+                                  {{-- TODO dont work for the new notification--}}
+                                  {{-- TODO dish preview here for every one--}}
+                              </div>
+
+                              <div class="order-address">
+                                  {{-- TODO address only for dsp--}}
+                                  <div class="">
+                                      <h6><u>Chef info:</u></h6>
+                                      <p>Adress: </p>
+                                      <p>Adress Hint:</p>
+                                      <p>Mobile: </p>
+                                  </div>
+                                  <div class="">
+                                      <h6><u>Foodies info:</u></h6>
+                                      <p>Adress: </p>
+                                      <p>Adress Hint:</p>
+                                      <p>Mobile: </p>
+                                  </div>
+                              </div>
+
+                              <div class="">
+                                  <h4><span id="chef_timer">Dish is Ready</span></h4>
+                              </div>
+                              <div class="">
+                                  <button class="btn btn--icon btn-md btn--round btn-danger" id="" type="button">
+                                      <span class="lnr"></span>Cancel
+                                  </button>
+                                  {{-- TODO cancel if chef did not accept it within 30 minutes, if chef accept it make the butto disable--}}
+
+                              </div>
+                          </div>
+                      </div>
 
                     <br>
                     <div class="chef_opt d-none">
-                      <p>Chef Option</p>
-                      <button class="btn btn--icon btn-md btn--round btn-success" id="dish_ready" type="button">
+                      <p>Only chefusername can use this</p>
+                        <button class="btn btn--icon btn-md btn--round btn-success" type="button">
+                            <span class="lnr  lnr-thumbs-up"></span>Accept
+                            {{-- TODO if chef did not accept it within 30 minutes buyer can reject it--}}
+                        </button>
+                        <button class="btn btn--icon btn-md btn--round btn-danger" id="dish_ready" type="button">
                         <span class="lnr lnr-bullhorn"></span>Ready
                       </button>
-                      <button class="btn btn--icon btn-md btn--round btn-danger" type="button">
-                        <span class="lnr  lnr-thumbs-up"></span>Delivered
-                      </button>
+
                     </div>
                   </div>
                 </li>
@@ -124,14 +159,27 @@
                     Service
                   </div>
                   <div class="step-content">
+                      <div class="">
+                          {{-- TODO dsp preview here for every one if posible--}}
+                      </div>
+
+                      <div class="order-address">
+                          {{-- TODO dsp address for everyone--}}
+                          <div class="">
+                              <h6><u>Chef info:</u></h6>
+                              <p>Adress: </p>
+                              <p>Adress Hint:</p>
+                              <p>Mobile: </p>
+                          </div>
+
                     <h5 {{--class="d-none"--}} id="dsp_str">{{--Count down will start after clicking Recieved--}}</h5>
                     <h1><span id="dsp_timer">{{--{{ $order->delivery_time }}--}}</span></h1>
                     <div class="dsp_opt d-none">
                       <button class="btn btn--icon btn-md btn--round btn-success" type="button" id="dsp_ready"><span
-                            class="lnr  lnr-thumbs-up"></span>Received By DSPID
+                            class="lnr  lnr-thumbs-up"></span>Received {{-- TODO means he recived from chef--}}
                       </button>
                       <button class="btn btn--icon btn-md btn--round btn-danger" type="button" id="dsp_delivered"><span
-                            class="lnr  lnr-thumbs-up"></span>Delivered
+                            class="lnr  lnr-thumbs-up"></span>Delivered {{-- TODO means he delivered to the buyer--}}
                         By DSPID
                       </button>
                     </div>
@@ -229,10 +277,10 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h3 class="modal-title" id="rating_modal">Rating this Dish</h3>
-          <h4>Title</h4>
+          <h3 class="modal-title" id="rating_modal">Rate experince </h3>
+          <h4>Dish Title</h4>
           <p>by
-            <a href="">Chef ID</a>
+            <a href="">Chef username</a>
           </p>
         </div>
         <!-- end /.modal-header -->
@@ -270,10 +318,9 @@
             </ul>
 
             <div class="rating_field">
-              <label for="rating_field">Comments</label>
               <textarea name="rating_comment" id="rating_field" class="text_field"
                         placeholder="Please enter your rating reason...."></textarea>
-              <p class="notice">Your review will be ​publicly visible​ and the chef may reply to your review. </p>
+              <p class="notice">Your review will be ​publicly visible​, Thank you!</p>
             </div>
             <button type="submit" class="btn btn--round btn--default">Submit Rating</button>
             <button class="btn btn--round modal_close" data-dismiss="modal">Close</button>
