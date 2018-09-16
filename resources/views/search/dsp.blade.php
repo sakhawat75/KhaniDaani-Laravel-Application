@@ -1,4 +1,8 @@
-@extends ('layouts.master') @section ('title', 'Search Delivery Services') @section ('content') {{-- ready for initial development --}}
+@extends ('layouts.master')
+
+@section ('title', 'Search Delivery Services')
+
+@section ('content') {{-- ready for initial development --}}
 
 <!--================================
         START SEARCH AREA
@@ -82,6 +86,7 @@
 
                         <div class="filter__option filter--select">
                             <div class="select-wrap">
+                                <label for="city">Select A City</label>
                                 <select name="city" id="city" class="text_field">
                                     <option value="" selected="selected">All Cities</option>
                                     @foreach($cities as $city)
@@ -94,6 +99,7 @@
 
                         <div class="filter__option filter--select">
                             <div class="select-wrap">
+                                <label for="areas">Select an Area</label>
                                 <select name="areas" id="areas" class="text_field">
 
                                 </select>

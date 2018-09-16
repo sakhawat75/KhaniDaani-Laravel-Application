@@ -6,6 +6,7 @@ use App\Area;
 use App\Category;
 use App\City;
 use App\DeliveryService;
+use App\PickersPoint;
 use App\User;
 use App\Dish;
 use App\Http\Resources\NotificationCollection;
@@ -151,6 +152,43 @@ class RestApiController extends Controller
         return response()->json($dsps);
     }
 
+    public function jsonSearchPP(Request $request)
+    {
+        $pps = PickersPoint::query();
+
+        if ($request->has( 'city')) {
+            $city = $request->input('city');
+            if ($city != '') {
+                $pps->with('profile')->whereHas('profile', function($q) use (&$city) {
+                    $q->where('city', $city);
+                });
+            }
+
+        }
+
+        if ($request->has( 'area')) {
+            $area = $request->input('area');
+            if ($area != '') {
+                $pps->with('profile')->whereHas('profile', function($q) use (&$area) {
+                    $q->where('area', $area);
+                });
+            }
+
+        }
+
+        if ($request->has( 'keyword'))
+        {
+            $keyword = $request->input('keyword');
+            if ($keyword != '') {
+                $pps->where('name','like', '%'. $keyword . '%')->orWhere('address','like', '%'. $keyword . '%')->orWhere('id','like', '%'. $keyword . '%');
+            }
+
+        }
+
+        $pps = $pps->with('profile')->paginate(12);
+
+        return response()->json($pps);
+    }
 
     public function orderUpdate(Request $request)
     {
