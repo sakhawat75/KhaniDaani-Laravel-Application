@@ -68,6 +68,7 @@ Route::get('/api/categories', 'RestApiController@jsonCategories');
 Route::get('/ajax-areas', 'RestApiController@jsonAreas');
 Route::get('/api/search-dish', 'RestApiController@jsonSearchDish')->name( 'api.search.dish');
 Route::get('/api/search-dsp', 'RestApiController@jsonSearchDsp')->name( 'api.search.dsp');
+Route::get('/api/search-pp', 'RestApiController@jsonSearchPP')->name( 'api.search.pp');
 Route::get('/api/order/update', 'RestApiController@orderUpdate')->name( 'api.order.update');
 
 Route::get('/rating/{order}', 'RatingController@store')->name( 'rating.store');

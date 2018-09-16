@@ -15,7 +15,8 @@ class SearchController extends Controller
     }
 
     public function pp() {
-        return view('search.pp');
+        $cities = City::all();
+        return view('search.pp', compact('cities'));
     }
 
     public function livedish(Request $request) {
