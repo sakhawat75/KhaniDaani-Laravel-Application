@@ -174,7 +174,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('dishes.purchase') }}">
+                                        <a href="{{ route('order.purchase') }}">
                                             <span class="lnr lnr-cart"></span>Purchasesd
                                         </a>
                                     </li>
@@ -276,7 +276,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('dishes.purchase') }}">
+                                        <a href="{{ route('order.purchase') }}">
                                             <span class="lnr lnr-cart"></span>Purchasesd
                                         </a>
                                     </li>

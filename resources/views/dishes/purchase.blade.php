@@ -21,7 +21,7 @@
    
     <div class="dashboard_contents">
         <div class="container">
-            <div class="row">
+            {{--<div class="row">
                 <div class="col-md-12">
                     <div class="filter-bar clearfix filter-bar2">
                         <div class="">
@@ -51,7 +51,7 @@
                     <!-- end /.filter-bar -->
                 </div>
                 <!-- end /.col-md-12 -->
-            </div>
+            </div>--}}
             
             <div class="product_archive">
                 <div class="title_area">
@@ -59,84 +59,109 @@
                         <div class="col-md-5">
                             <h4>Product Details</h4> </div>
                         <div class="col-md-3">
-                            <h4 class="add_info">Additional Info</h4> </div>
+                            <h4 class="add_info">Status</h4> </div>
                         <div class="col-md-2">
                             <h4>Price</h4> </div>
                         <div class="col-md-2">
-                            <h4>Rating</h4> </div>
+                            <h4>Action</h4> </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="single_product clearfix">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-5">
-                                    <div class="product__description"> <img src="{{ asset('images/pur5.jpg') }}" alt="Purchase image">
-                                        <div class="short_desc">
-                                            <h4>Indian butter chicken</h4>
-                                            <p>Nunc placerat mi id nisi inter dum mollis. Praesent phare...</p>
-                                        </div>
-                                    </div>
-                                    <!-- end /.product__description -->
-                                </div>
-                                <!-- end /.col-md-5 -->
-                                <div class="col-lg-3 col-md-3 col-6 xs-fullwidth">
-                                    <div class="product__additional_info">
-                                        <ul>
-                                            <li>
-                                                <p> <span>Date: </span> 5 Jul 2018</p>
-                                            </li>
-                                            <li class="license">
-                                                <p> <span>Delivery id:</span>450</p>
-                                            </li>
-                                            <li>
-                                                <p> <span>Chef:</span> KhaniDaani</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- end /.product__additional_info -->
-                                </div>
-                                <!-- end /.col-md-3 -->
-                                <div class="col-lg-4 col-md-4 col-6 xs-fullwidth">
-                                    <div class="product__price_download">
-                                        <div class="item_price v_middle"> <span>৳590</span> </div>
-                                        <div class="item_action v_middle">
-                                            <a href="#" class="btn btn--md btn--round btn--white rating--btn not--rated" data-toggle="modal" data-target="#myModal">
-                                                <P class="rate_it">Rate Chef</P>
-                                                <div class="rating product--rating">
-                                                    <ul>
-                                                        <li> <span class="fa fa-star"></span> </li>
-                                                        <li> <span class="fa fa-star"></span> </li>
-                                                        <li> <span class="fa fa-star"></span> </li>
-                                                        <li> <span class="fa fa-star"></span> </li>
-                                                        <li> <span class="fa fa-star-o"></span> </li>
-                                                    </ul>
+
+
+
+                @foreach ($orders as $order)
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="single_product clearfix">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-5">
+
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="aspect_ratio">
+                                                        <img src="{{ route('home') }}/storage/images/dish_images/{{ $order->dish->dish_image_1 }}"
+                                                             alt="the preview is just missing." class="ratio_img">
+                                                    </div>
                                                 </div>
-                                            </a>
-                                            <a href="#" class="btn btn--md btn--round btn--white rating--btn not--rated" data-toggle="modal" data-target="#myModal">
-                                                <P class="rate_it">Rate Delivery</P>
-                                                <div class="rating product--rating">
-                                                    <ul>
-                                                        <li> <span class="fa fa-star-o"></span> </li>
-                                                        <li> <span class="fa fa-star-o"></span> </li>
-                                                        <li> <span class="fa fa-star-o"></span> </li>
-                                                        <li> <span class="fa fa-star-o"></span> </li>
-                                                        <li> <span class="fa fa-star-o"></span> </li>
-                                                    </ul>
+                                                <div class="col-sm-8">
+                                                    <div class="short_desc">
+                                                        <h5><a href="{{ route('dishes.show', ['id' => $order->dish->id]) }}">Dish Name: {{ $order->dish->dish_name }}</a></h5>
+                                                        <p class="mb-0">Category: {{ $order->dish->dish_category }}</p>
+                                                        {{--<p>Subcategory: {{ $order->dish->dish_subcategory }}</p>--}}
+                                                    </div>
                                                 </div>
-                                            </a>
-                                            <!-- end /.rating--btn -->
-                                        </div>
-                                        <!-- end /.item_action -->
+                                            </div>
+
+
+
+                                        <!-- end /.product__description -->
                                     </div>
-                                    <!-- end /.product__price_download -->
+                                    <!-- end /.col-md-5 -->
+                                    <div class="col-lg-3 col-md-3 col-6 xs-fullwidth">
+                                        <div class="product__additional_info">
+                                            <ul>
+                                                <li>
+                                                    <p> <span>Order Date: </span>{{ $order->created_at->format('d M Y') }}</p>
+                                                </li>
+                                                {{--<li class="license">
+                                                    <p> <span>Delivery id:</span>450</p>
+                                                </li>--}}
+                                                <li>
+                                                    <p> <span>Status:</span> {{ $order->status }} </p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- end /.product__additional_info -->
+                                    </div>
+                                    <!-- end /.col-md-3 -->
+                                    <div class="col-lg-4 col-md-4 col-6 xs-fullwidth">
+                                        <div class="product__price_download">
+                                            <div class="item_price v_middle"> <span>৳{{ $order->dish->dish_price }}</span> </div>
+                                            <div class="item_action v_middle text-center">
+                                                <a href="{{ route('order.status', ['order' => $order->id]) }}" class="btn btn--md btn--round btn--white">View Order</a>
+                                                {{--<a href="#" class="btn btn--md btn--round btn--white rating--btn not--rated" data-toggle="modal" data-target="#myModal">
+                                                    <P class="rate_it">Rate Chef</P>
+                                                    <div class="rating product--rating">
+                                                        <ul>
+                                                            <li> <span class="fa fa-star"></span> </li>
+                                                            <li> <span class="fa fa-star"></span> </li>
+                                                            <li> <span class="fa fa-star"></span> </li>
+                                                            <li> <span class="fa fa-star"></span> </li>
+                                                            <li> <span class="fa fa-star-o"></span> </li>
+                                                        </ul>
+                                                    </div>
+                                                </a>
+                                                <a href="#" class="btn btn--md btn--round btn--white rating--btn not--rated" data-toggle="modal" data-target="#myModal">
+                                                    <P class="rate_it">Rate Delivery</P>
+                                                    <div class="rating product--rating">
+                                                        <ul>
+                                                            <li> <span class="fa fa-star-o"></span> </li>
+                                                            <li> <span class="fa fa-star-o"></span> </li>
+                                                            <li> <span class="fa fa-star-o"></span> </li>
+                                                            <li> <span class="fa fa-star-o"></span> </li>
+                                                            <li> <span class="fa fa-star-o"></span> </li>
+                                                        </ul>
+                                                    </div>
+                                                </a>--}}
+                                                <!-- end /.rating--btn -->
+                                            </div>
+                                            <!-- end /.item_action -->
+                                        </div>
+                                        <!-- end /.product__price_download -->
+                                    </div>
+                                    <!-- end /.col-md-4 -->
                                 </div>
-                                <!-- end /.col-md-4 -->
                             </div>
+                            <!-- end /.single_product -->
                         </div>
-                        <!-- end /.single_product -->
                     </div>
-                </div>
+
+                @endforeach
+
+
+
+
             </div>
         </div>
     </div>

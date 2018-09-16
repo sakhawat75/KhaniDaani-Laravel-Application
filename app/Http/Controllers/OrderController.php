@@ -151,4 +151,17 @@ class OrderController extends Controller
 		return redirect()->route( 'order.status', $order);
 
 	}
+
+    public function purchase() {
+	    $user = auth()->user();
+
+	    $orders = Order::where('buyer_user_id', $user->id)
+            ->orWhere('dish_user_id', $user->id)
+            ->orWhere('dsp_user_id', $user->id)
+            ->orWhere('pp_user_id', $user->id)
+            ->orderBy('created_at', 'DESC')
+            ->paginate(10);
+
+        return view('dishes.purchase', compact('orders'));
+    }
 }
