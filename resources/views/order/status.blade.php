@@ -168,6 +168,7 @@
                                     </div>
                                 </li>
 
+                                @if($order->dsp()->count() > 0)
                                 <li class="step">
                                     <div data-step-label="Status of the delivery ..."
                                          class="step-title waves-effect waves-dark">Delivery
@@ -180,18 +181,20 @@
 
                                         <div class="order-address">
                                             {{-- TODO dsp address for everyone--}}
+                                            @if($order->dsp()->count() > 0)
                                             <div class="">
                                                 <h6><u>DSP info:</u></h6>
                                                 <p>Adress: {{ $order->dsp->profile->address }}</p>
                                                 <p>Adress Hint: {{ $order->dsp->profile->address_hint }}</p>
                                                 <p>Mobile: {{ $order->dsp->profile->mobile_no }}</p>
                                             </div>
+                                            @endif
 
                                             <h5 {{--class="d-none"--}} id="dsp_str">{{--Count down will start after clicking Recieved--}}</h5>
                                             <h1><span id="dsp_timer">{{--{{ $order->delivery_time }}--}}</span></h1>
 
 
-                                            @if(auth()->id() == $order->dsp_id)
+                                            @if(auth()->id() == $order->dsp_user_id)
                                                 <div class="dsp_opt">
                                                     <button class="btn btn--icon btn-md btn--round btn-success"
                                                             type="button" id="dsp_ready"><span
@@ -207,6 +210,50 @@
                                         </div>
                                     </div>
                                 </li>
+                                @endif
+
+                                @if($order->pp()->count())
+                                <li class="step">
+                                    <div data-step-label="Status of the delivery ..."
+                                         class="step-title waves-effect waves-dark">Pickers Point
+                                    </div>
+                                    <div class="step-content">
+                                        <div class="">
+                                            {{-- TODO dsp preview here for every one if posible--}}
+                                        </div>
+
+                                        <div class="order-address">
+                                            {{-- TODO dsp address for everyone--}}
+                                            @if($order->pp->count())
+                                                <div class="">
+                                                    <h6><u>PP info:</u></h6>
+                                                    <p>Adress: {{ $order->pp->address }}</p>
+                                                    <p>Adress Hint: {{ $order->pp->address_hint }}</p>
+                                                    <p>Mobile: {{ $order->pp->mobile_no }}</p>
+                                                </div>
+                                            @endif
+
+                                            <h5 {{--class="d-none"--}} id="dsp_str">{{--Count down will start after clicking Recieved--}}</h5>
+                                            {{--<h1><span id="dsp_timer">--}}{{--{{ $order->delivery_time }}--}}{{--</span></h1>--}}
+
+
+                                            @if(auth()->id() == $order->pp_user_id)
+                                                <div class="dsp_opt">
+                                                    <button class="btn btn--icon btn-md btn--round btn-success"
+                                                            type="button" id="dsp_ready"><span
+                                                                class="lnr  lnr-thumbs-up"></span>Received {{-- TODO means he recived from chef--}}
+                                                    </button>
+                                                    <button class="btn btn--icon btn-md btn--round btn-danger" type="button"
+                                                            id="dsp_delivered"><span
+                                                                class="lnr  lnr-thumbs-up"></span>Delivered {{-- TODO means he delivered to the buyer--}}
+                                                        By DSPID
+                                                    </button>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </li>
+                                @endif
 
                                 <li class="step">
                                     <div class="step-title waves-effect waves-dark">Order Completed</div>
@@ -227,7 +274,7 @@
                                                            class="btn btn--md btn--round btn--white rating--btn not--rated"
                                                            data-toggle="modal" data-target="#myModal">
                                                             <P class="rate_it">Rate Now</P>
-                                                            <div class="rating product--rating">
+                                                            {{--<div class="rating product--rating">
                                                                 <ul>
                                                                     <li>
                                                                         <span class="fa fa-star-o"></span>
@@ -244,7 +291,7 @@
                                                                     <li>
                                                                         <span class="fa fa-star-o"></span>
                                                                     </li>
-                                                                </ul>
+                                                                </ul>--}}
                                                             </div>
                                                         </a>
                                                         <!-- end /.rating--btn -->
@@ -264,6 +311,19 @@
                             </ul>
 
                         </div>
+
+
+
+                    <div class="my-3 card-title">
+                        <button class="btn btn--icon btn-md btn--round btn-success"
+                                id="complain_us"
+                                type="button"><span
+                                    class="lnr  lnr-thumbs-up"></span>Complain To Us
+                        </button>
+                    </div>
+
+
+
                     </div>
                     <!-- end /.col-md-12 -->
 
@@ -272,6 +332,7 @@
                         <aside class="sidebar upload_sidebar">
 
                             <div class="sidebar-card">
+
                                 <div class="card-title">
                                     <h3>Help Order Staus</h3>
                                 </div>
