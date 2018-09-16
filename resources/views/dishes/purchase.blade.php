@@ -62,7 +62,7 @@
                             <h4 class="add_info">Status</h4> </div>
                         <div class="col-md-2">
                             <h4>Price</h4> </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 text-right">
                             <h4>Action</h4> </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                                                     <p> <span>Delivery id:</span>450</p>
                                                 </li>--}}
                                                 <li>
-                                                    <p> <span>Status:</span> {{ $order->status }} </p>
+                                                    <p> <span>Status:</span><span class="text-danger"> {{ $order->status }}</span> </p>
                                                 </li>
                                             </ul>
                                         </div>
