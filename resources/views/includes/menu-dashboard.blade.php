@@ -13,7 +13,7 @@
                     </li>
                     <li>
                         <a href="{{ route('order.purchase') }}">
-                                    <span class="lnr lnr-cart"></span>Purchased</a>
+                                    <span class="lnr lnr-cart"></span>All Orders</a>
                     </li>
                     <li class="{{ request()->is('profile_setting') ? 'active' : '' }}">
                         <a href="{{ route('dishes.manage') }}">

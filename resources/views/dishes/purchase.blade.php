@@ -1,4 +1,4 @@
-@extends ('layouts.master') @section ('title', 'Manage Dish') @section ('content')
+@extends ('layouts.master') @section ('title', 'All Orders') @section ('content')
 
 <section class="breadcrumb-area">
     <div class="container">
@@ -115,36 +115,44 @@
                                         <!-- end /.product__additional_info -->
                                     </div>
                                     <!-- end /.col-md-3 -->
-                                    <div class="col-lg-4 col-md-4 col-6 xs-fullwidth">
+                                    <div class="col-lg-2 col-md-2 col-6 xs-fullwidth">
                                         <div class="product__price_download">
                                             <div class="item_price v_middle"> <span>৳{{ $order->dish->dish_price }}</span> </div>
+
+                                            <!-- end /.item_action -->
+                                        </div>
+                                        <!-- end /.product__price_download -->
+                                    </div>
+
+                                    <div class="col-lg-2 col-md-2 col-6 xs-fullwidth">
+                                        <div class="product__price_download">
                                             <div class="item_action v_middle text-center">
-                                                <a href="{{ route('order.status', ['order' => $order->id]) }}" class="btn btn--md btn--round btn--white">View Order</a>
-                                                {{--<a href="#" class="btn btn--md btn--round btn--white rating--btn not--rated" data-toggle="modal" data-target="#myModal">
-                                                    <P class="rate_it">Rate Chef</P>
-                                                    <div class="rating product--rating">
-                                                        <ul>
-                                                            <li> <span class="fa fa-star"></span> </li>
-                                                            <li> <span class="fa fa-star"></span> </li>
-                                                            <li> <span class="fa fa-star"></span> </li>
-                                                            <li> <span class="fa fa-star"></span> </li>
-                                                            <li> <span class="fa fa-star-o"></span> </li>
-                                                        </ul>
-                                                    </div>
-                                                </a>
-                                                <a href="#" class="btn btn--md btn--round btn--white rating--btn not--rated" data-toggle="modal" data-target="#myModal">
-                                                    <P class="rate_it">Rate Delivery</P>
-                                                    <div class="rating product--rating">
-                                                        <ul>
-                                                            <li> <span class="fa fa-star-o"></span> </li>
-                                                            <li> <span class="fa fa-star-o"></span> </li>
-                                                            <li> <span class="fa fa-star-o"></span> </li>
-                                                            <li> <span class="fa fa-star-o"></span> </li>
-                                                            <li> <span class="fa fa-star-o"></span> </li>
-                                                        </ul>
-                                                    </div>
-                                                </a>--}}
-                                                <!-- end /.rating--btn -->
+                                                <a href="{{ route('order.status', ['order' => $order->id]) }}" class="btn btn--sm btn--round">View Order</a>
+                                            {{--<a href="#" class="btn btn--md btn--round btn--white rating--btn not--rated" data-toggle="modal" data-target="#myModal">
+                                                <P class="rate_it">Rate Chef</P>
+                                                <div class="rating product--rating">
+                                                    <ul>
+                                                        <li> <span class="fa fa-star"></span> </li>
+                                                        <li> <span class="fa fa-star"></span> </li>
+                                                        <li> <span class="fa fa-star"></span> </li>
+                                                        <li> <span class="fa fa-star"></span> </li>
+                                                        <li> <span class="fa fa-star-o"></span> </li>
+                                                    </ul>
+                                                </div>
+                                            </a>
+                                            <a href="#" class="btn btn--md btn--round btn--white rating--btn not--rated" data-toggle="modal" data-target="#myModal">
+                                                <P class="rate_it">Rate Delivery</P>
+                                                <div class="rating product--rating">
+                                                    <ul>
+                                                        <li> <span class="fa fa-star-o"></span> </li>
+                                                        <li> <span class="fa fa-star-o"></span> </li>
+                                                        <li> <span class="fa fa-star-o"></span> </li>
+                                                        <li> <span class="fa fa-star-o"></span> </li>
+                                                        <li> <span class="fa fa-star-o"></span> </li>
+                                                    </ul>
+                                                </div>
+                                            </a>--}}
+                                            <!-- end /.rating--btn -->
                                             </div>
                                             <!-- end /.item_action -->
                                         </div>
@@ -159,62 +167,9 @@
 
                 @endforeach
 
+                {{ $orders->links() }}
 
 
-
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modals -->
-    <div class="modal fade rating_modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="rating_modal">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
-                    <h3 class="modal-title" id="rating_modal">Rating this Dish</h3>
-                    <h4>Title</h4>
-                    <p>by <a href="">Chef ID</a> </p>
-                </div>
-                <!-- end /.modal-header -->
-                <div class="modal-body">
-                    <form action="#">
-                        <ul>
-                            <li>
-                                <p>Your Rating</p>
-                                <div class="right_content btn btn--round btn--white btn--md">
-                                    <select name="rating" class="give_rating">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </div>
-                            </li>
-                            <li>
-                                <p>Rating Causes</p>
-                                <div class="right_content">
-                                    <div class="select-wrap">
-                                        <select name="review_reason">
-                                            <option value="design">Food Presentation</option>
-                                            <option value="customization">Food Quality</option>
-                                            <option value="customization">Fast Delivery</option>
-                                        </select> <span class="lnr lnr-chevron-down"></span> </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="rating_field">
-                            <label for="rating_field">Comments</label>
-                            <textarea name="rating_field" id="rating_field" class="text_field" placeholder="Please enter your rating reason...."></textarea>
-                            <p class="notice">Your review will be ​publicly visible​ and the chef may reply to your review. </p>
-                        </div>
-                        <button type="submit" class="btn btn--round btn--default">Submit Rating</button>
-                        <button class="btn btn--round modal_close" data-dismiss="modal">Close</button>
-                    </form>
-                    <!-- end /.form -->
-                </div>
-                <!-- end /.modal-body -->
             </div>
         </div>
     </div>
