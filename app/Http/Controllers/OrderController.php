@@ -52,12 +52,18 @@ class OrderController extends Controller
 
 	public function status(Order $order) {
 
+	    $dish = $order->dish;
+
 		if($order->dish->profile_id == auth()->id() or $order->buyer_user_id == auth()->id()) {
-			return view('order.status', compact( 'order'));
+			return view('order.status', compact( 'order', 'dish'));
 		}
 		if (auth()->user()->delivery_services->contains('id', $order->dsp_id)) {
-			return view('order.status', compact( 'order'));			
+			return view('order.status', compact( 'order', 'dish'));
 		}
+
+        if (auth()->user()->pickerspoints->contains('id', $order->pp_id)) {
+            return view('order.status', compact( 'order', 'dish'));
+        }
 
 		return redirect()->back();
 	}
