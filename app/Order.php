@@ -32,5 +32,34 @@ class Order extends Model
 		return $this->belongsTo( User::class, 'dish_user_id', 'id')->withDefault();
 	}
 
+    public function role()
+    {
+        $user_id = auth()->id();
+        $role = null;
+        if($user_id == $this->buyer_user_id) {
+            $role = "Buyer";
+        } elseif ($user_id == $this->dish_user_id) {
+            $role = "Chef";
+        } elseif ($user_id == $this->dsp_user_id) {
+            $role = "DSP";
+        } elseif ($user_id == $this->pp_user_id) {
+            $role = "PP";
+        }
+
+        return $role;
+	}
+
+	public function statusInString() {
+	    if($this->status == 1) {
+	        return 'In Progress';
+        }
+        if($this->status == 2) {
+            return 'Completed';
+        }
+        if($this->status == 3) {
+            return 'Canceled';
+        }
+        return 'database connection failed';
+    }
 
 }

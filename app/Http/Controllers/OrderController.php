@@ -53,8 +53,21 @@ class OrderController extends Controller
 	public function status(Order $order) {
 
 	    $dish = $order->dish;
+	    $role = null;
 
-		if($order->dish->profile_id == auth()->id() or $order->buyer_user_id == auth()->id()) {
+        $user_id = auth()->id();
+
+	    if($user_id == $order->buyer_user_id) {
+            $role = 1;
+        } elseif ($user_id == $order->dish_user_id) {
+            $role = 2;
+        } elseif ($user_id == $order->dsp_user_id) {
+            $role = 3;
+        } elseif ($user_id == $order->pp_user_id) {
+            $role = 4;
+        }
+
+		if($order->dish->profile_id == $user_id or $order->buyer_user_id == $user_id) {
 			return view('order.status', compact( 'order', 'dish'));
 		}
 		if (auth()->user()->delivery_services->contains('id', $order->dsp_id)) {
@@ -75,9 +88,16 @@ class OrderController extends Controller
 	 */
 	public function storeOrder(Request $request)
 	{
+
+	    $validate = $request->validate([
+	        'payment_type' => 'required'
+        ]);
+
+
 		if(auth()->id() != $request->input('buyer_user_id')) {
-			return redirect()->back();
+			return redirect()->back()->withErrors('Credentials Mismatch');
 		}
+
 
 		$user = auth()->user();
 		$dish = Dish::find($request->input('dish_id'));

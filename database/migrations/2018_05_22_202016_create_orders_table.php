@@ -39,12 +39,15 @@ class CreateOrdersTable extends Migration
 	        // 1 = khanidaani balance, 2 = bKash
 	        $table->integer('delivery_time');
 	        $table->integer('rating')->nullable();
+	        $table->integer('chef_order_approved')->default(0);
+	        // 0 = pending, 1 = accepted, 2 = rejected
 	        $table->boolean('chef_is_dish_ready')->default(0);
-	        $table->boolean('chef_is_dish_delivered')->nullable();
-	        $table->boolean('dsp_is_dish_recieved')->nullable();
-	        $table->boolean('dsp_is_dish_delivered')->nullable();
-	        $table->boolean('is_order_completed')->nullable();
-	        $table->string('status')->default('active');
+	        $table->boolean('chef_is_dish_delivered')->default(0);
+	        $table->boolean('dsp_is_dish_recieved')->default(0);
+	        $table->boolean('dsp_is_dish_delivered')->default(0);
+	        $table->boolean('is_order_completed')->default(0);
+	        $table->integer('status')->default(1);
+	        // 1 = pending, 2 = completed, 3 = cancelled
 	        $table->timestamps();
         });
     }
