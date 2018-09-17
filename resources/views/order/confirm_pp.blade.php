@@ -11,17 +11,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="breadcrumb">
-                        <ul>
-                            <li>
-                                <a href="{{ route('home') }}">Home</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">Order Page</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <h1 class="page-title">Order Page</h1>
+                    <h1 class="page-title">Payment page</h1>
                 </div>
                 <!-- end /.col-md-12 -->
             </div>

@@ -180,12 +180,5 @@
     </div>
     <!-- end /.dashboard_menu_area -->
   </section>
-  <!--================================
-       START SELF-ADS AREA
-   =================================-->
-  @include('includes.self_ads')
-  <!--================================
-    END SELF-ADS AREA
-=================================-->
 
 @endsection

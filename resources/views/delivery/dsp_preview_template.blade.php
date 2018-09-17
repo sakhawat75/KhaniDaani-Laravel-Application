@@ -4,7 +4,7 @@
 
         <div class="dsp-wrap">
             <div class="row">
-                <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
+                <div class="col-xs-12 col-sm-3 col-md-12">
                     <a class="dsp-images" href="{{ route('home') }}/profile/<%- dsp.profile.id %>"><img src="{{ route('home') }}/storage/images/profile_image/<%- dsp.profile.profile_image %>"
                                                                                                                 alt="dsp profile" >  </a>
                     <div class="dsp-username">
@@ -13,9 +13,10 @@
                         </h5>
 
                     </div>
+
                 </div>
                 <!--end:col -->
-                <div class="col-xs-12 col-sm-9 col-md-12 col-lg-9">
+                <div class="col-xs-12 col-sm-9 col-md-12 ">
                     <a href="#"><h5 class="dsp-title"><%- dsp.service_title %></h5>
                     </a>
                     <div class="sell">

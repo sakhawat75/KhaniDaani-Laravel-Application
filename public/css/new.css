@@ -132,7 +132,7 @@ a.btn_filter#grid{
 }
 @media (min-width: 280px) and (max-width: 580px) {
     .delivery-service {
-        padding: 50px 0 20px;
+        padding: 5px 0 5px;
         position: relative;
     }
     .delivery-service .title-block {
@@ -381,5 +381,9 @@ a.btn_filter#grid{
 }
 .author-card .author-infos .author-badges ul li {
     margin: 0 10px 10px 0px;
+}
+
+.a-color {
+    color: #7347c1;
 }
 

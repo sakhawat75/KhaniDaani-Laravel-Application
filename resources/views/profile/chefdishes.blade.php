@@ -67,29 +67,37 @@
                                             <li> <img class="auth-img" src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="author image">
                                                 <p> <a href="{{ route('profile.show', [ 'profile' => $profile->id]) }}">{{ $user->name }}</a> </p>
                                             </li>
-                                            <li class="product_cat"> <a href="#">
-                              From <span>{{ $profile->city }}, </span><span>{{ $profile->area }}</span></a> </li>
+                                            <li class="product_cat a-color">
+                                                    <span class="lnr lnr-map-marker"> <span>{{ $profile->city }}, </span><span>{{ $profile->area }}</span>
+                                                    </span></li>
                                         </ul>
                                     </div>
                                     <!-- end /.product-desc -->
                                     <div class="product-purchase">
                                         <div class="price_love"> <span>৳{{ $dish->dish_price }}</span>
-                                            <p> <span class="lnr lnr-heart"></span> 0</p>
-                                        </div>
-                                        <div class="rating product--rating pull-right">
-                                            <ul>
-                                                @for ($i=1; $i <= 5; $i++)
-                                                                                                
-                                                  <li>
-                                                    @if($i <= round($dish->avg_rating))
-                                                      <span class="fa fa-star"></span>
-                                                    @else
-                                                      <span class="fa fa-star-o"></span>
-                                                    @endif
-                                                  </li>
+                                            <div class="rating product--rating pull-right">
+                                                <ul>
+                                                    @for ($i=1; $i <= 5; $i++)
 
-                                                @endfor
-                                            </ul>
+                                                        <li>
+                                                            @if($i <= round($dish->avg_rating))
+                                                                <span class="fa fa-star"></span>
+                                                            @else
+                                                                <span class="fa fa-star-o"></span>
+                                                            @endif
+                                                        </li>
+
+                                                    @endfor
+                                                </ul>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="sell">
+                                            <p>
+                                                <span class="lnr lnr-cart"></span>
+                                                <span>{{ count($dish->completed_orders) }}</span>
+                                            </p>
                                         </div>
                                     </div>
                                     <!-- end /.product-purchase -->

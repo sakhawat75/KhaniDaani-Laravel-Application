@@ -15,6 +15,10 @@
                         <a href="{{ route('order.purchase') }}">
                                     <span class="lnr lnr-cart"></span>All Orders</a>
                     </li>
+                    <li>
+                        <a href="{{ route('delivery.AddService') }}">
+                            <span class="lnr lnr-file-add"></span>Add Dsih</a>
+                    </li>
                     <li class="{{ request()->is('profile_setting') ? 'active' : '' }}">
                         <a href="{{ route('dishes.manage') }}">
                                     <span class="lnr lnr-briefcase"></span>Manage Dish</a>
@@ -23,14 +27,15 @@
                         <a href="{{ route('profile.cashout') }}">
                                     <span class="lnr lnr-briefcase"></span>Payment</a>
                     </li>
+
                     <li>
                         <a href="{{ route('delivery.AddService') }}">
-                            <span class="lnr lnr-upload"></span>Add Delivery</a>
+                            <span class="lnr lnr-file-add"></span>Add Delivery</a>
                     </li>
 
                     <li>
                         <a href="{{ route('pickerspoint.addpp') }}">
-                            <span class="lnr lnr-upload"></span>Host Pickers Point</a>
+                            <span class="lnr lnr-file-add"> </span> Host Pickers Point</a>
                     </li>
                 </ul>
                 <!-- end /.dashboard_menu -->

@@ -104,15 +104,15 @@
 
                 <div class="col-lg-4 col-md-6 col-3 v_middle">
                     <!-- start .author-area -->
-                    <div class="author-area author-area-lg">
+                    <div class="author-area ">
                         @guest
-                        <a href="{{ route('register') }}" class="author-area__seller-btn inline my-4 a-mem">Become a Member</a>
+                        <a href="{{ route('register') }}" class="author-area__seller-btn inline my-4 a-mem author-area-lg">Become a Member</a>
                         <a href="{{ route('login') }}" class="author-area__seller-btn inline">Login</a>
                         @endguest
 
                         @auth
 
-                        <div class="author__notification_area">
+                        <div class="author__notification_area author-area-lg">
                             <ul>
                                 <li class="has_dropdown">
                                     <div class="icon_wrap">
@@ -148,7 +148,7 @@
                         </div>
 
                         <!--start .author-author__info-->
-                        <div class="author-author__info inline has_dropdown">
+                        <div class="author-author__info inline has_dropdown author-area-lg">
                             <div class="author__avatar ">
                                 <img src="{{ URL::to('/') }}/storage/images/profile_image/{{ auth()->user()->profile->profile_image }}" alt="user avatar" style="height: 60px;width: 60px;border-radius: 50%;" id="auth_prfl_img">
                             </div>
@@ -180,28 +180,28 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('dishes.create') }}">
-                                            <span class="lnr lnr-upload"></span>Upload Dish
+                                            <span class="lnr lnr-file-add"></span>Add Dish
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('delivery.AddService') }}">
+                                            <span class="lnr lnr-file-add"></span>Add Delivery
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('pickerspoint.addpp') }}">
+                                            <span class="lnr lnr-file-add"></span>Host Pickers Point</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('dishes.manage') }}">
-                                            <span class="lnr lnr-book"></span>Manage Dish
+                                            <span class="lnr lnr-database"></span>Manage Dish
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('profile.cashout') }}">
                                             <span class="lnr lnr-briefcase"></span>Payment
                                         </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('delivery.AddService') }}">
-                                            <span class="lnr lnr-upload"></span>Add Delivery
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="{{ route('pickerspoint.addpp') }}">
-                                            <span class="lnr lnr-upload"></span>Host Pickers Point</a>
                                     </li>
 
                                     <li>
@@ -237,7 +237,7 @@
                                             {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}
                                         </a>
                                     </p>
-                                    <p class="ammount">৳00.00</p>
+                                    <p class="ammount">৳ {{ auth()->user()->profile->balance }}</p>
                                 </div>
                             </div>
                             <!--end /.author-author__info-->
@@ -272,7 +272,7 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('profile.edit', ['profile' => auth()->id()]) }}">
-                                            <span class="lnr lnr-cog"></span>Profile Setting
+                                            <span class="lnr lnr-cog"></span>Setting
                                         </a>
                                     </li>
                                     <li>
@@ -282,12 +282,22 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('dishes.create') }}">
-                                            <span class="lnr lnr-upload"></span>Upload Dish
+                                            <span class="lnr lnr-file-add"></span>Add Dish
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('delivery.AddService') }}">
+                                            <span class="lnr lnr-file-add"></span>Add Delivery
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('pickerspoint.addpp') }}">
+                                            <span class="lnr lnr-file-add"></span>Host Pickers Point</a>
+                                    </li>
+                                    <li>
                                         <a href="{{ route('dishes.manage') }}">
-                                            <span class="lnr lnr-book"></span>Manage Dish
+                                            <span class="lnr lnr-database"></span>Manage Dish
                                         </a>
                                     </li>
                                     <li>
@@ -296,11 +306,6 @@
                                         </a>
                                     </li>
 
-                                    <li>
-                                        <a href="{{ route('delivery.AddService') }}">
-                                            <span class="lnr lnr-upload"></span>Add Delivery
-                                        </a>
-                                    </li>
                                     <li>
                                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
                                             <span class="lnr lnr-exit"></span>Logout

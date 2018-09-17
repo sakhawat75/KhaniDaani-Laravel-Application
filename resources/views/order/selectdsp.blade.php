@@ -9,17 +9,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="breadcrumb">
-                        <ul>
-                            <li>
-                                <a href="{{ route('home') }}">KhaniDaani</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">Delivery service</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <h1 class="page-title">Select delivery service</h1>
+                    <h1 class="page-title">Select Deliverer or Pick up Point</h1>
                 </div>
                 <!-- end /.col-md-12 -->
             </div>
@@ -56,9 +46,8 @@
                                                        class="collapsed" aria-expanded="false"
                                                        data-target="#collapse{{ $dsp->id }}"
                                                        aria-controls="collapse{{ $dsp->id }}">
-                                                        <span>{{ $dsp->user->name }} </span>
-                                                        <span>Charge: ৳{{ $dsp->service_charge }}</span>
-                                                        <i class="lnr lnr-chevron-down indicator"></i>
+                                                        <span> <span class="lnr lnr-bicycle"> </span>{{ $dsp->user->name }} </span>
+                                                        <span>Fee: ৳{{ $dsp->service_charge }}</span>
                                                     </a>
                                                 </h4>
                                             </div>
