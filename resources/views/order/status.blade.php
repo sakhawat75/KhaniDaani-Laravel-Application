@@ -95,134 +95,108 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-7">
                         <div class="dashboard_title_area">
-                            <ul class="stepper">
-                                <li class="step active">
-                                    <div data-step-label="Now chef is preparing the food please wait..."
-                                         class="step-title waves-effect waves-dark">Order Started
+
+
+                            <div class="dynamic_part text-center">
+                                <h3 class="my-3">Your Role: <b>{{ $order->role() }}</b></h3>
+                                <h6 class="mb-5 ">Order Status: <b class="o_satus"></b></h6>
+
+                                <div class="my-5">
+                                    <form action="{{ route('command.reset_order', ['id' => $order->id]) }}" method="get">
+                                    <button type="submit" class="btn btn--sm btn-primary">Reset Order steps for testing</button></form>
+                                </div>
+
+                                <div class="order_dynamic">
+                                    <div class="ajax-loader">
+                                        <img src="{{ asset('images/gif/ajax-loader.gif') }}" class="img-responsive" />
                                     </div>
-                                    <div class="step-content">
+                                    <h6>
+                                        <span class="os_span bold">Order Updates: </span>
+                                        <span class="os_update"></span>
+                                    </h6>
+                                    <p class="os_note mt-3">
+                                        <small>
+                                            <b>Note: </b>
+                                            <span class="note_text">
+
+                                            </span>
+                                        </small>
+                                    </p>
+
+                                    <div class="all_timers_template my-5">
                                         <div class="">
-
-                                            <div class="">
-
-                                                <div class="">
-                                                    @include( 'dishes.box_dish_preview')
-                                                    {{-- TODO dont work for the new notification--}}
-                                                    {{-- TODO dish preview here for every one--}}
-                                                </div>
-
-                                                @if(auth()->id() == $order->dsp_id)
-                                                <div class="order-address">
-                                                    {{-- TODO address only for dsp--}}
-                                                    <div class="">
-                                                        <h6><u>Chef info: </u></h6>
-                                                        <p>Adress: {{ $order->chef->profile->address }}</p>
-                                                        <p>Adress Hint: {{ $order->chef->profile->address_hint }}</p>
-                                                        <p>Mobile: {{ $order->chef->profile->mobile_no }}</p>
-                                                    </div>
-                                                    <div class="">
-                                                        <h6><u>Foodies info: </u></h6>
-                                                        <p>Adress: {{ $order->buyer->profile->address }}</p>
-                                                        <p>Adress Hint: {{ $order->buyer->profile->address_hint }}</p>
-                                                        <p>Mobile: {{ $order->buyer->profile->mobile_no }}</p>
-                                                    </div>
-                                                </div>
-                                                @endif
-
-
-
-                                                @if(auth()->id() == $order->buyer_user_id)
-                                                    <div class="">
-                                                        <button class="btn btn--icon btn-md btn--round btn-danger" id=""
-                                                                type="button">
-                                                            <span class="lnr"></span>Cancel
-                                                        </button>
-                                                         {{-- TODO cancel if chef did not accept it within 30 minutes, if chef accept it make the butto disable--}}
-
-                                                    </div>
-                                                @endif
-
-
-                                                <div class="mt-5">
-                                                    <h4><span id="chef_timer">Dish is Ready</span></h4>
-                                                </div>
-                                            </div>
+                                            <h5 class="timer_text"></h5>
+                                            <h1><span id="chef_approval_timer" class="d-none">Chef Approval Timer </span></h1>
+                                            <h1><span id="chef_timer" class="d-none">Chef Timer</span></h1>
+                                            <h1><span id="dsp_timer" class="d-none" >Dsp Timer</span></h1>
                                         </div>
+                                    </div>
 
-                                        <br>
+                                    <div class="action_template my-5">
+                                        <h4 class="mb-3">Your Actions</h4>
+                                        @if(auth()->id() == $order->buyer_user_id)
+
+                                            <div class="buyer_opt">
+                                                <button class="buyer_cancel_btn btn btn--icon btn-md btn--round btn-danger" id=""
+                                                        type="button"
+                                                        @if($order->chef_order_approved == 1)
+                                                        disabled="disabled"
+                                                        @endif
+                                                >
+
+                                                    <span class="lnr"></span>Cancel Order
+                                                </button>
+                                                {{-- TODO cancel if chef did not accept it within 30 minutes, if chef accept it make the butto disable--}}
+
+                                            </div>
+
+                                        @endif
 
                                         @if(auth()->id() == $order->dish_user_id)
                                             <div class="chef_opt">
-                                                <p>Only chefusername can use this</p>
-                                                {{--<button class="btn btn--icon btn-md btn--round btn-success" type="button">--}}
-                                                    {{--<span class="lnr  lnr-thumbs-up"></span>Accept--}}
+                                                {{--<p>Only chefusername can use this</p>--}}
+                                                <button class="btn btn--icon btn-md btn--round btn-success chef_accept d-none" type="button">
+                                                    <span class="lnr  lnr-thumbs-up"></span>Accept
                                                     {{-- TODO if chef did not accept it within 30 minutes buyer can reject it--}}
-                                                {{--</button>--}}
-                                                <button class="btn btn--icon btn-md btn--round btn-danger" id="dish_ready"
+                                                </button>
+                                                <button class="btn btn--icon btn-md btn--round btn-danger d-none chef_reject" type="button">
+                                                    <span class="lnr  lnr-thumbs-down"></span>Reject
+                                                    {{-- TODO if chef did not accept it within 30 minutes buyer can reject it--}}
+                                                </button>
+
+                                                <button class="btn btn--icon btn-md btn--round btn-danger d-none"
+                                                        id="dish_ready"
                                                         type="button">
-                                                    <span class="lnr lnr-bullhorn"></span>Ready
+                                                    <span class="lnr lnr-bullhorn"></span>Dish is Ready
                                                 </button>
 
                                             </div>
                                         @endif
-                                    </div>
-                                </li>
 
-                                <li class="step">
-                                    <div data-step-label="Status of the delivery ..."
-                                         class="step-title waves-effect waves-dark">Delivery
-                                        Service
-                                    </div>
-                                    <div class="step-content">
-                                        <div class="">
-                                            {{-- TODO dsp preview here for every one if posible--}}
-                                        </div>
-
-                                        <div class="order-address">
-                                            {{-- TODO dsp address for everyone--}}
-                                            <div class="">
-                                                <h6><u>DSP info:</u></h6>
-                                                <p>Adress: {{ $order->dsp->profile->address }}</p>
-                                                <p>Adress Hint: {{ $order->dsp->profile->address_hint }}</p>
-                                                <p>Mobile: {{ $order->dsp->profile->mobile_no }}</p>
+                                        @if(auth()->id() == $order->dsp_user_id)
+                                            <div class="dsp_opt">
+                                                <button class="btn btn--icon btn-md btn--round btn-success"
+                                                        type="button" id="dsp_ready"  disabled="disabled"><span
+                                                            class="lnr  lnr-thumbs-up"></span>Dish is Received {{-- TODO means he recived from chef--}}
+                                                </button>
+                                                <button class="btn btn--icon btn-md btn--round btn-danger d-none"
+                                                        type="button"
+                                                        id="dsp_delivered"><span
+                                                            class="lnr  lnr-thumbs-up"></span>Dish is Delivered {{-- TODO means he delivered to the buyer--}}
+                                                </button>
                                             </div>
+                                        @endif
 
-                                            <h5 {{--class="d-none"--}} id="dsp_str">{{--Count down will start after clicking Recieved--}}</h5>
-                                            <h1><span id="dsp_timer">{{--{{ $order->delivery_time }}--}}</span></h1>
-
-
-                                            @if(auth()->id() == $order->dsp_id)
-                                                <div class="dsp_opt">
-                                                    <button class="btn btn--icon btn-md btn--round btn-success"
-                                                            type="button" id="dsp_ready"><span
-                                                                class="lnr  lnr-thumbs-up"></span>Received {{-- TODO means he recived from chef--}}
-                                                    </button>
-                                                    <button class="btn btn--icon btn-md btn--round btn-danger" type="button"
-                                                            id="dsp_delivered"><span
-                                                                class="lnr  lnr-thumbs-up"></span>Delivered {{-- TODO means he delivered to the buyer--}}
-                                                        By DSPID
-                                                    </button>
-                                                </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="step">
-                                    <div class="step-title waves-effect waves-dark">Order Completed</div>
-                                    <div class="step-content">
-                                        <div class="product__price_download">
-
-                                            @if(auth()->id() == $order->buyer_user_id)
-                                            <div class="buyer_opt">
+                                        @if(auth()->id() == $order->buyer_user_id)
+                                            <div class="buyer_opt d-none buyer_review">
                                                 <button class="btn btn--icon btn-md btn--round btn-success"
                                                         id="order_completed"
                                                         type="button"><span
-                                                            class="lnr  lnr-thumbs-up"></span>Received By User
+                                                            class="lnr  lnr-thumbs-up"></span>Received By Me
                                                 </button>
 
-                                                <div class="product__price_download">
-                                                    <div class="item_action v_middle">
+                                                <div class="product__price_download my-5">
+                                                    <div class="item_action v_middle d-none">
                                                         <a href="#"
                                                            class="btn btn--md btn--round btn--white rating--btn not--rated"
                                                            data-toggle="modal" data-target="#myModal">
@@ -253,8 +227,103 @@
                                                 </div>
                                                 <!-- end /.product__price_download -->
                                             </div>
+                                        @endif
+                                    </div>
+
+                                    <div class="total_steps my-5 text-left">
+                                        <h4>Steps: </h4>
+                                        <ul class="list-group">
+                                            <li class="list-group-item list-group-item-success">Chef's Order Acceptation</li>
+                                            <li class="list-group-item list-group-item-warning">Chef's Dish Preparation Completion</li>
+                                            <li class="list-group-item">Dsp/PP Dish Received</li>
+                                            <li class="list-group-item">Dsp/PP Dish Delivered</li>
+                                            <li class="list-group-item">Buyer's Confirmation</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+
+
+                            <ul class="stepper">
+                                <li class="step active">
+                                    <div data-step-label="Dish info"
+                                         class="step-title waves-effect waves-dark">Additional Info
+                                    </div>
+                                    <div class="step-content">
+                                        <div class="">
+
+                                            <div class="">
+
+                                                <div class="">
+                                                    @include( 'dishes.box_dish_preview')
+                                                    {{-- TODO dont work for the new notification--}}
+                                                    {{-- done TODO  dish preview here for every one --}}
+                                                </div>
+
+                                                @if(auth()->id() == $order->dsp_id)
+                                                    <div class="order-address">
+                                                        {{-- done TODO address only for dsp--}}
+                                                        <div class="">
+                                                            <h6><u>Chef info: </u></h6>
+                                                            <p>Adress: {{ $order->chef->profile->address }}</p>
+                                                            <p>Adress
+                                                                Hint: {{ $order->chef->profile->address_hint }}</p>
+                                                            <p>Mobile: {{ $order->chef->profile->mobile_no }}</p>
+                                                        </div>
+                                                        <div class="">
+                                                            <h6><u>Foodies info: </u></h6>
+                                                            <p>Adress: {{ $order->buyer->profile->address }}</p>
+                                                            <p>Adress
+                                                                Hint: {{ $order->buyer->profile->address_hint }}</p>
+                                                            <p>Mobile: {{ $order->buyer->profile->mobile_no }}</p>
+                                                        </div>
+                                                    </div>
                                                 @endif
 
+                                            </div>
+                                        </div>
+
+                                        <br>
+
+                                    </div>
+                                </li>
+
+                                <li class="step">
+                                    <div data-step-label=""
+                                         class="step-title waves-effect waves-dark">Delivery
+                                        Service Info
+                                    </div>
+                                    <div class="step-content">
+                                        <div class="">
+                                            {{-- TODO dsp preview here for every one if posible--}}
+                                        </div>
+
+                                        <div class="order-address">
+                                            {{-- TODO dsp address for everyone--}}
+                                            <div class="">
+                                                <h6><u>DSP info:</u></h6>
+                                                <p>Adress: {{ $order->dsp->profile->address }}</p>
+                                                <p>Adress Hint: {{ $order->dsp->profile->address_hint }}</p>
+                                                <p>Mobile: {{ $order->dsp->profile->mobile_no }}</p>
+                                            </div>
+
+                                            {{-- <h5 id="dsp_str">Count down will start after clicking Recieved</h5> --}}
+
+
+
+                                            
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="step">
+                                    <div class="step-title waves-effect waves-dark">Order Completed</div>
+                                    <div class="step-content">
+                                        <div class="product__price_download">
 
                                         </div>
 
@@ -358,15 +427,32 @@
             </div>
         </div>
     </div>
-
+    
 
     @push('scripts-footer-bottom')
         <script type="text/javascript" src="{{ asset('js/vendor/jquery.countdown.min.js') }}"></script>
+        {{--@include ('order.buyer_status_template')--}}
         <script type="text/javascript">
             $(document).ready(function () {
                 $('.stepper').activateStepper();
 
+                // _.templateSettings.variable = 'order';
+
+                /*var template = _.template(
+                    $('#buyer_status_template').html()
+                );*/
+                $('.ajax-loader').css("visibility", "visible");
+
+                var refresh_time = 5000;
+                var previous = null;
+                var current = null;
+
+                callOrderAjax();
+
+
                 //snackbar
+                $('#snackbar').css('z-index', '99999');
+
                 function snackbar($msg) {
                     $('#snackbar').html($msg);
                     $('#snackbar').toggleClass('show');
@@ -375,176 +461,132 @@
                     }, 1600);
                 }
 
-                @auth
-                //logged in as chef
-                @if($order->dish->profile_id == auth()->id())
+                var renderOrder = function(order) {
+                    // console.log('dish data: ' + dishes.data);
+                    $('.ajax-loader').css("visibility", "visible");
 
-                $('.chef_opt').removeClass('d-none');
+                    // change order status dynamically
+                    var sstr;
 
-                @if($order->chef_is_dish_ready == 1)
-                $('#dish_ready').attr('disabled', 'disabled');
-                @endif
+                    //Notes Text
+                    var notes;
 
+                    //Timer Text
+                    var timerstr;
 
-                @endif
+                    // Order Updates
+                    var opstr;
 
-                //logged in as dsp
-                @if(auth()->user()->delivery_services->contains('id', $order->dsp_id))
-
-                @if($order->chef_is_dish_ready == 1)
-                $('.dsp_opt').removeClass('d-none');
-                @endif
-
-                @if($order->dsp_is_dish_delivered == 1)
-                $('#dsp_delivered').attr('disabled', 'disabled');
-                @endif
-
-                @endif
-
-                // logged in as buyer
-                @if(auth()->id() == $order->buyer_user_id)
-
-                @if($order->chef_is_dish_ready == 1 and $order->dsp_is_dish_delivered == 1)
-                $('.buyer_opt').removeClass('d-none');
-                @endif
-
-                @if($order->is_order_completed == 1)
-                $('#order_completed').attr('disabled', 'disabled');
-                $('.item_action').removeClass('d-none');
-                @endif
-
-                @endif
-                @endauth
-
-
-                @if($order->chef_is_dish_ready != 1)
-                addTimer({{ $order->preparation_time }}, '#chef_timer');
-                @else
-                addTimer({{ $order->delivery_time }}, '#dsp_timer');
-                @endif
-
-                @if($order->dsp_is_dish_delivered == 1)
-                addTimer({{ $order->delivery_time }}, '#dsp_timer');
-                $('#dsp_timer').countdown('pause');
-                @endif
-
-                @if($order->is_order_completed == 1)
-                $('#dsp_timer').html('Order is Completed');
-                $('#order_completed').html('Order is Completed');
-                @endif
-
-                $('#dish_ready').on('click', function (e) {
-                    e.preventDefault();
-                    $('#dish_ready').attr('disabled', 'disabled');
-                    console.log('Clicked: #dish_ready');
-                    @if($order->dish->profile_id == auth()->id())
-
-                    $.ajax({
-                        url: "/api/order/update",
-                        data: {
-                            order_id: {{ $order->id }},
-                            chef_is_dish_ready: 1
-                        },
-                        type: "GET",
-
-                    }).done(function () {
-                        snackbar('Dish is ready');
-                    });
-
-                    $('#chef_timer').countdown('stop');
-                    $('#chef_timer').text('Dish is ready');
-                    addTimer({{ $order->delivery_time }}, '#dsp_timer');
-                    $('#dsp_str').text('Count Down started...');
-                    @endif
-
-                });
-
-                $('#dsp_delivered').on('click', function (e) {
-                    e.preventDefault();
-                    $(this).attr('disabled', 'disabled');
-                    console.log('auth id: {{ auth()->id() }}');
-                    console.log('dsp id: {{ $order->dsp_id }}');
-                    @if(auth()->user()->delivery_services->contains('id', $order->dsp_id))
-                    console.log('Clicked: #dsp_delivered');
-                    $.ajax({
-                        url: "/api/order/update",
-                        data: {
-                            order_id: {{ $order->id }},
-                            dsp_is_dish_delivered: 1
-                        },
-                        type: "GET",
-
-                    }).done(function () {
-                        $('#dsp_timer').countdown('pause');
-                        snackbar('Dish is Delivered');
-                    });
-
-
-
-                    @endif
-
-                });
-
-                // order_completed
-                $('#order_completed').on('click', function (e) {
-                    e.preventDefault();
-                    $('#order_completed').attr('disabled', 'disabled');
-                    $('.item_action').removeClass('d-none');
-
-                    $(this).attr('disabled', 'disabled');
-
-                    console.log('auth id: {{ auth()->id() }}');
-                    console.log('dsp id: {{ $order->dsp_id }}');
-                    @if(auth()->id() == $order->buyer_user_id)
-                    console.log('Clicked: #dsp_delivered');
-                    $.ajax({
-                        url: "/api/order/update",
-                        data: {
-                            order_id: {{ $order->id }},
-                            is_order_completed: 1
-                        },
-                        type: "GET",
-
-                    }).done(function () {
-                        $('#dsp_timer').countdown('stop');
-                        $('#dsp_timer').html('Order is Completed');
-                        $('#order_completed').html('Order is Completed');
-                        snackbar('The order is completed');
-                    });
-
-
-
-                    @endif
-
-                });
-
-
-                /* bar rating plugin installation */
-                $('#select_rating').barrating({
-                    theme: 'fontawesome-stars',
-                    onSelect: function (value, text, event) {
-                        if (typeof(event) !== 'undefined') {
-                            // rating was selected by a user
-                            console.log(event.target);
-                        } else {
-                            // rating was selected programmatically
-                            // by calling `set` method
-                        }
+                    if(order.status === 1) {
+                        sstr = "<span class ='text-primary' >In Progress...</span>";
                     }
-                });
+                    if(order.status === 2) {
+                        sstr = "<span class ='text-success' >Completed</span>";
+                    }
+                    //order cancelled
+                    if(order.status === 3) {
+                        sstr = "<span class ='text-danger' >Cancelled</span>";
+                        opstr = 'The Order is Cancelled';
+                        $('.all_timers_template').hide();
+                        $('.action_template').hide();
+                        $('.os_note').hide();
+                    }
+
+                    // order pending for chef response
+                    if(order.chef_order_approved === 0 && order.status === 1 && order.chef_is_dish_ready === 0) {
+
+                        console.log('condition 1');
+
+                        opstr = "Waiting for the Chef to accept the order";
+                        notes = "If the chef do not accept the order within 30 min" + " after order is placed, the order will be cancelled automatically." + " After chef accepting the order the buyer can not cancel the order" + " unless chef fails to prepare dish within time";
+                        timerstr = "Chef's remaining time to accept the order:";
+
+                        $('.chef_accept').removeClass('d-none');
+                        $('.chef_reject').removeClass('d-none');
+
+                        start_chef_approval_timer();
+                    } else if(order.chef_order_approved === 1 && order.status === 1 && order.chef_is_dish_ready === 0) {
+                        console.log('condition 2');
+                        opstr = "Chef Accepted the order. Now the Chef is preparing the dish";
+                        // $('#chef_approval_timer').countdown('stop');
+                        $('#chef_approval_timer').hide();
+                        $('.chef_accept').hide();
+                        $('.chef_reject').hide();
+                        $('#dish_ready').removeClass('d-none');
+                        $('#chef_timer').removeClass('d-none');
+                        timerstr = "Chef's remaining time to prepare the dish:";
+                        start_chef_timer(order);
+                    } else if(order.chef_order_approved === 1 && order.status === 1 && order.chef_is_dish_ready === 1 && order.dsp_is_dish_recieved === 0) {
+                        console.log('condition 3');
+                        opstr = "Chef Delivered the order. Now DSP is on the way to receive.";
+                        timerstr = "Dsp's remaining time to delivered the dish:";
+
+                        // $('#chef_timer').countdown('stop');
+                        $('#dsp_timer').removeClass('d-none');
+                        $('#chef_timer').hide();
+                        start_dsp_timer(order);
+                        $('#dish_ready').removeClass('d-none');
+                        $('#dish_ready').attr('disabled', 'disabled');
+                        $('#dsp_ready').prop("disabled", false);
+
+                    } else if(order.status === 1 && order.chef_is_dish_ready === 1 && order.dsp_is_dish_recieved === 1 && order.dsp_is_dish_delivered === 0) {
+                        $('#dsp_ready').prop("disabled", true);
+                        $('#dsp_delivered').removeClass('d-none');
+                        $('#dish_ready').removeClass('d-none');
+                        $('#dish_ready').prop('disabled', true);
+                        opstr = "Dsp recieved the order. Now DSP is on the way to deliver to the buyer.";
+
+                    } else if(order.status === 1 && order.chef_is_dish_ready === 1 && order.dsp_is_dish_recieved === 1 && order.dsp_is_dish_delivered === 1 && order.is_order_completed == 0) {
+                        $('#dsp_ready').prop("disabled", true);
+                        $('#dsp_delivered').prop("disabled", true);
+                        $('#dsp_delivered').removeClass('d-none');
+                        $('.buyer_review').removeClass('d-none');
+                        $('.buyer_cancel_btn').addClass('d-none');
+                        $('#dish_ready').removeClass('d-none');
+                        $('#dsp_timer').countdown('stop');
+                        $('#dsp_timer').addClass('d-none');
+                        $('#dish_ready').prop('disabled', true);
+                        opstr = "Dsp Delivered the order. Waiting for the Buyers Comfirmation";
+                        timerstr = "Dish is Delivered to Buyer."
+                    }
 
 
-                $('#dsp_ready').on('click', function (e) {
-                    e.preventDefault();
-                    console.log('Clicked: #dsp_ready');
-                    // $('#chef_timer').countdown('stop');
-                    // $('#chef_timer').text('Dish is ready');
-                    {{--addTimer({{ $order->delivery_time }}, '#dsp_timer');--}}
-                    // $('#dsp_str').text('Count Down started...');
-                });
 
-                //    Asia/Dhaka
-                function addTimer(date, selector) {
+
+                    $('.o_satus').html(sstr);
+                    $('.os_update').html(opstr);
+                    $('.note_text').html(notes);
+                    $('.timer_text').html(timerstr);
+                    $('.ajax-loader').css("visibility", "hidden");
+                };
+
+                function callOrderAjax() {
+                    $.ajax({
+                        url: "{{ route('api.order.load') }}",
+                        beforeSend: function(){
+                            // $('.ajax-loader').css("visibility", "visible");
+                        },
+                        data: {
+                            order_id: {{ $order->id }},
+                        },
+                        type: "GET",
+                        dataType: "json",
+                    }).done( function (order) {
+                        // $('.order_dynamic').html('');
+                        $('.ajax-loader').css("visibility", "hidden");
+                        current = JSON.stringify(order);            
+                        if (previous !== current) {
+                            console.log('refresh');
+                            renderOrder(order);
+                        }
+                        previous = current;
+
+                        // $('.ajax-loader').css("visibility", "hidden");
+                        
+                    });
+                }
+
+                function addTimer(date, selector, expired) {
                     var finalDate = new Date("{{ $order->created_at }}");
 
                     finalDate = finalDate.getTime() + ((date + 6) * 60 * 60 * 1000);
@@ -561,11 +603,276 @@
                             $(this).html(event.strftime(format));
                         })
                         .on('finish.countdown', function (event) {
-                            $(this).html('Delivery Time has expired!');
+                            $(this).html('Time has expired!');
                             // .parent().addClass('disabled');
-
+                            expired();
                         });
                 }
+
+
+                var start_chef_approval_timer = function () {
+                    $('#chef_approval_timer').removeClass('d-none');
+                    addTimer(0.5, '#chef_approval_timer', function () {
+                        console.log('chef_approval_timer is expired');
+                        $.ajax({
+                            url: "/api/order/update",
+                            beforeSend: function(){
+                                $('.ajax-loader').css("visibility", "visible");
+                            },
+                            data: {
+                                order_id: {{ $order->id }},
+                                status : 3
+                            },
+                            type: "GET",
+
+                        }).done(function (order) {
+                            $('.ajax-loader').css("visibility", "hidden");
+                            snackbar('Order Is Cancelled automatically');
+                            callOrderAjax();
+                        });
+
+                    });
+                };
+
+                var start_chef_timer = function (order) {
+                    $('#chef_timer').removeClass('d-none');
+                    console.log('d: ' + order.preparation_time);
+                    addTimer( order.preparation_time, '#chef_timer', function () {
+                        console.log('chef_timer is expired');
+                        $.ajax({
+                            url: "/api/order/update",
+                            data: {
+                                order_id: {{ $order->id }},
+                                status : 3
+                            },
+                            type: "GET",
+
+                        }).done(function (order) {
+                            snackbar('Order Is Cancelled automatically');
+                            callOrderAjax();
+                        });
+
+                    });
+                };
+
+
+                var start_dsp_timer = function (order) {
+                    $('#chef_timer').removeClass('d-none');
+        
+                    addTimer( order.delivery_time, '#dsp_timer', function () {
+                        console.log('chef_timer is expired');
+                        /*$.ajax({
+                            url: "/api/order/update",
+                            data: {
+                                order_id: {{ $order->id }},
+                                status : 3
+                            },
+                            type: "GET",
+
+                        }).done(function (order) {
+                            snackbar('Order Is Cancelled automatically');
+                            renderOrder();
+                        });*/
+
+                    });
+                };
+
+
+
+
+
+
+
+
+                myInterval = setInterval(function() {
+                    callOrderAjax();
+                }, refresh_time);
+
+
+                $('.buyer_cancel_btn').on('click', function (e) {
+                    e.preventDefault();
+                    $('#chef_approval_timer').countdown('stop');
+                    $.ajax({
+                        url: "/api/order/update",
+                        beforeSend: function(){
+                            $('.ajax-loader').css("visibility", "visible");
+                        },
+                        data: {
+                            order_id: {{ $order->id }},
+                            status: 3,
+                        },
+                        type: "GET",
+
+                    }).done(function (order) {
+                        $(this).attr('disabled', 'disabled');
+                        $('.ajax-loader').css("visibility", "hidden");
+                        snackbar('Order Is Cancelled');
+                        callOrderAjax();
+                    });
+                });
+
+                $('.chef_accept').on('click', function (e) {
+                    e.preventDefault();
+                    $('#chef_approval_timer').countdown('stop');
+                    $.ajax({
+                        url: "/api/order/update",
+                        beforeSend: function(){
+                            $('.ajax-loader').css("visibility", "visible");
+                        },
+                        data: {
+                            order_id: {{ $order->id }},
+                            chef_order_approved: 1,
+                        },
+                        type: "GET",
+
+                    }).done(function (order) {
+                        $('.ajax-loader').css("visibility", "hidden");
+                        $(this).attr('disabled', 'disabled');
+                        snackbar('Order Is Accepted');
+                        callOrderAjax();
+                    });
+                });
+
+                $('.chef_reject').on('click', function (e) {
+                    e.preventDefault();
+                    $('#chef_approval_timer').countdown('stop');
+                    $.ajax({
+                        url: "/api/order/update",
+                        beforeSend: function(){
+                            $('.ajax-loader').css("visibility", "visible");
+                        },
+                        data: {
+                            order_id: {{ $order->id }},
+                            chef_order_approved: 2,
+                        },
+                        type: "GET",
+
+                    }).done(function (order) {
+                        $('.ajax-loader').css("visibility", "hidden");
+                        snackbar('Order Is Rejected');
+                        callOrderAjax();
+                    });
+                });
+
+                $('#dish_ready').on('click', function (e) {
+                    e.preventDefault();
+                    $('#dish_ready').attr('disabled', 'disabled');
+                    console.log('Clicked: #dish_ready');
+                    @if($order->dish->profile_id == auth()->id())
+
+                    $.ajax({
+                        url: "/api/order/update",
+                        beforeSend: function(){
+                            $('.ajax-loader').css("visibility", "visible");
+                        },
+                        data: {
+                            order_id: {{ $order->id }},
+                            chef_is_dish_ready: 1
+                        },
+                        type: "GET",
+
+                    }).done(function (order) {
+                        $('.ajax-loader').css("visibility", "hidden");
+                        snackbar('Dish is ready');
+                        callOrderAjax();
+                    });
+
+                    $('#chef_timer').countdown('stop');
+                    // $('#chef_timer').text('Dish is ready');
+                    {{--addTimer({{ $order->delivery_time }}, '#dsp_timer');--}}
+                    // $('.timer_text').text('Dsp Count Down will  start after loading data...');
+                    @endif
+
+                });
+
+                $('#dsp_ready').on('click', function (e) {
+                    e.preventDefault();
+                    $(this).attr('disabled', 'disabled');
+                    // $('#dsp_delivered').removeClass('d-none');
+                    @if(auth()->user()->delivery_services->contains('id', $order->dsp_id))
+                    console.log('Clicked: #dsp_ready');
+                    $.ajax({
+                        url: "/api/order/update",
+                        beforeSend: function(){
+                            $('.ajax-loader').css("visibility", "visible");
+                        },
+                        data: {
+                            order_id: {{ $order->id }},
+                            dsp_is_dish_recieved: 1
+                        },
+                        type: "GET",
+
+                    }).done(function (order) {
+                        // $('#dsp_timer').countdown('pause');
+                        $('.ajax-loader').css("visibility", "hidden");
+                        snackbar('Dsp Recieved the dish');
+                        callOrderAjax();
+                    });
+
+
+
+                    @endif
+
+                });
+
+                $('#dsp_delivered').on('click', function (e) {
+                    e.preventDefault();
+                    $(this).attr('disabled', 'disabled');
+                    
+                    @if(auth()->user()->delivery_services->contains('id', $order->dsp_id))
+                    console.log('Clicked: #dsp_delivered');
+                    $.ajax({
+                        url: "/api/order/update",
+                        data: {
+                            order_id: {{ $order->id }},
+                            dsp_is_dish_delivered: 1
+                        },
+                        beforeSend: function(){
+                            $('.ajax-loader').css("visibility", "visible");
+                        },
+                        type: "GET",
+
+                    }).done(function () {
+                        $('.ajax-loader').css("visibility", "hidden");
+                        $('#dsp_timer').countdown('pause');
+                        snackbar('Dish is Delivered to Buyer');
+                    });
+
+
+
+                    @endif
+
+                });
+
+                // order_completed
+                $('#order_completed').on('click', function (e) {
+                    e.preventDefault();
+                    $('#order_completed').attr('disabled', 'disabled');
+                    $('.item_action').removeClass('d-none');
+
+
+                    @if(auth()->id() == $order->buyer_user_id)
+                    console.log('Clicked: #dsp_delivered');
+                    $.ajax({
+                        url: "/api/order/update",
+                        data: {
+                            order_id: {{ $order->id }},
+                            is_order_completed: 1
+                        },
+                        beforeSend: function () {
+                            $('.ajax-loader').css("visibility", "visible");
+                        },
+                        type: "GET",
+
+                    }).done(function () {
+                        $('.ajax-loader').css("visibility", "hidden");
+                        $('#dsp_timer').countdown('stop');
+                        $('#dsp_timer').html('Order is Completed');
+                        snackbar('The order is completed');
+                    });
+                    @endif
+                });
+
             });
         </script>
     @endpush

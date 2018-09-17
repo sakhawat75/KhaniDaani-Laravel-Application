@@ -69,6 +69,7 @@ Route::get('/api/search-dish', 'RestApiController@jsonSearchDish')->name( 'api.s
 Route::get('/api/search-dsp', 'RestApiController@jsonSearchDsp')->name( 'api.search.dsp');
 Route::get('/api/search-pp', 'RestApiController@jsonSearchPP')->name( 'api.search.pp');
 Route::get('/api/order/update', 'RestApiController@orderUpdate')->name( 'api.order.update');
+Route::get('/api/order/load', 'RestApiController@orderLoad')->name( 'api.order.load');
 
 Route::get('/rating/{order}', 'RatingController@store')->name( 'rating.store');
 
@@ -118,3 +119,17 @@ Route::get('command/migrate_fresh', function () {
     //
 });
 
+Route::get('command/reset_order/{id}', function ($id) {
+    $order = \App\Order::find($id);
+    $order->chef_order_approved = 0;
+    $order->chef_is_dish_ready = 0;
+    $order->chef_is_dish_delivered = 0;
+    $order->dsp_is_dish_recieved = 0;
+    $order->dsp_is_dish_delivered = 0;
+    $order->is_order_completed = 0;
+    $order->status = 1;
+    $order->save();
+
+    return redirect()->back();
+
+})->name('command.reset_order');

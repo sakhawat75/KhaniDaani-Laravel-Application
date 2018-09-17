@@ -12,6 +12,7 @@ use App\Dish;
 use App\Http\Resources\NotificationCollection;
 use App\Order;
 use App\SubCategory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Notifications\NotifyDishReady;
@@ -195,6 +196,8 @@ class RestApiController extends Controller
     	$order_id = null;
     	$order = null;
 
+
+
     	if ($request->has( 'order_id')) {
     		$order_id = $request->input('order_id');
 
@@ -202,6 +205,16 @@ class RestApiController extends Controller
     		$buyer = $order->buyer;
 			$dsp = $order->dsp->user;
 			$chef = $order->dish->profile->user;
+
+			if($order->status == 3) {
+			    return $order;
+            }
+
+            if(Carbon::now()->diffInMinutes($order->created_at) > 30 && $order->chef_order_approved == 0) {
+                $order->status = 3;
+                $order->save();
+                return $order;
+            }
 
     		if($order->dish->profile_id == auth()->id()) {
 			    if($request->has( 'chef_is_dish_ready')){
@@ -216,25 +229,55 @@ class RestApiController extends Controller
 
 				    
 			    }
-		    }
+                if($request->has( 'chef_order_approved')){
+
+                        $order->chef_order_approved = $request->input('chef_order_approved');
+                        if($order->chef_order_approved == 2) {
+                            $order->status = 3;
+                        }
+                        $order->save();
+
+                        //notify buyer and dsp
+
+                    }
+                }
+
+
 		    if($order->buyer_user_id == auth()->id()) {
 			    if($request->has( 'is_order_completed')){
 
 				    $order->is_order_completed = 1;
 				    $order->save();
 			    }
-		    }
+                if($request->has( 'status')){
+
+                        $order->status = $request->input('status');
+                        $order->save();
+                    }
+                }
 		    if(auth()->user()->delivery_services->contains('id', $order->dsp_id)) {
 			    if($request->has( 'dsp_is_dish_delivered')){
 
 				    $order->dsp_is_dish_delivered = 1;
 				    $order->save();
 			    }
+			    if($request->has( 'dsp_is_dish_recieved')){
+
+				    $order->dsp_is_dish_recieved = 1;
+				    $order->save();
+			    }
 		    }
 	    }
 
-	    return response()->json('order updated successfully');
+//	    return response()->json($order);
 
+    }
+
+    public function orderLoad(Request $request)
+    {
+        $order = Order::find($request->input('order_id'));
+
+        return $order;
     }
 
 
