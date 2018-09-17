@@ -4,12 +4,12 @@
 
 @section ('content')
 
-  <section class="hero-area hero--2 bgimage">
+  <section class="hero-area  bgimage">
     <div class="bg_image_holder">
       <img src="/images/hero_area_bg3.jpg" alt="area bd missing">
     </div>
     <!-- start hero-content -->
-    <div class="hero-content">
+    <div class="hero-content content_above">
       <!-- start .contact_wrapper -->
       <div class="content-wrapper">
         <!-- start .container -->
@@ -17,17 +17,17 @@
           <!-- start row -->
           <div class="row">
             <!-- start col-md-12 -->
-            <div class="col-md-6">
+            <div class="col-md-12">
               <div class="hero__content__title">
                 <h1>
-                  Sell your special dishes near you or buy variety of dishes OR
+                  About
                 </h1>
-                <p class="tagline">Earn money by delivering those dishes.</p>
+                <p class="tagline">KhaniDaani is a freelance marketplace for chef & foodies. Here all housewives and potential cooks can earn bucks by selling their own food item(s) from anywhere. </p>
               </div>
               <!-- start .hero__btn-area-->
               <div class="hero__btn-area">
+                <a href="{{ route('register') }}" class="btn btn--round btn--lg">Join</a>
                 <a href="{{ route('search.livedish') }}" class="btn btn--round btn--lg">View All Dishes</a>
-                <a href="{{ route('search.livedish') }}" class="btn btn--round btn--lg">Popular Dishes</a>
               </div>
               <!-- end .hero__btn-area-->
             </div>
@@ -114,6 +114,7 @@
                     <a href="{{ route('dishes.show', ['id' => $fd->dish->id])}}" class="product_title">
                       <h4>{{ $fd->dish->dish_name }}</h4>
                     </a>
+
                     <ul class="titlebtm">
                       <li>
                         <img class="auth-img"
@@ -123,8 +124,10 @@
                           <a href="{{ route('profile.show', ['profile' => $fd->dish->profile->id]) }}">{{ $fd->dish->profile->user_name }}</a>
                         </p>
                       </li>
+                      <li class="product_cat a-color">
+                        <span class="lnr lnr-map-marker"></span><span>{{ $fd->dish->profile->city }},</span><span>{{ $fd->dish->profile->area }}</span></li>
                     </ul>
-                    <p>{!! $fd->dish->dish_description !!}</p>
+                    <p class="s-hide">{!! $fd->dish->dish_description !!}</p>
                   </div>
 
                   <div class="product_data">
@@ -142,8 +145,7 @@
                     <div class="product-purchase featured--product-purchase">
                       <div class="price_love">
                         <span>৳{{ $fd->dish->dish_price }}</span>
-                        <p>
-                          <span class="lnr lnr-heart"></span>0</p>
+
                       </div>
                       <div class="sell">
                         <p>
@@ -203,7 +205,7 @@
             <div class="product__title">
               <h2>New Dishes</h2>
             </div>
-            <div class="filter__menu">
+            <div class="filter__menu s-hide">
               <p>Filter by:</p>
               <div class="filter__menu_icon">
                 <a href="#" id="drop1" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -260,10 +262,9 @@
                         <a href="#">{{  $dish->profile->user_name }}</a>
                       </p>
                     </li>
-                    <li class="product_cat">
-                      <a href="#">
-                        From <span>Sylhet</span></a>
-                    </li>
+                    <li class="product_cat a-color">
+                                                    <span class="lnr lnr-map-marker"> <span>{{ $dish->profile->city }}, </span><span>{{ $dish->profile->area }}</span>
+                                                    </span></li>
                   </ul>
                 </div>
                 <!-- end /.product-desc -->
@@ -272,12 +273,14 @@
                   <div class="price_love">
                     <span>৳{{ $dish->dish_price }}</span>
                   </div>
-                 {{-- <div class="sell">
+
+
+                  <div class="sell">
                     <p>
-                      <span class="lnr lnr-heart"></span>
-                      <span>0</span>
+                      <span class="lnr lnr-cart"></span>
+                      <span>{{ count($dish->completed_orders) }}</span>
                     </p>
-                  </div>--}}
+                  </div>
 
                   {{--Start Rating Area--}}
                   <div class="rating product--rating">

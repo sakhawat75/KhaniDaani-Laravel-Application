@@ -7,8 +7,30 @@ $tablet: 768px;
 $laptop: 1070px;
 $ipad: 992px;
 
+@media (min-width: 1199px ) and (max-width: 3000px){
+
+  .hero-area .hero__content__title .tagline {
+    color: #f3f3f8;
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 556px;
+    padding-bottom: 44px;
+    padding-top: 20px;
+  }
+
+}
+
 /* 992 TO 1199 */
 @media (min-width:$ipad ) and (max-width: 1199px) {
+
+  .hero-area .hero__content__title .tagline {
+    color: #f3f3f8;
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 400px;
+    padding-bottom: 44px;
+    padding-top: 20px;
+  }
   /* menu area scss */
   .mainmenu__menu .navbar-nav > li{
     margin-right: 20px;
@@ -466,9 +488,12 @@ $ipad: 992px;
     .hero__content__title {
       h1 {
         font-size: 50px;
+        text-align: left;
       }
       .tagline{
         line-height: 35px ;
+        text-align: left;
+        margin-right: 200px;
       }
     }
   }
@@ -915,6 +940,7 @@ $ipad: 992px;
 /* 767 */
 @media  screen and (max-width: $tablet - 1) {
 
+
   .footer-big{
     display: none;
   }
@@ -940,16 +966,13 @@ $ipad: 992px;
   .author-area-lg {
     display: none;
   }
+  .s-hide{
+    display: none;
+  }
 
   .hero__content__title{
-    margin-left: -23px;
-    margin-right: 74px;
-    margin-top: -20px;
-    margin-bottom: 20px;
-    p{
-      display: none;
-    }
-
+    margin-right: 6px;
+    margin-top: 20px;
   }
 
   .container{
@@ -1038,9 +1061,9 @@ $ipad: 992px;
   }
 
   .logo {
-    padding: 0;
+    margin-bottom: 30px;
     img{
-      width: 80%;
+      width: 100%;
     }
   }
   /* MOBILE MENU AREA */
@@ -1160,9 +1183,11 @@ $ipad: 992px;
     .hero__content__title{
       .tagline{
         line-height: 30px;
+        text-align: left;
       }
       h1{
         font-size: 40px;
+        text-align: left;
       }
     }
     .search_box{
@@ -2100,7 +2125,7 @@ $ipad: 992px;
 
   .product{
     .product-desc{
-      padding: 25px;
+      padding: 10px;
     }
     .product-purchase{
       padding: 15px 25px;
@@ -2151,10 +2176,12 @@ $ipad: 992px;
     .hero__content__title{
       h1{
         font-size: 30px;
+        text-align: left;
       }
       .tagline{
         font-size: 18px;
         padding-bottom: 30px;
+        text-align: left;
       }
     }
     .search_box .search-btn{

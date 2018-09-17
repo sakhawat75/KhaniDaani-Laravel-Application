@@ -315,7 +315,7 @@
 
 
 
-                                            
+
                                         </div>
                                     </div>
                                 </li>
@@ -333,6 +333,19 @@
                             </ul>
 
                         </div>
+
+
+
+                    <div class="my-3 card-title">
+                        <button class="btn btn--icon btn-md btn--round btn-success"
+                                id="complain_us"
+                                type="button"><span
+                                    class="lnr  lnr-thumbs-up"></span>Complain To Us
+                        </button>
+                    </div>
+
+
+
                     </div>
                     <!-- end /.col-md-12 -->
 
@@ -427,7 +440,7 @@
             </div>
         </div>
     </div>
-    
+
 
     @push('scripts-footer-bottom')
         <script type="text/javascript" src="{{ asset('js/vendor/jquery.countdown.min.js') }}"></script>
@@ -574,7 +587,7 @@
                     }).done( function (order) {
                         // $('.order_dynamic').html('');
                         $('.ajax-loader').css("visibility", "hidden");
-                        current = JSON.stringify(order);            
+                        current = JSON.stringify(order);
                         if (previous !== current) {
                             console.log('refresh');
                             renderOrder(order);
@@ -582,7 +595,7 @@
                         previous = current;
 
                         // $('.ajax-loader').css("visibility", "hidden");
-                        
+
                     });
                 }
 
@@ -658,7 +671,7 @@
 
                 var start_dsp_timer = function (order) {
                     $('#chef_timer').removeClass('d-none');
-        
+
                     addTimer( order.delivery_time, '#dsp_timer', function () {
                         console.log('chef_timer is expired');
                         /*$.ajax({
@@ -818,7 +831,7 @@
                 $('#dsp_delivered').on('click', function (e) {
                     e.preventDefault();
                     $(this).attr('disabled', 'disabled');
-                    
+
                     @if(auth()->user()->delivery_services->contains('id', $order->dsp_id))
                     console.log('Clicked: #dsp_delivered');
                     $.ajax({

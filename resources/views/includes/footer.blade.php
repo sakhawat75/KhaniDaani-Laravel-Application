@@ -41,7 +41,7 @@
                         <div class="social social--color--filled">
                             <ul>
                                 <li>
-                                    <a href="">
+                                    <a href="#">
                                             <span class="fa fa-facebook"></span>
                                         </a>
                                 </li>
@@ -69,7 +69,7 @@
                 <div class="col-md-12">
                     <div class="copyright-text">
                         <p>&copy; 2018
-                            <a href="#">KhaniDaani</a>. All rights reserved.
+                            <a href="{{route('home')}}">KhaniDaani</a>. All rights reserved. Developed by <a href="">TeamJSN</a>
                         </p>
                     </div>
                     <div class="go_top">
