@@ -4,14 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="breadcrumb">
-                        <ul>
-                            <li> <a href="{{ route('home') }}">Home</a> </li>
-                            <li> <a href="">Profile</a> </li>
-                            <li class="active"> <a href="#">Purchase Dish</a> </li>
-                        </ul>
-                    </div>
-                    <h1 class="page-title">Purchase Dish Status</h1> </div>
+                    <h1 class="page-title">Add Balance in advance</h1> </div>
             </div>
         </div>
     </section>
@@ -22,18 +15,6 @@
 
         <div class="dashboard_contents">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="dashboard_title_area">
-                            <div class="dashboard__title">
-                                <h3>Add Balance</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end /.col-md-12 -->
-                </div>
-                <!-- end /.row -->
-
                 <form action="{{ route('payment.add_balance') }}" name="add_credit_form" method="post">
                     @csrf
                     <div class="row">
@@ -85,18 +66,20 @@
                                     <div class="or"></div>
 --}}
 
-                                    <p class="subtitle">bKash:</p>
+
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-4 mg-bt">
+                                            <p class="subtitle">bKash amount:</p>
                                             <div class="custom_amount">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">৳</span>
-                                                    <input type="number" id="rlicense" class="text_field" placeholder="eg: 250" name="amount" min="100" max="2000" required>
+                                                    <input type="number" id="rlicense" class="text_field" placeholder="eg. 500" name="amount" min="100" max="2000" required>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
+                                            <p class="subtitle no-margin">bKash Transaction Id:</p>
                                             <div class="form-group max-length">
                                                 <div class="input-group">
                                                     <input type="text" id="cardnmbr" class="text_field" placeholder="e.g TX25019687" name="t_id" maxlength="10" required>

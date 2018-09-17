@@ -8,19 +8,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="breadcrumb">
-                        <ul>
-                            <li>
-                                <a href="{{ route('home') }}">Home</a>
-                            </li>
-                            <li>
-                                <a href="dashboard.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">Add Delivery Service</a>
-                            </li>
-                        </ul>
                     </div>
-                    <h1 class="page-title">Add Delivery Service</h1>
+                    <h1 class="page-title">Add pick up point</h1>
                 </div>
                 <!-- end /.col-md-12 -->
             </div>
@@ -51,7 +40,7 @@
 
                             <div class="upload_modules">
                                 <div class="modules__title">
-                                    <h3>Add Pickers Point Detail</h3>
+                                    <h3>Add Pick Up Point Detail</h3>
                                 </div>
                                 <!-- end /.module_title -->
                                 <div class="modules__content">
@@ -156,11 +145,11 @@
                                     <div class="modules__content">
 
                                         <div class="form-group max-length">
-                                            <label for="full_address">Full Address One*</label>
+                                            <label for="full_address">Full Address</label>
                                             <div class="input-group">
                                                 <textarea name="address" id="full_address"
                                                        class="text_field"
-                                                          placeholder="77128 Amber FlatsCormierfurt, NV 26057-0467"  maxlength = "100" required>{{ $profile->address }}</textarea>
+                                                          placeholder="Holding NO:1098,Main Road-1, Block-E, Shahjalal Uposhohor, Sylhet."  maxlength = "100" required>{{ $profile->address }}</textarea>
                                             </div>
                                         </div>
 
@@ -168,7 +157,7 @@
                                             <label for="address_hint">Adress Hint</label>
                                             <div class="input-group">
                                                 <input name="address_hint" type="text" id="address_hint"
-                                                       class="text_field" placeholder="Amelia Station"  maxlength = "50" required value="{{ $profile->address_hint }}">
+                                                       class="text_field" placeholder="Near Brack Bank"  maxlength = "50" required value="{{ $profile->address_hint }}">
                                             </div>
                                         </div>
 
@@ -187,8 +176,7 @@
                             <!-- end /.upload_modules -->
 
 
-                            <button type="submit" class="btn btn--round btn--fullwidth btn--lg">Submit Your Item for
-                                Review
+                            <button type="submit" class="btn btn--round btn--fullwidth btn--lg">Submit
                             </button>
                         </form>
                     </div>

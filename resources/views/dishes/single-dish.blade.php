@@ -177,7 +177,7 @@
                           <div class="media">
                             <div class="media-left">
                               <a href="#">
-                                <img class="media-object" src="{{ route('home') }}/images/m8.png"
+                                <img class="media-object" {{--src="{{ route('home') }}/storage/images/profile_image/{{ $rating->order->buyer->id->profile->profile_image }}--}}" {{-- TODO profile image--}}
                                      alt="Commentator Avatar">
                               </a>
                             </div>
@@ -185,7 +185,7 @@
                               <div class="clearfix">
                                 <div class="pull-left">
                                   <div class="media-heading">
-                                    <a href="">
+                                    <a href="{{ route('profile.show', ['id' => $rating->order->buyer->id])}}">
                                       <h4>{{ $rating->order->buyer->name }}</h4>
                                     </a>
                                     <span>{{ $rating->created_at->diffForHumans() }}</span>

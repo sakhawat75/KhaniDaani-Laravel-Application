@@ -4,14 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="breadcrumb">
-                    <ul>
-                        <li> <a href="{{ route('home') }}">Home</a> </li>
-                        <li> <a href="dashboard.html">Profile</a> </li>
-                        <li class="active"> <a href="#">Purchase Dish</a> </li>
-                    </ul>
-                </div>
-                <h1 class="page-title">Purchase Dish Status</h1> </div>
+                <h1 class="page-title">All order</h1> </div>
         </div>
     </div>
 </section>
@@ -86,7 +79,7 @@
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="short_desc">
-                                                        <h5><a href="{{ route('dishes.show', ['id' => $order->dish->id]) }}">Dish Name: {{ $order->dish->dish_name }}</a></h5>
+                                                        <h4><a href="{{ route('dishes.show', ['id' => $order->dish->id]) }}">{{ $order->dish->dish_name }}</a></h4>
                                                         <p class="mb-0">Category: {{ $order->dish->dish_category }}</p>
                                                         {{--<p>Subcategory: {{ $order->dish->dish_subcategory }}</p>--}}
                                                     </div>

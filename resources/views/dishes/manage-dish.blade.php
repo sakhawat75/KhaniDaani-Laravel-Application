@@ -12,20 +12,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="breadcrumb">
-            <ul>
-              <li>
-                <a href="{{ route('home') }}">Home</a>
-              </li>
-              <li>
-                <a href="dashboard.html">Profile</a>
-              </li>
-              <li class="active">
-                <a href="#">Manage Dish</a>
-              </li>
-            </ul>
-          </div>
-          <h1 class="page-title">Edit <span>Dish Title</span></h1>
+          <h1 class="page-title">Manage your dishes</span></h1>
         </div>
         <!-- end /.col-md-12 -->
       </div>
@@ -44,7 +31,7 @@
     @include('includes.menu-dashboard')
     <div class="dashboard_contents">
       <div class="container">
-        <div class="row">
+        <div class="row s-hide">
           <div class="col-md-12">
             <div class="filter-bar dashboard_title_area clearfix filter-bar2">
               <div class="dashboard__title dashboard__title pull-left">

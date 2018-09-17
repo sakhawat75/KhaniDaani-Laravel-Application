@@ -1,31 +1,32 @@
 <div class="dsp-wrap">
     <div class="row">
-        <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
-            <a class="dsp-images" href="{{ route('profile.show', [ 'profile' => $dsp->user->profile->id]) }}"><img src="{{ route('home') }}/storage/images/profile_image/{{ $dsp->user->profile->profile_image }}"
-                                                 alt="dsp profile"> </a>
-            <div class="dsp-username">
-                <h5>
-                    <a href="{{ route('profile.show', [ 'profile' => $dsp->user->profile->id]) }}">{{ $dsp->user->name }}</a>
-                </h5>
 
+            <div class="col-xs-12 col-sm-3 col-md-4 text-xs-center">
+                <a class="dsp-images" href="{{ route('profile.show', [ 'profile' => $dsp->user->profile->id]) }}"><img src="{{ route('home') }}/storage/images/profile_image/{{ $dsp->user->profile->profile_image }}"
+                                                     alt="dsp profile"> </a>
+                <div class="dsp-username">
+                    <h5>
+                        <a href="{{ route('profile.show', [ 'profile' => $dsp->user->profile->id]) }}">{{ $dsp->user->name }}</a>
+                    </h5>
+
+                </div>
             </div>
-        </div>
         <!--end:col -->
-        <div class="col-xs-12 col-sm-9 col-md-12 col-lg-9">
-            <a href="#"><h5 class="dsp-title">{{ $dsp->service_title }}</h5>
-            </a>
-            <div class="sell">
-                <p>
-                    <span class="bold">DSP-ID:</span>
-                    <span class="bold text-primary">{{ $dsp->id }}</span>
-                    <small class="ml-3">(Please Use This ID When Adding dsp in New Dish Upload)</small>
-                </p>
+            <div class="col-xs-12 col-sm-9 col-md-8">
+                <a href="#"><h5 class="dsp-title">{{ $dsp->service_title }}</h5>
+                </a>
+                <div class="sell">
+                    <p>
+                        <span class="bold">DSP-ID:</span>
+                        <span class="bold text-primary">{{ $dsp->id }}</span>
+                        <small class="ml-3">(Please Use This ID When Adding dsp in New Dish Upload)</small>
+                    </p>
 
+                </div>
+                <p class="dsp-description">{!! $dsp->service_description !!}</p>
+                <p class="dsp-area">Service Area: <span>{{ $dsp->service_area }}</span></p>
             </div>
-            <p class="dsp-description">{!! $dsp->service_description !!}</p>
-            <p class="dsp-area">Service Area: <span>{{ $dsp->service_area }}</span></p>
 
-        </div>
         <div class="col-md-12">
             <div class="bottom-part">
                 <div class="btm-part-2">

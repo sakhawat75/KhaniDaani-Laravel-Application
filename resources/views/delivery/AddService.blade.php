@@ -8,17 +8,6 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="breadcrumb">
-                        <ul>
-                            <li>
-                                <a href="index.html">Home</a>
-                            </li>
-                            <li>
-                                <a href="dashboard.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">Add Delivery Service</a>
-                            </li>
-                        </ul>
                     </div>
                     <h1 class="page-title">Add Delivery Service</h1>
                 </div>
@@ -50,7 +39,7 @@
 
                             <div class="upload_modules">
                                 <div class="modules__title">
-                                    <h3>Add Delivery Service Detail</h3>
+                                    <h3>Service Detail</h3>
                                 </div>
                                 <!-- end /.module_title -->
                                 <div class="modules__content">
@@ -60,7 +49,7 @@
                                             <span>(Max 100 characters)</span>
                                         </label>
                                         <input name="service_title" type="text" id="product_name" class="text_field"
-                                               placeholder="Enter your product name here...">
+                                               placeholder="Enter your service name title">
                                     </div>
 
                                     <div class="form-group no-margin">
@@ -77,14 +66,14 @@
                                         <label for="tags">Service Area
                                             <span>(Max 10 Area)</span>
                                         </label>
-                                        <textarea name="service_area" id="tags" class="text_field" placeholder="Now input just one area as string"></textarea>
+                                        <textarea name="service_area" id="tags" class="text_field" placeholder="eg. Shibgonj, Uposohor etc."></textarea>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="upload_modules with--addons">
                                 <div class="modules__title">
-                                    <h3>Service Hours</h3>
+                                    <h3>Service Hours</h3><span>(available time)</span>
                                 </div>
                                 <!-- end /.module_title -->
 
@@ -92,6 +81,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label for="">Starting time</label>
                                                 <div class="input-group">
                                                     <input type="time" name="service_hours_start" id="rlicense" class="text_field"
                                                            placeholder="Start Time">
@@ -102,6 +92,7 @@
 
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label for="">End time</label>
                                                 <div class="input-group">
                                                     <input type="time" id="exlicense" class="text_field"
                                                            placeholder="End Time" name="service_hours_end">
@@ -119,7 +110,7 @@
                             <div class="upload_modules">
                                 <a class="toggle_title" href="#collapse2" role="button" data-toggle="collapse"
                                    aria-expanded="false" aria-controls="collapse2">
-                                    <h4>Service Pricing & Timing
+                                    <h4>Price & Delivery time
                                         <span class="lnr lnr-chevron-down"></span>
                                     </h4>
                                 </a>
@@ -143,6 +134,7 @@
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
+                                                    <option value="5">5</option>
                                                 </select>
                                                 <span class="lnr lnr-chevron-down"></span>
                                             </div>
@@ -168,8 +160,7 @@
 
 
 
-                            <button type="submit" class="btn btn--round btn--fullwidth btn--lg">Submit Your Item for
-                                Review
+                            <button type="submit" class="btn btn--round btn--fullwidth btn--lg">Submit
                             </button>
                         </form>
                     </div>

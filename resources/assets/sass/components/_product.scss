@@ -73,10 +73,10 @@
     margin: 0;
   }
   ul.titlebtm {
-    padding-bottom: 5px;
     >li {
       display: inline-block;
       margin-right: 16px;
+      padding-bottom: 15px;
       .by{
         margin-right: 6px;
       }
@@ -268,7 +268,7 @@
     }
   }
   ul.titlebtm{
-    >li{
+    li{
       margin-right: 0;
       display: block;
       overflow: hidden;

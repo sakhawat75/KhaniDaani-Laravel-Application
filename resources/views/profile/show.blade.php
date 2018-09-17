@@ -100,19 +100,40 @@
                                             <div class="row">
 
                                                     <div class="col-md-4 col-sm-4">
-                                                        <div class="author-info mcolorbg4">
-                                                            <p>Total Dish</p>
-                                                        </div>
+                                                        <a href="{{route('dishes.create')}}">
+                                                        <div class="statement_info_card">
+                                                            <div class="info_wrap">
+                                                                <span class="lnr lnr-tag icon bg-white"></span>
+                                                                <div class="info">
+                                                                    <a href="{{route('dishes.create')}}"><span> <b>Add Dish Become A Chef</b> </span></a>
+                                                                </div>
+                                                            </div>
+                                                            <!-- end /.info_wrap -->
+                                                        </div></a>
                                                     </div>
                                                     <div class="col-md-4 col-sm-4">
-                                                        <div class="author-info mcolorbg4">
-                                                            <p>Total Dish</p>
-                                                        </div>
+                                                        <a href="{{route('delivery.AddService')}}">
+                                                            <div class="statement_info_card">
+                                                                <div class="info_wrap">
+                                                                    <span class="lnr lnr-tag icon bg-white"></span>
+                                                                    <div class="info">
+                                                                        <span> <b>Add Delivery Services</b> </span>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- end /.info_wrap -->
+                                                            </div></a>
                                                     </div>
                                                     <div class="col-md-4 col-sm-4">
-                                                        <div class="author-info mcolorbg4">
-                                                            <p>Total Dish</p>
-                                                        </div>
+                                                        <a href="{{route('pickerspoint.addpp')}}">
+                                                            <div class="statement_info_card">
+                                                                <div class="info_wrap">
+                                                                    <span class="lnr lnr-tag icon bg-white"></span>
+                                                                    <div class="info">
+                                                                        <span> <b>Add Pickup Point</b> </span>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- end /.info_wrap -->
+                                                            </div></a>
                                                     </div>
 
                                             </div>
@@ -180,21 +201,16 @@
                                 <!-- end /.product-purchase -->
                             </div>
                             <!-- end /.single-product -->
-                        </div> 
+                        </div>
                         @endforeach
                     </div>--}}
                     <!-- end /.row -->
                 </div>
+            </div>
         </div>
     </div>
 </section>
-<!--================================
-     START SELF-ADS AREA
- =================================-->
-@include('includes.self_ads')
-<!--================================
-    END SELF-ADS AREA
-=================================-->
+
 
 @endsection
 

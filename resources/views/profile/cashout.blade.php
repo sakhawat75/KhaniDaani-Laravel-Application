@@ -5,13 +5,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="breadcrumb">
-                    <ul>
-                        <li> <a href="{{ route('home') }}">Home</a> </li>
-                        <li> <a href="dashboard.html">Profile</a> </li>
-                        <li class="active"> <a href="#">Purchase Dish</a> </li>
-                    </ul>
                 </div>
-                <h1 class="page-title">Purchase Dish Status</h1> </div>
+                <h1 class="page-title">Payment and Withdrawls</h1> </div>
         </div>
     </div>
 </section>
@@ -24,15 +19,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="dashboard_title_area clearfix">
-                        <div class="dashboard__title pull-left">
-                            <h3>Withdrawals</h3>
-                        </div>
 
+                    <div class="dashboard_title_area clearfix">
+                        <div class="row">
+                        <div class="col-md-6">
+                        <div class="dashboard__title">
+                            <h3>Don't you have sufficient balance?</h3>
+                        </div>
+                            <br>
+                    </div>
+<div class="col-md-6">
                         <div class="pull-right">
                             <a href="{{route('profile.add_balance')}}" class="btn btn--round btn--md">Add Balance</a>
                         </div>
-                    </div>
+                    </div></div></div>
                     <!-- end /.dashboard_title_area -->
                 </div>
                 <!-- end /.col-md-12 -->
@@ -66,7 +66,7 @@
                                         <div class="custom-radio">
                                             <input type="radio" id="opt3" class="" name="filter_opt">
                                             <label for="opt3">
-                                                <span class="circle"></span>Direct to Local Bank (BD) - Account ending in 5790 (Minimum ৳50)</label>
+                                                <span class="circle"></span>Direct to Local Bank (BD) - (Minimum ৳5000)</label>
                                         </div>
                                     </div>
                                 </div>
