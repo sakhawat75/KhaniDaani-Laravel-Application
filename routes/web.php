@@ -57,7 +57,6 @@ Route::post( '/delivery/AddService', 'DeliveryServiceController@AddService')->na
 
 Auth::routes();
 
-Route::get( '/dishes/purchase', 'DishesController@purchase')->name( 'dishes.purchase');
 Route::get( '/dishes/manage', 'DishesController@manage')->name( 'dishes.manage');
 Route::get( '/dishes/editdish', 'DishesController@editdish')->name( 'dishes.editdish');
 
@@ -81,11 +80,12 @@ Route::get('/home', 'HomeController@index');
 // Auth Required Routes
 Route::group(['middleware' => 'auth'], function (){
 	// Order Routes
-	Route::get( '/order/selectdsp/{dish}', 'OrderController@selectdsp')->name( 'order.selectdsp');
-	Route::get( '/order/confirm/{dsp}/{dish}', 'OrderController@confirm')->name( 'order.confirm');
-	Route::get( '/order/confirm_pp/{pp}/{dish}', 'OrderController@confirm_pp')->name( 'order.confirm_pp');
-	Route::get( '/order/store', 'OrderController@storeOrder')->name( 'order.store');
-	Route::get( '/order/status/{order}', 'OrderController@status')->name( 'order.status');
+    Route::get( '/order/purchase', 'OrderController@purchase')->name( 'order.purchase');
+    Route::get( '/order/selectdsp/{dish}', 'OrderController@selectdsp')->name( 'order.selectdsp');
+    Route::get( '/order/confirm/{dsp}/{dish}', 'OrderController@confirm')->name( 'order.confirm');
+    Route::get( '/order/confirm_pp/{pp}/{dish}', 'OrderController@confirm_pp')->name( 'order.confirm_pp');
+    Route::get( '/order/store', 'OrderController@storeOrder')->name( 'order.store');
+    Route::get( '/order/status/{order}', 'OrderController@status')->name( 'order.status');
 
 	//Notifications
 	Route::get('api/all_notifications', 'RestApiController@allNotification')->name( 'api.all_notifications');

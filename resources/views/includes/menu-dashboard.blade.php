@@ -12,8 +12,8 @@
                                     <span class="lnr lnr-cog"></span>Setting</a>
                     </li>
                     <li>
-                        <a href="{{ route('dishes.purchase') }}">
-                                    <span class="lnr lnr-cart"></span>Purchased</a>
+                        <a href="{{ route('order.purchase') }}">
+                                    <span class="lnr lnr-cart"></span>All Orders</a>
                     </li>
                     <li class="{{ request()->is('profile_setting') ? 'active' : '' }}">
                         <a href="{{ route('dishes.manage') }}">

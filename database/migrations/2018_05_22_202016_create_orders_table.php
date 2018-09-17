@@ -44,6 +44,7 @@ class CreateOrdersTable extends Migration
 	        $table->boolean('dsp_is_dish_recieved')->nullable();
 	        $table->boolean('dsp_is_dish_delivered')->nullable();
 	        $table->boolean('is_order_completed')->nullable();
+	        $table->string('status')->default('active');
 	        $table->timestamps();
         });
     }
