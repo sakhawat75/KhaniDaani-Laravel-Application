@@ -111,7 +111,7 @@ class OrderController extends Controller
 
 		$order = new Order();
 		$order->buyer_user_id = auth()->id();
-		$order->buyer_fullname = $request->input('buyer_fullname');
+		$order->buyer_fullname = $user->profile->fullname;
 		$order->buyer_contact_n = $request->input('buyer_contact_n');
 		$order->buyer_cn_opt = $request->input('buyer_cn_opt');
 		$order->dish_id = $dish->id;

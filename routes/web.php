@@ -128,6 +128,7 @@ Route::get('command/reset_order/{id}', function ($id) {
     $order->dsp_is_dish_delivered = 0;
     $order->is_order_completed = 0;
     $order->status = 1;
+    $order->created_at = \Carbon\Carbon::now();
     $order->save();
 
     return redirect()->back();

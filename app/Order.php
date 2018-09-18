@@ -62,4 +62,9 @@ class Order extends Model
         return 'database connection failed';
     }
 
+
+    public function ratings()
+    {
+        return $this->hasOne(Rating::class, 'order_id', 'id');
+    }
 }

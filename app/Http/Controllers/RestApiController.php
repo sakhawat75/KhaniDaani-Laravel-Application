@@ -210,7 +210,7 @@ class RestApiController extends Controller
 			    return $order;
             }
 
-            if(Carbon::now()->diffInMinutes($order->created_at) > 30 && $order->chef_order_approved == 0) {
+            if(Carbon::now()->diffInMinutes($order->created_at) >= 30 && $order->chef_order_approved == 0 && $order->status == 1) {
                 $order->status = 3;
                 $order->save();
                 return $order;
@@ -247,6 +247,14 @@ class RestApiController extends Controller
 			    if($request->has( 'is_order_completed')){
 
 				    $order->is_order_completed = 1;
+				    $order->status = 2;
+				    if($order->status == 2 && $order->is_order_completed == 1 && $order->chef_is_dish_ready == 1
+                    && $order->dsp_is_dish_recieved == 1 && $order->dsp_is_dish_delivered == 1) {
+                        $chef->profile->balance += $order->dish_price;
+                        $chef->profile->save();
+                        $dsp->profile->balance += $order->dsp_service_charge;
+                        $dsp->profile->save();
+                    }
 				    $order->save();
 			    }
                 if($request->has( 'status')){
