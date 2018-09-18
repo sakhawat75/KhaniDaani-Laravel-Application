@@ -101,7 +101,7 @@
                                                     <p> <span>Delivery id:</span>450</p>
                                                 </li>--}}
                                                 <li>
-                                                    <p> <span>Status:</span><span class="text-danger"> {{ $order->status }}</span> </p>
+                                                    <p> <span>Status:</span><span class="text-danger"> {{ $order->statusInString() }}</span> </p>
                                                 </li>
                                             </ul>
                                         </div>

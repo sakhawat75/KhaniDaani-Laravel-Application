@@ -407,3 +407,38 @@ a.btn_filter#grid{
     z-index: 1000;
 
 }
+
+
+/*.list-group-item.list-group-item-success::before {
+    content: '\f058';
+    margin-right: 15px;
+    font-family: FontAwesome;
+}
+.list-group-item.list-group-item-warning::before {
+    content: '\f110';
+    margin-right: 12px;
+    font-family: FontAwesome;
+}
+.list-group-item::before {
+    content: '\f141';
+    font-family: FontAwesome;
+    margin-right: 15px;
+}*/
+
+
+.list-group-item::before {
+    content: '';
+    margin-left: 5px;
+}
+
+.list-group-item.list-group-item-success::after {
+    content: '\f058';
+    margin-left: 15px;
+    font-family: FontAwesome;
+}
+.list-group-item.list-group-item-warning::after {
+    content: '...';
+    margin-left: 15px;
+    position: absolute;
+    top: 8px;
+}

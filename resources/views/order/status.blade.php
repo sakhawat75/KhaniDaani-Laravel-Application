@@ -96,21 +96,24 @@
                     <div class="col-lg-8 col-md-7">
                         <div class="dashboard_title_area">
 
+                            @include('includes.success_message')
+                            @include('includes.error_messeages')
 
                             <div class="dynamic_part text-center">
                                 <h3 class="my-3">Your Role: <b>{{ $order->role() }}</b></h3>
-                                <h6 class="mb-5 ">Order Status: <b class="o_satus"></b></h6>
+                                <h6 class="mb-5">Order Status: <b class="o_satus"></b></h6>
 
-                                <div class="my-5">
+                                {{--<div class="my-5">
+                                    {{ \Carbon\Carbon::now()->diffInMinutes($order->created_at) }}
                                     <form action="{{ route('command.reset_order', ['id' => $order->id]) }}" method="get">
                                     <button type="submit" class="btn btn--sm btn-primary">Reset Order steps for testing</button></form>
-                                </div>
+                                </div>--}}
 
                                 <div class="order_dynamic">
                                     <div class="ajax-loader">
                                         <img src="{{ asset('images/gif/ajax-loader.gif') }}" class="img-responsive" />
                                     </div>
-                                    <h6>
+                                    <h6 class="os_box">
                                         <span class="os_span bold">Order Updates: </span>
                                         <span class="os_update"></span>
                                     </h6>
@@ -123,6 +126,16 @@
                                         </small>
                                     </p>
 
+                                    <div class="buyers_review rating product--rating my-5 d-none"><p>Buyer's Review:</p>
+                                        <ul class="dynamic_review mt-0">
+                                            <li><span class="fa fa-star"></span></li>
+                                            <li><span class="fa fa-star"></span></li>
+                                            <li><span class="fa fa-star"></span></li>
+                                            <li><span class="fa fa-star"></span></li>
+                                            <li><span class="fa fa-star-o"></span></li>
+                                        </ul>
+                                    </div>
+
                                     <div class="all_timers_template my-5">
                                         <div class="">
                                             <h5 class="timer_text"></h5>
@@ -133,7 +146,7 @@
                                     </div>
 
                                     <div class="action_template my-5">
-                                        <h4 class="mb-3">Your Actions</h4>
+                                        <h4 class="mb-3 your_action">Your Actions</h4>
                                         @if(auth()->id() == $order->buyer_user_id)
 
                                             <div class="buyer_opt">
@@ -196,12 +209,13 @@
                                                 </button>
 
                                                 <div class="product__price_download my-5">
-                                                    <div class="item_action v_middle d-none">
+                                                    <div class="item_action v_middle d-none rating_btn">
                                                         <a href="#"
-                                                           class="btn btn--md btn--round btn--white rating--btn not--rated"
+                                                           class="btn btn--md btn--round rating--btn not--rated rate_it"
                                                            data-toggle="modal" data-target="#myModal">
-                                                            <P class="rate_it">Rate Now</P>
-                                                            <div class="rating product--rating">
+                                                            Give Rating
+                                                            {{--<P class="">Give Rating</P>--}}
+                                                            {{--<div class="rating product--rating">
                                                                 <ul>
                                                                     <li>
                                                                         <span class="fa fa-star-o"></span>
@@ -219,7 +233,7 @@
                                                                         <span class="fa fa-star-o"></span>
                                                                     </li>
                                                                 </ul>
-                                                            </div>
+                                                            </div>--}}
                                                         </a>
                                                         <!-- end /.rating--btn -->
                                                     </div>
@@ -232,12 +246,12 @@
 
                                     <div class="total_steps my-5 text-left">
                                         <h4>Steps: </h4>
-                                        <ul class="list-group">
-                                            <li class="list-group-item list-group-item-success">Chef's Order Acceptation</li>
-                                            <li class="list-group-item list-group-item-warning">Chef's Dish Preparation Completion</li>
-                                            <li class="list-group-item">Dsp/PP Dish Received</li>
-                                            <li class="list-group-item">Dsp/PP Dish Delivered</li>
-                                            <li class="list-group-item">Buyer's Confirmation</li>
+                                        <ul class="list-group mt-3">
+                                            <li class="list-group-item step_1">Chef's Order Acceptation</li>
+                                            <li class="list-group-item step_2">Chef's Dish Preparation Completion</li>
+                                            <li class="list-group-item step_3">Dsp/PP Dish Received</li>
+                                            <li class="list-group-item step_4">Dsp/PP Dish Delivered</li>
+                                            <li class="list-group-item step_5">Buyer's Confirmation</li>
                                         </ul>
                                     </div>
 
@@ -387,9 +401,9 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <h3 class="modal-title" id="rating_modal">Rate experince </h3>
-                    <h4>Dish Title</h4>
+                    <h4>{{ $order->dish->dish_name }}</h4>
                     <p>by
-                        <a href="">Chef username</a>
+                        <a href="">{{ $order->dish->profile->user->name }}</a>
                     </p>
                 </div>
                 <!-- end /.modal-header -->
@@ -426,9 +440,13 @@
                             </li> -->
                         </ul>
 
-                        <div class="rating_field">
-              <textarea name="rating_comment" id="rating_field" class="text_field"
-                        placeholder="Please enter your rating reason...."></textarea>
+                        <div class="rating_field max-length">
+                        <textarea name="rating_comment" id="rating_field" class="text_field"
+                        placeholder="Please enter your rating reason...." required maxlength="100">
+                            @if($order->ratings)
+                                {{ $order->ratings->comment }}
+                                @endif
+                        </textarea>
                             <p class="notice">Your review will be ​publicly visible​, Thank you!</p>
                         </div>
                         <button type="submit" class="btn btn--round btn--default">Submit Rating</button>
@@ -508,7 +526,7 @@
                     // order pending for chef response
                     if(order.chef_order_approved === 0 && order.status === 1 && order.chef_is_dish_ready === 0) {
 
-                        console.log('condition 1');
+                        $('.step_1').addClass('list-group-item-warning');
 
                         opstr = "Waiting for the Chef to accept the order";
                         notes = "If the chef do not accept the order within 30 min" + " after order is placed, the order will be cancelled automatically." + " After chef accepting the order the buyer can not cancel the order" + " unless chef fails to prepare dish within time";
@@ -529,6 +547,11 @@
                         $('#chef_timer').removeClass('d-none');
                         timerstr = "Chef's remaining time to prepare the dish:";
                         start_chef_timer(order);
+
+                        $('.step_1').removeClass('list-group-item-warning');
+                        $('.step_1').addClass('list-group-item-success');
+                        $('.step_2').addClass('list-group-item-warning');
+
                     } else if(order.chef_order_approved === 1 && order.status === 1 && order.chef_is_dish_ready === 1 && order.dsp_is_dish_recieved === 0) {
                         console.log('condition 3');
                         opstr = "Chef Delivered the order. Now DSP is on the way to receive.";
@@ -542,12 +565,26 @@
                         $('#dish_ready').attr('disabled', 'disabled');
                         $('#dsp_ready').prop("disabled", false);
 
+                        $('.step_1').removeClass('list-group-item-warning');
+                        $('.step_2').removeClass('list-group-item-warning');
+                        $('.step_1').addClass('list-group-item-success');
+                        $('.step_2').addClass('list-group-item-success');
+                        $('.step_3').addClass('list-group-item-warning');
+
                     } else if(order.status === 1 && order.chef_is_dish_ready === 1 && order.dsp_is_dish_recieved === 1 && order.dsp_is_dish_delivered === 0) {
                         $('#dsp_ready').prop("disabled", true);
                         $('#dsp_delivered').removeClass('d-none');
                         $('#dish_ready').removeClass('d-none');
                         $('#dish_ready').prop('disabled', true);
                         opstr = "Dsp recieved the order. Now DSP is on the way to deliver to the buyer.";
+
+                        $('.step_1').removeClass('list-group-item-warning');
+                        $('.step_2').removeClass('list-group-item-warning');
+                        $('.step_3').removeClass('list-group-item-warning');
+                        $('.step_1').addClass('list-group-item-success');
+                        $('.step_2').addClass('list-group-item-success');
+                        $('.step_3').addClass('list-group-item-success');
+                        $('.step_4').addClass('list-group-item-warning');
 
                     } else if(order.status === 1 && order.chef_is_dish_ready === 1 && order.dsp_is_dish_recieved === 1 && order.dsp_is_dish_delivered === 1 && order.is_order_completed == 0) {
                         $('#dsp_ready').prop("disabled", true);
@@ -560,7 +597,64 @@
                         $('#dsp_timer').addClass('d-none');
                         $('#dish_ready').prop('disabled', true);
                         opstr = "Dsp Delivered the order. Waiting for the Buyers Comfirmation";
-                        timerstr = "Dish is Delivered to Buyer."
+                        timerstr = "Dish is Delivered to Buyer.";
+
+
+                        $('.step_1').removeClass('list-group-item-warning');
+                        $('.step_2').removeClass('list-group-item-warning');
+                        $('.step_3').removeClass('list-group-item-warning');
+                        $('.step_4').removeClass('list-group-item-warning');
+                        $('.step_1').addClass('list-group-item-success');
+                        $('.step_2').addClass('list-group-item-success');
+                        $('.step_3').addClass('list-group-item-success');
+                        $('.step_4').addClass('list-group-item-success');
+                        $('.step_5').addClass('list-group-item-warning');
+                    }
+                    else if(order.status === 2 && order.chef_is_dish_ready === 1 && order.dsp_is_dish_recieved === 1 && order.dsp_is_dish_delivered === 1 && order.is_order_completed == 1) {
+                        $('#dsp_ready').addClass("d-none");
+                        $('#dsp_delivered').addClass("d-none");
+                        $('.buyer_review').removeClass('d-none');
+                        $('.buyer_cancel_btn').addClass('d-none');
+                        $('.your_action').addClass('d-none');
+                        $('.chef_opt').addClass('d-none');
+                        $('.chef_opt').addClass('d-none');
+                        $('.dsp_opt').addClass('d-none');
+                        $('.os_note').addClass('d-none');
+                        $('.os_box').addClass('d-none');
+                        $('#dish_ready').addClass('d-none');
+                        $('.rating_btn').removeClass('d-none');
+                        // $('#dsp_timer').countdown('stop');
+                        $('#dsp_timer').addClass('d-none');
+                        
+                        $('#order_completed').addClass('d-none');
+                        opstr = "The order is complete";
+                        timerstr = "";
+
+
+                        $('.step_1').removeClass('list-group-item-warning');
+                        $('.step_2').removeClass('list-group-item-warning');
+                        $('.step_3').removeClass('list-group-item-warning');
+                        $('.step_4').removeClass('list-group-item-warning');
+                        $('.step_5').removeClass('list-group-item-warning');
+
+                        $('.step_1').addClass('list-group-item-success');
+                        $('.step_2').addClass('list-group-item-success');
+                        $('.step_3').addClass('list-group-item-success');
+                        $('.step_4').addClass('list-group-item-success');
+                        $('.step_5').addClass('list-group-item-success');
+
+                        if(order.rating) {
+                            $('.buyers_review').removeClass('d-none');
+                            $('.dynamic_review').html(' ');
+                            for(let i = 1; i <= 5; i++) {
+                                if(i <= order.rating) {
+                                    $('.dynamic_review').append('<li><span class="fa fa-star"></span></li>');
+                                } else {
+                                    $('.dynamic_review').append('<li><span class="fa fa-star-o"></span></li>');
+                                }
+                            }
+                            $('.rate_it').text('Edit Rating');
+                        }
                     }
 
 
@@ -888,6 +982,15 @@
 
             });
         </script>
+        
+        <script type="text/javascript">
+            $(function() {
+                $('#select_rating').barrating({
+                    theme: 'fontawesome-stars'
+                });
+            });
+        </script>
+
     @endpush
 
     <script src="{{ asset('/js/materialize-stepper.js') }}"></script>

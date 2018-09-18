@@ -15,6 +15,14 @@ class RatingController extends Controller
 
     	if(auth()->id() == $order->buyer_user_id) {
 
+    	    $validate = $request->validate([
+    	        'rating' => 'required|integer|max:5|min:1',
+    	        'rating_comment' => 'required|string|max:100'
+            ]);
+
+    	    if($order->status != 2) {
+    	        return redirect()->back()->withErrors('Reviewing Failed');
+            }
 
     		$rating = Rating::updateOrCreate(
 	    	    ['order_id' => $order->id],
@@ -27,6 +35,9 @@ class RatingController extends Controller
 	    	    	'comment' => $request->input('rating_comment'),
 	    	    ]
 	    	);
+
+            $order->rating = $rating->rating;
+            $order->save();
     	}
 
         $order->rating = $rating->rating;
@@ -36,6 +47,6 @@ class RatingController extends Controller
         $dish->save();
     	
 
-    	return redirect()->back();
+    	return redirect()->back()->with('success', 'Review Successful');
     }
 }
