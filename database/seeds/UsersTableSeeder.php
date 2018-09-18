@@ -14,18 +14,18 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert(array(
-            array('id' => '1','name' => 'Legal_Buyer', 'email' => 'buyer@gmail.com',  'password' => bcrypt('secret'), 'remember_token' => str_random(10)),
+            array('id' => '1','name' => 'sakhawat_aslam', 'email' => 'fcssakhawat@gmail.com',  'password' => bcrypt('secret'), 'remember_token' => str_random(10)),
 
-            array('id' => '2','name' => 'Royal_Chef', 'email' => 'chef@gmail.com',  'password' => bcrypt('secret'), 'remember_token' => str_random(10)),
+            array('id' => '2','name' => 'hussain_juned', 'email' => 'hussainjuned99@gmail.com',  'password' => bcrypt('secret'), 'remember_token' => str_random(10)),
            
-           array('id' => '3','name' => 'Fast_Deliverer', 'email' => 'dsp@gmail.com',  'password' => bcrypt('secret'), 'remember_token' => str_random(10)),
+           array('id' => '3','name' => 'haidernuur', 'email' => 'haidernuur@gmail.com',  'password' => bcrypt('secret'), 'remember_token' => str_random(10)),
 
         ));
 
 
         $faker = Faker::create();
-        $user_name = array('Legal_Buyer', 'Royal_Chef', 'Fast_Deliverer');
-        $full_name = array('Hussain Juned', 'Sakhawat', 'Haider Nurain');
+        $user_name = array('sakhawat_aslam', 'hussain_juned', 'haidernuur');
+        $full_name = array('Sakhawat', 'Hussain Juned', 'Haider Nurain');
 
         $cities = City::all();
         $city = array();

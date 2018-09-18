@@ -45,12 +45,12 @@
 
                 <div class="information__set toggle_module collapse show" id="collapse">
                   <div class="information_wrapper form--fields">
-                    <div class="form-group">
-                      <label for="acname">Name
+                    <div class="form-group max-length">
+                      <label for="acname">Full Name
                         <sup>*</sup>
                       </label>
                       <input type="text" id="acname" class="text_field" value="{{ $profile->fullname }}" placeholder="Full Name or Nick name"
-                             name="fullname">
+                             name="fullname" maxlength="190" minlength="2">
                     </div>
 
                     <div class="form-group">
@@ -58,10 +58,10 @@
                       <input type="date" id="mobile" class="text_field" value="{{ $profile->dob }}" name="dob">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group max-length">
                       <label for="mobile2">Phone No<sup>*</sup></label>
                       <input type="text" id="mobile2" class="text_field" value="{{ $profile->mobile_no }}"
-                             name="mobile_no">
+                             name="mobile_no" maxlength="15" minlength="11">
                     </div>
                     <!-- city selection -->
                     <div class="form-group">
@@ -69,7 +69,12 @@
                       <div class="select-wrap select-wrap2">
                         <select name="city" id="city" class="text_field">
                           @foreach($cities as $city)
-                            <option value="{{ $city->name }}">{{ $city->name }}</option>
+                            <option value="{{ $city->name }}" 
+                            @if ($city->name === $profile->city)
+                                selected
+                            @endif
+                            
+                            >{{ $city->name }}</option>
                           @endforeach
                         </select>
                         <span class="lnr lnr-chevron-down"></span>
@@ -89,17 +94,17 @@
                       </div>
                     </div>
 
-                     <div class="form-group">
+                     <div class="form-group max-length">
                         <label for="prohead">Full Address one<sup>*</sup></label>
 
-                        <input type="text" id="prohead" class="text_field" placeholder="Ex: House No, Road no, Block" name="address" value="{{ $profile->address }}">
+                        <input type="text" id="prohead" class="text_field" placeholder="Ex: House No, Road no, Block" name="address" value="{{ $profile->address }}" maxlength="500" min="4">
                     </div>
 
                     <div class="form-group max-length">
                       <label for="prohead">Adress Hint</label>
 
 
-                      <input type="text" class="text_field" placeholder="min 20 and max 1000 character" maxlength="1000" minlength="20" name="address_hint" value="{{ $profile->address_hint }}">
+                      <input type="text" class="text_field" placeholder="min 20 and max 1000 character" maxlength="100" minlength="4" name="address_hint" value="{{ $profile->address_hint }}">
                     </div>
 
                   </div>
@@ -123,12 +128,12 @@
                 <div class="information__set profile_images toggle_module collapse show" id="collapse2">
                   <div class="information_wrapper">
                     <div class="profile_image_area">
-                      <h5 class="bold">Profile Image</h5> <br>
+                      <h5><span class="bold">Profile Image</span> <span class="small text-muted"> ( minimum dimension: 100 X 100 )</span></h5> <br>
                       <img src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}"
                            alt="Author profile area"
                            id="preview_profile_image" style="height: 100px;width: 100px;">
                       <label for="profile_photo" class="upload_btn profile_image_update">
-                        <input type="file" id="profile_photo" name="profile_image">
+                        <input type="file" id="profile_photo" name="profile_image"  accept=".jpg,.jpeg,.png,.bmp">
                         <span class="btn btn--sm btn--round" aria-hidden="true">Choose Image</span>
                       </label>
                     </div>
@@ -145,7 +150,7 @@
 
                       <div class="prof_img_upload">
 
-                        <h5 class="bold">Cover Image</h5> <br>
+                        <h5><span class="bold">Cover Image</span> <span class="small text-muted"> ( minimum dimension: 300 X 300 )</span></h5> <br>
 
                        <div class="aspect_ratio">
                          <img src="{{ route('home') }}/storage/images/cover_image/{{ $profile->cover_image }}"
@@ -155,7 +160,7 @@
 
                        <div class="upload_title">
                          <label for="dp" class="upload_btn">
-                           <input type="file" id="dp" name="cover_image">
+                           <input type="file" id="dp" name="cover_image" accept=".jpg,.jpeg,.png,.bmp">
                            <span class="btn btn--sm btn--round" aria-hidden="true">Choose Image</span>
                          </label>
                        </div>

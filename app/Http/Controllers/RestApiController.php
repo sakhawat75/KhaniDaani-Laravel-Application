@@ -36,13 +36,13 @@ class RestApiController extends Controller
     }
 
 
-    public function jsonAreas() {
-        $city_name = Input::get('city_name');
-        $city_id = City::where('name', '=', $city_name)->first();
-        $id = $city_id->id;
-        $areas = Area::where('city_id', '=', $id)->get();
+    public function jsonAreas(Request $request) {
+        $city_name = $request->input('city_name');
+        $city = City::where('name', '=', $city_name)->first();
 
-        return \Response::json($areas);
+        $areas = Area::where('city_id', '=', $city->id)->get();
+
+        return $areas;
     }
 
 	/**
@@ -212,6 +212,8 @@ class RestApiController extends Controller
 
             if(Carbon::now()->diffInMinutes($order->created_at) >= 30 && $order->chef_order_approved == 0 && $order->status == 1) {
                 $order->status = 3;
+                $order->chef->profile->balance += $order->total_price;
+                $order->chef->profile->save();
                 $order->save();
                 return $order;
             }
@@ -234,6 +236,8 @@ class RestApiController extends Controller
                         $order->chef_order_approved = $request->input('chef_order_approved');
                         if($order->chef_order_approved == 2) {
                             $order->status = 3;
+                            $order->chef->profile->balance += $order->total_price;
+                            $order->chef->profile->save();
                         }
                         $order->save();
 

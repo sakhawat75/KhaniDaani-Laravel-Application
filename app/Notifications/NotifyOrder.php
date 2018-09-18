@@ -8,9 +8,9 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class NotifyOrder extends Notification implements ShouldQueue
+class NotifyOrder extends Notification
 {
-    use Queueable;
+//    use Queueable;
 
     protected $order = null;
     protected $type = null;
@@ -45,10 +45,13 @@ class NotifyOrder extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        $url = url('/order/status/'.$this->order->id);
+
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->greeting('Congratulation!')
+                    ->line('You Have a New Order ')
+                    ->action('View Order', url($url))
+                    ->line('Thank you for using our KhaniDaani platform!');
     }
 
 	/**

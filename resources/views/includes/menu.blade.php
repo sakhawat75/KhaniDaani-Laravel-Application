@@ -165,12 +165,12 @@
                                 <ul>
                                     <li>
                                         <a href="{{ route('profile.show', ['profile' => auth()->id()]) }}">
-                                            <span class="lnr lnr-user"></span>Profile
+                                            <span class="lnr lnr-user"></span>My Profile
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('profile.edit', ['profile' => auth()->id()]) }}">
-                                            <span class="lnr lnr-cog"></span>Setting
+                                            <span class="lnr lnr-cog"></span>Edit Profile
                                         </a>
                                     </li>
                                     <li>
@@ -180,12 +180,12 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('dishes.create') }}">
-                                            <span class="lnr lnr-file-add"></span>Add Dish
+                                            <span class="lnr lnr-file-add"></span>Add New Dish
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('delivery.AddService') }}">
-                                            <span class="lnr lnr-file-add"></span>Add Delivery
+                                            <span class="lnr lnr-file-add"></span>Add Delivery Service
                                         </a>
                                     </li>
 
@@ -426,7 +426,7 @@
 @include ('notifications.notify_order_template')
 @include ('notifications.notify_dish_ready_template')
 @include ('messages.message_preview_template')
-<script type="text/javascript">
+{{--<script type="text/javascript">
     $(document).ready(function() {
         $.ajax({
             url: "{{ route('home')}}/api/categories",
@@ -462,12 +462,14 @@
             });
         });
     });
-</script>
+</script>--}}
 
 <script type="text/javascript">
     $(document).ready(function() {
 
-        var noti_refresh_time = 15000;
+        var noti_refresh_time = 55000;
+        var msg_refresh_time = 55000;
+
         moment.tz.setDefault('Europe/London');
 
         _.templateSettings.variable = "notify";
@@ -592,6 +594,12 @@
         }
 
         loadMessages();
+
+        var msgRefreshInterval;
+
+        msgRefreshInterval = setInterval(function() {
+            loadMessages();
+        }, msg_refresh_time);
 
         @endauth
     });
