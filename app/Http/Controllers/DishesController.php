@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\DeliveryService;
 use App\Dish;
 
+use App\PickersPoint;
 use App\Profile;
 use App\User;
 use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Intervention\Image\Facades\Image;
 use Storage;
 
 
@@ -29,7 +32,12 @@ class DishesController extends Controller
     {
 		$categories = new Category;
 		$categories = $categories->get();
-	    return view('dishes.create', compact( 'categories'));
+        $dsp_ids = DeliveryService::select('id', 'service_title')->get();
+        $pp_ids = PickersPoint::select('id', 'name')->get();
+
+//        return $dsp_ids;
+
+	    return view('dishes.create', compact( 'categories', 'dsp_ids', 'pp_ids'));
     }
 
     public function store(Request $request)
@@ -41,17 +49,17 @@ class DishesController extends Controller
             'preparation_time' => 'required|integer|min:1|max:4',
             'dish_name' => 'required|string|max:50|min:3',
             'dish_price' => 'required|integer|min:10|max:9999',
-            'dish_description' => 'required|max:1000|string|min:20',
+            'dish_description' => 'required|max:5000|string|min:2',
             'dsp_1' => 'nullable|integer|min:1',
             'dsp_2' => 'nullable|integer|min:1',
             'dsp_3' => 'nullable|integer|min:1',
             'pp1' => 'nullable|integer|min:1',
             'pp2' => 'nullable|integer|min:1',
             'pp3' => 'nullable|integer|min:1',
-            'dish_thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=100,min_height=100',
-            'dish_image_1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=100,min_height=100',
-            'dish_image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=100,min_height=100',
-            'dish_image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:min_width=100,min_height=100',
+            'dish_thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+            'dish_image_1' => 'required|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+            'dish_image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+            'dish_image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
             'avg_rating' => 'nullable',
             'is_approved' => 'nullable|boolean',
 
@@ -61,7 +69,7 @@ class DishesController extends Controller
             && !$request->input('dsp_3') && !$request->input('pp1')
             && !$request->input('pp2') && !$request->input('pp3')
         ) {
-            return redirect()->back()->withErrors(['Error', 'Please Input at least one dsp or pickerspoint id']);
+            return redirect()->back()->withInput()->withErrors(['Error', 'Please Input at least one dsp or pickerspoint id']);
         } /*else {
             return redirect()->back()->with('success', 'You have Inputed at least one dsp or pickerspoint id');
         }*/
@@ -92,8 +100,9 @@ class DishesController extends Controller
 
 	    $dish->save();
 //	    session()->flash('success', 'Dish has been created successfully');
+//        $request->session()->flash();
 
-	    return redirect()->route( 'profile.show', [ 'profile' => $profile ])->with('success', 'Dish has been created successfully');
+        return redirect()->route( 'profile.show', [ 'profile' => $profile ])->with('success', 'Dish has been created successfully');
     }
 
     public function show($id)
@@ -148,11 +157,41 @@ class DishesController extends Controller
     public function edit($id)
     {
     	$dish = Dish::find($id);
-	    return view('dishes.dish-edit', compact( 'dish'));
+        $categories = new Category;
+        $categories = $categories->get();
+        $dsp_ids = DeliveryService::select('id', 'service_title')->get();
+        $pp_ids = PickersPoint::select('id', 'name')->get();
+
+//        return $dsp_ids;
+
+	    return view('dishes.dish-edit', compact( 'dish', 'categories', 'dsp_ids', 'pp_ids'));
     }
 
     public function update(Request $request, $id)
     {
+
+        $validatedData = $request->validate([
+            'dish_category' => 'string|max:50',
+            'dish_subcategory' => 'string|max:50',
+            'preparation_time' => 'integer|min:1|max:4',
+            'dish_name' => 'string|max:50|min:3',
+            'dish_price' => 'integer|min:10|max:9999',
+            'dish_description' => 'max:5000|string|min:2',
+            'dsp_1' => 'nullable|integer|min:1',
+            'dsp_2' => 'nullable|integer|min:1',
+            'dsp_3' => 'nullable|integer|min:1',
+            'pp1' => 'nullable|integer|min:1',
+            'pp2' => 'nullable|integer|min:1',
+            'pp3' => 'nullable|integer|min:1',
+            'dish_thumbnail' => 'image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+            'dish_image_1' => 'image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+            'dish_image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+            'dish_image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+            'avg_rating' => 'nullable',
+            'is_approved' => 'nullable|boolean',
+
+        ]);
+
         $dish = Dish::find($id);
 	    $profile = $dish->profile;
 
@@ -178,15 +217,30 @@ class DishesController extends Controller
 		    $dish->item_tags = $request->input('item_tags');
 	    }
 
-	    $this->upload_image( $request, $dish, 'dish_images', 'dish_thumbnail', true);
-	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_1', true);
+	    if($request->hasFile('dish_thumbnail')) {
+            $this->upload_image( $request, $dish, 'dish_images', 'dish_thumbnail', true);
+        }
+
+        if($request->hasFile('dish_image_1')) {
+            $this->upload_image( $request, $dish, 'dish_images', 'dish_image_1', true);
+        }
+
+        if($request->hasFile('dish_image_2')) {
+            $this->upload_image( $request, $dish, 'dish_images', 'dish_image_2', true);
+        }
+
+	    if($request->hasFile('dish_image_3')) {
+            $this->upload_image( $request, $dish, 'dish_images', 'dish_image_3', true);
+        }
+
+	    /*$this->upload_image( $request, $dish, 'dish_images', 'dish_image_1', true);
 	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_2', true);
-	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_3', true);
+	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_3', true);*/
 
 	    $dish->update();
 	    session()->flash('success', 'Dish has been updated successfully');
 
-	    return view('dishes.single-dish', compact( 'profile', 'dish'));
+	    return redirect()->route('dishes.show', ['id' => $dish->id]);
 
     }
 
@@ -207,7 +261,7 @@ class DishesController extends Controller
     public function manage() {
 		$id = auth()->id();
 	    $profile = Profile::where('user_id', $id)->first();
-	    $dishes = $profile->dish;
+	    $dishes = $profile->dish()->paginate(9);
 
 	    if(!$dishes->first()) {
 	    	session()->flash( 'success', 'No Dish To manage. Please Create a dish First');
@@ -230,15 +284,26 @@ class DishesController extends Controller
 			$filenameWithExt = $request->file($input_name)->getClientOriginalName();
 			// Get just filename
 			$filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-			// Get just ext
+            $filename = preg_replace('/\s+/', '', $filename);
+
+            // Get just ext
 			$extension = $request->file($input_name)->getClientOriginalExtension();
 			// Filename to store
-			$fileNameToStore= $filename.'_'.time().'.'.$extension;
+//            $fileNameToStore= $dish->profile->user->name . '_' . time() . '.' .$extension;
+            $fileNameToStore= $dish->profile->user->name . '_' . $filename . '_' . time() . '.' .$extension;
 
-			$destination = 'public/images/' . $type;
+            $destination = 'public/images/' . $type;
 			// Upload Image
-			$path = $request->file($input_name)->storeAs($destination, $fileNameToStore);
-			$dish->$input_name = $fileNameToStore;
+            $path = $destination . '/' . $fileNameToStore;
+//			$path = $request->file($input_name)->storeAs($destination, $fileNameToStore);
+
+            $image = Image::make($request->file($input_name))->fit(730, 411, function ($constraint) {
+                $constraint->upsize();
+            });
+
+            Storage::put($path, (string) $image->encode());
+
+            $dish->$input_name = $fileNameToStore;
 		}
 	}
 

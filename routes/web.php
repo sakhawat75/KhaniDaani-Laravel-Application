@@ -70,6 +70,7 @@ Route::get('/api/search-dsp', 'RestApiController@jsonSearchDsp')->name( 'api.sea
 Route::get('/api/search-pp', 'RestApiController@jsonSearchPP')->name( 'api.search.pp');
 Route::get('/api/order/update', 'RestApiController@orderUpdate')->name( 'api.order.update');
 Route::get('/api/order/load', 'RestApiController@orderLoad')->name( 'api.order.load');
+Route::get('/api/dsp/getIDS', 'RestApiController@getIDs')->name( 'api.dsp.getIDs');
 
 Route::get('/rating/{order}', 'RatingController@store')->name( 'rating.store');
 

@@ -77,7 +77,7 @@ class ProfileController extends Controller
         if(!$profile) {
             return redirect()->route( 'home');
         }
-        $dishes = $profile->dish;
+        $dishes = $profile->dish()->paginate(8);
 
         $total_sales = 0;
         $total_ratings = round($user->ratings->avg('rating'));
@@ -168,8 +168,8 @@ class ProfileController extends Controller
 		    'dob' => 'required|date',
 		    'mobile_no' => 'required|max:15|min:11|string',
 		    'description' => 'max:2000|min:10',
-		    'cover_image' => 'nullable|file|image|max:5120|mimes:jpeg,bmp,png,jpg|dimensions:min_width=300,min_height=300',
-		    'profile_image' => 'nullable|file|image|max:5120|mimes:jpeg,bmp,png,jpg|dimensions:min_width=100,min_height=100',
+		    'cover_image' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+		    'profile_image' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
 		    'city' => 'required',
 		    'areas' => 'required',
             'address' => 'required|max:500|min:4',
@@ -217,6 +217,7 @@ class ProfileController extends Controller
 
 	    $profile->save();
 	    session()->flash('prf_updated', 'Profile has been updated successfully');
+	    $request->session()->flash();
 	    return redirect()->route('profile.show', ['profile' => $profile]);
     }
 
@@ -260,7 +261,7 @@ class ProfileController extends Controller
                 });
 
 //                $path = $image->storeAs($destination, $fileNameToStore);
-                Storage::put($path, (string) $image->encode('jpg', 50));
+                Storage::put($path, (string) $image->encode());
 
             }
 

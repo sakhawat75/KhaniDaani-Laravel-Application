@@ -42,6 +42,8 @@
 
     <div class="dashboard_contents">
       <div class="container">
+        @include('includes.success_message')
+        @include('includes.error_messeages')
         <div class="row">
           <div class="col-lg-8">
             <form action="{{ route('dishes.update', ['id' => $dish]) }}" method="post"
@@ -62,8 +64,11 @@
                     <div class="form-group">
                       <label for="category">Edit Category</label>
                       <div class="select-wrap select-wrap2">
-                        <select name="dish_category" id="category" class="text_field">
+                        <select name="dish_category" id="dish_category" class="text_field">
                           <option value="{{ $dish->dish_category }}">{{ $dish->dish_category }}</option>
+                          @foreach($categories as $category)
+                            <option value="{{ $category->name }}">{{ $category->name }}</option>
+                          @endforeach
                         </select>
                         <span class="lnr lnr-chevron-down"></span>
                       </div>
@@ -72,9 +77,10 @@
                     <div class="form-group">
                       <label for="category">Edit Sub Category</label>
                       <div class="select-wrap select-wrap2">
-                        <select name="dish_subcategory" id="category" class="text_field">
+                        <select name="dish_subcategory" id="dish_subcategory" class="text_field">
                           <option value="{{ $dish->dish_subcategory }}">{{ $dish->dish_subcategory }}</option>
                         </select>
+
                         <span class="lnr lnr-chevron-down"></span>
                       </div>
                     </div>
@@ -92,7 +98,7 @@
                       <div class="select-wrap select-wrap2">
                         <select name="preparation_time" id="preperation_time"
                                 class="text_field">
-                          <option value="{{ $dish->preparation_time }}">{{ $dish->preparation_time }}</option>
+                          <option value="{{ $dish->preparation_time }}">{{ $dish->preparation_time }} Hour</option>
                           <option value="1">1 Hour</option>
                           <option value="2">2 Hour</option>
                           <option value="3">3 Hour</option>
@@ -145,142 +151,145 @@
                 <!-- end /.upload_modules -->
               </div>
 
-              <div class="upload_modules module--upload">
-                <a class="toggle_title" href="#collapse3" role="button" data-toggle="collapse"
-                   aria-expanded="false" aria-controls="collapse3">
-                  <h4>Change Dish Image
-                    <span class="lnr lnr-chevron-down"></span>
-                  </h4>
-                </a>
+              <div class="modules__content">
+                <p class="text-danger">Image Uploading Roles:</p>
+                <ul class="list-group mb-5">
+                  {{--<li class="list-group-item">Thumbnail and Dish 1 image is required <sup class="text-danger">*</sup> </li>--}}
+                  <li class="list-group-item">Image extension must be .jpg, .jpeg, .png, .svg, .gif or .bmp</li>
+                  {{--<li class="list-group-item">Image minimum dimention: 400x225</li>--}}
+                </ul>
 
-                <div class="information__set toggle_module collapse" id="collapse3">
-                  <div class="modules__content">
+                <div class="row">
+                  <div class="col-lg-3 col-md-6">
                     <div class="form-group">
                       <div class="upload_wrapper">
-                        <p>Change Thumbnail
-                          <span>(JPEG or PNG 100x100px)</span>
-                        </p>
+                        <p>Change Thumbnail Image</p>
 
                         <div class="custom_upload">
-                          <label for="thumbnail">
-                            <input type="file" id="thumbnail" class="files"
-                                   name="dish_thumbnail">
-                            <span class="btn btn--round btn--sm">Choose File</span>
+                          <label for="dish_thumbnail1">
+                            {{-- TODO Resize Image bofore saving on server --}}
+                            <input type="file" id="dish_thumbnail1" class="files"
+                                   name="dish_thumbnail" accept=".jpg,.jpeg,.png,.bmp,.svg,.gif">
+                            <span class="btn btn--round btn--sm upload_btn">Choose File</span>
                           </label>
                         </div>
                         <!-- end /.custom_upload -->
 
-                        <div class="progress_wrapper">
-                          <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                                 aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-                              <span class="sr-only">70% Complete</span>
-                            </div>
-                          </div>
+                        <div class="prof_img_upload aspect_ratio mt-3">
+                          <img
+                                  @if ($dish->dish_thumbnail)
+                                  src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_thumbnail }}"
+                                  @else
+                                  src="{{ route('home') }}/images/cvrplc.jpg"
+                                  @endif
+                               alt="Author profile area"
+                               id="preview_dish_thumbnail" class="ratio_img">
                         </div>
-                        <!-- end /.progress_wrapper -->
-
-                        <span class="lnr upload_cross lnr-cross"></span>
                       </div>
                       <!-- end /.upload_wrapper -->
                     </div>
-                    <!-- end /.form-group -->
-
+                  </div>
+                  <div class="col-lg-3 col-md-6">
                     <div class="form-group">
                       <div class="upload_wrapper">
                         <p>Change 1st Dish Image
-                          <span>(JPG or PNG)</span>
                         </p>
 
                         <div class="custom_upload">
                           <label for="screenshot1">
                             <input type="file" id="screenshot1" class="files"
-                                   name="dish_image_1">
-                            <span class="btn btn--round btn--sm">Choose File</span>
+                                   name="dish_image_1" accept=".jpg,.jpeg,.png,.bmp,.svg,.gif">
+                            <span class="btn btn--round btn--sm upload_btn">Choose File</span>
                           </label>
                         </div>
                         <!-- end /.custom_upload -->
 
-                        <div class="progress_wrapper">
-                          <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                                 aria-valuemin="0" aria-valuemax="100" style="width: 78%;">
-                              <span class="sr-only">78% Complete</span>
-                            </div>
-                          </div>
-                        </div>
                         <!-- end /.progress_wrapper -->
 
-                        <span class="lnr upload_cross lnr-cross"></span>
+                        {{--<span class="lnr upload_cross lnr-cross"></span>--}}
+                        <div class="prof_img_upload aspect_ratio mt-3">
+                          <img
+                                  @if ($dish->dish_image_1)
+                                        src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_1 }}"
+                                  @else
+                                    src="{{ route('home') }}/images/cvrplc.jpg"
+                                  @endif
+                               alt="Author profile area"
+                               id="preview_screenshot1" class="ratio_img">
+                        </div>
                       </div>
                       <!-- end /.upload_wrapper -->
                     </div>
-
+                  </div>
+                  <div class="col-lg-3 col-md-6">
                     <div class="form-group">
                       <div class="upload_wrapper">
-                        <p>Change 2nd Dish Image
-                          <span>(JPG or PNG)</span>
-                        </p>
+                        <p>change 2nd Dish Image</p>
 
                         <div class="custom_upload">
                           <label for="screenshot2">
                             <input type="file" id="screenshot2" class="files"
-                                   name="dish_image_2">
-                            <span class="btn btn--round btn--sm">Choose File</span>
+                                   name="dish_image_2" accept=".jpg,.jpeg,.png,.bmp,.svg,.gif">
+                            <span class="btn btn--round btn--sm upload_btn">Choose File</span>
                           </label>
                         </div>
                         <!-- end /.custom_upload -->
 
-                        <div class="progress_wrapper">
-                          <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                                 aria-valuemin="0" aria-valuemax="100" style="width: 78%;">
-                              <span class="sr-only">78% Complete</span>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- end /.progress_wrapper -->
 
-                        <span class="lnr upload_cross lnr-cross"></span>
+                        {{--<!-- end /.progress_wrapper -->--}}
+
+                        {{--<span class="lnr upload_cross lnr-cross"></span>--}}
+                        <div class="prof_img_upload aspect_ratio mt-3">
+                          <img
+                                  @if ($dish->dish_image_2)
+                                  src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_2 }}"
+                                  @else
+                                  src="{{ route('home') }}/images/cvrplc.jpg"
+                                  @endif
+                               alt="Author profile area"
+                               id="preview_screenshot2" class="ratio_img">
+                        </div>
                       </div>
                       <!-- end /.upload_wrapper -->
                     </div>
-
+                  </div>
+                  <div class="col-lg-3 col-md-6">
                     <div class="form-group">
                       <div class="upload_wrapper">
-                        <p>Change 3rd Dish Image
-                          <span>(JPG or PNG)</span>
-                        </p>
+                        <p>Change 3rd Dish Image</p>
 
                         <div class="custom_upload">
                           <label for="screenshot3">
                             <input type="file" id="screenshot3" class="files"
-                                   name="dish_image_3">
-                            <span class="btn btn--round btn--sm">Choose File</span>
+                                   name="dish_image_3" accept=".jpg,.jpeg,.png,.bmp,.svg,.gif">
+                            <span class="btn btn--round btn--sm upload_btn">Choose File</span>
                           </label>
                         </div>
                         <!-- end /.custom_upload -->
 
-                        <div class="progress_wrapper">
-                          <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="70"
-                                 aria-valuemin="0" aria-valuemax="100" style="width: 78%;">
-                              <span class="sr-only">78% Complete</span>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- end /.progress_wrapper -->
 
-                        <span class="lnr upload_cross lnr-cross"></span>
+                        {{--<span class="lnr upload_cross lnr-cross"></span>--}}
+                        <div class="prof_img_upload aspect_ratio mt-3">
+                          <img
+                                  @if ($dish->dish_image_3)
+                                    src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_3 }}"
+                                  @else
+                                    src="{{ route('home') }}/images/cvrplc.jpg"
+                                  @endif
+                               alt="Author profile area"
+                               id="preview_screenshot3" class="ratio_img">
+                        </div>
                       </div>
                       <!-- end /.upload_wrapper -->
                     </div>
                   </div>
                 </div>
+
+
               </div>
               <!-- end /.upload_modules -->
 
-              <div class="upload_modules">
+              {{--<div class="upload_modules">
                 <a class="toggle_title" href="#collapse4" role="button" data-toggle="collapse"
                    aria-expanded="false" aria-controls="collapse4">
                   <h4>Edit Other Information
@@ -301,7 +310,7 @@
                   </div>
                 </div>
                 <!-- end /.upload_modules -->
-              </div>
+              </div>--}}
 
               <div class="upload_modules with--addons">
                 <div class="modules__title">
@@ -311,28 +320,51 @@
 
                 <div class="modules__content">
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
+                        <label for="">First Delivery Service</label>
                         <div class="input-group">
-                          <input type="number" id="dsp_1" class="text_field" name="dsp_1" value="{{ $dish->dsp_1 }}" >
+                          {{--<input type="number" id="dsp_1" class="text_field"
+                                 placeholder="id of dsp_1" name="dsp_1" min="1">--}}
+                          <select name="dsp_1" id="" class="form-control">
+                            <option value="{{ $dish->dsp_1 }}">Id: {{$dish->dsp_1 }}</option>
+                            @foreach($dsp_ids as $id)
+                              <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->service_title }}</option>
+                            @endforeach
+                          </select>
                         </div>
                       </div>
                     </div>
-                    <!-- end /.col-md-6 -->
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
+                        <label for="">Second Delivery Service</label>
                         <div class="input-group">
-                          <input type="number" id="dsp_2" class="text_field" name="dsp_2"  value="{{ $dish->dsp_2 }}">
+                          {{--<input type="number" id="dsp_1" class="text_field"
+                                 placeholder="id of dsp_1" name="dsp_1" min="1">--}}
+                          <select name="dsp_2" id="" class="form-control">
+                            <option value="{{ $dish->dsp_2 }}">Id: {{$dish->dsp_2 }}</option>
+                            @foreach($dsp_ids as $id)
+                              <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->service_title }}</option>
+                            @endforeach
+                          </select>
                         </div>
                       </div>
                     </div>
-                    <!-- end /.col-md-6 -->
 
-                    <div class="col-md-6">
+
+                    <div class="col-md-12">
                       <div class="form-group">
+                        <label for="">Third Delivery Service</label>
                         <div class="input-group">
-                          <input type="number" id="dsp_3" class="text_field" name="dsp_3" value="{{ $dish->dsp_3 }}">
+                          {{--<input type="number" id="dsp_1" class="text_field"
+                                 placeholder="id of dsp_1" name="dsp_1" min="1">--}}
+                          <select name="dsp_3" id="" class="form-control">
+                            <option value="{{ $dish->dsp_3 }}">Id: {{$dish->dsp_3 }}</option>
+                            @foreach($dsp_ids as $id)
+                              <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->service_title }}</option>
+                            @endforeach
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -353,29 +385,50 @@
 
                   <!-- end /.row -->
                   <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                       <div class="form-group">
+                        <label for="">Fist Pickers Point</label>
                         <div class="input-group">
-                          <input type="text" id="single_use" class="text_field"
-                                 placeholder="username">
+                          {{--<input type="number" id="dsp_1" class="text_field"
+                                 placeholder="id of dsp_1" name="dsp_1" min="1">--}}
+                          <select name="pp1" id="" class="form-control">
+                            <option value="{{ $dish->pp1 }}">Id: {{$dish->pp1 }}</option>
+                            @foreach($pp_ids as $id)
+                              <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->name }}</option>
+                            @endforeach
+                          </select>
                         </div>
                       </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                       <div class="form-group">
+                        <label for="">Second Pickers Point</label>
                         <div class="input-group">
-                          <input type="text" id="double_use" class="text_field"
-                                 placeholder="username">
+                          {{--<input type="number" id="dsp_1" class="text_field"
+                                 placeholder="id of dsp_1" name="dsp_1" min="1">--}}
+                          <select name="pp2" id="" class="form-control">
+                            <option value="{{ $dish->pp2 }}">Id: {{$dish->pp2 }}</option>
+                            @foreach($pp_ids as $id)
+                              <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->name }}</option>
+                            @endforeach
+                          </select>
                         </div>
                       </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                       <div class="form-group">
+                        <label for="">Third Pickers Point</label>
                         <div class="input-group">
-                          <input type="text" id="multi_user" class="text_field"
-                                 placeholder="username">
+                          {{--<input type="number" id="dsp_1" class="text_field"
+                                 placeholder="id of dsp_1" name="dsp_1" min="1">--}}
+                          <select name="pp3" id="" class="form-control">
+                            <option value="{{ $dish->pp3 }}">Id: {{$dish->pp3 }}</option>
+                            @foreach($pp_ids as $id)
+                              <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->name }}</option>
+                            @endforeach
+                          </select>
                         </div>
                       </div>
                     </div>

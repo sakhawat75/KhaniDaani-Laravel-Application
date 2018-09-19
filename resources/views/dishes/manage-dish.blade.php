@@ -12,7 +12,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="page-title">Manage your dishes</span></h1>
+          <h1 class="page-title">Manage your dishes</h1>
         </div>
         <!-- end /.col-md-12 -->
       </div>
@@ -193,8 +193,8 @@
 
         <div class="row">
           <div class="col-md-12">
-            <div class="pagination-area">
-              <nav class="navigation pagination" role="navigation">
+            <div class="text-center">
+              {{--<nav class="navigation pagination" role="navigation">
                 <div class="nav-links">
                   <a class="prev page-numbers" href="#">
                     <span class="lnr lnr-arrow-left"></span>
@@ -206,7 +206,8 @@
                     <span class="lnr lnr-arrow-right"></span>
                   </a>
                 </div>
-              </nav>
+              </nav>--}}
+              {{ $dishes->links() }}
             </div>
             <!-- end /.pagination-area -->
           </div>

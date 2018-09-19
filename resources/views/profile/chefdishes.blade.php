@@ -179,8 +179,8 @@
                             <!-- end /.col-md-6 --> --}}
                         </div>
                         <!-- end /.row -->
-                    <div class="pagination-area pagination--right">
-                        <nav class="navigation pagination" role="navigation">
+                    <div class="">
+                        {{--<nav class="navigation pagination" role="navigation">
                             <div class="nav-links">
                                 <a class="prev page-numbers" href="#">
                                     <span class="lnr lnr-arrow-left"></span>
@@ -192,7 +192,8 @@
                                     <span class="lnr lnr-arrow-right"></span>
                                 </a>
                             </div>
-                        </nav>
+                        </nav>--}}
+                        {{ $dishes->links() }}
                     </div>
 
                 </div>

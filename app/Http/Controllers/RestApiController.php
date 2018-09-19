@@ -292,6 +292,13 @@ class RestApiController extends Controller
         return $order;
     }
 
+    public function getIDs()
+    {
+        $dsp_ids = DeliveryService::registeredIDs();
+
+        return $dsp_ids;
+    }
+
 
     public function allNotification(){
 	    $user = User::find(auth()->id());

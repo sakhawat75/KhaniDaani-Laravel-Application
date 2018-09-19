@@ -77,7 +77,7 @@ $("#dish_category").on('change', function (e) {
 
     $.get('/ajax-subcat?cat_name=' + cat_name, function (data) {
         $('#dish_subcategory').empty();
-        $('#dish_subcategory').prepend('<option value="" selected>Select Sub Category</option>');
+        // $('#dish_subcategory').prepend('<option value="" selected>Select Sub Category</option>');
         $.each(data, function (index, subCatObj) {
             $('#dish_subcategory').append('<option value="' + subCatObj.name + '">' + subCatObj.name + '</option>');
         });
@@ -110,6 +110,18 @@ $('div.max-length').maxlength();
 
 // To add ck-editor in textarea
 CKEDITOR.replace('article-ckeditor');
+
+//snackbar
+$('#snackbar').css('z-index', '99999');
+
+function snackbar($msg) {
+    $('#snackbar').html($msg);
+    $('#snackbar').toggleClass('show');
+    setTimeout(function () {
+        $('#snackbar').removeClass('show');
+    }, 1600);
+}
+
 
 /*
 $('ul.pagination').hide();
