@@ -523,18 +523,27 @@
         $('#submit_dish').on('click', function (e) {
             var ti = $('#dish_thumbnail1').val();
             var di1 = $('#screenshot1').val();
+            // var des = $('#dish_description').val();
             console.log("ti: " + ti);
             console.log("di1: " + di1);
             if(!ti) {
                 $('html, body').animate({
                     scrollTop: $("#preview_dish_thumbnail").offset().top-150
                 }, 700);
-                snackbar("Thumbnail Image required");
-            } else if(!di1) {
+                snackbar("Thumbnail Image is required");
+            }
+            if(!di1) {
                 $('html, body').animate({
                     scrollTop: $("#preview_screenshot1").offset().top-150
                 }, 700);
+                snackbar("Dish Image 1 is required");
             }
+            /*if(!des) {
+                $('html, body').animate({
+                    scrollTop: $(".form-group.no-margin.max-length .label").offset().top-150
+                }, 700);
+                snackbar(" Description Field Can not be empty");
+            }*/
         });
 
     </script>

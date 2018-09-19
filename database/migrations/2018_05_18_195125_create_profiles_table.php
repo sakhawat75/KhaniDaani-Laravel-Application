@@ -27,7 +27,7 @@ class CreateProfilesTable extends Migration
             $table->text('address_hint')->nullable();
             $table->string('cover_image')->default('authcvr.jpg');
             $table->string('profile_image')->default('author-avatar.jpg');;
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->decimal('avgRating', 2, 2)->nullable();
             $table->decimal('communicationRating', 2, 2)->nullable();
             $table->decimal('presentationRating', 2, 2)->nullable();

@@ -69,7 +69,18 @@
                             <!-- end /.information_module-->
                             <div class="information_module">
                                 <div class="toggle_title">
-                                    <h4>Delivery Address</h4> <span class="a-color">(Update only if you want the delivery in different address) </span>
+                                    <h4>Delivery Address</h4> <span class="a-color">
+                                        @auth
+
+                                            @if(auth()->user()->profile->address)
+                                                Update only if you want the delivery in different address
+                                            @else
+                                                You Must Provide Your Address Information
+                                            @endif
+                                        @else
+                                            You Must Provide Your Address Information
+                                            @endauth
+                                    </span>
                                 </div>
 
                                 <div class="information__set">
@@ -81,20 +92,19 @@
                                             <sup>*</sup>
 
                                             @auth
-                                                <input type="text" id="delivery_address" name="delivery_address" class="text_field" value="{{ auth()->user()->profile->address }}">
+                                                <input type="text" id="delivery_address" name="delivery_address" class="text_field" value="{{ auth()->user()->profile->address }}" required>
                                             @else
-                                                <input type="text" id="delivery_address" name="delivery_address" class="text_field" placeholder="Address line one">
+                                                <input type="text" id="delivery_address" name="delivery_address" class="text_field" placeholder="Address line one" required>
 
                                             @endauth
                                         </div>
 
                                         <div class="form-group">
                                             <label for="delivery_address_hint">Address Hint</label>
-                                            <sup>*</sup>
                                             @auth
                                                 <input type="text" id="delivery_address_hint" name="delivery_address_hint" class="text_field" value="{{ auth()->user()->profile->address_hint }}">
                                             @else
-                                                <input type="text" id="delivery_address_hint" name="delivery_address_hint" class="text_field" placeholder="Address line two">
+                                                <input type="text" id="delivery_address_hint" name="delivery_address_hint" class="text_field" placeholder="Address Hint">
 
                                             @endauth
                                         </div>
@@ -106,9 +116,9 @@
                                                         <sup>*</sup>
                                                     </label>
                                                     @auth
-                                                        <input type="text" id="buyer_contact_n" name="buyer_contact_n" class="text_field" value="{{ auth()->user()->profile->mobile_no }}">
+                                                        <input type="text" id="buyer_contact_n" name="buyer_contact_n" class="text_field" value="{{ auth()->user()->profile->mobile_no }}" required>
                                                     @else
-                                                        <input type="text" id="buyer_contact_n" name="buyer_contact_n" class="text_field" placeholder="Mobile No 1">
+                                                        <input type="text" id="buyer_contact_n" name="buyer_contact_n" class="text_field" placeholder="Mobile No 1" required>
 
                                                     @endauth
                                                 </div>

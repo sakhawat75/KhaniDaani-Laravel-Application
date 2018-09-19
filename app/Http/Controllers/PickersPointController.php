@@ -121,6 +121,11 @@ class PickersPointController extends Controller
     }
 
     public function addpp() {
+        $user = auth()->user();
+        if(!$user->profile->address || !$user->profile->mobile_no || !$user->profile->city) {
+            return redirect()->route('profile.edit', ['profile' => $user->profile->id])->withErrors('You Must Fill Up The Profile Information To Create a New Dish');
+        }
+        
         $profile = auth()->user()->profile;
         return view('pickerspoint.addpp', compact('profile'));
     }

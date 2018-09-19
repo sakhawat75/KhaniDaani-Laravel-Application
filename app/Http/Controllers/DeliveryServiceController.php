@@ -21,6 +21,11 @@ class DeliveryServiceController extends Controller
 
     public function create()
     {
+        $user = auth()->user();
+        if(!$user->profile->address || !$user->profile->mobile_no || !$user->profile->city) {
+            return redirect()->route('profile.edit', ['profile' => $user->profile->id])->withErrors('You Must Fill Up The Profile Information To Create a New Dish');
+        }
+
 		/*$deliveryServices = new DeliveryService;
 		$deliveryServices = $deliveryServices->get();
 	    //return view('deliveryServices.create', compact( 'deliveryServices'));*/

@@ -50,24 +50,24 @@
                         <sup>*</sup>
                       </label>
                       <input type="text" id="acname" class="text_field" value="{{ $profile->fullname }}" placeholder="Full Name or Nick name"
-                             name="fullname" maxlength="190" minlength="2">
+                             name="fullname" maxlength="190" minlength="2" required>
                     </div>
 
                     <div class="form-group">
                       <label for="mobile">Date of birth<sup>*</sup></label>
-                      <input type="date" id="mobile" class="text_field" value="{{ $profile->dob }}" name="dob">
+                      <input type="date" id="mobile" class="text_field" value="{{ $profile->dob }}" name="dob" required>
                     </div>
 
                     <div class="form-group max-length">
                       <label for="mobile2">Phone No<sup>*</sup></label>
                       <input type="text" id="mobile2" class="text_field" value="{{ $profile->mobile_no }}"
-                             name="mobile_no" maxlength="15" minlength="11">
+                             name="mobile_no" maxlength="15" minlength="11" required>
                     </div>
                     <!-- city selection -->
                     <div class="form-group">
                       <label for="city">Select City<sup>*</sup></label>
                       <div class="select-wrap select-wrap2">
-                        <select name="city" id="city" class="text_field">
+                        <select name="city" id="city" class="text_field" required>
                           @foreach($cities as $city)
                             <option value="{{ $city->name }}" 
                             @if ($city->name === $profile->city)
@@ -87,7 +87,7 @@
                         <sup>*</sup>
                       </label>
                       <div class="select-wrap select-wrap2">
-                        <select name="areas" id="areas" class="text_field">
+                        <select name="areas" id="areas" class="text_field" required>
 
                         </select>
                         <span class="lnr lnr-chevron-down"></span>
@@ -97,14 +97,14 @@
                      <div class="form-group max-length">
                         <label for="prohead">Full Address one<sup>*</sup></label>
 
-                        <input type="text" id="prohead" class="text_field" placeholder="Ex: House No, Road no, Block" name="address" value="{{ $profile->address }}" maxlength="500" min="4">
+                        <input type="text" id="prohead" class="text_field" placeholder="Ex: House No, Road no, Block" name="address" value="{{ $profile->address }}" maxlength="500" min="4" required>
                     </div>
 
                     <div class="form-group max-length">
                       <label for="prohead">Adress Hint</label>
 
 
-                      <input type="text" class="text_field" placeholder="min 20 and max 1000 character" maxlength="100" minlength="4" name="address_hint" value="{{ $profile->address_hint }}">
+                      <input type="text" class="text_field" placeholder="min 4 and max 100 character" maxlength="100"  name="address_hint" value="{{ $profile->address_hint }}">
                     </div>
 
                   </div>

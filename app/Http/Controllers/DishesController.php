@@ -30,10 +30,23 @@ class DishesController extends Controller
 
     public function create()
     {
+        $user = auth()->user();
+        if(!$user->profile->address || !$user->profile->mobile_no || !$user->profile->city) {
+            return redirect()->route('profile.edit', ['profile' => $user->profile->id])->withErrors('You Must Fill Up The Profile Information To Create a New Dish');
+        }
+
 		$categories = new Category;
 		$categories = $categories->get();
-        $dsp_ids = DeliveryService::select('id', 'service_title')->get();
-        $pp_ids = PickersPoint::select('id', 'name')->get();
+        $dsp_ids = DeliveryService::select('id', 'service_title')
+            ->whereHas('profile', function ($query) {
+                $query->where('city', '=', auth()->user()->profile->city);
+            })
+            ->get();
+        $pp_ids = PickersPoint::select('id', 'name')
+            ->whereHas('profile', function ($query) {
+                $query->where('city', '=', auth()->user()->profile->city);
+            })
+            ->get();
 
 //        return $dsp_ids;
 
@@ -42,6 +55,10 @@ class DishesController extends Controller
 
     public function store(Request $request)
     {
+        $user = auth()->user();
+        if(!$user->profile->address || !$user->profile->mobile_no || !$user->profile->city) {
+            return redirect()->route('profile.edit', ['profile' => $user->profile->id])->withErrors('You Must Fill Up The Profile Information To Create a New Dish');
+        }
 
         $validatedData = $request->validate([
             'dish_category' => 'required|string|max:50',
@@ -159,8 +176,16 @@ class DishesController extends Controller
     	$dish = Dish::find($id);
         $categories = new Category;
         $categories = $categories->get();
-        $dsp_ids = DeliveryService::select('id', 'service_title')->get();
-        $pp_ids = PickersPoint::select('id', 'name')->get();
+        $dsp_ids = DeliveryService::select('id', 'service_title')
+            ->whereHas('profile', function ($query) {
+                $query->where('city', '=', auth()->user()->profile->city);
+            })
+            ->get();
+        $pp_ids = PickersPoint::select('id', 'name')
+            ->whereHas('profile', function ($query) {
+                $query->where('city', '=', auth()->user()->profile->city);
+            })
+            ->get();
 
 //        return $dsp_ids;
 

@@ -17,7 +17,7 @@
                     </li>
                     <li>
                         <a href="{{ route('dishes.create') }}">
-                            <span class="lnr lnr-file-add"></span>Add Dsih</a>
+                            <span class="lnr lnr-file-add"></span>Add Dish</a>
                     </li>
                     <li class="{{ request()->is('profile_setting') ? 'active' : '' }}">
                         <a href="{{ route('dishes.manage') }}">

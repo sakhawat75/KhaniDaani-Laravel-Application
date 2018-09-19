@@ -90,7 +90,10 @@ class OrderController extends Controller
 	{
 
 	    $validate = $request->validate([
-	        'payment_type' => 'required'
+	        'payment_type' => 'required',
+	        'delivery_address' => 'required',
+//	        'delivery_address_hint' => 'required',
+	        'buyer_contact_n' => 'required',
         ]);
 
 

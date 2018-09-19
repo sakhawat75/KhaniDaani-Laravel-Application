@@ -167,13 +167,13 @@ class ProfileController extends Controller
 			'fullname' => 'required|min:2|regex:/^[\pL\s\-\.]+$/u|max:190',
 		    'dob' => 'required|date',
 		    'mobile_no' => 'required|max:15|min:11|string',
-		    'description' => 'max:2000|min:10',
+		    'description' => 'max:2000',
 		    'cover_image' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
 		    'profile_image' => 'nullable|file|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
 		    'city' => 'required',
 		    'areas' => 'required',
             'address' => 'required|max:500|min:4',
-            'address_hint' => 'max:100|min:4',
+            'address_hint' => 'max:100',
 	    ]);
 
         if (request()->filled('city')) {
@@ -217,7 +217,7 @@ class ProfileController extends Controller
 
 	    $profile->save();
 	    session()->flash('prf_updated', 'Profile has been updated successfully');
-	    $request->session()->flash();
+
 	    return redirect()->route('profile.show', ['profile' => $profile]);
     }
 
