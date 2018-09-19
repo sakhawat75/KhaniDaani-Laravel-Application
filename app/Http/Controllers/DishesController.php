@@ -244,7 +244,7 @@ class DishesController extends Controller
             // Get just ext
 			$extension = $request->file($input_name)->getClientOriginalExtension();
 			// Filename to store
-            $fileNameToStore= $dish->profile->name . '_' . time() . '.' .$extension;
+            $fileNameToStore= $dish->profile->user->name . '_' . $filename . '_' . time() . '.' .$extension;
 
             $destination = 'public/images/' . $type;
 			// Upload Image
