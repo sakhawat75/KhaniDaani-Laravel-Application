@@ -16,7 +16,7 @@
                                     <span class="lnr lnr-cart"></span>All Orders</a>
                     </li>
                     <li>
-                        <a href="{{ route('delivery.AddService') }}">
+                        <a href="{{ route('dishes.create') }}">
                             <span class="lnr lnr-file-add"></span>Add Dsih</a>
                     </li>
                     <li class="{{ request()->is('profile_setting') ? 'active' : '' }}">

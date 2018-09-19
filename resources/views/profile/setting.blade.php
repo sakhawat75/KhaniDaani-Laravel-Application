@@ -133,7 +133,7 @@
                            alt="Author profile area"
                            id="preview_profile_image" style="height: 100px;width: 100px;">
                       <label for="profile_photo" class="upload_btn profile_image_update">
-                        <input type="file" id="profile_photo" name="profile_image"  accept=".jpg,.jpeg,.png,.bmp">
+                        <input type="file" id="profile_photo" name="profile_image" accept=".jpg,.jpeg,.png,.bmp,.svg,.gif">
                         <span class="btn btn--sm btn--round" aria-hidden="true">Choose Image</span>
                       </label>
                     </div>
@@ -150,7 +150,7 @@
 
                       <div class="prof_img_upload">
 
-                        <h5><span class="bold">Cover Image</span> <span class="small text-muted"> ( minimum dimension: 300 X 300 )</span></h5> <br>
+                        <h5><span class="bold">Cover Image</span> <span class="small text-muted"> ( minimum dimension: 400 X 225 )</span></h5> <br>
 
                        <div class="aspect_ratio">
                          <img src="{{ route('home') }}/storage/images/cover_image/{{ $profile->cover_image }}"
@@ -160,7 +160,7 @@
 
                        <div class="upload_title">
                          <label for="dp" class="upload_btn">
-                           <input type="file" id="dp" name="cover_image" accept=".jpg,.jpeg,.png,.bmp">
+                           <input type="file" id="dp" name="cover_image" accept=".jpg,.jpeg,.png,.bmp,.svg,.gif">
                            <span class="btn btn--sm btn--round" aria-hidden="true">Choose Image</span>
                          </label>
                        </div>

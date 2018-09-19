@@ -47,7 +47,7 @@ class DeliveryService extends Model
 	 	return $this->belongsTo( Profile::class, 'user_id', 'user_id');
 	}
 
-	/*public function scopeProfile($query) {
-
-	}*/
+	public static function registeredIDs() {
+        return static::pluck('id');
+	}
 }
