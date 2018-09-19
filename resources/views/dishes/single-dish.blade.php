@@ -177,7 +177,7 @@
                           <div class="media">
                             <div class="media-left">
                               <a href="#">
-                                <img class="media-object" {{--src="{{ route('home') }}/storage/images/profile_image/{{ $rating->order->buyer->id->profile->profile_image }}--}}" {{-- TODO profile image--}}
+                                <img class="media-object" src="{{ route('home') }}/storage/images/profile_image/{{ $rating->order->buyer->profile->profile_image }}" {{-- TODO profile image--}}
                                      alt="Commentator Avatar">
                               </a>
                             </div>

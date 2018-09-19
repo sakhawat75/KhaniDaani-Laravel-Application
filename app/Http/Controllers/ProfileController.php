@@ -9,6 +9,7 @@ use \App\User;
 use Illuminate\Http\Request;
 use \App\Profile;
 use Auth;
+use Intervention\Image\Facades\Image;
 use Storage;
 
 class ProfileController extends Controller
@@ -165,14 +166,14 @@ class ProfileController extends Controller
 	    $this->validate( $request, [
 			'fullname' => 'required|min:2|regex:/^[\pL\s\-\.]+$/u|max:190',
 		    'dob' => 'required|date',
-		    'mobile_no' => 'required|max:14',
-		    'description' => 'max:5000',
-		    'cover_image' => 'nullable|file|image|max:3072',
-		    'profile_image' => 'nullable|file|image|max:3072',
+		    'mobile_no' => 'required|max:15|min:11|string',
+		    'description' => 'max:2000|min:10',
+		    'cover_image' => 'nullable|file|image|max:5120|mimes:jpeg,bmp,png,jpg|dimensions:min_width=300,min_height=300',
+		    'profile_image' => 'nullable|file|image|max:5120|mimes:jpeg,bmp,png,jpg|dimensions:min_width=100,min_height=100',
 		    'city' => 'required',
 		    'areas' => 'required',
             'address' => 'required|max:500|min:4',
-            'address_hint' => 'max:500',
+            'address_hint' => 'max:100|min:4',
 	    ]);
 
         if (request()->filled('city')) {
@@ -233,14 +234,36 @@ class ProfileController extends Controller
 		    $filenameWithExt = $request->file($type)->getClientOriginalName();
 		    // Get just filename
 		    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $filename = preg_replace('/\s+/', '', $filename);
+
 		    // Get just ext
 		    $extension = $request->file($type)->getClientOriginalExtension();
+
 		    // Filename to store
-		    $fileNameToStore= $filename.'_'.time().'.'.$extension;
+		    $fileNameToStore= $profile->user->name . '_' . $filename. '_' . time() . '.' .$extension;
 
 		    $destination = 'public/images/' . $type;
-		    // Upload Image
-		    $path = $request->file($type)->storeAs($destination, $fileNameToStore);
+
+            $path = $destination . '/' . $fileNameToStore;
+
+            // Upload Image
+            if($type == 'profile_image') {
+                $image = Image::make($request->file($type))->fit(100, 100, function ($constraint) {
+                    $constraint->upsize();
+                });
+//                $path = $image->storeAs($destination, $fileNameToStore);
+                Storage::put($path, (string) $image->encode());
+
+            } elseif ($type == 'cover_image') {
+                $image = Image::make($request->file($type))->fit(730, 411, function ($constraint) {
+                    $constraint->upsize();
+                });
+
+//                $path = $image->storeAs($destination, $fileNameToStore);
+                Storage::put($path, (string) $image->encode('jpg', 50));
+
+            }
+
 		    $profile->$type = $fileNameToStore;
 	    }
     }

@@ -97,14 +97,14 @@ $("#city").on('change', function (e) {
     $.get('/ajax-areas?city_name=' + city_name, function (data) {
         $('#areas').empty();
 
-        $.each(data, function (index, subCatObj) {
-            $('#areas').append('<option value="' + subCatObj.name + '">' + subCatObj.name + '</option>');
+        $.each(data, function (index, area) {
+            $('#areas').append('<option value="' + area.name + '">' + area.name + '</option>');
         });
     });
 });
 
 // To trigger the category select option
-$("#areas").trigger('change');
+$("#city").trigger('change');
 
 $('div.max-length').maxlength();
 

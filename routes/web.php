@@ -64,7 +64,7 @@ Route::resource( '/dishes', 'DishesController');
 
 Route::get('/ajax-subcat', 'RestApiController@jsonSubCat');
 Route::get('/api/categories', 'RestApiController@jsonCategories');
-Route::get('/ajax-areas', 'RestApiController@jsonAreas');
+Route::get('/ajax-areas', 'RestApiController@jsonAreas')->name('api.areas');
 Route::get('/api/search-dish', 'RestApiController@jsonSearchDish')->name( 'api.search.dish');
 Route::get('/api/search-dsp', 'RestApiController@jsonSearchDsp')->name( 'api.search.dsp');
 Route::get('/api/search-pp', 'RestApiController@jsonSearchPP')->name( 'api.search.pp');
