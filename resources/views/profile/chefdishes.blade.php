@@ -95,8 +95,9 @@
 
                                         <div class="sell">
                                             <p>
-                                                <span class="lnr lnr-cart"></span>
-                                                <span>{{ count($dish->completed_orders) }}</span>
+                                                <span data-toggle="tooltip" data-placement="bottom" title="Total Dish Sale">
+                      <i class="fa fa-paper-plane-o" style="color:#f64646" aria-hidden="true"></i>
+                      <span>{{ count($dish->completed_orders) }}</span></span>
                                             </p>
                                         </div>
                                     </div>

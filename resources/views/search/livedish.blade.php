@@ -14,7 +14,7 @@
           <div class="search">
             <div class="search__title">
               <h3>
-                Total <span>5</span> Dishes only for you.</h3></div>
+                Search by dish name</h3></div>
             <div class="search__field">
               <form action="{{ route('search.livedish') }}" method="get">
                 <div class="field-wrapper">

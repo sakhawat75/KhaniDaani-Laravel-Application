@@ -149,8 +149,9 @@
                       </div>
                       <div class="sell">
                         <p>
-                          <span class="lnr lnr-cart"></span>
-                          <span>{{ count($fd->dish->completed_orders) }}</span>
+                          <span data-toggle="tooltip" data-placement="bottom" title="Total Dish Sale">
+                      <i class="fa fa-paper-plane-o" style="color:#f64646" aria-hidden="true"></i>
+                      <span>{{ count($fd->dish->completed_orders) }}</span></span>
                         </p>
                       </div>
                       {{--Start Rating Area--}}
@@ -259,12 +260,13 @@
                            src="{{ route('home') }}/storage/images/profile_image/{{  $dish->profile->profile_image }}"
                            alt="author image">
                       <p>
-                        <a href="#">{{  $dish->profile->user_name }}</a>
+                        <a href="{{ route('profile.show', ['profile' => $dish->profile->id]) }} #profile">{{  $dish->profile->user_name }}</a>
                       </p>
                     </li>
                     <li class="product_cat a-color">
+                      <span data-toggle="tooltip" data-placement="bottom" title="Chef Location">
                                                     <span class="lnr lnr-map-marker"> <span>{{ $dish->profile->city }}, </span><span>{{ $dish->profile->area }}</span>
-                                                    </span></li>
+                                                    </span></span></li>
                   </ul>
                 </div>
                 <!-- end /.product-desc -->
@@ -277,8 +279,9 @@
 
                   <div class="sell">
                     <p>
-                      <span class="lnr lnr-cart"></span>
-                      <span>{{ count($dish->completed_orders) }}</span>
+                      <span data-toggle="tooltip" data-placement="bottom" title="Total Dish Sale">
+                      <i class="fa fa-paper-plane-o" style="color:#f64646" aria-hidden="true"></i>
+                      <span>{{ count($dish->completed_orders) }}</span></span>
                     </p>
                   </div>
 
