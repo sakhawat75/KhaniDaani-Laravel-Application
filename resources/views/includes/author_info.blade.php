@@ -2,9 +2,9 @@
     <div class="author-infos">
         <div class="author_avatar"> <img src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="Presenting the broken author avatar :D"> </div>
         <div class="author">
-            <h4>
+            <a href="{{ route('profile.show', ['profile' => $profile->id]) }} #profile"><h4>
                 {{ $profile->user->name }}
-            </h4>
+            </h4></a>
             <p>Joined {{ $profile->created_at->toFormattedDateString() }}</p>
         </div>
         <div class="author-badges">

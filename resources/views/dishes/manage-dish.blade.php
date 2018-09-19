@@ -125,34 +125,29 @@
                 <div class="product-purchase">
                   <div class="price_love">
                     <span>৳{{ $dish->dish_price }}</span>
-                    <p>
-                      <span class="lnr lnr-heart"></span> 48</p>
+
                   </div>
 
                   <div class="rating product--rating">
                     <ul>
-                      <li>
-                        <span class="fa fa-star"></span>
-                      </li>
-                      <li>
-                        <span class="fa fa-star"></span>
-                      </li>
-                      <li>
-                        <span class="fa fa-star"></span>
-                      </li>
-                      <li>
-                        <span class="fa fa-star"></span>
-                      </li>
-                      <li>
-                        <span class="fa fa-star-half-o"></span>
-                      </li>
+                      @for ($i=1; $i <= 5; $i++)
+
+                        <li>
+                          @if($i <= round($dish->avg_rating))
+                            <span class="fa fa-star"></span>
+                          @else
+                            <span class="fa fa-star-o"></span>
+                          @endif
+                        </li>
+
+                      @endfor
                     </ul>
                   </div>
 
                   <div class="sell">
                     <p>
                       <span class="lnr lnr-cart"></span>
-                      <span>50</span>
+                      <span>{{ count($dish->completed_orders) }}</span>
                     </p>
                   </div>
                 </div>
