@@ -49,19 +49,34 @@
               <div class="item__preview-slider">
                 <div class="prev-slide">
                   <div class="aspect_ratio">
-                    <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_1 }}"
+                    <img
+                            @if ($dish->dish_image_1)
+                            src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_1 }}"
+                            @else
+                            src="{{ route('home') }}/images/cvrplc.jpg"
+                            @endif
                          alt="the preview is just missing." class="ratio_img">
                   </div>
                 </div>
                 <div class="prev-slide">
                   <div class="aspect_ratio">
-                    <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_2 }}"
+                    <img
+                            @if ($dish->dish_image_2)
+                            src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_2 }}"
+                            @else
+                            src="{{ route('home') }}/images/cvrplc.jpg"
+                            @endif
                          alt="the preview is just missing." class="ratio_img">
                   </div>
                 </div>
                 <div class="prev-slide">
                   <div class="aspect_ratio">
-                    <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_3 }}"
+                    <img
+                            @if ($dish->dish_image_3)
+                            src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_3 }}"
+                            @else
+                            src="{{ route('home') }}/images/cvrplc.jpg"
+                            @endif
                          alt="the preview is just missing." class="ratio_img">
                   </div>
                 </div>
@@ -73,19 +88,33 @@
                   <div class="thumb-slider">
                     <div class="item-thumb">
                       <div class="aspect_ratio">
-                        <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_1 }}"
+                        <img
+                                @if ($dish->dish_image_1)
+                                src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_1 }}"
+                                @else
+                                src="{{ route('home') }}/images/cvrplc.jpg"
+                                @endif
                              alt="This is the thumbnail of the item" class="ratio_img">
                       </div>
                     </div>
                     <div class="item-thumb">
                       <div class="aspect_ratio">
-                        <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_2 }}"
+                        <img @if ($dish->dish_image_2)
+                             src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_2 }}"
+                             @else
+                             src="{{ route('home') }}/images/cvrplc.jpg"
+                             @endif
                              alt="This is the thumbnail of the item" class="ratio_img">
                       </div>
                     </div>
                     <div class="item-thumb">
                       <div class="aspect_ratio">
-                        <img src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_3 }}"
+                        <img
+                                @if ($dish->dish_image_3)
+                                src="{{ route('home') }}/storage/images/dish_images/{{ $dish->dish_image_3 }}"
+                                @else
+                                src="{{ route('home') }}/images/cvrplc.jpg"
+                                @endif
                              alt="This is the thumbnail of the item" class="ratio_img">
                       </div>
                     </div>

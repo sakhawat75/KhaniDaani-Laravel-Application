@@ -77,7 +77,7 @@ class ProfileController extends Controller
         if(!$profile) {
             return redirect()->route( 'home');
         }
-        $dishes = $profile->dish;
+        $dishes = $profile->dish()->paginate(8);
 
         $total_sales = 0;
         $total_ratings = round($user->ratings->avg('rating'));

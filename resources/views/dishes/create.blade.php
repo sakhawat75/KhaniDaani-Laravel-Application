@@ -288,7 +288,8 @@
                                                     {{--<input type="number" id="dsp_1" class="text_field"
                                                            placeholder="id of dsp_1" name="dsp_1" min="1">--}}
                                                     <select name="dsp_1" id="" class="form-control">
-                                                        @foreach($dsp_ids as $id)
+                                                        <option value="" selected>Select DSP 1</option>
+                                                    @foreach($dsp_ids as $id)
                                                             <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->service_title }}</option>
                                                             @endforeach
                                                     </select>
@@ -302,7 +303,7 @@
                                                 <label for="">Second Delivery Service</label>
                                                 <div class="input-group">
                                                     <select name="dsp_2" id="" class="form-control">
-                                                        <option value="">Select DSP 2</option>
+                                                        <option value="" selected>Select DSP 2</option>
                                                         @foreach($dsp_ids as $id)
                                                             <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->service_title }}</option>
                                                         @endforeach
@@ -317,7 +318,7 @@
                                                 <label for="">Third Delivery Service</label>
                                                 <div class="input-group">
                                                     <select name="dsp_3" id="" class="form-control">
-                                                        <option value="">Select DSP 3</option>
+                                                        <option value="" selected>Select DSP 3</option>
                                                     @foreach($dsp_ids as $id)
                                                             <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->service_title }}</option>
                                                         @endforeach

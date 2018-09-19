@@ -157,7 +157,14 @@ class DishesController extends Controller
     public function edit($id)
     {
     	$dish = Dish::find($id);
-	    return view('dishes.dish-edit', compact( 'dish'));
+        $categories = new Category;
+        $categories = $categories->get();
+        $dsp_ids = DeliveryService::select('id', 'service_title')->get();
+        $pp_ids = PickersPoint::select('id', 'name')->get();
+
+//        return $dsp_ids;
+
+	    return view('dishes.dish-edit', compact( 'dish', 'categories', 'dsp_ids', 'pp_ids'));
     }
 
     public function update(Request $request, $id)
@@ -187,15 +194,30 @@ class DishesController extends Controller
 		    $dish->item_tags = $request->input('item_tags');
 	    }
 
-	    $this->upload_image( $request, $dish, 'dish_images', 'dish_thumbnail', true);
-	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_1', true);
+	    if($request->hasFile('dish_thumbnail')) {
+            $this->upload_image( $request, $dish, 'dish_images', 'dish_thumbnail', true);
+        }
+
+        if($request->hasFile('dish_image_1')) {
+            $this->upload_image( $request, $dish, 'dish_images', 'dish_image_1', true);
+        }
+
+        if($request->hasFile('dish_image_2')) {
+            $this->upload_image( $request, $dish, 'dish_images', 'dish_image_2', true);
+        }
+
+	    if($request->hasFile('dish_image_3')) {
+            $this->upload_image( $request, $dish, 'dish_images', 'dish_image_3', true);
+        }
+
+	    /*$this->upload_image( $request, $dish, 'dish_images', 'dish_image_1', true);
 	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_2', true);
-	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_3', true);
+	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_3', true);*/
 
 	    $dish->update();
 	    session()->flash('success', 'Dish has been updated successfully');
 
-	    return view('dishes.single-dish', compact( 'profile', 'dish'));
+	    return redirect()->route('dishes.show', ['id' => $dish->id]);
 
     }
 
@@ -216,7 +238,7 @@ class DishesController extends Controller
     public function manage() {
 		$id = auth()->id();
 	    $profile = Profile::where('user_id', $id)->first();
-	    $dishes = $profile->dish;
+	    $dishes = $profile->dish()->paginate(9);
 
 	    if(!$dishes->first()) {
 	    	session()->flash( 'success', 'No Dish To manage. Please Create a dish First');
@@ -244,6 +266,7 @@ class DishesController extends Controller
             // Get just ext
 			$extension = $request->file($input_name)->getClientOriginalExtension();
 			// Filename to store
+//            $fileNameToStore= $dish->profile->user->name . '_' . time() . '.' .$extension;
             $fileNameToStore= $dish->profile->user->name . '_' . $filename . '_' . time() . '.' .$extension;
 
             $destination = 'public/images/' . $type;
