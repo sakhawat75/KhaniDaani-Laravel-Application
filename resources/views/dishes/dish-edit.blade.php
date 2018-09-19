@@ -42,6 +42,8 @@
 
     <div class="dashboard_contents">
       <div class="container">
+        @include('includes.success_message')
+        @include('includes.error_messeages')
         <div class="row">
           <div class="col-lg-8">
             <form action="{{ route('dishes.update', ['id' => $dish]) }}" method="post"

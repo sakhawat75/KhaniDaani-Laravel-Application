@@ -169,6 +169,29 @@ class DishesController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $validatedData = $request->validate([
+            'dish_category' => 'string|max:50',
+            'dish_subcategory' => 'string|max:50',
+            'preparation_time' => 'integer|min:1|max:4',
+            'dish_name' => 'string|max:50|min:3',
+            'dish_price' => 'integer|min:10|max:9999',
+            'dish_description' => 'max:5000|string|min:2',
+            'dsp_1' => 'nullable|integer|min:1',
+            'dsp_2' => 'nullable|integer|min:1',
+            'dsp_3' => 'nullable|integer|min:1',
+            'pp1' => 'nullable|integer|min:1',
+            'pp2' => 'nullable|integer|min:1',
+            'pp3' => 'nullable|integer|min:1',
+            'dish_thumbnail' => 'image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+            'dish_image_1' => 'image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+            'dish_image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+            'dish_image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+            'avg_rating' => 'nullable',
+            'is_approved' => 'nullable|boolean',
+
+        ]);
+
         $dish = Dish::find($id);
 	    $profile = $dish->profile;
 
