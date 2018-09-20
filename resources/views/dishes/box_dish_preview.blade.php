@@ -12,31 +12,40 @@
             <h4> {{ $dish->dish_name }} </h4> </a>
         <ul class="titlebtm">
             <li> <img class="auth-img" src="{{ route('home') }}/storage/images/profile_image/{{ $dish->profile->profile_image }}" alt="author image">
-                <p> <a href="#">{{ $dish->profile->user->name }}</a> </p>
+                <p> <a href="{{ route('profile.show', ['profile' => $dish->profile->id]) }} #profile">{{ $dish->profile->user->name }}</a> </p>
             </li>
-            <li class="product_cat"> <a href="#">
-                    From <span>{{ $dish->profile->city }}, </span><span>{{ $dish->profile->area }}</span></a> </li>
+            <li class="product_cat a-color">
+                <span class="lnr lnr-map-marker"></span><span>{{ $dish->profile->city }},</span><span>{{ $dish->profile->area }}</span></li>
         </ul>
     </div>
     <!-- end /.product-desc -->
     <div class="product-purchase">
         <div class="price_love"> <span>৳{{ $dish->dish_price }}</span>
-            <p> <span class="lnr lnr-heart"></span> 48</p>
+
+            <div class="rating product--rating pull-right">
+                <ul>
+                    @for ($i=1; $i <= 5; $i++)
+
+                        <li>
+                            @if($i <= round($dish->avg_rating))
+                                <span class="fa fa-star"></span>
+                            @else
+                                <span class="fa fa-star-o"></span>
+                            @endif
+                        </li>
+
+                    @endfor
+                </ul>
+            </div>
+
         </div>
-        <div class="rating product--rating pull-right">
-            <ul>
-                @for ($i=1; $i <= 5; $i++)
 
-                    <li>
-                        @if($i <= round($dish->avg_rating))
-                            <span class="fa fa-star"></span>
-                        @else
-                            <span class="fa fa-star-o"></span>
-                        @endif
-                    </li>
-
-                @endfor
-            </ul>
+        <div class="sell">
+            <p>
+                        <span data-toggle="tooltip" data-placement="bottom" title="Total Dish Sale">
+                      <i class="fa fa-paper-plane-o" style="color:#f64646" aria-hidden="true"></i>
+                      <span>{{ count($dish->completed_orders) }}</span></span>
+            </p>
         </div>
     </div>
     <!-- end /.product-purchase -->
