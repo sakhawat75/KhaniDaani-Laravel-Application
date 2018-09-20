@@ -384,11 +384,15 @@
 
 
                         <div class="my-3 card-title">
-                            <button class="btn btn--icon btn-md btn--round btn-success"
-                                    id="complain_us"
-                                    type="button"><span
-                                        class="lnr  lnr-thumbs-up"></span>Complain To Us
-                            </button>
+                            <h6 class="my-3">Facing Any Problem?</h6>
+                            <div class="freelance-status">
+                                <div class="author-badges">
+                                    <div class="author-btn">
+                                        <button class="btn btn--md btn--round" data-toggle="modal" data-target="#messageModal"
+                                        >Complain to us</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 
@@ -487,6 +491,40 @@
                     <!-- end /.form -->
                 </div>
                 <!-- end /.modal-body -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for sending message -->
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="messageModalLabel">Message KhaniDaani</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="{{ route('messages.store_with_auth') }}" method="post" id="send_msg">
+                        @csrf
+                        <div class="form-group">
+                            <label for="msgText">Type your Complain Below</label>
+                            <textarea class="form-control" id="msgText" placeholder="I did not receive the dish" name="body"></textarea>
+                        </div>
+
+                        {{-- <button type="submit" id="submit-form" class="d-none">send</button> --}}
+
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    {{-- <label for="submit-form" tabindex="0"  class="btn btn-primary px-3 py-1">Send</label> --}}
+                    <button type="button" class="btn btn-primary px-3 py-1" form="send_msg" id="submit-form">Send</button>
+
+                    <button type="button" class="btn btn-secondary px-3 py-1" data-dismiss="modal">Cancel</button>
+                </div>
             </div>
         </div>
     </div>
