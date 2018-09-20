@@ -3,7 +3,7 @@
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    padding:20px;
+    padding:10px;
     position:relative;
     border: 1px solid #ededed;
     min-height:152px;
@@ -501,4 +501,8 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+.mg-right{
+    margin-right: 15px;
+    margin-top: -3px;
 }

@@ -108,92 +108,9 @@
                             @endforeach 
 
 
-
-                           {{--  <div class="col-lg-6 col-md-6">
-                                <!-- start .single-product -->
-                                <div class="product product--card">
-
-                                    <div class="product__thumbnail">
-                                        <div class="aspect_ratio">
-                                            <img src="{{ asset('images/d.jpg') }}" alt="Product Image" class="ratio_img">
-                                        </div>
-
-                                        <div class="prod_btn">
-                                            <a href="#" class="transparent btn--sm btn--round">More
-                                                Info
-                                            </a>
-                                        </div>
-                                        <!-- end /.prod_btn -->
-                                    </div>
-                                    <!-- end /.product__thumbnail -->
-
-                                    <div class="product-desc">
-                                        <a href="" class="product_title">
-                                            <h4>Special Veg nonveg Pizza </h4>
-                                        </a>
-                                        <ul class="titlebtm">
-                                            <li>
-                                                <img class="auth-img" src="{{ asset('images/1.jpg') }}" alt="author image">
-                                                <p>
-                                                    <a href="#">name</a>
-                                                </p>
-                                            </li>
-                                            <li class="product_cat">
-                                                <a href="#">
-                                                    From <span>Sylhet</span></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- end /.product-desc -->
-
-                                    <div class="product-purchase">
-                                        <div class="price_love">
-                                            <span>৳500</span>
-                                            <p>
-                                                <span class="lnr lnr-heart"></span> 48</p>
-                                        </div>
-
-                                        <div class="rating product--rating">
-                                            <ul>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star"></span>
-                                                </li>
-                                                <li>
-                                                    <span class="fa fa-star-half-o"></span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!-- end /.product-purchase -->
-                                </div>
-                                <!-- end /.single-product -->
-                            </div>
-                            <!-- end /.col-md-6 --> --}}
                         </div>
                         <!-- end /.row -->
                     <div class="">
-                        {{--<nav class="navigation pagination" role="navigation">
-                            <div class="nav-links">
-                                <a class="prev page-numbers" href="#">
-                                    <span class="lnr lnr-arrow-left"></span>
-                                </a>
-                                <a class="page-numbers current" href="#/">1</a>
-                                <a class="page-numbers" href="#">2</a>
-                                <a class="page-numbers" href="#">3</a>
-                                <a class="next page-numbers" href="#">
-                                    <span class="lnr lnr-arrow-right"></span>
-                                </a>
-                            </div>
-                        </nav>--}}
                         {{ $dishes->links() }}
                     </div>
 
