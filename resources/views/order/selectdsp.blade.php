@@ -92,12 +92,22 @@
 
 
                                                     <form action="{{ route( 'order.confirm', ['dsp' => $dsp, 'dish' => $dish] ) }}"
-                                                          method="get" class="">
+                                                          method="get" class="clearfix">
                                                         {{ csrf_field() }}
-                                                        <button type="submit" class="btn btn--lg btn--round">Continue &
-                                                            Order
+                                                        <button type="submit" class="btn btn--lg btn--round pull-left"
+                                                            @if(!$dsp->isBetweenTime())
+                                                                disabled="disabled"
+                                                        @endif
+                                                        >
+                                                            @if($dsp->isBetweenTime())
+                                                                Continue & Order
+                                                                @else
+                                                            out of service hours
+                                                                @endif
                                                         </button>
+                                                        <span class="pull-right mr-3 my-3">Current Time: {{ \Carbon\Carbon::now()->format('h:i a') }}</span>
                                                     </form>
+
                                                     {{--<a href="{{ route( 'order.confirm', ['dsp' => $dsp, 'dish' => $dish] ) }}" class="btn btn--lg btn--round">Continue & Order</a>--}}
 
 

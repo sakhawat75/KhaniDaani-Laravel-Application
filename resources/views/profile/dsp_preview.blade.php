@@ -14,7 +14,7 @@
         <!--end:col -->
             <div class="col-xs-12 col-sm-9 col-md-9">
                 <h5 class="dsp-title">{{ $dsp->service_title }}</h5>
-                <p>Service Hours: {{$dsp->service_hours_start}} to {{$dsp->service_hours_end}} </p>
+                <p>Service Hours: <b>{{Carbon\Carbon::parse($dsp->service_hours_start)->format('h:i A')}}</b> to <b>{{Carbon\Carbon::parse($dsp->service_hours_end)->format('h:i A')}}</b> </p>
                     <p>
                         <span class="bold">DSP-ID:</span>
                         <span class="bold text-primary">{{ $dsp->id }}</span>

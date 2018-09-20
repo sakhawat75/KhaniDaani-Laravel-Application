@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
@@ -67,4 +68,5 @@ class Order extends Model
     {
         return $this->hasOne(Rating::class, 'order_id', 'id');
     }
+
 }
