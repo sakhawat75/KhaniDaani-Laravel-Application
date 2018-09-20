@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -50,4 +51,26 @@ class DeliveryService extends Model
 	public static function registeredIDs() {
         return static::pluck('id');
 	}
+
+    public function isBetweenTime()
+    {
+        $start = Carbon::parse($this->service_hours_start);
+        $end = Carbon::parse($this->service_hours_end);
+
+        $now = Carbon::now();
+
+        if($start->lt($end)) {
+            if($now->between($start, $end)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if($start->gt($end)) {
+            if($now->gt($start) || ($now->lt($start) && $now->lt($end) ) ) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
