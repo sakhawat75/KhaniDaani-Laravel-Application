@@ -13,8 +13,7 @@ $ipad: 992px;
     color: #f3f3f8;
     font-size: 20px;
     font-weight: 500;
-    margin-right: 556px;
-    padding-bottom: 44px;
+    margin-right: 356px;
     padding-top: 20px;
   }
 
@@ -27,8 +26,7 @@ $ipad: 992px;
     color: #f3f3f8;
     font-size: 20px;
     font-weight: 500;
-    margin-right: 400px;
-    padding-bottom: 44px;
+    margin-right: 200px;
     padding-top: 20px;
   }
   /* menu area scss */
@@ -480,7 +478,7 @@ $ipad: 992px;
     }
   }
   .section-title p{
-    padding: 0 125px;
+    padding: 2px;
   }
 
   /* hero area */
@@ -977,6 +975,8 @@ $ipad: 992px;
 
   .container{
     width: 450px;
+    padding-right: 2px;
+    padding-left: 2px;
   }
   .dashboard-area.dashboard_purchase .dashboard_menu,
   .dashboard_menu_area .dashboard_menu{
@@ -1111,11 +1111,10 @@ $ipad: 992px;
         margin: 0;
       }
       position: absolute;
-      top: 100%;
+      top: 90%;
       left: 0;
       width: 100%;
       z-index: 5;
-      height: 280px;
       background: #fff;
       padding: 0 15px;
       box-shadow: 0 2px 20px transparentize(#6c6f73, .9);
@@ -2067,6 +2066,8 @@ $ipad: 992px;
   }
   .container{
     width: 320px;
+    padding-right: 5px;
+    padding-left: 5px;
   }
 
   /* BREADCRUMB */

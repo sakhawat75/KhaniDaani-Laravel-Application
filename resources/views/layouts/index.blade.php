@@ -23,6 +23,9 @@
                   About
                 </h1>
                 <p class="tagline">KhaniDaani is a freelance marketplace for chef & foodies. Here all housewives and potential cooks can earn bucks by selling their own food item(s) from anywhere. </p>
+                  <p class="tagline s-hide mg-about">
+                      The delivery system for any ordered food item will be in different methods such as - pick-up point delivery, an individual serving as a deliverer or any authorized food delivery system (for example -Food Panda, i-serve etc.).
+                  </p>
               </div>
               <!-- start .hero__btn-area-->
               <div class="hero__btn-area">

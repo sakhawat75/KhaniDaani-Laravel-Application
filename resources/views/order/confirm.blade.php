@@ -179,7 +179,7 @@
 
                                             <input type="radio" id="opt2" class="" name="payment_type" value="2" checked>
                                             <label for="opt2">
-                                                <span clFass="circle"></span>Bkash</label><label for="">Amount: ৳{{ $total }}</label>
+                                                <span class="circle"></span>Bkash</label><label for="">Amount: ৳{{ $total }}</label>
                                             <br>
                                             <div class="alert alert-success">
                                                 Pay ৳{{ $total }} through bKash and enter transaction Id below (Our merchant bKash wallet number: 01711012666)

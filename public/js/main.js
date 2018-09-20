@@ -92,8 +92,8 @@
         max: 2000,
         values: [200, 500],
         slide: function (event, ui) {
-            $priceFrom.text("$" + ui.values[0]);
-            $priceTo.text("$" + ui.values[1]);
+            $priceFrom.text("৳" + ui.values[0]);
+            $priceTo.text("৳" + ui.values[1]);
         }
     });
 

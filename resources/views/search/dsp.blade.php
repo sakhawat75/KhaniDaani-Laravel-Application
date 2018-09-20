@@ -18,11 +18,11 @@
                     <div class="search">
                         <div class="search__title">
                             <h3>
-                                Total <span>5</span> Delivery Services for our chef and foodies.</h3></div>
+                                Search Available Delivery Services By Name</h3></div>
                         <div class="search__field pb-3">
                             <form action="{{ route('search.dsp') }}" method="get">
                                 <div class="field-wrapper">
-                                    <input class="relative-field rounded" type="text" placeholder="Search Available Delivery Services By Name" id="onpage_search" name="keyword">
+                                    <input class="relative-field rounded" type="text" placeholder="iServe" id="onpage_search" name="keyword">
                                     <button class="btn btn--round" type="submit" id="search_scroll">Search</button>
                                 </div>
                             </form>

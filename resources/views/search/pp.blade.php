@@ -17,7 +17,7 @@
                     <div class="search">
                         <div class="search__title">
                             <h3>
-                                Total <span>5</span> live dishes for our KhaniDaani community</h3></div>
+                                Search Available Pick-up point By Name</h3></div>
                         <div class="search__field">
                             <form action="{{ route('search.livedish') }}" method="get">
                                 <div class="field-wrapper">

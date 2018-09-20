@@ -14,7 +14,7 @@
           <div class="search">
             <div class="search__title">
               <h3>
-                Search by dish name</h3></div>
+                Search by Dish name</h3></div>
             <div class="search__field">
               <form action="{{ route('search.livedish') }}" method="get">
                 <div class="field-wrapper">
@@ -166,7 +166,7 @@
                         </div>
                     </div>
 
-                    <div class="sidebar-card card--filter">
+                    <div class="sidebar-card card--filter s-hide">
                         <a class="card-title" href="#collapse1" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapse1">
                             <h4>Filter Price
                                 <span class="lnr lnr-chevron-down"></span>
@@ -193,7 +193,7 @@
                         </div>
                     </div>
 
-                    <div class="sidebar-card card--filter">
+                    <div class="sidebar-card card--filter s-hide">
                         <a class="card-title" href="#collapse2" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapse2">
                             <h4>Filter Dishes
                                 <span class="lnr lnr-chevron-down"></span>
