@@ -205,10 +205,10 @@
                         <li class="single-thread">
                           <div class="media">
                             <div class="media-left">
-                              <a href="#">
-                                <img class="media-object" src="{{ route('home') }}/storage/images/profile_image/{{ $rating->order->buyer->profile->profile_image }}" {{-- TODO profile image--}}
+
+                                <img class="media-object" src="{{ route('home') }}/storage/images/profile_image/{{ $rating->order->buyer->profile->profile_image }}"
                                      alt="Commentator Avatar">
-                              </a>
+
                             </div>
                             <div class="media-body">
                               <div class="clearfix">

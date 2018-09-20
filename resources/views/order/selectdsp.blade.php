@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-title">Select Deliverer or Pick up Point</h1>
+                    <h1 class="page-title">Select Deliverer or Pick-up Point</h1>
                 </div>
                 <!-- end /.col-md-12 -->
             </div>
@@ -89,6 +89,8 @@
                                                     <p>{!! $dsp->service_description !!}</p>--}}
 
                                                     @include ('profile.dsp_preview')
+
+
                                                     <form action="{{ route( 'order.confirm', ['dsp' => $dsp, 'dish' => $dish] ) }}"
                                                           method="get" class="">
                                                         {{ csrf_field() }}

@@ -7,20 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="breadcrumb">
-                        <ul>
-                            <li>
-                                <a href="index.html">Home</a>
-                            </li>
-                            <li>
-                                <a href="dashboard.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">Upload Item</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <h1 class="page-title">Upload Item</h1>
+                    <h1 class="page-title">Add Dish For Sale</h1>
                 </div>
                 <!-- end /.col-md-12 -->
             </div>
@@ -41,19 +28,6 @@
 
         <div class="dashboard_contents">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="dashboard_title_area">
-                            <div class="pull-left">
-                                <div class="dashboard__title">
-                                    <h3>Upload Your Dish</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end /.col-md-12 -->
-                </div>
-                <!-- end /.row -->
 
                 <div class="row">
                     <div class="container">
@@ -71,7 +45,7 @@
                                 <div class="modules__content">
 
                                     <div class="form-group">
-                                        <label for="dish_category">Select Category</label>
+                                        <label for="dish_category">Select Category </label> <span>*</span>
                                         <div class="select-wrap select-wrap2">
                                             <select name="dish_category" id="dish_category" class="text_field">
                                                 {{--<option value="" selected>Select Category</option>--}}
@@ -83,7 +57,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="dish_subcategory">Select Sub Category</label>
+                                        <label for="dish_subcategory">Select Sub Category <span>*</span> </label>
                                         <div class="select-wrap select-wrap2">
                                             <select name="dish_subcategory" id="dish_subcategory" class="text_field">
 
@@ -93,15 +67,20 @@
                                     </div>
 
                                     <div class="form-group max-length">
-                                        <label for="product_name">Dish Name
+                                        <label for="product_name">Dish Name <span>*</span>
                                             <span>(Max 50 characters)</span>
                                         </label>
                                         <input name="dish_name" type="text" id="product_name" class="text_field"
                                                placeholder="Enter your product name here..." required maxlength="50"  value="{{ old('dish_name') }}">
                                     </div>
 
+                                    <div class="form-group no-margin max-length">
+                                        <p class="label">Dish Detail Info</p> <span>*</span>
+                                        <textarea name="dish_description" rows="10" class="form-control"
+                                                  placeholder="min 20 and max 1000 character" id="article-ckeditor"
+                                                  maxlength="5000" minlength="2" required  value="{!! old('dish_description') !!}"></textarea>
+                                    </div>
                                     <div class="form-group">
-                                        <label for="preperation_time">Preperation Time</label>
                                         <div class="select-wrap select-wrap2">
                                             <label for="preparation_time"></label>
                                             <select name="preparation_time" id="preparation_time" class="text_field">
@@ -113,40 +92,21 @@
                                             <span class="lnr lnr-chevron-down"></span>
                                         </div>
                                     </div>
-
-
-                                    <div class="form-group no-margin max-length">
-                                        <p class="label">Product Description</p>
-                                        <textarea name="dish_description" rows="10" class="form-control"
-                                                  placeholder="min 20 and max 1000 character" id="article-ckeditor"
-                                                  maxlength="5000" minlength="2" required  value="{!! old('dish_description') !!}"></textarea>
+                                    <div class="form-group">
+                                        <label for="preperation_time">Dish Price (In Taka) ৳</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"> </span>
+                                            <input name="dish_price" type="number" id="rlicense"
+                                                   class="text_field" placeholder="350" required min="10"
+                                                   max="9999" value="{!! old('dish_price') !!}">
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- end /.modules__content -->
                             </div>
                             <!-- end /.upload_modules -->
 
-                            <div class="upload_modules with--addons">
-                                <div class="modules__title">
-                                    <h3>Dish Price</h3>
-                                </div>
-                                <!-- end /.module_title -->
 
-                                <div class="modules__content">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">৳</span>
-                                                    <input name="dish_price" type="number" id="rlicense"
-                                                           class="text_field" placeholder="00.00" required min="10"
-                                                           max="9999" value="{!! old('dish_price') !!}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="upload_modules module--upload">
                                 <div class="modules__title">
@@ -170,7 +130,6 @@
 
                                                     <div class="custom_upload">
                                                         <label for="dish_thumbnail1">
-                                                            {{-- TODO Resize Image bofore saving on server --}}
                                                             <input type="file" id="dish_thumbnail1" class="files"
                                                                    name="dish_thumbnail" accept=".jpg,.jpeg,.png,.bmp,.svg,.gif" required>
                                                             <span class="btn btn--round btn--sm upload_btn">Choose File</span>
@@ -336,7 +295,7 @@
 
                             <div class="upload_modules with--addons">
                                 <div class="modules__title">
-                                    <h3>Pickers Point</h3>
+                                    <h3>Pick-up Point</h3>
                                 </div>
                                 <!-- end /.module_title -->
 
@@ -346,12 +305,12 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="pp1">Pickers Point 1</label>
+                                                <label for="pp1">Pick-up Point 1</label>
                                                 <div class="input-group">
                                                     {{--<input type="number" id="pp1" class="text_field" placeholder="id"--}}
                                                            {{--name="pp1" min="1">--}}
                                                     <select name="pp1" id="" class="form-control">
-                                                        <option value="">Select First PickersPoint</option>
+                                                        <option value="">Select First Pick-up Point</option>
                                                         @foreach($pp_ids as $id)
                                                             <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->name }}</option>
                                                         @endforeach
@@ -363,10 +322,10 @@
 
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="pp2">Pickers Point 2</label>
+                                                <label for="pp2">Pick-up Point 2</label>
                                                 <div class="input-group">
                                                     <select name="pp2" id="" class="form-control">
-                                                        <option value="">Select Second PickersPoint</option>
+                                                        <option value="">Select Second Pick-up Point</option>
                                                         @foreach($pp_ids as $id)
                                                             <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->name }}</option>
                                                         @endforeach
@@ -377,10 +336,10 @@
 
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="pp3">Pickers Point 3</label>
+                                                <label for="pp3">Pick-up Point 3</label>
                                                 <div class="input-group">
                                                     <select name="pp3" id="" class="form-control">
-                                                        <option value="">Select Third PickersPoint</option>
+                                                        <option value="">Select Third Pick-up Point</option>
                                                         @foreach($pp_ids as $id)
                                                             <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->name }}</option>
                                                         @endforeach
@@ -421,32 +380,28 @@
                     <!-- end /.col-md-8 -->
 
                     <div class="col-lg-4">
-                        <aside class="sidebar upload_sidebar">
+                        <aside class="sidebar upload_sidebar s-hide">
                             <div class="sidebar-card">
                                 <div class="card-title">
-                                    <h3>Quick Upload Rules</h3>
+                                    <h3>Detail Help</h3>
                                 </div>
 
                                 <div class="card_content">
                                     <div class="card_info">
-                                        <h4>Image Upload</h4>
-                                        <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut
-                                            sceleris que the
-                                            mattis interdum.</p>
+                                        <h4>Category & Subcategory</h4>
+                                        <p>Select a category and subcategory related to you dish name.Those are mendatory for adding dishes.</p>
+                                    </div>
+
+
+                                    <div class="card_info">
+                                        <h4>Name & Price</h4>
+                                        <p>Add attractive dish name, also use common name so it's can found easily from search. </p>
+                                        <p>Add detail info about the dish adn it's ingrediant</p>
                                     </div>
 
                                     <div class="card_info">
-                                        <h4>File Upload</h4>
-                                        <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut
-                                            sceleris que the
-                                            mattis interdum.</p>
-                                    </div>
-
-                                    <div class="card_info">
-                                        <h4>Vector Upload</h4>
-                                        <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut
-                                            sceleris que the
-                                            mattis interdum.</p>
+                                        <h4>Preparation time</h4>
+                                        <p>Add your desire preparation time in hour, remember once you recived the order your promise to deliver it within this time.</p>
                                     </div>
                                 </div>
                             </div>
@@ -458,14 +413,13 @@
                                 </div>
 
                                 <div class="card_content">
-                                    <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceler
-                                        isque the mattis, leo
-                                        quam aliquet congue.</p>
+                                    <p>Follow the upload rules.</p>
                                     <ul>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the</li>
+                                        <li>Thumbnail and Dish 1 image is required *</li>
+                                        <li>Image extension must be .jpg, .jpeg, .png, .svg, .gif or .bmp</li>
+                                        <li>2nd and 3rd image are optional but it's better to upload</li>
+                                        <li>Add clean an real images</li>
+                                        <li>Copyrighted or internet dish  image will be removed</li>
                                     </ul>
                                 </div>
                             </div>
@@ -473,18 +427,16 @@
 
                             <div class="sidebar-card">
                                 <div class="card-title">
-                                    <h3>More Upload Info</h3>
+                                    <h3>Selecting Services</h3>
                                 </div>
 
                                 <div class="card_content">
-                                    <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceler
-                                        isque the mattis, leo
-                                        quam aliquet congue.</p>
+                                    <p>You will must have to select one delivery or pick-up point.</p>
                                     <ul>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the</li>
+                                        <li>You can find deliverer detail From <a href="{{route('search.dsp')}}">Search page</a></li>
+                                        <li>Also, for Pick-up point there is pickup point <a href="{{route('search.pp')}}">searching </a></li>
+                                        <li>The list will be here from your city.</li>
+                                        <li>Choose best one near to you.</li>
                                     </ul>
                                 </div>
                             </div>

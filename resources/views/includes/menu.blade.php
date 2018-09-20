@@ -170,7 +170,7 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('profile.edit', ['profile' => auth()->id()]) }}">
-                                            <span class="lnr lnr-cog"></span>Edit Profile
+                                            <span class="lnr lnr-cog"></span>Update Profile
                                         </a>
                                     </li>
                                     <li>
@@ -272,7 +272,7 @@
                                     </li>
                                     <li>
                                         <a href="{{ route('profile.edit', ['profile' => auth()->id()]) }}">
-                                            <span class="lnr lnr-cog"></span>Setting
+                                            <span class="lnr lnr-cog"></span>Update Profile
                                         </a>
                                     </li>
                                     <li>

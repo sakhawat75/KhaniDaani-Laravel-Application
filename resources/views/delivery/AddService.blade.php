@@ -167,29 +167,27 @@
                     <!-- end /.col-md-8 -->
 
                     <div class="col-lg-4 col-md-5">
-                        <aside class="sidebar upload_sidebar">
+                        <aside class="sidebar upload_sidebar s-hide">
                             <div class="sidebar-card">
                                 <div class="card-title">
-                                    <h3>Quick Upload Rules</h3>
+                                    <h3>Detail Help</h3>
                                 </div>
 
                                 <div class="card_content">
                                     <div class="card_info">
-                                        <h4>Image Upload</h4>
-                                        <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut sceleris que the
-                                            mattis interdum.</p>
+                                        <h4>Name & Description</h4>
+                                        <p>Add your service name, also use common name so it's can found easily from search. Also, add detail info about the services</p>
                                     </div>
 
                                     <div class="card_info">
-                                        <h4>File Upload</h4>
-                                        <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut sceleris que the
-                                            mattis interdum.</p>
+                                        <h4>Service Area</h4>
+                                        <p>Define your area of services so chef can know that if your good for his/her dishes.</p>
                                     </div>
 
                                     <div class="card_info">
-                                        <h4>Vector Upload</h4>
-                                        <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut sceleris que the
-                                            mattis interdum.</p>
+                                        <h4>Service Hours</h4>
+                                        <p>When you can work for the deliver? If your professional deliverer select your office time</p>
+                                        <p>If your a freelance deliverer add your available time.</p>
                                     </div>
                                 </div>
                             </div>
@@ -197,36 +195,17 @@
 
                             <div class="sidebar-card">
                                 <div class="card-title">
-                                    <h3>Trouble Uploading?</h3>
+                                    <h3>Price & Delivery time</h3>
                                 </div>
 
                                 <div class="card_content">
-                                    <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceler isque the mattis, leo
-                                        quam aliquet congue.</p>
+                                    <p>Note: You will have to deliver the dish before it's maximum time.</p>
                                     <ul>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the</li>
+                                        <li>Servcie Charge: For how much you will deliver the dish to your defined service area</li>
+                                        <li>Min Delivery Time: Minimum time of the deliver</li>
+                                        <li>Max Delivery Time: Maximum time of the delivery</li>
                                     </ul>
-                                </div>
-                            </div>
-                            <!-- end /.sidebar-card -->
 
-                            <div class="sidebar-card">
-                                <div class="card-title">
-                                    <h3>More Upload Info</h3>
-                                </div>
-
-                                <div class="card_content">
-                                    <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceler isque the mattis, leo
-                                        quam aliquet congue.</p>
-                                    <ul>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the</li>
-                                    </ul>
                                 </div>
                             </div>
                             <!-- end /.sidebar-card -->

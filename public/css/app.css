@@ -13573,7 +13573,7 @@ h6 {
 .panel-group .accordion__single .panel-body p,
 .panel-group .panel-default .panel-body p {
   margin: 0;
-  padding: 15px;
+  padding: 2px;
 }
 
 .accordion .accordion__single h4,
@@ -18358,7 +18358,6 @@ ul.nav-tabs.nav--tabs2 li a::before {
   font-size: 20px;
   font-weight: 500;
   margin-right: 0px;
-  padding-bottom: 44px;
   padding-top: 20px;
 }
 
@@ -21495,7 +21494,7 @@ span.counter {
 .shortcode_modules .modules__content,
 .upload_modules .modules__content,
 .withdraw_module .modules__content {
-  padding: 30px 30px 20px;
+  padding: 10px 10px 10px;
 }
 
 .credit_modules .modules__content .subtitle,
@@ -25015,8 +25014,7 @@ span.counter {
     color: #f3f3f8;
     font-size: 20px;
     font-weight: 500;
-    margin-right: 556px;
-    padding-bottom: 44px;
+    margin-right: 356px;
     padding-top: 20px;
   }
 }
@@ -25028,8 +25026,7 @@ span.counter {
     color: #f3f3f8;
     font-size: 20px;
     font-weight: 500;
-    margin-right: 400px;
-    padding-bottom: 44px;
+    margin-right: 200px;
     padding-top: 20px;
   }
 
@@ -25493,7 +25490,7 @@ span.counter {
   }
 
   .section-title p {
-    padding: 0 125px;
+    padding: 2px;
   }
 
   /* hero area */
@@ -26062,6 +26059,8 @@ span.counter {
 
   .container {
     width: 450px;
+    padding-right: 2px;
+    padding-left: 2px;
   }
 
   .dashboard-area.dashboard_purchase .dashboard_menu,
@@ -26237,11 +26236,10 @@ span.counter {
 
   .mainmenu__menu .navbar-collapse {
     position: absolute;
-    top: 100%;
+    top: 90%;
     left: 0;
     width: 100%;
     z-index: 5;
-    height: 280px;
     background: #fff;
     padding: 0 15px;
     -webkit-box-shadow: 0 2px 20px rgba(108, 111, 115, 0.1);
@@ -27269,6 +27267,8 @@ span.counter {
 
   .container {
     width: 320px;
+    padding-right: 5px;
+    padding-left: 5px;
   }
 
   /* BREADCRUMB */
@@ -28047,7 +28047,7 @@ span.counter {
 .section-title {
   text-align: center;
   padding-bottom: 10px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 #snackbar {

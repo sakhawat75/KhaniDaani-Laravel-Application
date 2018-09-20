@@ -8,20 +8,16 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
+          <h1 class="page-title">Update Dish content</h1>
           <div class="breadcrumb">
             <ul>
-              <li>
-                <a href="{{ route('home') }}">Home</a>
-              </li>
-              <li>
-                <a href="{{ route('dishes.manage') }}">Manage Item</a>
-              </li>
+
               <li class="active">
-                <a href="#">Edit Dish</a>
+               <p class="text-white"> <b>Note:</b> Just make changes, you can skip all without current changes</p>
               </li>
             </ul>
           </div>
-          <h1 class="page-title">Edit <span> Dish Title</span></h1>
+
         </div>
         <!-- end /.col-md-12 -->
       </div>
@@ -167,7 +163,6 @@
 
                         <div class="custom_upload">
                           <label for="dish_thumbnail1">
-                            {{-- TODO Resize Image bofore saving on server --}}
                             <input type="file" id="dish_thumbnail1" class="files"
                                    name="dish_thumbnail" accept=".jpg,.jpeg,.png,.bmp,.svg,.gif">
                             <span class="btn btn--round btn--sm upload_btn">Choose File</span>
@@ -448,29 +443,28 @@
           <!-- end /.col-md-8 -->
 
           <div class="col-lg-4">
-            <aside class="sidebar upload_sidebar">
+            <aside class="sidebar upload_sidebar s-hide">
               <div class="sidebar-card">
                 <div class="card-title">
-                  <h3>Quick Upload Rules</h3>
+                  <h3>Detail Help</h3>
                 </div>
 
                 <div class="card_content">
                   <div class="card_info">
-                    <h4>Image Upload</h4>
-                    <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut
-                      sceleris que the mattis interdum.</p>
+                    <h4>Category & Subcategory</h4>
+                    <p>Select a category and subcategory related to you dish name.Those are mendatory for adding dishes.</p>
+                  </div>
+
+
+                  <div class="card_info">
+                    <h4>Name & Price</h4>
+                    <p>Add attractive dish name, also use common name so it's can found easily from search. </p>
+                    <p>Add detail info about the dish adn it's ingrediant</p>
                   </div>
 
                   <div class="card_info">
-                    <h4>File Upload</h4>
-                    <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut
-                      sceleris que the mattis interdum.</p>
-                  </div>
-
-                  <div class="card_info">
-                    <h4>Vector Upload</h4>
-                    <p>Nunc placerat mi id nisi interdum mollis. Praesent there pharetra, justo ut
-                      sceleris que the mattis interdum.</p>
+                    <h4>Preparation time</h4>
+                    <p>Add your desire preparation time in hour, remember once you recived the order your promise to deliver it within this time.</p>
                   </div>
                 </div>
               </div>
@@ -482,13 +476,13 @@
                 </div>
 
                 <div class="card_content">
-                  <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceler
-                    isque the mattis, leo quam aliquet congue.</p>
+                  <p>Follow the upload rules.</p>
                   <ul>
-                    <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                    <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                    <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                    <li>Consectetur elit, sed do eiusmod the</li>
+                    <li>Thumbnail and Dish 1 image is required *</li>
+                    <li>Image extension must be .jpg, .jpeg, .png, .svg, .gif or .bmp</li>
+                    <li>2nd and 3rd image are optional but it's better to upload</li>
+                    <li>Add clean an real images</li>
+                    <li>Copyrighted or internet dish  image will be removed</li>
                   </ul>
                 </div>
               </div>
@@ -496,23 +490,23 @@
 
               <div class="sidebar-card">
                 <div class="card-title">
-                  <h3>More Upload Info</h3>
+                  <h3>Selecting Services</h3>
                 </div>
 
                 <div class="card_content">
-                  <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceler
-                    isque the mattis, leo quam aliquet congue.</p>
+                  <p>You will must have to select one delivery or pick-up point.</p>
                   <ul>
-                    <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                    <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                    <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                    <li>Consectetur elit, sed do eiusmod the</li>
+                    <li>You can find deliverer detail From <a href="{{route('search.dsp')}}">Search page</a></li>
+                    <li>Also, for Pick-up point there is pickup point <a href="{{route('search.pp')}}">searching </a></li>
+                    <li>The list will be here from your city.</li>
+                    <li>Choose best one near to you.</li>
                   </ul>
                 </div>
               </div>
               <!-- end /.sidebar-card -->
             </aside>
-            <!-- end /.sidebar -->
+            <!--
+<!-- end /.sidebar -->
           </div>
           <!-- end /.col-md-4 -->
         </div>

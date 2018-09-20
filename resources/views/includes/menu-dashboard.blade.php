@@ -9,11 +9,11 @@
                     </li>
                     <li class="{{ request()->is(route('profile.edit', ['profile' => auth()->id()])) ? 'active' : '' }}">
                         <a href="{{ route('profile.edit', ['profile' => auth()->id()]) }}">
-                                    <span class="lnr lnr-cog"></span>Setting</a>
+                                    <span class="lnr lnr-cog"></span>Update</a>
                     </li>
                     <li>
                         <a href="{{ route('order.purchase') }}">
-                                    <span class="lnr lnr-cart"></span>All Orders</a>
+                                    <span class="lnr lnr-cart"></span>Orders</a>
                     </li>
                     <li>
                         <a href="{{ route('dishes.create') }}">
@@ -35,7 +35,7 @@
 
                     <li>
                         <a href="{{ route('pickerspoint.addpp') }}">
-                            <span class="lnr lnr-file-add"> </span> Host Pickers Point</a>
+                            <span class="lnr lnr-file-add"> </span>Host Pick-up Point</a>
                     </li>
                 </ul>
                 <!-- end /.dashboard_menu -->
