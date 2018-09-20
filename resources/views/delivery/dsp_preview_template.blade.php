@@ -17,7 +17,7 @@
                 <!--end:col -->
                 <div class="col-xs-12 col-sm-9 col-md-9">
                 <h5 class="dsp-title"><%- dsp.service_title %></h5>
-                    {{--<p>Service Hours:<%- service_hours_start %> to <%- service_hours_end %> </p>--}} {{-- TODO If possible add tis time--}}
+                    <p>Service Hours: <b><%- moment(dsp.service_hours_start, 'HH:mm:ss').format('h:mm a') %></b> to <b><%- moment(dsp.service_hours_end, 'HH:mm:ss').format('h:mm a') %></b> </p>
                     <div class="sell">
                         <p>
                             <span class="bold">DSP-ID:</span>
