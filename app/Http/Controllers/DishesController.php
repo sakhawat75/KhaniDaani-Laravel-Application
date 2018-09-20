@@ -174,6 +174,9 @@ class DishesController extends Controller
     public function edit($id)
     {
     	$dish = Dish::find($id);
+    	if($dish->profile_id != auth()->user()->profile->id) {
+    	    return redirect()->back()->withErrors('You are not authorized to edit this dish');
+        }
         $categories = new Category;
         $categories = $categories->get();
         $dsp_ids = DeliveryService::select('id', 'service_title')
@@ -221,6 +224,10 @@ class DishesController extends Controller
 
         $dish = Dish::find($id);
 	    $profile = $dish->profile;
+
+        if($dish->profile_id != auth()->user()->profile->id) {
+            return redirect()->back()->withErrors('You are not authorized to edit this dish');
+        }
 
 	    if (request()->filled('dish_category')) {
 		    $dish->dish_category = $request->input('dish_category');

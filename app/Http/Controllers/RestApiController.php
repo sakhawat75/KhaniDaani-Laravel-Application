@@ -203,7 +203,14 @@ class RestApiController extends Controller
 
     		$order = Order::find($order_id);
     		$buyer = $order->buyer;
-			$dsp = $order->dsp->user;
+
+			if($order->dsp) {
+                $dsp = $order->dsp->user;
+            } elseif ($order->pp) {
+                $dsp = $order->pp->user;
+            }
+
+
 			$chef = $order->dish->profile->user;
 
 			if($order->status == 3) {
@@ -267,7 +274,8 @@ class RestApiController extends Controller
                         $order->save();
                     }
                 }
-		    if(auth()->user()->delivery_services->contains('id', $order->dsp_id)) {
+		    if(auth()->user()->delivery_services->contains('id', $order->dsp_id) ||
+                auth()->user()->pickerspoints->contains('id', $order->pp_id)) {
 			    if($request->has( 'dsp_is_dish_delivered')){
 
 				    $order->dsp_is_dish_delivered = 1;

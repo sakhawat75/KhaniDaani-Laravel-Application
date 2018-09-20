@@ -14,12 +14,12 @@ class Order extends Model
 
 	public function dsp ()
 	{
-		return $this->belongsTo( DeliveryService::class, 'dsp_id', 'id')->withDefault();
+		return $this->belongsTo( DeliveryService::class, 'dsp_id', 'id');
 	}
 
 	public function pp ()
 	{
-		return $this->belongsTo( PickersPoint::class, 'pp_id', 'id')->withDefault();
+		return $this->belongsTo( PickersPoint::class, 'pp_id', 'id');
 	}
 
 	public function buyer ()
