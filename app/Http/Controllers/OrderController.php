@@ -10,6 +10,7 @@ use App\Order;
 use App\PickersPoint;
 use App\SystemVariables;
 use App\User;
+use Carbon\Carbon;
 use Faker\Calculator\Iban;
 use Illuminate\Http\Request;
 
@@ -28,13 +29,61 @@ class OrderController extends Controller
 
 	public function confirm(DeliveryService $dsp, Dish $dish) {
 
+	    $start = Carbon::parse($dsp->service_hours_start);
+	    $end = Carbon::parse($dsp->service_hours_end)->addDays(1);
+
+//	    $start = Carbon::createFromTime();
+//	    $start = $dsp->service_hours_start;
+//	    $end = Carbon::createFromTime($dsp->service_hours_end)->addDays(1);
+//	    $end = Carbon::parse($dsp->service_hours_end)->addDays(1);
+//	    $end = $dsp->service_hours_end;
+
+        $now = Carbon::now();
+
+        /*if(strtotime($dsp->service_hours_start) > strtotime($dsp->service_hours_end) ) {
+            	    $end = Carbon::parse($dsp->service_hours_end)->addDays(1);
+//            $now->addDays(1);
+        }*/
+
+	    /*echo 'start: ' . $start . '<br>';
+	    echo 'end: ' . $end . '<br>';
+
+        $now = Carbon::now('UTC');
+        echo 'now: ' . $now . '<br>';
+
+        $nowTime = $now->hour.':'.$now->minute.':'.$now->second;
+        echo 'nowTime: ' . $nowTime . '<br>';
+
+        echo 'strtotime(end): ' . strtotime($end) . '<br>';
+        echo 'strtotime(start): ' . strtotime($start) . '<br>';
+
+        if(strtotime($start) > strtotime($end) ) {
+            echo 'strtotime(start) > strtotime(end)' . '<br>';
+
+            $temp = $start;
+            $start = $end;
+            $end = $temp;
+        }
+
+        if(strtotime($nowTime) >= strtotime($start) && strtotime($nowTime) <= strtotime($end) ) {
+            echo 'YES';
+        } else {
+            echo 'NO';
+        }*/
+
+        if($now->gte($start) && $now->lte($end)) {
+            return 'yes';
+        } else {
+            return 'no';
+        }
+
 //     	return response()->json($dsp);
         $system = SystemVariables::first();
         $percentage = $system->service_percentage / 100;
         $khanidaani_charge = round($dish->dish_price * $percentage);
         $total = $dsp->service_charge + $dish->dish_price + $khanidaani_charge;
 
-        return view('order.confirm', compact( 'dsp', 'dish', 'khanidaani_charge', 'system', 'total'));
+//        return view('order.confirm', compact( 'dsp', 'dish', 'khanidaani_charge', 'system', 'total'));
 	}
 
     public function confirm_pp (PickersPoint $pp, Dish $dish) {

@@ -56,6 +56,10 @@ class DeliveryServiceController extends Controller
 	    $deliveryService->min_delivery_time = $request->input('min_delivery_time');
 	    $deliveryService->max_delivery_time = $request->input('max_delivery_time');
 
+	    if($deliveryService->min_delivery_time > $deliveryService->max_delivery_time) {
+	        return redirect()->back()->withErrors("min delivery time can not be greater than maximum delivery time");
+        }
+
 	    $deliveryService->save();
 	    session()->flash('success', 'Delivery Service has been created successfully');
 
