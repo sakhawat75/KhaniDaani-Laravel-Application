@@ -81,8 +81,7 @@
                                     @endif
                                     @endif
                                 </div>
-
-
+                                
                                 <div class="author-btn"> <button class="btn btn--md btn--round" data-toggle="modal" data-target="#messageModal"
                                                                  @if(auth()->id() == $profile->user_id)
                                                                  aria-disabled="true" disabled="disabled"
