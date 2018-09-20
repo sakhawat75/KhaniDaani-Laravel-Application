@@ -1,5 +1,5 @@
 @extends ('layouts.master')
-@section ('title', 'Profile Settings')
+@section ('title', 'Select a deliverer or delivery services for your foods')
 @section ('content')
 
     <!--================================

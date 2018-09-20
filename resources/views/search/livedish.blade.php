@@ -1,4 +1,4 @@
-@extends ('layouts.master') @section ('title', 'Search Dishes') @section ('content') {{-- ready for initial development --}}
+@extends ('layouts.master') @section ('title', 'Search dishes by category and area') @section ('content') {{-- ready for initial development --}}
 
 <!--================================
         START SEARCH AREA

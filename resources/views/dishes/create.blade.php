@@ -1,4 +1,4 @@
-@extends ('layouts.master') @section ('title', 'Create New Dish') @section ('content')
+@extends ('layouts.master') @section ('title', 'Create a new dish and become a chef!') @section ('content')
 
     <!--================================
         START BREADCRUMB AREA

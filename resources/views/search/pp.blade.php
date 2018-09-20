@@ -1,5 +1,5 @@
 @extends ('layouts.master')
-@section ('title', 'Search Pickers Points')
+@section ('title', 'Search Pick-up point By area')
 
 @section ('content') {{-- ready for initial development --}}
 

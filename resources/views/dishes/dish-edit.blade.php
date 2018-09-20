@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 
-@section ('title', 'Edit Dish') @section ('content')
+@section ('title', 'Update Your Dishes or  Recipies! Attract Foodies') @section ('content')
   <!--================================
         START BREADCRUMB AREA
     =================================-->

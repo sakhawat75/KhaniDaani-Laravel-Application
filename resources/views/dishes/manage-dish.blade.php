@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 
-@section ('title', 'Manage Dish')
+@section ('title', 'Manage your dishes Edit and Delete')
 
 
 @section ('content')

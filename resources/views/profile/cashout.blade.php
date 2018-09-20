@@ -1,4 +1,4 @@
-@extends ('layouts.master') @section ('title', 'Manage Dish') @section ('content')
+@extends ('layouts.master') @section ('title', 'Cash out your earning to bKash or withdrawal to Bank account.') @section ('content')
 
 <section class="breadcrumb-area">
     <div class="container">

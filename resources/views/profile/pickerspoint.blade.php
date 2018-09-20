@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
 
-@section ('title', 'Pikers Point')
+@section ('title', 'Pick-up Point for delivery')
 
 @section ('content')
 

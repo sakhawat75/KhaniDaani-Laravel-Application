@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 
-@section ('title', 'Freelance based cooking services')
+@section ('title', 'A Freelance based cooking service!')
 
 @section ('content')
 

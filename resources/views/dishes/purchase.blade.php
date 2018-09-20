@@ -1,4 +1,4 @@
-@extends ('layouts.master') @section ('title', 'All Orders') @section ('content')
+@extends ('layouts.master') @section ('title', 'Purchase order') @section ('content')
 
 <section class="breadcrumb-area">
     <div class="container">
