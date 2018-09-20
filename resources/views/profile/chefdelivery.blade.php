@@ -51,14 +51,12 @@
                     </div>
                     <!-- end /.row -->
                     <section class="delivery-service">
-                        <div class="">
                             <div class="row">
                                 @foreach($dsps as $dsp)
                                 <div class="col-md-12 single-dsp">
                                     @include ('profile.dsp_preview')
                                 </div>
                                 @endforeach
-                            </div>
                         </div>
                     </section>
 

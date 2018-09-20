@@ -269,84 +269,105 @@
                             </div>
 
 
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+                    <!-- end /.col-md-12 -->
+
+
+                    <div class="col-lg-4 col-md-5">
+                        <aside class="sidebar upload_sidebar">
+
                             <ul class="stepper">
+
                                 <li class="step active">
                                     <div data-step-label=""
-                                         class="step-title waves-effect waves-dark">Additional Info
+                                         class="step-title waves-effect waves-dark">Detail Info
                                     </div>
                                     <div class="step-content">
-                                        <div class="">
-
-                                            <div class="">
-
-                                                <div class="">
-                                                    <h6 class="mb-3">Dish info:</h6>
+                                                    <h6 class="mb-3 scolor"> <b>Dish Info:</b></h6>
                                                     @include( 'dishes.box_dish_preview')
                                                     {{-- TODO dont work for the new notification--}}
                                                     {{-- done TODO  dish preview here for every one --}}
-                                                </div>
-
 
                                                 <div class="order-address">
                                                     {{-- done TODO address only for dsp--}}
                                                     @if(! (auth()->id() === $order->dish_user_id))
-                                                    <div class="">
-                                                        <h6><u>Chef info: </u></h6>
-                                                        <p>Adress: {{ $order->chef->profile->address }}</p>
-                                                        <p>Adress
-                                                            Hint: {{ $order->chef->profile->address_hint }}</p>
-                                                        <p>Mobile: {{ $order->chef->profile->mobile_no }}</p>
-                                                    </div>
+
+                                                            <h6><u>Chef info:</u></h6>
+                                                            <p><b>Address:</b> {{ $order->chef->profile->address }}</p>
+                                                            <p><b>Address
+                                                                    Hint:</b> {{ $order->chef->profile->address_hint }}</p>
+                                                            <p><b>Mobile:</b> {{ $order->chef->profile->mobile_no }}</p>
+
                                                     @endif
                                                     @if(! (auth()->id() === $order->buyer_user_id))
-                                                    <div class="">
-                                                        <h6><u>Foodies info: </u></h6>
-                                                        <p>Adress: {{ $order->buyer->profile->address }}</p>
-                                                        <p>Adress
-                                                            Hint: {{ $order->buyer->profile->address_hint }}</p>
-                                                        <p>Mobile: {{ $order->buyer->profile->mobile_no }}</p>
-                                                    </div>
+
+                                                            <h6><u>Foodies info:</u></h6>
+                                                            <p><b>Address:</b>{{ $order->buyer->profile->address }}</p>
+                                                            <p><b>Address Hint: </b>{{ $order->buyer->profile->address_hint }}</p>
+                                                            <p><b>Mobile:</b> {{ $order->buyer->profile->mobile_no }}</p>
+
                                                     @endif
                                                 </div>
+                                        </div>
+
+                                <li class="step">
+                                    <div data-step-label=""
+                                         class="step-title waves-effect waves-dark">Facing any problem?
+                                    </div>
+                                    <div class="step-content">
+                                        <p>We are here to solve if there is any problem, just send us a massage.</p>
+                                        <div class="freelance-status">
+                                            <div class="author-badges">
+                                                <div class="author-btn">
+                                                    <button class="btn btn--md btn--round" data-toggle="modal" data-target="#messageModal"
+                                                    >Complain to us</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                @if(!is_null($order->dsp))
+                                    <li class="step ">
+                                        <div data-step-label=""
+                                             class="step-title waves-effect waves-dark">Delivery
+                                            Service Info
+                                        </div>
+                                        <div class="step-content">
+                                           <div class="delivery-service dsp_status">
+                                               <div class="row">
+                                            <div class="col-md-12">
+                                                {{-- TODO dsp preview here for every one if posible--}}
+                                                @include('includes.dsp_order_status', ['dsp' => $order->dsp])
+                                            </div>
+                                               </div>
+
+                                            <div class="order-address">
+                                                {{-- TODO dsp address for everyone--}}
+
+                                                <div class="">
+                                                    <h6><u>Contact info:</u></h6>
+                                                    @if($order->dsp->profile)
+                                                        <p><b>Address:</b> {{ $order->dsp->profile->address }}</p>
+                                                    @endif
+                                                    <p><b>Address Hint:</b> {{ $order->dsp->profile->address_hint }}</p>
+                                                    <p><b>Mobile:</b> {{ $order->dsp->profile->mobile_no }}</p>
+                                                </div>
+
+                                                {{-- <h5 id="dsp_str">Count down will start after clicking Recieved</h5> --}}
 
 
                                             </div>
                                         </div>
-
-                                        <br>
-
-                                    </div>
-                                </li>
-                                @if(!is_null($order->dsp))
-                                <li class="step">
-                                    <div data-step-label=""
-                                         class="step-title waves-effect waves-dark">Delivery
-                                        Service Info
-                                    </div>
-                                    <div class="step-content">
-                                        <div class="">
-                                            {{-- TODO dsp preview here for every one if posible--}}
-                                            @include('profile.dsp_preview', ['dsp' => $order->dsp])
                                         </div>
-
-                                        <div class="order-address">
-                                            {{-- TODO dsp address for everyone--}}
-
-                                                <div class="">
-                                                    <h6><u>Other info:</u></h6>
-                                                    @if($order->dsp->profile)
-                                                    <p>Adress: {{ $order->dsp->profile->address }}</p>
-                                                    @endif
-                                                    <p>Adress Hint: {{ $order->dsp->profile->address_hint }}</p>
-                                                    <p>Mobile: {{ $order->dsp->profile->mobile_no }}</p>
-                                                </div>
-
-                                            {{-- <h5 id="dsp_str">Count down will start after clicking Recieved</h5> --}}
-
-
-                                        </div>
-                                    </div>
-                                </li>
+                                    </li>
                                 @endif
 
                                 @if(!is_null($order->pp))
@@ -364,10 +385,10 @@
                                                 {{-- TODO pp address for everyone--}}
 
                                                 <div class="">
-                                                    <h6><u>PP info:</u></h6>
-                                                    {{--<p>Adress: {{ $order->pp->profile->address }}</p>--}}
-                                                    <p>Adress Hint: {{ $order->pp->profile->address_hint }}</p>
-                                                    <p>Mobile: {{ $order->pp->profile->mobile_no }}</p>
+                                                    <h6><u>Pick-up point info:</u></h6>
+                                                    <p><b>Address: </b>{{ $order->pp->profile->address }}</p>
+                                                    <p><b>Address Hint:</b> {{ $order->pp->profile->address_hint }}</p>
+                                                    <p><b>Mobile:</b> {{ $order->pp->profile->mobile_no }}</p>
                                                 </div>
 
                                                 {{-- <h5 id="pp_str">Count down will start after clicking Recieved</h5> --}}
@@ -378,48 +399,13 @@
                                     </li>
                                 @endif
 
+
+
+
+
                             </ul>
 
-                        </div>
 
-
-                        <div class="my-3 card-title">
-                            <h6 class="my-3">Facing Any Problem?</h6>
-                            <div class="freelance-status">
-                                <div class="author-badges">
-                                    <div class="author-btn">
-                                        <button class="btn btn--md btn--round" data-toggle="modal" data-target="#messageModal"
-                                        >Complain to us</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <!-- end /.col-md-12 -->
-
-
-                    <div class="col-lg-4 col-md-5">
-                        <aside class="sidebar upload_sidebar">
-
-                            <div class="sidebar-card">
-                                <div class="card-title">
-                                    <h3>Help Order Staus</h3>
-                                </div>
-
-                                <div class="card_content">
-                                    <p>Nunc placerat mi id nisi interdum mollis. Praesent pharetra, justo ut sceler
-                                        isque the mattis, leo
-                                        quam aliquet congue.</p>
-                                    <ul>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the labore et dolore magna.</li>
-                                        <li>Consectetur elit, sed do eiusmod the</li>
-                                    </ul>
-                                </div>
-                            </div>
                         </aside>
                     </div>
                 </div>

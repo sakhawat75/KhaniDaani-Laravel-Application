@@ -19246,11 +19246,11 @@ span.counter {
 
 .call-to-wrap h4 {
   font-size: 18px;
-  margin-top: 24px;
+  margin-top: 18px;
 }
 
 .callto-action-btn {
-  margin-top: 50px;
+  margin-top: 22px;
 }
 
 /***************************************
@@ -28121,7 +28121,19 @@ span.counter {
 }
 
 .order-address h6 {
-  color: #f64646;
+  color: #7347c1;
   font-weight: bold;
+}
+
+.order-address p {
+  margin-bottom: 1px;
+}
+
+.order-address p b {
+  color: #f64646;
+}
+
+.dsp_status p {
+  margin-bottom: 2px;
 }
 

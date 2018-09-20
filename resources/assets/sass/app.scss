@@ -1140,11 +1140,11 @@ span.counter {
   text-align: center;
   h4{
     font-size: 18px;
-    margin-top: 24px;
+    margin-top: 18px;
   }
 }
 .callto-action-btn{
-  margin-top: 50px;
+  margin-top: 22px;
 }
 /***************************************
 	END CALL TO ACTION AREA
@@ -6164,7 +6164,20 @@ text-align: center;
 
 .order-address{
   h6{
-    color: #f64646;
+    color: $scolor;
     font-weight: bold;
+  }
+  p{
+    margin-bottom: 1px;
+    b{
+      color: $pcolor;
+    }
+  }
+}
+
+.dsp_status
+{
+  p{
+    margin-bottom: 2px;
   }
 }

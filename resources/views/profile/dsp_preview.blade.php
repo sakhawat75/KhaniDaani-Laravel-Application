@@ -20,7 +20,7 @@
                         <span class="bold text-primary">{{ $dsp->id }}</span>
                     </p>
             </div>
-        <div class="col-md-12"><p class="dsp-description">{!! $dsp->service_description !!}</p>
+        <div class="col-md-12"><p class="dsp-description text-left">{!! $dsp->service_description !!}</p>
             <p class="dsp-area">Service Area: <span>{{ $dsp->service_area }}</span></p>
 
         </div>
