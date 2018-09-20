@@ -194,6 +194,8 @@ class DishesController extends Controller
 
     public function update(Request $request, $id)
     {
+        ini_set('max_execution_time', 300);
+        ini_set('memory_limit','2048M');
 
         $validatedData = $request->validate([
             'dish_category' => 'string|max:50',
@@ -208,10 +210,10 @@ class DishesController extends Controller
             'pp1' => 'nullable|integer|min:1',
             'pp2' => 'nullable|integer|min:1',
             'pp3' => 'nullable|integer|min:1',
-            'dish_thumbnail' => 'image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
-            'dish_image_1' => 'image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+            /*'dish_thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+            'dish_image_1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
             'dish_image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
-            'dish_image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',
+            'dish_image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,bmp|max:5120',*/
             'avg_rating' => 'nullable',
             'is_approved' => 'nullable|boolean',
 
@@ -238,9 +240,30 @@ class DishesController extends Controller
     	if (request()->filled('dish_description')) {
 		    $dish->dish_description = $request->input('dish_description');
 	    }
-	    if (request()->filled('item_tags')) {
-		    $dish->item_tags = $request->input('item_tags');
-	    }
+
+        if (request()->filled('dsp_1')) {
+            $dish->dsp_1 = $request->input('dsp_1');
+        }
+
+        if (request()->filled('dsp_2')) {
+            $dish->dsp_2 = $request->input('dsp_2');
+        }
+
+        if (request()->filled('dsp_3')) {
+            $dish->dsp_3 = $request->input('dsp_3');
+        }
+
+	    if (request()->filled('pp1')) {
+            $dish->pp1 = $request->input('pp1');
+        }
+
+	    if (request()->filled('pp2')) {
+            $dish->pp2 = $request->input('pp2');
+        }
+
+	    if (request()->filled('pp3')) {
+            $dish->pp3 = $request->input('pp3');
+        }
 
 	    if($request->hasFile('dish_thumbnail')) {
             $this->upload_image( $request, $dish, 'dish_images', 'dish_thumbnail', true);
@@ -263,9 +286,9 @@ class DishesController extends Controller
 	    $this->upload_image( $request, $dish, 'dish_images', 'dish_image_3', true);*/
 
 	    $dish->update();
-	    session()->flash('success', 'Dish has been updated successfully');
+//	    session()->flash('success', 'Dish has been updated successfully');
 
-	    return redirect()->route('dishes.show', ['id' => $dish->id]);
+	    return redirect()->route('dishes.show', ['id' => $dish->id])->with('success', 'Dish has been updated successfully');
 
     }
 
@@ -314,18 +337,29 @@ class DishesController extends Controller
             // Get just ext
 			$extension = $request->file($input_name)->getClientOriginalExtension();
 			// Filename to store
-//            $fileNameToStore= $dish->profile->user->name . '_' . time() . '.' .$extension;
-            $fileNameToStore= $dish->profile->user->name . '_' . $filename . '_' . time() . '.' .$extension;
+            for ($i=0; $i<1000; $i++) {
+
+            }
+
+            $fileNameToStore= $dish->profile->user->name . '_' . time() . '.' .$extension;
+//            $fileNameToStore= $dish->profile->user->name . '_' . $filename . '_' . time() . '.' .$extension;
 
             $destination = 'public/images/' . $type;
 			// Upload Image
             $path = $destination . '/' . $fileNameToStore;
 //			$path = $request->file($input_name)->storeAs($destination, $fileNameToStore);
 
-            $image = Image::make($request->file($input_name))->fit(730, 411, function ($constraint) {
+            try {
+                $image = Image::make($request->file($input_name))->fit(730, 411);
+            } catch (\Exception $e) {
+                return redirect()->back()->withErrors('Memory Limit Crossed . Image Uploading failed');
+            }
+
+            /*$image = Image::make($request->file($input_name))->fit(730, 411, function ($constraint) {
                 $constraint->upsize();
             });
 
+            */
             Storage::put($path, (string) $image->encode());
 
             $dish->$input_name = $fileNameToStore;
@@ -333,17 +367,32 @@ class DishesController extends Controller
 	}
 
 	public function delete_prev_img(Dish $dish, $type, $input_name) {
-		if(strcmp('dishid_img1.jpg', $dish->$input_name) == 0) {
-
+		if(strcmp('img1.jpg', $dish->$input_name) == 0) {
+            return;
 		}
 
-		elseif (strcmp('author-avatar.jpg', $dish->$input_name) == 0){
-
+		if (strcmp('img2.jpg', $dish->$input_name) == 0){
+            return;
 		}
 
-		else {
+        if (strcmp('img3.jpg', $dish->$input_name) == 0){
+            return;
+        }
+
+        if (strcmp('t1.jpg', $dish->$input_name) == 0){
+            return;
+        }
+
+		if (strcmp('t2.jpg', $dish->$input_name) == 0){
+            return;
+        }
+
+		if (strcmp('t3.jpg', $dish->$input_name) == 0){
+            return;
+        }
+
 			$path = "public/images/".$type."/" . $dish->$input_name;
 			Storage::delete( $path);
-		}
+
 	}
 }

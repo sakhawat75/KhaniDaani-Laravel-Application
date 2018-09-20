@@ -34,7 +34,8 @@ class NotifyOrder extends Notification
      */
     public function via($notifiable)
     {
-        return ['database', 'mail'];
+        return ['database'];
+//        return ['database', 'mail'];
     }
 
     /**

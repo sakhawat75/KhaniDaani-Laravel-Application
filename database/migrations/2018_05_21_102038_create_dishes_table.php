@@ -28,10 +28,10 @@ class CreateDishesTable extends Migration
             $table->text('dish_description');
             $table->double('dish_price');
             $table->integer('preparation_time');
-            $table->text('dish_thumbnail');
-            $table->text('dish_image_1');
-            $table->text('dish_image_2');
-            $table->text('dish_image_3');
+            $table->text('dish_thumbnail')->default('t1.jpg');
+            $table->text('dish_image_1')->default('img1.jpg');
+            $table->text('dish_image_2')->default('img2.jpg');
+            $table->text('dish_image_3')->default('img3.jpg');
             $table->decimal('avg_rating', 10, 2)->default(0.0);
             $table->boolean('is_approved');
 //            $table->text('item_tags');

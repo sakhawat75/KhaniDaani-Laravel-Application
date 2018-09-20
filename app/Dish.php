@@ -54,6 +54,7 @@ use Illuminate\Database\Eloquent\Model;
 class Dish extends Model
 {
 	protected $table = "dishes";
+	protected $guarded = [];
 
     public function profile() {
     	return $this->belongsTo( 'App\Profile')->withDefault();

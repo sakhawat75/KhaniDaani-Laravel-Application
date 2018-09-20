@@ -109,11 +109,11 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label for="service_charge">Servcie Charge <span>(Within 10-50 taka)</span>
+                                                <label for="service_charge">Service Charge <span>(Within 10-50 taka)</span>
                                                 </label>
                                                 {{--<input name="charge" type="number" id="service_charge" class="text_field"
                                                        placeholder="10-50" min="10" max="50" required>--}}
-                                                <select name="charge" id="service_charge">
+                                                <select name="charge" id="service_charge" class="form-control">
                                                     <option value="10">10</option>
                                                     <option value="15">15</option>
                                                     <option value="20">20</option>
