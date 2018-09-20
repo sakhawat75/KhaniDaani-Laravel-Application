@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 
-@section ('title', 'Single Dish')
+@section ('title', 'Payment')
 
 @section ('content')
 
@@ -11,7 +11,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-title">Payment page</h1>
+                    <h1 class="page-title">Payment</h1>
                 </div>
                 <!-- end /.col-md-12 -->
             </div>
@@ -49,18 +49,17 @@
 
                                 <ul>
                                     <li class="item">
-                                        <a href="{{ route('dishes.show', ['id' => $dish->id]) }}" target="_blank">Dish
-                                            title: {{ $dish->dish_name }} </a>
+                                        <a href="{{ route('dishes.show', ['id' => $dish->id]) }}" target="_blank"><b>Dish Price:</b> {{ $dish->dish_name }} </a>
                                         <span>৳{{ $dish->dish_price }}</span>
                                     </li>
                                     <li class="item">
                                         <a href="{{ route('profile.show', ['profile' => $pp->user->profile->id]) }}"
-                                           target="_blank">Pickers Point username: {{ $pp->user->name }}</a>
+                                           target="_blank"><b>Pick-up Point:</b> {{ $pp->user->name }}</a>
                                         <span>৳{{ $pp->charge }}</span>
                                     </li>
                                     <li>
-                                        <p>Transaction Fees:</p>
-                                        <span>৳{{ $khanidaani_charge }} ({{$system->service_percentage}}% charge)</span>
+                                        <p> <b>Maintenance Fee: ({{$system->service_percentage}}%) </b> </p>
+                                        <span>৳{{ $khanidaani_charge }} </span>
                                     </li>
                                     <li class="total_ammount">
                                         <p>Total</p>
@@ -71,7 +70,18 @@
                             <!-- end /.information_module-->
                             <div class="information_module">
                                 <div class="toggle_title">
-                                    <h4>Delivery Adress</h4>
+                                    <h4>Delivery Address</h4><span class="a-color">
+                                        @auth
+
+                                            @if(auth()->user()->profile->address)
+                                                Update only if you want the delivery in different address
+                                            @else
+                                                You Must Provide Your Address Information
+                                            @endif
+                                        @else
+                                            You Must Provide Your Address Information
+                                        @endauth
+                                    </span>
                                 </div>
 
                                 <div class="information__set">
@@ -164,17 +174,20 @@
                                 </div>
                                 <ul>
                                     <li>
+                                        <h5 class="mg-bt">Existing KhaniDaani Balance</h5>
                                         <div class="custom-radio">
                                             @if (auth()->user()->profile->balance > $total)
                                                 <input type="radio" id="opt3" class="" name="payment_type" VALUE="1">
                                                 <label for="opt3">
                                                     <span class="circle"></span>Khanidaani Balance</label>
-                                                <p>Balance
+                                                <p>Current Balance:
                                                     <span class="bold">৳{{ auth()->user()->profile->balance }}</span>
                                                 </p>
                                                 <div id="opt3_msg" class="d-none">
-                                                    <p class="w-50 mt-3 float-left">After Buying your balance will become</p>
-                                                    <p>({{ auth()->user()->profile->balance }} - {{ $total }}) = <span class="bold">৳{{ auth()->user()->profile->balance - $total}}</span> </p>
+                                                    <div class="alert alert-default text-center" id="opt3_msg">
+                                                        After Buying your balance will become <br>
+                                                        ({{ auth()->user()->profile->balance }} - {{ $total }}) = <span class="bold">৳{{ auth()->user()->profile->balance - $total}}</span>
+                                                    </div>
                                                 </div>
                                             @else
                                                 <input type="radio" id="opt3" class="" name="payment_type" VALUE="1" disabled>
@@ -191,113 +204,41 @@
 
                                     </li>
                                     <li>
-                                        <div class="custom-radio">
-                                            <input type="radio" id="opt2" class="" name="payment_type" value="2"
-                                                   checked>
+                                        <h5 class="mg-bt">bKash Payment</h5>
+                                        <div class="custom-radio mg-bt">
+
+                                            <input type="radio" id="opt2" class="" name="payment_type" value="2" checked>
                                             <label for="opt2">
-                                                <span class="circle"></span>Bkash</label>
+                                                <span class="circle"></span>Bkash</label><label for="">Amount: ৳{{ $total }}</label>
+                                            <br>
+                                            <div class="alert alert-success">
+                                                Pay ৳{{ $total }} through bKash and enter transaction Id below (Our merchant bKash wallet number: 01711012666)
+                                            </div>
                                         </div>
 
+                                        <label for="delivery_address">bKash trasaction id:</label>
                                         <div class="form-group">
-                                            <label for="">Amount: ৳{{ $total }}</label>
                                             <input type="number" value="{{ $total }}" name="b_amount" hidden>
-                                            <input id="card_number" type="text" class="text_field"
-                                                   placeholder="Enter your bkash trasaction number here..." name="b_t_id">
+                                            <input id="card_number" type="text" class="text_field" placeholder="Enter your bkash trasaction number here..." name="b_t_id">
                                         </div>
                                         {{--<a href="{{ route('order.status') }}" class="btn btn--round btn--default">Continue & Order</a>--}}
 
 
                                     </li>
-                                    <li>
-                                        <div class="custom-radio">
-                                            <input type="radio" id="opt1" class="" name="payment_type"
-                                                   value="3">
-                                            <label for="opt1">
-                                                <span class="circle"></span>Credit Card</label>
-                                        </div>
-                                        <img src="{{ URL::to('/') }}/images/cards.png" alt="Visa Cards">
-                                    </li>
-                                    <div class="payment_info modules__content">
-                                        <div class="form-group">
-                                            <label for="card_number">Card Number</label>
-                                            <input id="card_number" type="text" class="text_field"
-                                                   placeholder="Enter your card number here...">
-                                        </div>
+                                </ul>
 
-                                        <!-- lebel for date selection -->
-                                        <label for="name">Expire Date</label>
-                                        <div class="row">
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <div class="select-wrap select-wrap2">
-                                                        <select name="months" id="name">
-                                                            <option value="">Month</option>
-                                                            <option value="jan">jan</option>
-                                                            <option value="feb">Feb</option>
-                                                            <option value="mar">Mar</option>
-                                                            <option value="apr">Apr</option>
-                                                            <option value="may">May</option>
-                                                            <option value="jun">Jun</option>
-                                                            <option value="jul">Jul</option>
-                                                            <option value="aug">Aug</option>
-                                                            <option value="sep">Sep</option>
-                                                            <option value="oct">Oct</option>
-                                                            <option value="nov">Nov</option>
-                                                            <option value="dec">Dec</option>
-                                                        </select>
-                                                        <span class="lnr lnr-chevron-down"></span>
-                                                    </div>
-                                                    <!-- end /.select-wrap -->
-                                                </div>
-                                                <!-- end /.form-group -->
-                                            </div>
-                                            <!-- end /.col-md-6-->
 
-                                            <div class="col-md-6 col-sm-6">
-                                                <div class="form-group">
-                                                    <div class="select-wrap select-wrap2">
-                                                        <select name="years" id="years">
-                                                            <option value="">Year</option>
-                                                            <option value="28">2028</option>
-                                                            <option value="27">2027</option>
-                                                            <option value="26">2026</option>
-                                                            <option value="25">2025</option>
-                                                            <option value="24">2024</option>
-                                                            <option value="23">2023</option>
-                                                            <option value="22">2022</option>
-                                                            <option value="21">2021</option>
-                                                            <option value="20">2020</option>
-                                                            <option value="19">2019</option>
-                                                            <option value="18">2018</option>
-                                                            <option value="17">2017</option>
-                                                        </select>
-                                                        <span class="lnr lnr-chevron-down"></span>
-                                                    </div>
-                                                    <!-- end /.select-wrap -->
-                                                </div>
-                                                <!-- end /.form-group -->
-                                            </div>
-                                            <!-- end /.col-md-6-->
-                                        </div>
-                                        <!-- end /.row -->
+                                <div class="payment_info modules__content">
 
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="cv_code">CVV Code</label>
-                                                    <input id="cv_code" type="text" class="text_field"
-                                                           placeholder="Enter code here...">
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
 
-                                                <button type="submit" class="btn btn--round btn--default">Continue &
-                                                    Order
-                                                </button>
+                                            <button type="submit" class="btn btn--round btn--default">Continue & Order</button>
 
-                                                {{--<button type="submit" class="btn btn--round btn--default">Confirm Order</button>--}}
-                                            </div>
+                                            {{--<button type="submit" class="btn btn--round btn--default">Confirm Order</button>--}}
                                         </div>
                                     </div>
-                                </ul>
+                                </div>
                             </div>
                             <!-- end /.information_module-->
                         </div>

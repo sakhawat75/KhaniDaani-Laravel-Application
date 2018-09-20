@@ -9,15 +9,12 @@
         <div class="row">
           <div class="col-md-12">
             <div class="breadcrumb">
-              <ul>
+              <ul class="text-white">
                 <li>
-                  <a href="#">{{ $dish->dish_category }}</a>
+                  {{ $dish->dish_category }}
                 </li>
                 <li>
-                  <a href="#">{{ $dish->dish_subcategory }}</a>
-                </li>
-                <li class="active">
-                  <a href="#">{{ $dish->dish_name }}</a>
+                  {{ $dish->dish_subcategory }}
                 </li>
               </ul>
             </div>
