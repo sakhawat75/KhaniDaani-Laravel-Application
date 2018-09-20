@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 
-@section ('title', 'Single Dish')
+@section ('title', 'Payment')
 
 @section ('content')
 
@@ -57,7 +57,7 @@
                                         <span>৳{{ $dsp->service_charge }}</span>
                                     </li>
                                     <li>
-                                        <p> <b>Maintenance fee  ({{$system->service_percentage}}%): </b> </p>
+                                        <p> <b>Maintenance Fee: ({{$system->service_percentage}}%)</b> </p>
                                         <span>৳{{ $khanidaani_charge }} </span>
                                     </li>
                                     <li class="total_ammount">
@@ -152,12 +152,14 @@
                                                 <input type="radio" id="opt3" class="" name="payment_type" VALUE="1">
                                                 <label for="opt3">
                                                     <span class="circle"></span>Khanidaani Balance</label>
-                                                <p>Balance
+                                                <p>Current Balance:
                                                     <span class="bold">৳{{ auth()->user()->profile->balance }}</span>
                                                 </p>
                                                 <div id="opt3_msg" class="d-none">
-                                                    <p class="w-50 mt-3 float-left">After Buying your balance will become</p>
-                                                    <p>({{ auth()->user()->profile->balance }} - {{ $total }}) = <span class="bold">৳{{ auth()->user()->profile->balance - $total}}</span> </p>
+                                                    <div class="alert alert-default text-center" id="opt3_msg">
+                                                        After Buying your balance will become <br>
+                                                        ({{ auth()->user()->profile->balance }} - {{ $total }}) = <span class="bold">৳{{ auth()->user()->profile->balance - $total}}</span>
+                                                    </div>
                                                 </div>
                                             @else
                                                 <input type="radio" id="opt3" class="" name="payment_type" VALUE="1" disabled>
