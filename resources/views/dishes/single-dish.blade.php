@@ -405,10 +405,14 @@
                   <form action="{{ route('order.selectdsp', ['dish' => $dish]) }}" method="get">
                     {{ csrf_field() }}
                     <button type="submit" class="btn btn--lg btn--round"
-                    @if(auth()->id() == $dish->profile->user_id)
+                    @if(auth()->id() == $dish->profile->user_id || $dish->profile->is_available === 0)
                       disabled="disabled"
                     @endif
-                    >Order Now</button>
+                    >Order Now
+                      @if($dish->profile->is_available === 0)
+                        <small>(not available)</small>
+                      @endif
+                    </button>
                   </form>
                   {{--<a href="{{ route('order.selectdsp') }}" class="btn btn--lg btn--round">Order Now</a>--}}
                 </div>

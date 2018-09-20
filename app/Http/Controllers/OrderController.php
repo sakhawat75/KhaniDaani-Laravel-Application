@@ -10,6 +10,7 @@ use App\Order;
 use App\PickersPoint;
 use App\SystemVariables;
 use App\User;
+use Faker\Calculator\Iban;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -104,6 +105,11 @@ class OrderController extends Controller
 
 		$user = auth()->user();
 		$dish = Dish::find($request->input('dish_id'));
+
+		if($dish->profile->is_available == 0) {
+            return redirect()->back()->withErrors('The Chef is not Available now to take new order');
+        }
+
 		$dsp = DeliveryService::find($request->input('dsp_id'));
 
 		$pp = PickersPoint::find($request->input('pp_id'));

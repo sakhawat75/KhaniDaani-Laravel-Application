@@ -19,6 +19,7 @@ class CreateProfilesTable extends Migration
             
             $table->string('user_name');
             $table->string('fullname');
+            $table->boolean('is_available')->default(1);
             $table->string('mobile_no');
             $table->date('dob');
             $table->string('city');

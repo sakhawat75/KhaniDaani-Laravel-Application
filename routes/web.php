@@ -36,6 +36,8 @@ Route::post('/profile', 'ProfileController@store')->name( 'profile.store');
 
 Route::get( '/profile/chefdishes/{profile}', 'ProfileController@chefdishes')->name('profile.chefdishes');
 
+Route::post( '/profile/{profile}/isAvailable', 'ProfileController@isAvailable')->name('profile.isAvailable');
+
 Route::get( '/profile/{user}/chefdelivery', 'ProfileController@chefdelivery')->name('profile.chefdelivery');
 
 Route::get('/profile/{profile}', 'ProfileController@show')->name('profile.show');
