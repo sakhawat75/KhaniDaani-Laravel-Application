@@ -539,13 +539,17 @@
                     } else if(order.chef_order_approved === 1 && order.status === 1 && order.chef_is_dish_ready === 0) {
                         console.log('condition 2');
                         opstr = "Chef Accepted the order. Now the Chef is preparing the dish";
+                        timerstr = "Chef's remaining time to prepare the dish:";
+                        notes = "";
                         // $('#chef_approval_timer').countdown('stop');
                         $('#chef_approval_timer').hide();
                         $('.chef_accept').hide();
                         $('.chef_reject').hide();
                         $('#dish_ready').removeClass('d-none');
                         $('#chef_timer').removeClass('d-none');
-                        timerstr = "Chef's remaining time to prepare the dish:";
+
+                        $('.buyer_cancel_btn').prop("disabled", true);
+                        $('.os_note').addClass('d-none');
                         start_chef_timer(order);
 
                         $('.step_1').removeClass('list-group-item-warning');
@@ -570,12 +574,16 @@
                         $('.step_1').addClass('list-group-item-success');
                         $('.step_2').addClass('list-group-item-success');
                         $('.step_3').addClass('list-group-item-warning');
+                        $('.buyer_cancel_btn').prop("disabled", true);
+
 
                     } else if(order.status === 1 && order.chef_is_dish_ready === 1 && order.dsp_is_dish_recieved === 1 && order.dsp_is_dish_delivered === 0) {
                         $('#dsp_ready').prop("disabled", true);
                         $('#dsp_delivered').removeClass('d-none');
                         $('#dish_ready').removeClass('d-none');
                         $('#dish_ready').prop('disabled', true);
+                        $('.buyer_cancel_btn').prop("disabled", true);
+
                         opstr = "Dsp recieved the order. Now DSP is on the way to deliver to the buyer.";
 
                         $('.step_1').removeClass('list-group-item-warning');
@@ -596,6 +604,8 @@
                         $('#dsp_timer').countdown('stop');
                         $('#dsp_timer').addClass('d-none');
                         $('#dish_ready').prop('disabled', true);
+                        $('.buyer_cancel_btn').prop("disabled", true);
+
                         opstr = "Dsp Delivered the order. Waiting for the Buyers Comfirmation";
                         timerstr = "Dish is Delivered to Buyer.";
 
@@ -627,6 +637,8 @@
                         $('#dsp_timer').addClass('d-none');
                         
                         $('#order_completed').addClass('d-none');
+                        $('.buyer_cancel_btn').prop("disabled", true);
+
                         opstr = "The order is complete";
                         timerstr = "";
 
@@ -811,7 +823,7 @@
                         type: "GET",
 
                     }).done(function (order) {
-                        $(this).attr('disabled', 'disabled');
+                        $('.buyer_cancel_btn').prop("disabled", true);
                         $('.ajax-loader').css("visibility", "hidden");
                         snackbar('Order Is Cancelled');
                         callOrderAjax();

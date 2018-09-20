@@ -153,6 +153,9 @@ class ProfileController extends Controller
 
     public function update(Request $request, Profile $profile) {
 
+        ini_set('max_execution_time', 300);
+        ini_set('memory_limit','2048M');
+
 	    //		$user_id = auth()->user()->id;
 
 		//$user = User::find($user_id);

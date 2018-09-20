@@ -327,7 +327,7 @@
                           {{--<input type="number" id="dsp_1" class="text_field"
                                  placeholder="id of dsp_1" name="dsp_1" min="1">--}}
                           <select name="dsp_1" id="" class="form-control">
-                            <option value="{{ $dish->dsp_1 }}">Id: {{$dish->dsp_1 }}</option>
+                            <option value="{{ $dish->dsp_1 }}">Id: {{$dish->dsp_1 }}: {{ \App\DeliveryService::find($dish->dsp_1)->service_title }}</option>
                             @foreach($dsp_ids as $id)
                               <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->service_title }}</option>
                             @endforeach
@@ -343,8 +343,8 @@
                           {{--<input type="number" id="dsp_1" class="text_field"
                                  placeholder="id of dsp_1" name="dsp_1" min="1">--}}
                           <select name="dsp_2" id="" class="form-control">
-                            <option value="{{ $dish->dsp_2 }}">Id: {{$dish->dsp_2 }}</option>
-                            @foreach($dsp_ids as $id)
+                            <option value="{{ $dish->dsp_2 }}">Id: {{$dish->dsp_2 }}: {{ \App\DeliveryService::find($dish->dsp_2)->service_title }}</option>
+                          @foreach($dsp_ids as $id)
                               <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->service_title }}</option>
                             @endforeach
                           </select>
@@ -360,8 +360,8 @@
                           {{--<input type="number" id="dsp_1" class="text_field"
                                  placeholder="id of dsp_1" name="dsp_1" min="1">--}}
                           <select name="dsp_3" id="" class="form-control">
-                            <option value="{{ $dish->dsp_3 }}">Id: {{$dish->dsp_3 }}</option>
-                            @foreach($dsp_ids as $id)
+                            <option value="{{ $dish->dsp_3 }}">Id: {{$dish->dsp_3 }}: {{ \App\DeliveryService::find($dish->dsp_3)->service_title }}</option>
+                          @foreach($dsp_ids as $id)
                               <option value="{{ $id->id }}">Id: {{$id->id }}: {{ $id->service_title }}</option>
                             @endforeach
                           </select>
