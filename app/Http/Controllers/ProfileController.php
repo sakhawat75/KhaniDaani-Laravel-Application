@@ -287,5 +287,30 @@ class ProfileController extends Controller
 		}
 	}
 
+    public function isAvailable(Request $request, Profile $profile)
+    {
+        $from = $profile->is_available;
+        if($request->input('is_available')) {
+            $profile->is_available = 1;
+        } else {
+            $profile->is_available = 0;
+        }
+
+        $profile->save();
+        $to = $profile->is_available;
+        if($from === 1) {
+            $from = "<span class='text-primary'>Available</span>";
+        } else {
+            $from = "<span class='text-danger'>Not Available</span>";
+        }
+
+        if($to === 1) {
+            $to = "<span class='text-primary'>Available</span>";
+        } else {
+            $to = "<span class='text-danger'>Not Available</span>";
+        }
+
+        return redirect()->back()->with('success', 'Your Availability is changed from ' . $from . ' to ' . $to) ;
+	}
 
 }

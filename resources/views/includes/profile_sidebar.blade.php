@@ -4,7 +4,7 @@
         <div class="sidebar-card author-menu">
             <ul>
                 <li> <a href="{{ route('profile.show', ['profile' => $profile->id]) }} #profile">User Profile</a> </li>
-                <li> <a href="{{ route('profile.chefdishes', [ 'profile' => $profile->id]) }} #chefdish">Chef Dish</a> </li>
+                <li> <a href="{{ route('profile.chefdishes', [ 'profile' => $profile->id]) }} #chefdish">Chef Dishes</a> </li>
                 <li> <a href="{{ route('profile.chefdelivery', ['profile' => $profile->id]) }}">Delivery Services</a> </li>
                 <li> <a href="{{ route('profile.pickerspoint', ['user' => $profile->user]) }} #chefpp">Pickers Point</a> </li>
             </ul>
