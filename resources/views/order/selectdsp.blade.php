@@ -177,8 +177,17 @@
                                                       method="get" class="text-center">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="pp" value="{{ $pp->id }}">
-                                                    <button type="submit" class="btn btn--lg btn--round">Continue &
-                                                        Order
+                                                    <button type="submit" class="btn btn--lg btn--round"
+                                                            @if(!$pp->isBetweenTime())
+                                                                disabled="disabled"
+                                                            @endif
+                                                    >
+                                                        @if($pp->isBetweenTime())
+                                                            Continue & Order
+                                                            @else
+                                                            shop is closed
+                                                            @endif
+
                                                     </button>
                                                 </form>
 

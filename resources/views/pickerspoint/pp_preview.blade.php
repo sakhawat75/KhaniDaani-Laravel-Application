@@ -18,7 +18,7 @@
                     </div>
                     <div class="hours">
                         {{--<span class="opening">Opens @ {{ date('h:i A', strtotime($pp->open_at) ) }}.</span><span class="closing"> Close @ {{ \Carbon\Carbon::parse($pp->close_at)->format('h:m A') }}</span>--}}
-                        <span class="opening">Opens @ {{ date('h:i A', strtotime($pp->open_at) ) }}.</span><span class="closing"> Close @ {{ date('h:i A', strtotime($pp->close_at) ) }}</span>
+                        <span class="opening">Opens @ {{ date('h:i A', strtotime($pp->open_at) ) }}.</span><span class="closing"> Closes @ {{ date('h:i A', strtotime($pp->close_at) ) }}</span>
                     </div>
                     <br>
 
