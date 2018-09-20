@@ -344,7 +344,7 @@ class DishesController extends Controller
             // Get just ext
 			$extension = $request->file($input_name)->getClientOriginalExtension();
 			// Filename to store
-            for ($i=0; $i<1000; $i++) {
+            for ($i=0; $i<100; $i++) {
 
             }
 
