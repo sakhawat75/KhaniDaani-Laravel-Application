@@ -106,6 +106,9 @@ Route::group(['middleware' => 'auth'], function (){
 //    Route::post( 'admin/payment/add_balance', 'PaymentController@add_balance')->name( 'admin.payment.add_balance');
     Route::post( '/payment/add_balance', 'PaymentController@add_balance')->name( 'payment.add_balance');
     Route::post( '/payment/withdraw', 'PaymentController@withdraw')->name( 'payment.withdraw');
+
+    //email to admin
+    Route::post( '/order/complain', 'OrderController@complain')->name( 'order.complain');
 });
 
 

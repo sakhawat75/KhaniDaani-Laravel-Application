@@ -11,8 +11,11 @@ use App\PickersPoint;
 use App\SystemVariables;
 use App\User;
 use Carbon\Carbon;
+use DateTime;
 use Faker\Calculator\Iban;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 class OrderController extends Controller
 {
@@ -54,6 +57,12 @@ class OrderController extends Controller
     }
 
 	public function status(Order $order) {
+
+        /*$date = new DateTime();
+        $timeZone = $date->getTimezone();
+        echo $timeZone->getName();
+
+        return;*/
 
 	    $dish = $order->dish;
 	    $role = null;
@@ -200,5 +209,21 @@ class OrderController extends Controller
             ->paginate(10);
 
         return view('dishes.purchase', compact('orders'));
+    }
+
+    public function complain(Request $request)
+    {
+        $content = $request->input('complain_text');
+        $title = "Complain";
+        Mail::send( 'emails.complains', ['title' => $title, 'content' => $content], function ($message)
+        {
+            $message->from(auth()->user()->email, auth()->user()->name);
+
+            $message->to('hussainjuned99@gmail.com');
+            $message->subject('Complain About Order');
+
+        });
+
+        return redirect()->back()->with('success', 'Complain Has been Emailed to us Successfully');
     }
 }
