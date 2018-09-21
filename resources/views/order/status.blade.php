@@ -143,8 +143,8 @@
                                                       class="d-none">Chef Approval Timer </span></h1>
                                             <h1><span id="chef_timer" class="d-none">Chef Timer</span></h1>
                                             @if(!$order->pp)
-                                            <h1><span id="dsp_timer" class="d-none">Dsp Timer</span></h1>
-                                                @endif
+                                                <h1><span id="dsp_timer" class="d-none">Dsp Timer</span></h1>
+                                            @endif
                                         </div>
                                     </div>
 
@@ -269,12 +269,7 @@
                             </div>
 
 
-
-
                         </div>
-
-
-
 
 
                     </div>
@@ -291,32 +286,32 @@
                                          class="step-title waves-effect waves-dark">Detail Info
                                     </div>
                                     <div class="step-content">
-                                                    <h6 class="mb-3 scolor"> <b>Dish Info:</b></h6>
-                                                    @include( 'dishes.box_dish_preview')
-                                                    {{-- TODO dont work for the new notification--}}
-                                                    {{-- done TODO  dish preview here for every one --}}
+                                        <h6 class="mb-3 scolor"><b>Dish Info:</b></h6>
+                                        @include( 'dishes.box_dish_preview')
+                                        {{-- TODO dont work for the new notification--}}
+                                        {{-- done TODO  dish preview here for every one --}}
 
-                                                <div class="order-address">
-                                                    {{-- done TODO address only for dsp--}}
-                                                    @if(! (auth()->id() === $order->dish_user_id))
+                                        <div class="order-address">
+                                            {{-- done TODO address only for dsp--}}
+                                            @if(! (auth()->id() === $order->dish_user_id))
 
-                                                            <h6><u>Chef info:</u></h6>
-                                                            <p><b>Address:</b> {{ $order->chef->profile->address }}</p>
-                                                            <p><b>Address
-                                                                    Hint:</b> {{ $order->chef->profile->address_hint }}</p>
-                                                            <p><b>Mobile:</b> {{ $order->chef->profile->mobile_no }}</p>
+                                                <h6><u>Chef info:</u></h6>
+                                                <p><b>Address:</b> {{ $order->chef->profile->address }}</p>
+                                                <p><b>Address
+                                                        Hint:</b> {{ $order->chef->profile->address_hint }}</p>
+                                                <p><b>Mobile:</b> {{ $order->chef->profile->mobile_no }}</p>
 
-                                                    @endif
-                                                    @if(! (auth()->id() === $order->buyer_user_id))
+                                            @endif
+                                            @if(! (auth()->id() === $order->buyer_user_id))
 
-                                                            <h6><u>Foodies info:</u></h6>
-                                                            <p><b>Address:</b>{{ $order->buyer->profile->address }}</p>
-                                                            <p><b>Address Hint: </b>{{ $order->buyer->profile->address_hint }}</p>
-                                                            <p><b>Mobile:</b> {{ $order->buyer->profile->mobile_no }}</p>
+                                                <h6><u>Foodies info:</u></h6>
+                                                <p><b>Address:</b>{{ $order->buyer->profile->address }}</p>
+                                                <p><b>Address Hint: </b>{{ $order->buyer->profile->address_hint }}</p>
+                                                <p><b>Mobile:</b> {{ $order->buyer->profile->mobile_no }}</p>
 
-                                                    @endif
-                                                </div>
+                                            @endif
                                         </div>
+                                    </div>
 
                                 <li class="step">
                                     <div data-step-label=""
@@ -327,8 +322,10 @@
                                         <div class="freelance-status">
                                             <div class="author-badges">
                                                 <div class="author-btn">
-                                                    <button class="btn btn--md btn--round" data-toggle="modal" data-target="#messageModal"
-                                                    >Complain to us</button>
+                                                    <button class="btn btn--md btn--round" data-toggle="modal"
+                                                            data-target="#messageModal" type="button"
+                                                    >Complain to us
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -341,31 +338,32 @@
                                             Service Info
                                         </div>
                                         <div class="step-content">
-                                           <div class="delivery-service dsp_status">
-                                               <div class="row">
-                                            <div class="col-md-12">
-                                                {{-- TODO dsp preview here for every one if posible--}}
-                                                @include('includes.dsp_order_status', ['dsp' => $order->dsp])
-                                            </div>
-                                               </div>
-
-                                            <div class="order-address">
-                                                {{-- TODO dsp address for everyone--}}
-
-                                                <div class="">
-                                                    <h6><u>Contact info:</u></h6>
-                                                    @if($order->dsp->profile)
-                                                        <p><b>Address:</b> {{ $order->dsp->profile->address }}</p>
-                                                    @endif
-                                                    <p><b>Address Hint:</b> {{ $order->dsp->profile->address_hint }}</p>
-                                                    <p><b>Mobile:</b> {{ $order->dsp->profile->mobile_no }}</p>
+                                            <div class="delivery-service dsp_status">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        {{-- TODO dsp preview here for every one if posible--}}
+                                                        @include('includes.dsp_order_status', ['dsp' => $order->dsp])
+                                                    </div>
                                                 </div>
 
-                                                {{-- <h5 id="dsp_str">Count down will start after clicking Recieved</h5> --}}
+                                                <div class="order-address">
+                                                    {{-- TODO dsp address for everyone--}}
+
+                                                    <div class="">
+                                                        <h6><u>Contact info:</u></h6>
+                                                        @if($order->dsp->profile)
+                                                            <p><b>Address:</b> {{ $order->dsp->profile->address }}</p>
+                                                        @endif
+                                                        <p><b>Address Hint:</b> {{ $order->dsp->profile->address_hint }}
+                                                        </p>
+                                                        <p><b>Mobile:</b> {{ $order->dsp->profile->mobile_no }}</p>
+                                                    </div>
+
+                                                    {{-- <h5 id="dsp_str">Count down will start after clicking Recieved</h5> --}}
 
 
+                                                </div>
                                             </div>
-                                        </div>
                                         </div>
                                     </li>
                                 @endif
@@ -398,9 +396,6 @@
                                         </div>
                                     </li>
                                 @endif
-
-
-
 
 
                             </ul>
@@ -482,7 +477,8 @@
     </div>
 
     <!-- Modal for sending message -->
-    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -493,11 +489,12 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ route('messages.store_with_auth') }}" method="post" id="send_msg">
+                    <form action="{{ route('order.complain') }}" method="post" id="send_msg">
                         @csrf
                         <div class="form-group">
                             <label for="msgText">Type your Complain Below</label>
-                            <textarea class="form-control" id="msgText" placeholder="I did not receive the dish" name="body"></textarea>
+                            <textarea class="form-control" id="msgText" placeholder="I did not receive the dish"
+                                      name="complain_text"></textarea>
                         </div>
 
                         {{-- <button type="submit" id="submit-form" class="d-none">send</button> --}}
@@ -507,7 +504,8 @@
 
                 <div class="modal-footer">
                     {{-- <label for="submit-form" tabindex="0"  class="btn btn-primary px-3 py-1">Send</label> --}}
-                    <button type="button" class="btn btn-primary px-3 py-1" form="send_msg" id="submit-form">Send</button>
+                    <button type="submit" class="btn btn-primary px-3 py-1" form="send_msg" id="submit-form">Send
+                    </button>
 
                     <button type="button" class="btn btn-secondary px-3 py-1" data-dismiss="modal">Cancel</button>
                 </div>
@@ -619,9 +617,9 @@
                         opstr = "Chef Prepared the order. Now DSP is on the way to receive.";
                         @if($order->pp)
                             opstr = "Chef Delivered the order to PP. Now Waiting for PP's Confirmation.";
-                            timerstr = "";
+                        timerstr = "";
                         @endif
-                        timerstr = "Dsp's remaining time to delivered the dish:";
+                            timerstr = "Dsp's remaining time to delivered the dish:";
 
                         // $('#chef_timer').countdown('stop');
                         $('#dsp_timer').removeClass('d-none');
@@ -650,7 +648,7 @@
 
                         @if($order->pp)
                             opstr = "PP Received the dish. Now Buyer has to collect the dish from PP";
-                            timerstr = "";
+                        timerstr = "";
                         @endif
 
                         $('.step_1').removeClass('list-group-item-warning');
@@ -676,9 +674,9 @@
                         opstr = "Dsp Delivered the order. Waiting for the Buyers Comfirmation";
                         @if($order->pp)
                             opstr = "PP Delivered the order. Waiting for the Buyers Comfirmation";
-                            timerstr = "";
+                        timerstr = "";
                         @endif
-                        timerstr = "Dish is Delivered to Buyer.";
+                            timerstr = "Dish is Delivered to Buyer.";
 
 
                         $('.step_1').removeClass('list-group-item-warning');
@@ -989,9 +987,9 @@
                         // $('#dsp_timer').countdown('pause');
                         $('.ajax-loader').css("visibility", "hidden");
                         @if($order->pp)
-                            snackbar('PP Recieved the dish');
+                        snackbar('PP Recieved the dish');
                         @else
-                            snackbar('Dsp Recieved the dish');
+                        snackbar('Dsp Recieved the dish');
 
                         @endif
                         callOrderAjax();
@@ -1070,6 +1068,17 @@
                 $('#select_rating').barrating({
                     theme: 'fontawesome-stars'
                 });
+            });
+
+            //send message
+            $('#submit-form').click(function(e) {
+                e.preventDefault();
+                $("#messageModal").modal('hide');
+                // var body = $('#msgText').val();
+                // $('#msgText').val(' ');
+                $('#send_msg').submit();
+
+
             });
         </script>
 
