@@ -11,6 +11,7 @@ use App\PickersPoint;
 use App\SystemVariables;
 use App\User;
 use Carbon\Carbon;
+use DateTime;
 use Faker\Calculator\Iban;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -56,6 +57,12 @@ class OrderController extends Controller
     }
 
 	public function status(Order $order) {
+
+        /*$date = new DateTime();
+        $timeZone = $date->getTimezone();
+        echo $timeZone->getName();
+
+        return;*/
 
 	    $dish = $order->dish;
 	    $role = null;

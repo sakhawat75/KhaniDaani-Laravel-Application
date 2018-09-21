@@ -143,8 +143,8 @@
                                                       class="d-none">Chef Approval Timer </span></h1>
                                             <h1><span id="chef_timer" class="d-none">Chef Timer</span></h1>
                                             @if(!$order->pp)
-                                                <h1><span id="dsp_timer" class="d-none">Dsp Timer</span></h1>
-                                            @endif
+                                            <h1><span id="dsp_timer" class="d-none">Dsp Timer</span></h1>
+                                                @endif
                                         </div>
                                     </div>
 
@@ -156,9 +156,9 @@
                                                 <button class="buyer_cancel_btn btn btn--icon btn-md btn--round btn-danger"
                                                         id=""
                                                         type="button"
-                                                        @if($order->chef_order_approved == 1)
+                                                        {{--@if($order->chef_order_approved == 1)--}}
                                                         disabled="disabled"
-                                                        @endif
+                                                        {{--@endif--}}
                                                 >
 
                                                     <span class="lnr"></span>Cancel Order
@@ -269,14 +269,19 @@
                             </div>
 
 
+
+
                         </div>
+
+
+
 
 
                     </div>
                     <!-- end /.col-md-12 -->
 
 
-                    <div class="col-lg-4 col-md-5">
+                    <l class="col-lg-4 col-md-5">
                         <aside class="sidebar upload_sidebar">
 
                             <ul class="stepper">
@@ -298,19 +303,20 @@
                                                     @endif
                                                     @if(! (auth()->id() === $order->buyer_user_id))
                                                             <h6><u>Foodies info:</u></h6>
-                                                            <p><b>Address:</b>{{ $order->buyer->profile->address }}</p>
+                                                            <p><b>Profile: </b><a href="{{ route('profile.show', ['profile' => $order->buyer->profile->id]) }}"> {{ $order->buyer->name }}</a></p>
+                                                            <p><b>Address: </b> {{ $order->buyer->profile->address }}</p>
                                                             <p><b>Address Hint: </b>{{ $order->buyer->profile->address_hint }}</p>
-                                                            <p><b>Mobile:</b> {{ $order->buyer->profile->mobile_no }}</p>
+                                                            <p><b>Mobile: </b> {{ $order->buyer->profile->mobile_no }}</p>
                                                     @endif
                                                 </div>
                                         </div>
-                                        <h6 class="mb-3 scolor"><b>Dish Info:</b></h6>
+                                        {{--<h6 class="mb-3 scolor"><b>Dish Info:</b></h6>
                                         @include( 'dishes.box_dish_preview')
-                                        {{-- TODO dont work for the new notification--}}
-                                        {{-- done TODO  dish preview here for every one --}}
+                                        --}}{{-- TODO dont work for the new notification--}}{{--
+                                        --}}{{-- done TODO  dish preview here for every one --}}{{--
 
                                         <div class="order-address">
-                                            {{-- done TODO address only for dsp--}}
+                                            --}}{{-- done TODO address only for dsp--}}{{--
                                             @if(! (auth()->id() === $order->dish_user_id))
 
                                                 <h6><u>Chef info:</u></h6>
@@ -328,8 +334,8 @@
                                                 <p><b>Mobile:</b> {{ $order->buyer->profile->mobile_no }}</p>
 
                                             @endif
-                                        </div>
-                                    </div>
+                                        </div>--}}
+                                </li>
 
                                 <li class="step">
                                     <div data-step-label=""
@@ -603,11 +609,21 @@
 
 
                         opstr = "Waiting for the Chef to accept the order";
-                        notes = "If the chef do not accept the order within 30 min" + " after order is placed, the order will be cancelled automatically." + " After chef accepting the order the buyer can not cancel the order" + " unless chef fails to prepare dish within time";
+                        notes = "If the chef do not accept the order within 30 min" + " after order is placed, Buyer Can Cancel the Order." + " After chef accepting the order the buyer can not cancel the order" + " unless chef fails to prepare dish within time";
                         timerstr = "Chef's remaining time to accept the order:";
 
                         $('.chef_accept').removeClass('d-none');
                         $('.chef_reject').removeClass('d-none');
+                        $('.buyer_cancel_btn').prop("disabled", true);
+
+                        var a = moment().utc();//now
+                        var b = moment.utc("{{ $order->created_at }}");
+                        var diff = a.diff(b, 'minutes');
+
+                        if(diff > 30) {
+                            $('.buyer_cancel_btn').prop("disabled", false);
+
+                        }
 
                         start_chef_approval_timer();
                     } else if (order.chef_order_approved === 1 && order.status === 1 && order.chef_is_dish_ready === 0) {
@@ -635,9 +651,9 @@
                         opstr = "Chef Prepared the order. Now DSP is on the way to receive.";
                         @if($order->pp)
                             opstr = "Chef Delivered the order to PP. Now Waiting for PP's Confirmation.";
-                        timerstr = "";
+                            timerstr = "";
                         @endif
-                            timerstr = "Dsp's remaining time to delivered the dish:";
+                        timerstr = "Dsp's remaining time to delivered the dish:";
 
                         // $('#chef_timer').countdown('stop');
                         $('#dsp_timer').removeClass('d-none');
@@ -666,7 +682,7 @@
 
                         @if($order->pp)
                             opstr = "PP Received the dish. Now Buyer has to collect the dish from PP";
-                        timerstr = "";
+                            timerstr = "";
                         @endif
 
                         $('.step_1').removeClass('list-group-item-warning');
@@ -692,9 +708,9 @@
                         opstr = "Dsp Delivered the order. Waiting for the Buyers Comfirmation";
                         @if($order->pp)
                             opstr = "PP Delivered the order. Waiting for the Buyers Comfirmation";
-                        timerstr = "";
+                            timerstr = "";
                         @endif
-                            timerstr = "Dish is Delivered to Buyer.";
+                        timerstr = "Dish is Delivered to Buyer.";
 
 
                         $('.step_1').removeClass('list-group-item-warning');
@@ -817,7 +833,7 @@
                 var start_chef_approval_timer = function () {
                     $('#chef_approval_timer').removeClass('d-none');
                     addTimer(0.5, '#chef_approval_timer', function () {
-                        console.log('chef_approval_timer is expired');
+                        /*console.log('chef_approval_timer is expired');
                         $.ajax({
                             url: "/api/order/update",
                             beforeSend: function () {
@@ -833,7 +849,9 @@
                             $('.ajax-loader').css("visibility", "hidden");
                             snackbar('Order Is Cancelled automatically');
                             callOrderAjax();
-                        });
+                        });*/
+                        $('.buyer_cancel_btn').prop("disabled", false);
+
 
                     });
                 };
@@ -1005,9 +1023,9 @@
                         // $('#dsp_timer').countdown('pause');
                         $('.ajax-loader').css("visibility", "hidden");
                         @if($order->pp)
-                        snackbar('PP Recieved the dish');
+                            snackbar('PP Recieved the dish');
                         @else
-                        snackbar('Dsp Recieved the dish');
+                            snackbar('Dsp Recieved the dish');
 
                         @endif
                         callOrderAjax();
@@ -1087,7 +1105,6 @@
                     theme: 'fontawesome-stars'
                 });
             });
-
             //send message
             $('#submit-form').click(function(e) {
                 e.preventDefault();
