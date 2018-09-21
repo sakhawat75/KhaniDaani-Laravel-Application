@@ -217,13 +217,13 @@ class RestApiController extends Controller
 			    return $order;
             }
 
-            if(Carbon::now()->diffInMinutes($order->created_at) >= 30 && $order->chef_order_approved == 0 && $order->status == 1) {
+            /*if(Carbon::now()->diffInMinutes($order->created_at) >= 30 && $order->chef_order_approved == 0 && $order->status == 1) {
                 $order->status = 3;
                 $order->chef->profile->balance += $order->total_price;
                 $order->chef->profile->save();
                 $order->save();
                 return $order;
-            }
+            }*/
 
     		if($order->dish->profile_id == auth()->id()) {
 			    if($request->has( 'chef_is_dish_ready')){
