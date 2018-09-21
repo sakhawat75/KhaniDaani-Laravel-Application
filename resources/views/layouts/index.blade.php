@@ -94,9 +94,9 @@
       <div class="row">
         <div class="col-md-12">
           <div class="section-title">
-            <h1>
+            <h2>
               <span class="highlighted">Featured</span>Dish
-            </h1>
+            </h2>
             <p>Best trusted & hand-picked dishes by KhaniDaani</p>
           </div>
         </div>

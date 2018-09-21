@@ -669,7 +669,6 @@
                             timerstr = "";
                         @endif
                         timerstr = "Dish is Delivered By Buyer.";
-                        
                         $('.step_1').removeClass('list-group-item-warning');
                         $('.step_2').removeClass('list-group-item-warning');
                         $('.step_3').removeClass('list-group-item-warning');
