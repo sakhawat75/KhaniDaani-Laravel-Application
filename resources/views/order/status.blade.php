@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
 
-@section ('title', 'Order Status')
+@section ('title', 'Watch live order status')
 
 @push ('head-css')
     <style type="text/css">
@@ -280,12 +280,30 @@
                         <aside class="sidebar upload_sidebar">
 
                             <ul class="stepper">
-
                                 <li class="step active">
                                     <div data-step-label=""
                                          class="step-title waves-effect waves-dark">Detail Info
                                     </div>
                                     <div class="step-content">
+                                        <h6 class="mb-3 scolor"> <b>Dish Info:</b></h6>
+                                            @include( 'dishes.box_dish_preview')
+                                                <div class="order-address">
+                                                    {{-- done TODO address only for dsp--}}
+                                                    @if(! (auth()->id() === $order->dish_user_id))
+                                                            <h6><u>Chef info:</u></h6>
+                                                            <p><b>Address:</b> {{ $order->chef->profile->address }}</p>
+                                                            <p><b>Address
+                                                                    Hint:</b> {{ $order->chef->profile->address_hint }}</p>
+                                                            <p><b>Mobile:</b> {{ $order->chef->profile->mobile_no }}</p>
+                                                    @endif
+                                                    @if(! (auth()->id() === $order->buyer_user_id))
+                                                            <h6><u>Foodies info:</u></h6>
+                                                            <p><b>Address:</b>{{ $order->buyer->profile->address }}</p>
+                                                            <p><b>Address Hint: </b>{{ $order->buyer->profile->address_hint }}</p>
+                                                            <p><b>Mobile:</b> {{ $order->buyer->profile->mobile_no }}</p>
+                                                    @endif
+                                                </div>
+                                        </div>
                                         <h6 class="mb-3 scolor"><b>Dish Info:</b></h6>
                                         @include( 'dishes.box_dish_preview')
                                         {{-- TODO dont work for the new notification--}}
@@ -341,13 +359,13 @@
                                             <div class="delivery-service dsp_status">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        {{-- TODO dsp preview here for every one if posible--}}
+
                                                         @include('includes.dsp_order_status', ['dsp' => $order->dsp])
                                                     </div>
                                                 </div>
 
                                                 <div class="order-address">
-                                                    {{-- TODO dsp address for everyone--}}
+
 
                                                     <div class="">
                                                         <h6><u>Contact info:</u></h6>

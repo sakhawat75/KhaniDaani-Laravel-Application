@@ -1,7 +1,7 @@
 @extends ('layouts.master')
 
 
-@section ('title', 'Profile Settings')
+@section ('title', 'Update user, chef, deliverer profile')
 
 @section ('content')
 

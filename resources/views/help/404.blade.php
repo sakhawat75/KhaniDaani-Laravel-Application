@@ -1,4 +1,4 @@
-@extends ('layouts.master') @section ('title', '404') @section ('content')
+@extends ('layouts.master') @section ('title', 'Need help!') @section ('content')
 
 <section class="four_o_four_area section--padding2">
         <div class="container">

@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 
-@section ('title', 'Create Profile')
+@section ('title', 'Create Chef Profile')
 
 @section ('content')
 

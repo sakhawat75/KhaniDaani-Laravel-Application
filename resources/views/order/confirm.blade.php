@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 
-@section ('title', 'Payment')
+@section ('title', 'Pay and recieved your foods from home')
 
 @section ('content')
 

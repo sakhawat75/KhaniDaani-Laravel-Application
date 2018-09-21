@@ -1,4 +1,4 @@
-@extends ('layouts.master') @section ('title', 'Add Delivery Service') @section ('content')
+@extends ('layouts.master') @section ('title', 'Add your delivery Service') @section ('content')
 
     <!--================================
         START BREADCRUMB AREA

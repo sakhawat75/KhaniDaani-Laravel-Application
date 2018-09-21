@@ -2,9 +2,10 @@
     <meta charset="UTF-8">
     <!-- meta -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="KhaniDaani - Freelance based cooking services">
+    <meta name="viewport" CONTENT="width=device-width, initial-scale=1">
+    <meta name="description" CONTENT="KhaniDaani is a freelance marketplace for chef & foodies. Here all housewives and potential cooks can earn bucks by selling their own food item.">
     <meta name="keywords" content="KhaniDaani, khanidaani, foods, freelancing, chef, women in freelancing">
+    <meta name="google-site-verification" content="XnHiwFWw5lh95jjA5gpzVOo7OBeNqJGj0j2tq1zl9CI" />
 
     <title>KhaniDaani - @yield ('title') </title>
 
