@@ -1,6 +1,6 @@
 @extends ('layouts.master')
 
-@section ('title', 'Chef Profile')
+@section ('title', 'Profile')
 
 @section ('content')
 
@@ -32,9 +32,240 @@
         <div class="container" id="profile">
             @include('includes.success_message')
             @include('includes.error_messeages')
-
             <div class="row">
-                 @include( 'includes.profile_sidebar' )
+               {{--  @include( 'includes.profile_sidebar' )--}}
+
+
+
+
+
+                <div class="col-lg-4 col-md-12">
+                    <aside class="sidebar sidebar_author" >
+
+                        <div class="author-card sidebar-card">
+                            <div class="author-infos">
+                                <div class="author_avatar"> <img src="{{ route('home') }}/storage/images/profile_image/{{ $profile->profile_image }}" alt="Presenting the broken author avatar :D"> </div>
+                                <div class="author">
+                                    <a href="{{ route('profile.show', ['profile' => $profile->id]) }} #profile"><h4>
+                                            {{ $profile->user->name }}
+                                        </h4></a>
+                                    <p>Joined {{ $profile->created_at->toFormattedDateString() }}</p>
+                                </div>
+                                <div class="author-badges">
+                                    <ul class="list-unstyled">
+                                        @if($profile->user->isChef())
+                                            <li> <span data-toggle="tooltip" data-placement="bottom" title="Have up to 10 dish for sale">
+                        <img src="{{ URL::to('/') }}/images/svg/have_dish.png" alt="" class="svg">
+                    </span> </li>
+                                        @endif
+                                        @if($profile->user->isDsp())
+                                            <li> <span data-toggle="tooltip" data-placement="bottom" title="Have delivery option">
+                        <img src="{{ URL::to('/') }}/images/svg/delivery.png" alt="" class="svg">
+                    </span> </li>
+                                        @endif
+                                        @if($profile->user->isPP())
+                                            <li> <span data-toggle="tooltip" data-placement="bottom" title="Hosting his place for dish collection">
+                        <img src="{{ URL::to('/') }}/images/svg/pcikerpoint.png" alt="" class="svg">
+                    </span> </li>
+                                        @endif
+                                    </ul>
+                                </div>
+                                <!-- end /.author -->
+                            </div>
+                            <!-- end /.author-infos -->
+                            <div class="freelance-status">
+                                <div class="author-badges">
+                                    <div class="author-btn"> <button class="btn btn--md btn--round" data-toggle="modal" data-target="#messageModal"
+                                                                     @if(auth()->id() == $profile->user_id)
+                                                                     aria-disabled="true" disabled="disabled"
+
+                                                @endif
+                                        >Message Chef</button> </div>
+                                </div>
+                            </div>
+                            </div>
+
+                        @if(auth()->id() == $profile->user_id)
+                            @if ($profile->user->isChef() or $profile->user->isDsp() or $profile->user->isPP())
+                        <div class="author-card sidebar-card">
+                        <div class="freelance-status">
+                            <div class="author-badges">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-5 text-center">
+                                                <h4 class="float-left scolor">Available:</h4></div>
+                                            <div class="col-md-7">
+                                                <form action="{{ route('profile.isAvailable', ['profile' => $profile->id]) }}" method="post">
+                                                    @csrf
+                                                    <label class="switch float-left mg-right">
+                                                        <input type="checkbox" name="is_available" onChange='this.form.submit();' value="1"
+                                                               @if($profile->is_available === 1)
+                                                               checked
+                                                                @endif
+                                                        >
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                    <h4 class="scolor"><b>
+                                                            @if($profile->is_available === 1)
+                                                                Yes
+                                                            @else
+                                                                No
+                                                            @endif
+                                                        </b></h4>
+                                                </form>
+                                            </div>
+                            </div>
+                        </div>
+                        </div></div>@endif
+                        @endif
+
+
+
+
+
+
+
+                        <!-- Modal for sending message -->
+                        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="messageModalLabel">Message {{ $profile->user->name }}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <form action="{{ route('messages.store_with_auth') }}" method="post" id="send_msg">
+                                            @csrf
+                                            <input type="hidden" name="sender_id" value="{{ auth()->id() }}">
+                                            <input type="hidden" name="recipient_id" value="{{ $profile->user->id }}">
+
+                                            <div class="form-group">
+                                                <label for="msgText">Type your message Below</label>
+                                                <textarea class="form-control" id="msgText" placeholder="I want to buy your dish" name="body"></textarea>
+                                            </div>
+
+                                            {{-- <button type="submit" id="submit-form" class="d-none">send</button> --}}
+
+                                        </form>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        {{-- <label for="submit-form" tabindex="0"  class="btn btn-primary px-3 py-1">Send</label> --}}
+                                        <button type="button" class="btn btn-primary px-3 py-1" form="send_msg" id="submit-form">Send</button>
+
+                                        <button type="button" class="btn btn-secondary px-3 py-1" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="snackbar">Snackbar</div>
+
+                        @push('scripts-footer-bottom')
+                            <script type="text/javascript">
+                                $(document).ready(function () {
+
+                                    //snackbar
+                                    function snackbar($msg) {
+                                        $('#snackbar').html($msg);
+                                        $('#snackbar').toggleClass('show');
+                                        setTimeout(function () {
+                                            $('#snackbar').removeClass('show');
+                                        }, 1600);
+                                    }
+
+                                    //send message
+                                    $('#submit-form').click(function(e) {
+                                        e.preventDefault();
+                                        $("#messageModal").modal('hide');
+                                        var body = $('#msgText').val();
+                                        $('#msgText').val(' ');
+
+                                        @auth
+                                        $.ajax({
+                                            url: '{{ route('messages.store') }}',
+                                            method: "POST",
+                                            data: {
+                                                '_token': '{{ csrf_token() }}',
+                                                'sender_id': {{ auth()->id() }},
+                                                'recipient_id': {{ $profile->user->id }},
+                                                'body': body,
+                                            },
+                                        }).done( function(data) {
+                                            console.log("data: " + data);
+                                            snackbar('Message Sent Successfully');
+                                            loadMessages();
+
+                                        });
+                                        @else
+                                        snackbar('Please log in first to send message');
+                                        @endauth
+                                    });
+                                });
+                            </script>
+                        @endpush
+
+
+
+
+
+
+
+                        <div class="sidebar-card author-menu">
+                            <ul>
+                                <li> <a href="{{ route('profile.show', ['profile' => $profile->id]) }} #profile">User Profile</a> </li>
+                                <li> <a href="{{ route('profile.chefdishes', [ 'profile' => $profile->id]) }} #chefdish">Chef Dishes</a> </li>
+                                <li> <a href="{{ route('profile.chefdelivery', ['profile' => $profile->id]) }}">Delivery Services</a> </li>
+                                <li> <a href="{{ route('profile.pickerspoint', ['user' => $profile->user]) }} #chefpp">Pickers Point</a> </li>
+                            </ul>
+                        </div>
+                    </aside>
+
+                    <aside class="sidebar sidebar_author">
+                        <div class="sidebar-card message-card">
+                            <div class="card-title">
+                                <h4>Contact Chef</h4> </div>
+                            <div class="message-form">
+                                <form action="#">
+                                    <div class="form-group">
+                                        <textarea name="message" class="text_field" id="author-message" placeholder="Your message..."></textarea>
+                                    </div>
+                                    <div class="msg_submit">
+                                        <button type="submit" class="btn btn--md btn--round"  id="send_msg">send message</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- end /.message-form -->
+                        </div>
+                    </aside>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- end /.sidebar -->
                 <div class="col-lg-8 col-md-12">
                     <div class="row">
                         <!-- SALE STATUS -->
@@ -43,8 +274,7 @@
                                 <img src="{{ route('home') }}/storage/images/cover_image/{{ $profile->cover_image }}"
                                      alt="author image" class="ratio_img">
                             </div>
-                        </div></div>
-                    <div class="row">
+                        </div>
                         <div class="col-md-4 col-sm-4">
                             <div class="author-info mcolorbg4">
                                 <p>Total Dish</p>
@@ -62,22 +292,19 @@
                                 <p>Total Ratings</p>
                                 <div class="rating product--rating">
                                     <ul>
-                                        @for ($i=1; $i <= 5; $i++)
-                                            <li>
-                                                @if($i <= $total_ratings) <span class="fa fa-star"></span>
-                                                @else
-                                                    <span class="fa fa-star-o"></span>
-                                                @endif
-                                            </li>
+                                        @for ($i=1; $i <= 5; $i++) <li>
+                                            @if($i <= $total_ratings) <span class="fa fa-star"></span>
+                                            @else
+                                                <span class="fa fa-star-o"></span>
+                                            @endif
+                                        </li>
 
                                         @endfor
-                                    </ul>
-                                    <span class="rating__count">({{ $total_ratings_count }})</span>
+                                    </ul> <span class="rating__count">({{ $total_ratings_count }})</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                        <div class="row">
+                        <!-- SALE STATUS -->
                         <div class="col-md-12 col-sm-12">
                             <div class="author_module about_author mg-bt">
                                 <h4> About {{ $user->name }}</h4>
@@ -85,72 +312,72 @@
                                 <p> {!! $profile->description !!} </p>
                             </div>
                         </div>
-                        </div>
-                            <div class="row">
-                            <div class="col-md-12">
-                                <div class="upload_modules">
-                                    <a class="toggle_title" href="#collapse5" role="button" data-toggle="collapse"
-                                       aria-expanded="false" aria-controls="collapse5">
-                                        <h4>Add Dish or Services
-                                            <span class="lnr lnr-chevron-down"></span>
-                                        </h4>
-                                    </a>
+                        <div class="col-md-12">
+                            <div class="upload_modules">
+                                <a class="toggle_title" href="#collapse5" role="button" data-toggle="collapse"
+                                   aria-expanded="false" aria-controls="collapse5">
+                                    <h4>Add Dish or Services
+                                        <span class="lnr lnr-chevron-down"></span>
+                                    </h4>
+                                </a>
 
-                                    <div class="information__set toggle_module collapse" id="collapse5">
-                                        <div class="upload_modules with--addons">
-                                            <div class="modules__content">
-                                                <div class="row">
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <a href="{{route('dishes.create')}}">
-                                                            <div class="statement_info_card">
-                                                                <div class="info_wrap">
-                                                                    <span class="lnr lnr-tag icon bg-white"></span>
-                                                                    <div class="info">
-                                                                        <a href="{{route('dishes.create')}}"><span> <b>Add Dish Become A Chef</b> </span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- end /.info_wrap -->
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <a href="{{route('delivery.AddService')}}">
-                                                            <div class="statement_info_card">
-                                                                <div class="info_wrap">
-                                                                    <span class="lnr lnr-tag icon bg-white"></span>
-                                                                    <div class="info">
-                                                                        <span> <b>Add Delivery Services</b> </span>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- end /.info_wrap -->
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-md-4 col-sm-4">
-                                                        <a href="{{route('pickerspoint.addpp')}}">
-                                                            <div class="statement_info_card">
-                                                                <div class="info_wrap">
-                                                                    <span class="lnr lnr-tag icon bg-white"></span>
-                                                                    <div class="info">
-                                                                        <span> <b>Add Pickup Point</b> </span>
-                                                                    </div>
+                                <div class="information__set toggle_module collapse" id="collapse5">
+
+                                    <div class="upload_modules with--addons">
+                                        <!-- end /.module_title -->
+
+                                        <div class="modules__content">
+                                            <div class="row">
+
+                                                <div class="col-md-4 col-sm-4">
+                                                    <a href="{{route('dishes.create')}}">
+                                                        <div class="statement_info_card">
+                                                            <div class="info_wrap">
+                                                                <span class="lnr lnr-tag icon bg-white"></span>
+                                                                <div class="info">
+                                                                    <a href="{{route('dishes.create')}}"><span> <b>Add Dish Become A Chef</b> </span></a>
                                                                 </div>
                                                             </div>
-                                                        </a>
-                                                    </div>
+                                                            <!-- end /.info_wrap -->
+                                                        </div></a>
                                                 </div>
+                                                <div class="col-md-4 col-sm-4">
+                                                    <a href="{{route('delivery.AddService')}}">
+                                                        <div class="statement_info_card">
+                                                            <div class="info_wrap">
+                                                                <span class="lnr lnr-tag icon bg-white"></span>
+                                                                <div class="info">
+                                                                    <span> <b>Add Delivery Services</b> </span>
+                                                                </div>
+                                                            </div>
+                                                            <!-- end /.info_wrap -->
+                                                        </div></a>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4">
+                                                    <a href="{{route('pickerspoint.addpp')}}">
+                                                        <div class="statement_info_card">
+                                                            <div class="info_wrap">
+                                                                <span class="lnr lnr-tag icon bg-white"></span>
+                                                                <div class="info">
+                                                                    <span> <b>Add Pickup Point</b> </span>
+                                                                </div>
+                                                            </div>
+                                                            <!-- end /.info_wrap -->
+                                                        </div></a>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div> {{--col md 12--}}
+                                <!-- end /.upload_modules -->
                             </div>
-                        <!-- end /.row -->
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </aside>
+
+            </div> {{--row--}}
+        </div> {{--container--}}
     </section>
 
 
@@ -234,7 +461,7 @@
     </style>
 
     <script type="text/javascript">
-        $(document).ready(function () {
+        $(document).ready( function () {
             //snackbar
             function snackbar($msg) {
                 $('#snackbar').html($msg);
@@ -246,7 +473,7 @@
 
 
             //send message
-            $('#send_msg').click(function (e) {
+            $('#send_msg').click(function(e) {
                 e.preventDefault();
                 var body = $('#author-message').val();
                 $('#author-message').val(' ');
@@ -260,7 +487,7 @@
                         'recipient_id': {{ $profile->id }},
                         'body': body,
                     },
-                }).done(function (data) {
+                }).done( function(data) {
                     console.log("data: " + data);
                     snackbar('Message Sent Successfully');
 
