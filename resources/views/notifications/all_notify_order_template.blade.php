@@ -50,24 +50,23 @@
             <div class="info">
               <div>
                   <% if(notify.data.noti_type == 'chef') { %>
-                  <span>You have recieved an order from <a href="#" id="temp_name"><%= notify.data.order.buyer_fullname %></a></span>
+                  <span class="flaot-left">You have recieved an order.</a></span>
                   <% } %>
 
                   <% if(notify.data.noti_type == 'user') { %>
-                  <a href="#" id="temp_name">Your</a>
-                    <span>Order is Placed Successfully</span>
+                    <span class="flaot-left">Your order is placed successfully</a></span>
                   <% } %>
 
                   <% if(notify.data.noti_type == 'dsp') { %>
-                  <a href="#" id="temp_name"><%= notify.data.order.buyer_fullname %></a>
-                    <span>Has Choosen you as deliverer for</span>
+                   <span class="flaot-left">You Are Chosen for delivery.</a></span>
+
                   <% } %>
                   
-                  <div>
-                  <a href="{{ route('home') }}/dishes/<%= notify.data.order.dish_id %>">Dish Name: 
+
+                  <!--<a href="{{ route('home') }}/dishes/<%= notify.data.order.dish_id %>">
                     <%= notify.data.order.dish_name %>
-                  </a></div>
-                  <br>
+                  </a>-->
+
 
                 </div>
                 <p class="time"><%= moment.utc(notify.data.order.created_at).fromNow() %></p>

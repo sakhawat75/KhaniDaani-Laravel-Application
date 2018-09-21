@@ -52,21 +52,20 @@
           <div class="info">
             <p>
             	<% if(notify.data.noti_type == 'chef') { %>
-            		<span>You have recieved an order from <a href="#" id="temp_name"><%= notify.data.order.buyer_fullname %></a></span>
+            		<span>Great! You have recieved an order!</a></span>
             	<% } %>
 
             	<% if(notify.data.noti_type == 'user') { %>
-            	<a href="#" id="temp_name">Your</a>
-            		<span>Order is Placed Successfully</span>
+            	<span>Your order is placed successfully.</span>
             	<% } %>
 
             	<% if(notify.data.noti_type == 'dsp') { %>
-            	<a href="#" id="temp_name"><%= notify.data.order.buyer_fullname %></a>
-            		<span>Has Choosen you as deliverer for</span>
+
+            		<span><%= notify.data.order.buyer_fullname %> Has choosen you as deliverer!</span>
             	<% } %>
 
-            	<p><a href="{{ route('home') }}/dishes/<%= notify.data.order.dish_id %>">Dish Name: 
-                <%= notify.data.order.dish_name %>
+
+
               </a></p>
             </p>
             <p class="time">

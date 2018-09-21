@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section ('title', 'Recover your password.')
+
 @section('content')
 
 <body class="recover-pass-page">
@@ -13,9 +15,6 @@
                 <div class="col-md-12">
                     <div class="breadcrumb">
                         <ul>
-                            <li>
-                                <a href="index.html">Home</a>
-                            </li>
                             <li class="active">
                                 <a href="#">Recover-Password</a>
                             </li>

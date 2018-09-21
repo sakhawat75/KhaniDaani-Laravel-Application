@@ -4,7 +4,7 @@
     <script src="{{ URL::to('/') }}/js/vendor/jquery/popper.min.js"></script>
     <script src="{{ URL::to('/') }}/js/vendor/jquery/uikit.min.js"></script>
     <script src="{{ URL::to('/') }}/js/vendor/bootstrap.min.js"></script>
-    <script src="{{ URL::to('/') }}/js/vendor/chart.bundle.min.js"></script>
+
     <script src="{{ URL::to('/') }}/js/vendor/grid.min.js"></script>
     <script src="{{ URL::to('/') }}/js/vendor/jquery-ui.min.js"></script>
     <script src="{{ URL::to('/') }}/js/vendor/jquery.barrating.min.js"></script>
@@ -16,7 +16,8 @@
     <script src="{{ URL::to('/') }}/js/vendor/tether.min.js"></script>
     <script src="{{ URL::to('/') }}/js/vendor/trumbowyg.min.js"></script>
     <script src="{{ URL::to('/') }}/js/vendor/waypoints.min.js"></script>
-    <script src="{{ URL::to('/') }}/js/dashboard.js"></script>
+{{--<script src="{{ URL::to('/') }}/js/vendor/chart.bundle.min.js"></script>
+    <script src="{{ URL::to('/') }}/js/dashboard.js"></script>--}}
     <script src="{{ asset('js/vendor/jquery.jscroll.js') }}"></script>
     <script src="{{ asset('js/vendor/moment-with-locales.min.js') }}"></script>
     <script src="{{ asset('js/vendor/moment-timezone.min.js') }}"></script>

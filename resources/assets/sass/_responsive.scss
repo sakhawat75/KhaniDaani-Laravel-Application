@@ -764,6 +764,7 @@ $ipad: 992px;
       }
     }
     .messaging__contents{
+      margin-bottom: 40px;
       .messages{
         .message{
           padding: 20px;
@@ -975,8 +976,8 @@ $ipad: 992px;
 
   .container{
     width: 450px;
-    padding-right: 2px;
-    padding-left: 2px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
   .dashboard-area.dashboard_purchase .dashboard_menu,
   .dashboard_menu_area .dashboard_menu{
@@ -2066,8 +2067,8 @@ $ipad: 992px;
   }
   .container{
     width: 320px;
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 
   /* BREADCRUMB */

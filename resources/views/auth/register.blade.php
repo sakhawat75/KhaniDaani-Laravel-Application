@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section ('title', 'Become a member')
+
 @section('content')
 
 <!--================================
@@ -10,16 +12,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="breadcrumb">
-                        <ul>
-                            <li>
-                                <a href="index.html">Home</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">Signup</a>
-                            </li>
-                        </ul>
+                    <h1 class="page-title">Become a Member</h1>
                     </div>
-                    <h1 class="page-title">Sign up</h1>
                 </div>
                 <!-- end /.col-md-12 -->
             </div>

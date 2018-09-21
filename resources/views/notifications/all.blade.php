@@ -4,16 +4,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="breadcrumb">
-                        <ul>
-                            <li>
-                                <a href="index.html">Home</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">Notifications</a>
-                            </li>
-                        </ul>
-                    </div>
                     <h1 class="page-title">All Notifications</h1>
                 </div>
             </div>
@@ -25,15 +15,6 @@
 
         <div class="dashboard_contents">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="dashboard_title_area">
-                            <div class="dashboard__title">
-                                <h3>Your Notifications</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="row">
                     <div class="col-md-12">
