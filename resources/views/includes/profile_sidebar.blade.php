@@ -2,36 +2,59 @@
     <aside class="sidebar sidebar_author" >
         @include( 'includes.author_info' )
 
-        @if(auth()->id() == $profile->user_id)
+       {{-- @if(auth()->id() == $profile->user_id)
             @if ($profile->user->isChef() or $profile->user->isDsp() or $profile->user->isPP())
         <div class="sidebar-card author-menu">
             <div class="row">
-                <div class="col-sm-12 col-md-5 text-center">
+                        <div class="col-sm-12 col-md-5 text-center">
                             <h4 class="float-left scolor">Available:</h4></div>
-                <div class="col-md-7">
-                    <form action="{{ route('profile.isAvailable', ['profile' => $profile->id]) }}" method="post">
-                        @csrf
-                        <label class="switch float-left mg-right"> {{--New css, last part, no js(w3school)--}}
-                            <input type="checkbox" name="is_available" onChange='this.form.submit();' value="1"
-                                   @if($profile->is_available === 1)
-                                   checked
-                                    @endif
-                            >
-                            <span class="slider round"></span>
-                        </label>
-                        <h4 class="scolor"><b>
-                                @if($profile->is_available === 1)
-                                    Yes
-                                @else
-                                    No
-                                @endif
-                            </b></h4>
-                    </form>
+                        <div class="col-md-7">
+                            <form action="{{ route('profile.isAvailable', ['profile' => $profile->id]) }}" method="post">
+                                @csrf
+                                <label class="switch float-left mg-right">
+                                    <input type="checkbox" name="is_available" onChange='this.form.submit();' value="1"
+                                           @if($profile->is_available === 1)
+                                           checked
+                                            @endif
+                                    >
+                                    <span class="slider round"></span>
+                                </label>
+                                <h4 class="scolor"><b>
+                                        @if($profile->is_available === 1)
+                                            Yes
+                                        @else
+                                            No
+                                        @endif
+                                    </b></h4>
+                            </form>
                 </div>
                 @endif
 
             </div>
-        </div>@endif
+        </div>@endif--}}
+
+      {{--  <div class="freelance-status">
+            <div class="author-badges">
+                <div class="row">
+                    <div class="col-sm-12 col-md-5 mg-bt text-center">@if(auth()->id() == $profile->user_id)
+                            @if ($profile->user->isChef() or $profile->user->isDsp() or $profile->user->isPP())
+                                <h4 class="float-left scolor">Available:</h4></div>
+                    <div class="col-md-7"> <label class="switch float-left"> --}}{{--New css, last part, no js(w3school)--}}{{--
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label> <h4 class="scolor"><b>Yes</b></h4></div>
+                    @endif
+                    @endif
+                </div>
+
+                <div class="author-btn"> <button class="btn btn--md btn--round" data-toggle="modal" data-target="#messageModal"
+                                                 @if(auth()->id() == $profile->user_id)
+                                                 aria-disabled="true" disabled="disabled"
+
+                            @endif
+                    >Message Chef</button> </div>
+            </div>
+        </div>--}}
 
 
         <div class="sidebar-card author-menu">
@@ -43,6 +66,7 @@
             </ul>
         </div>
     </aside>
+
     <aside class="sidebar sidebar_author">
         <div class="sidebar-card message-card">
             <div class="card-title">
