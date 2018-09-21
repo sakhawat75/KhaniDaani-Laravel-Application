@@ -92,12 +92,11 @@
     <section class="dashboard-area">
         <div class="dashboard_contents">
             <div class="container">
+                @include('includes.success_message')
+                @include('includes.error_messeages')
                 <div class="row">
                     <div class="col-lg-8 col-md-7">
                         <div class="dashboard_title_area">
-
-                            @include('includes.success_message')
-                            @include('includes.error_messeages')
 
                             <div class="dynamic_part text-center">
                                 <h3 class="">Order Status: <b class="o_satus"></b></h3>
@@ -323,7 +322,7 @@
                                         <div class="freelance-status">
                                             <div class="author-badges">
                                                 <div class="author-btn">
-                                                    <button class="btn btn--md btn--round st-bt" data-toggle="modal" data-target="#messageModal"
+                                                    <button class="btn btn--md btn--round st-bt" data-toggle="modal" data-target="#messageModal" type="button"
                                                     >Complain to us</button>
                                                 </div>
                                             </div>

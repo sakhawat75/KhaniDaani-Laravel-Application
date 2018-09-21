@@ -219,7 +219,7 @@ class OrderController extends Controller
         {
             $message->from(auth()->user()->email, auth()->user()->name);
 
-            $message->to('hussainjuned99@gmail.com');
+            $message->to('info@khanidaani.com');
             $message->subject('Complain About Order');
 
         });
