@@ -159,9 +159,11 @@
                                                 <button class="buyer_cancel_btn btn btn--icon btn-md btn--round btn-danger"
                                                         id=""
                                                         type="button"
-                                                        @if($order->chef_order_approved == 1)
+                                                        {{--@if($order->chef_order_approved == 1)--}}
                                                         disabled="disabled"
-                                                        @endif
+                                                        {{--@endif--}}
+                                                >
+
                                                     <span class="lnr"></span>Cancel Order
                                                 </button>
                                                 {{-- TODO cancel if chef did not accept it within 30 minutes, if chef accept it make the butto disable--}}
@@ -304,9 +306,10 @@
                                                     @endif
                                                     @if(! (auth()->id() === $order->buyer_user_id))
                                                             <h6><u>Foodies info:</u></h6>
-                                                            <p><b>Address:</b>{{ $order->buyer->profile->address }}</p>
+                                                            <p><b>Profile: </b><a href="{{ route('profile.show', ['profile' => $order->buyer->profile->id]) }}"> {{ $order->buyer->name }}</a></p>
+                                                            <p><b>Address: </b> {{ $order->buyer->profile->address }}</p>
                                                             <p><b>Address Hint: </b>{{ $order->buyer->profile->address_hint }}</p>
-                                                            <p><b>Mobile:</b> {{ $order->buyer->profile->mobile_no }}</p>
+                                                            <p><b>Mobile: </b> {{ $order->buyer->profile->mobile_no }}</p>
                                                     @endif
                                                 </div>
                                         </div>
@@ -472,22 +475,24 @@
     </div>
 
     <!-- Modal for sending message -->
-    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel" aria-hidden="true">
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="messageModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="messageModalLabe st-btl">Message KhaniDaani</h5>
+                    <h5 class="modal-title" id="messageModalLabel st-btl">Message KhaniDaani</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
                 <div class="modal-body">
-                    <form action="{{ route('messages.store_with_auth') }}" method="post" id="send_msg">
+                    <form action="{{ route('order.complain') }}" method="post" id="send_msg">
                         @csrf
                         <div class="form-group">
                             <label for="msgText">Type your Complain Below</label>
-                            <textarea class="form-control" id="msgText" placeholder="I did not receive the dish" name="body"></textarea>
+                            <textarea class="form-control" id="msgText" placeholder="I did not receive the dish"
+                                      name="complain_text"></textarea>
                         </div>
 
                         {{-- <button type="submit" id="submit-form" class="d-none">send</button> --}}
@@ -497,7 +502,8 @@
 
                 <div class="modal-footer">
                     {{-- <label for="submit-form" tabindex="0"  class="btn btn-primary px-3 py-1">Send</label> --}}
-                    <button type="button" class="btn btn-primary px-3 py-1 st-bt" form="send_msg" id="submit-form">Send</button>
+                    <button type="submit" class="btn btn-primary px-3 py-1 st-bt" form="send_msg" id="submit-form">Send
+                    </button>
 
                     <button type="button" class="btn btn-secondary px-3 py-1 st-bt" data-dismiss="modal">Cancel</button>
                 </div>
@@ -582,6 +588,16 @@
 
                         $('.chef_accept').removeClass('d-none');
                         $('.chef_reject').removeClass('d-none');
+                        $('.buyer_cancel_btn').prop("disabled", true);
+
+                        var a = moment().utc();//now
+                        var b = moment.utc("{{ $order->created_at }}");
+                        var diff = a.diff(b, 'minutes');
+
+                        if(diff > 30) {
+                            $('.buyer_cancel_btn').prop("disabled", false);
+
+                        }
 
                         start_chef_approval_timer();
                     } else if (order.chef_order_approved === 1 && order.status === 1 && order.chef_is_dish_ready === 0) {
@@ -789,7 +805,7 @@
                 var start_chef_approval_timer = function () {
                     $('#chef_approval_timer').removeClass('d-none');
                     addTimer(0.5, '#chef_approval_timer', function () {
-                        console.log('chef_approval_timer is expired');
+                        /*console.log('chef_approval_timer is expired');
                         $.ajax({
                             url: "/api/order/update",
                             beforeSend: function () {
@@ -805,7 +821,9 @@
                             $('.ajax-loader').css("visibility", "hidden");
                             snackbar('Order Is Cancelled automatically');
                             callOrderAjax();
-                        });
+                        });*/
+                        $('.buyer_cancel_btn').prop("disabled", false);
+
 
                     });
                 };
@@ -1058,6 +1076,16 @@
                 $('#select_rating').barrating({
                     theme: 'fontawesome-stars'
                 });
+            });
+            //send message
+            $('#submit-form').click(function(e) {
+                e.preventDefault();
+                $("#messageModal").modal('hide');
+                // var body = $('#msgText').val();
+                // $('#msgText').val(' ');
+                $('#send_msg').submit();
+
+
             });
         </script>
 
