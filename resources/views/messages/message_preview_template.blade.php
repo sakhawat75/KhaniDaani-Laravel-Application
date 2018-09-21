@@ -51,7 +51,7 @@
   <div class="messages <% if(unread_msg > 0) { %>
           unread_notification
       <% } %>" data-message_id="<%= notify.id %>" data-sender_id="<%= notify.sender_id %>" data-recipient_id="<%= notify.recipient_id %>" id="all_msg_prev_<%= notify.id %>">
-      <a href="#" class="message recent">
+      <a href="{{ route('messages.all') }}" class="message recent">
           <div class="message__actions_avatar">
               <div class="avatar"> <img src="{{ asset('/images/notification_head4.png')}}" alt="sender image" class="msg_pi_<%= notify.id %>">
 
