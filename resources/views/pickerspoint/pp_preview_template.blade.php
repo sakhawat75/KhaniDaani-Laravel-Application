@@ -16,18 +16,18 @@
                 <div class="location">
                     <%- pp.address %> <br>
                 </div>
-                <div class="hours">
+                <div class="hours mg-bt">
                     {{--<span class="opening">Opens @ {{ date('h:i A', strtotime($pp->open_at) ) }}.</span><span class="closing"> Close @ {{ \Carbon\Carbon::parse($pp->close_at)->format('h:m A') }}</span>--}}
                     <span class="opening">Opens @ <%- moment(pp.open_at, "HH:mm:ss").format("hh:mm A") %></span>
                     <span class="closing"> Close @ <%- moment(pp.close_at, "HH:mm:ss").format("hh:mm A") %></span>
                 </div>
-                <br>
                 <div>
-                    <h4>PP ID: <%- pp.id %></h4>
+
+
                 </div>
                 <div class="product-purchase">
-                    <div class="price_love"> <span>৳<%- pp.charge %></span>
-                        {{--<p> <span class="lnr lnr-heart"></span> 0</p>--}}
+                    <h4 class="float-left">Pick-up Point id:<b class="scolor"> <%- pp.id %></b></h4>
+                    <div class="price_love"><span data-toggle="tooltip" data-placement="button" title="Service charge">৳<%- pp.charge %></span>
                     </div>
                     {{--<div class="rating product--rating pull-right">
                         <ul>

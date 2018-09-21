@@ -25797,6 +25797,12 @@ span.counter {
     display: none;
   }
 
+  .messaging_sidebar .messaging__contents,
+  .recent_message .messaging__contents,
+  .recent_message .dashboard__content {
+    margin-bottom: 40px;
+  }
+
   .messaging_sidebar .messaging__contents .messages .message,
   .recent_message .messaging__contents .messages .message,
   .recent_message .dashboard__content .messages .message {
@@ -26059,8 +26065,8 @@ span.counter {
 
   .container {
     width: 450px;
-    padding-right: 2px;
-    padding-left: 2px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 
   .dashboard-area.dashboard_purchase .dashboard_menu,
@@ -27267,8 +27273,8 @@ span.counter {
 
   .container {
     width: 320px;
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 
   /* BREADCRUMB */

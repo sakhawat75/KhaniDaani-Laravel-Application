@@ -144,7 +144,7 @@
                                 <div class="toggle_title">
                                     <h4>Select Payment Method</h4>
                                 </div>
-                                <ul>
+                                <ul>  
                                     <li>
                                         <h5 class="mg-bt">Existing KhaniDaani Balance</h5>
                                         <div class="custom-radio">

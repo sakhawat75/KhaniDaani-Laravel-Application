@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section ('title', 'Login to your profile.')
+
 @section('content')
 
     <!--================================
@@ -9,16 +11,6 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="breadcrumb">
-              <ul>
-                <li>
-                  <a href="index.html">Home</a>
-                </li>
-                <li class="active">
-                  <a href="#">Login</a>
-                </li>
-              </ul>
-            </div>
             <h1 class="page-title">Login</h1>
           </div>
           <!-- end /.col-md-12 -->

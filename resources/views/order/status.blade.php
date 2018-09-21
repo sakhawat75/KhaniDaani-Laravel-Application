@@ -100,8 +100,8 @@
                             @include('includes.error_messeages')
 
                             <div class="dynamic_part text-center">
-                                <h3 class="my-3">Your Role: <b>{{ $order->role() }}</b></h3>
-                                <h6 class="mb-5">Order Status: <b class="o_satus"></b></h6>
+                                <h3 class="">Order Status: <b class="o_satus"></b></h3>
+                                <h6 class="my-3">You're <b class="scolor">{{ $order->role() }}</b></h6>
 
                                 {{--<div class="my-5">
                                     {{ \Carbon\Carbon::now()->diffInMinutes($order->created_at) }}
@@ -113,20 +113,14 @@
                                     <div class="ajax-loader">
                                         <img src="{{ asset('images/gif/ajax-loader.gif') }}" class="img-responsive"/>
                                     </div>
+
                                     <h6 class="os_box">
+                                        <div class="alert alert-default text-center">
                                         <span class="os_span bold">Order Updates: </span>
-                                        <span class="os_update"></span>
+                                            <span class="os_update"></span> </div>
                                     </h6>
-                                    <p class="os_note mt-3 d-none">
-                                        <small>
-                                            <b>Note: </b>
-                                            <span class="note_text">
 
-                                            </span>
-                                        </small>
-                                    </p>
-
-                                    <div class="buyers_review rating product--rating my-5 d-none"><p>Buyer's Review:</p>
+                                    <div class="buyers_review rating product--rating d-none my-2"><p>Dish Review:</p>
                                         <ul class="dynamic_review mt-0">
                                             <li><span class="fa fa-star"></span></li>
                                             <li><span class="fa fa-star"></span></li>
@@ -136,7 +130,7 @@
                                         </ul>
                                     </div>
 
-                                    <div class="all_timers_template my-5">
+                                    <div class="all_timers_template my-2">
                                         <div class="">
                                             <h5 class="timer_text"></h5>
                                             <h1><span id="chef_approval_timer"
@@ -148,8 +142,17 @@
                                         </div>
                                     </div>
 
+                                    <p class="os_note mt-1 d-none">
+                                        <small>
+                                            <b>Note: </b>
+                                            <span class="note_text">
+
+                                            </span>
+                                        </small>
+                                    </p>
+
+
                                     <div class="action_template my-5">
-                                        <h4 class="mb-3 your_action">Your Actions</h4>
                                         @if(auth()->id() == $order->buyer_user_id)
 
                                             <div class="buyer_opt">
@@ -172,18 +175,18 @@
                                         @if(auth()->id() == $order->dish_user_id)
                                             <div class="chef_opt">
                                                 {{--<p>Only chefusername can use this</p>--}}
-                                                <button class="btn btn--icon btn-md btn--round btn-success chef_accept d-none"
+                                                <button class="btn btn--icon btn-md btn--round btn-success chef_accept d-none st-bt"
                                                         type="button">
                                                     <span class="lnr  lnr-thumbs-up"></span>Accept
                                                     {{-- TODO if chef did not accept it within 30 minutes buyer can reject it--}}
                                                 </button>
-                                                <button class="btn btn--icon btn-md btn--round btn-danger d-none chef_reject"
+                                                <button class="btn btn--icon btn-md btn--round btn-danger d-none chef_reject st-bt"
                                                         type="button">
                                                     <span class="lnr  lnr-thumbs-down"></span>Reject
                                                     {{-- TODO if chef did not accept it within 30 minutes buyer can reject it--}}
                                                 </button>
 
-                                                <button class="btn btn--icon btn-md btn--round btn-danger d-none"
+                                                <button class="btn btn--icon btn-md btn--round btn-danger d-none st-bt"
                                                         id="dish_ready"
                                                         type="button">
                                                     <span class="lnr lnr-bullhorn"></span>Dish is Ready
@@ -194,12 +197,12 @@
 
                                         @if(auth()->id() == $order->dsp_user_id || auth()->id() == $order->pp_user_id)
                                             <div class="dsp_opt">
-                                                <button class="btn btn--icon btn-md btn--round btn-success"
+                                                <button class="btn btn--icon btn-md btn--round btn-success st-bt"
                                                         type="button" id="dsp_ready" disabled="disabled"><span
                                                             class="lnr  lnr-thumbs-up"></span>Dish is
                                                     Received {{-- TODO means he recived from chef--}}
                                                 </button>
-                                                <button class="btn btn--icon btn-md btn--round btn-danger d-none"
+                                                <button class="btn btn--icon btn-md btn--round btn-danger d-none st-bt"
                                                         type="button"
                                                         id="dsp_delivered"><span
                                                             class="lnr  lnr-thumbs-up"></span>Dish is
@@ -210,7 +213,7 @@
 
                                         @if(auth()->id() == $order->buyer_user_id)
                                             <div class="buyer_opt d-none buyer_review">
-                                                <button class="btn btn--icon btn-md btn--round btn-success"
+                                                <button class="btn btn--icon btn-md btn--round btn-success st-bt"
                                                         id="order_completed"
                                                         type="button"><span
                                                             class="lnr  lnr-thumbs-up"></span>Received By Me
@@ -221,7 +224,7 @@
                                                         <a href="#"
                                                            class="btn btn--md btn--round rating--btn not--rated rate_it"
                                                            data-toggle="modal" data-target="#myModal">
-                                                            Give Rating
+                                                            Give a rating
                                                             {{--<P class="">Give Rating</P>--}}
                                                             {{--<div class="rating product--rating">
                                                                 <ul>
@@ -253,13 +256,13 @@
                                     </div>
 
                                     <div class="total_steps my-5 text-left">
-                                        <h4>Steps: </h4>
+                                        <h5><b>Watch where is order now:</b></h5>
                                         <ul class="list-group mt-3">
-                                            <li class="list-group-item step_1">Chef's Order Acceptation</li>
-                                            <li class="list-group-item step_2">Chef's Dish Preparation Completion</li>
-                                            <li class="list-group-item step_3">Dsp/PP Dish Received</li>
-                                            <li class="list-group-item step_4">Dsp/PP Dish Delivered</li>
-                                            <li class="list-group-item step_5">Buyer's Confirmation</li>
+                                            <li class="list-group-item step_1">Chef's Accept the order.</li>
+                                            <li class="list-group-item step_2">Chef's Is preparing the foods.</li>
+                                            <li class="list-group-item step_3">Deliverer / Pic-up Point Recived the dish.</li>
+                                            <li class="list-group-item step_4">Deliverer / Pic-up Point Deliver the dish.</li>
+                                            <li class="list-group-item step_5">Buyer's Received the dishes</li>
                                         </ul>
                                     </div>
 
@@ -281,7 +284,7 @@
                     <!-- end /.col-md-12 -->
 
 
-                    <l class="col-lg-4 col-md-5">
+                    <div class="col-lg-4 col-md-5">
                         <aside class="sidebar upload_sidebar">
 
                             <ul class="stepper">
@@ -310,32 +313,6 @@
                                                     @endif
                                                 </div>
                                         </div>
-                                        {{--<h6 class="mb-3 scolor"><b>Dish Info:</b></h6>
-                                        @include( 'dishes.box_dish_preview')
-                                        --}}{{-- TODO dont work for the new notification--}}{{--
-                                        --}}{{-- done TODO  dish preview here for every one --}}{{--
-
-                                        <div class="order-address">
-                                            --}}{{-- done TODO address only for dsp--}}{{--
-                                            @if(! (auth()->id() === $order->dish_user_id))
-
-                                                <h6><u>Chef info:</u></h6>
-                                                <p><b>Address:</b> {{ $order->chef->profile->address }}</p>
-                                                <p><b>Address
-                                                        Hint:</b> {{ $order->chef->profile->address_hint }}</p>
-                                                <p><b>Mobile:</b> {{ $order->chef->profile->mobile_no }}</p>
-
-                                            @endif
-                                            @if(! (auth()->id() === $order->buyer_user_id))
-
-                                                <h6><u>Foodies info:</u></h6>
-                                                <p><b>Address:</b>{{ $order->buyer->profile->address }}</p>
-                                                <p><b>Address Hint: </b>{{ $order->buyer->profile->address_hint }}</p>
-                                                <p><b>Mobile:</b> {{ $order->buyer->profile->mobile_no }}</p>
-
-                                            @endif
-                                        </div>--}}
-                                </li>
 
                                 <li class="step">
                                     <div data-step-label=""
@@ -346,10 +323,8 @@
                                         <div class="freelance-status">
                                             <div class="author-badges">
                                                 <div class="author-btn">
-                                                    <button class="btn btn--md btn--round" data-toggle="modal"
-                                                            data-target="#messageModal" type="button"
-                                                    >Complain to us
-                                                    </button>
+                                                    <button class="btn btn--md btn--round st-bt" data-toggle="modal" data-target="#messageModal"
+                                                    >Complain to us</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -362,32 +337,28 @@
                                             Service Info
                                         </div>
                                         <div class="step-content">
-                                            <div class="delivery-service dsp_status">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-
-                                                        @include('includes.dsp_order_status', ['dsp' => $order->dsp])
-                                                    </div>
-                                                </div>
-
-                                                <div class="order-address">
-
-
-                                                    <div class="">
-                                                        <h6><u>Contact info:</u></h6>
-                                                        @if($order->dsp->profile)
-                                                            <p><b>Address:</b> {{ $order->dsp->profile->address }}</p>
-                                                        @endif
-                                                        <p><b>Address Hint:</b> {{ $order->dsp->profile->address_hint }}
-                                                        </p>
-                                                        <p><b>Mobile:</b> {{ $order->dsp->profile->mobile_no }}</p>
-                                                    </div>
-
-                                                    {{-- <h5 id="dsp_str">Count down will start after clicking Recieved</h5> --}}
-
-
-                                                </div>
+                                           <div class="delivery-service dsp_status">
+                                               <div class="row">
+                                            <div class="col-md-12">
+                                                @include('includes.dsp_order_status', ['dsp' => $order->dsp])
                                             </div>
+                                               </div>
+
+                                            <div class="order-address">
+                                                <div class="">
+                                                    <h6><u>Contact info:</u></h6>
+                                                    @if($order->dsp->profile)
+                                                        <p><b>Address:</b> {{ $order->dsp->profile->address }}</p>
+                                                    @endif
+                                                    <p><b>Address Hint:</b> {{ $order->dsp->profile->address_hint }}</p>
+                                                    <p><b>Mobile:</b> {{ $order->dsp->profile->mobile_no }}</p>
+                                                </div>
+
+                                                {{-- <h5 id="dsp_str">Count down will start after clicking Recieved</h5> --}}
+
+
+                                            </div>
+                                        </div>
                                         </div>
                                     </li>
                                 @endif
@@ -422,6 +393,9 @@
                                 @endif
 
 
+
+
+
                             </ul>
 
 
@@ -438,7 +412,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close st-bt" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <h3 class="modal-title" id="rating_modal">Rate experince </h3>
@@ -490,7 +464,7 @@
                         </textarea>
                             <p class="notice">Your review will be ​publicly visible​, Thank you!</p>
                         </div>
-                        <button type="submit" class="btn btn--round btn--default">Submit Rating</button>
+                        <button type="submit" class="btn btn--round btn--default st-bt">Submit Rating</button>
                         <button class="btn btn--round modal_close" data-dismiss="modal">Close</button>
                     </form>
                     <!-- end /.form -->
@@ -506,7 +480,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="messageModalLabel">Message KhaniDaani</h5>
+                    <h5 class="modal-title" id="messageModalLabel st-btl">Message KhaniDaani</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -528,10 +502,10 @@
 
                 <div class="modal-footer">
                     {{-- <label for="submit-form" tabindex="0"  class="btn btn-primary px-3 py-1">Send</label> --}}
-                    <button type="submit" class="btn btn-primary px-3 py-1" form="send_msg" id="submit-form">Send
+                    <button type="submit" class="btn btn-primary px-3 py-1 st-bt" form="send_msg" id="submit-form">Send
                     </button>
 
-                    <button type="button" class="btn btn-secondary px-3 py-1" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary px-3 py-1 st-bt" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
@@ -609,7 +583,7 @@
 
 
                         opstr = "Waiting for the Chef to accept the order";
-                        notes = "If the chef do not accept the order within 30 min" + " after order is placed, Buyer Can Cancel the Order." + " After chef accepting the order the buyer can not cancel the order" + " unless chef fails to prepare dish within time";
+                        notes = "If the chef do not accept the order within 30 min" + " after order is placed, buyer can cancel the order." + " After chef accepting the order the buyer can not cancel the order" + " unless chef fails to prepare dish within time.";
                         timerstr = "Chef's remaining time to accept the order:";
 
                         $('.chef_accept').removeClass('d-none');
@@ -653,7 +627,7 @@
                             opstr = "Chef Delivered the order to PP. Now Waiting for PP's Confirmation.";
                             timerstr = "";
                         @endif
-                        timerstr = "Dsp's remaining time to delivered the dish:";
+                        timerstr = "Dish is Ready, Deliverer Maximum time to deliver the Dish.";
 
                         // $('#chef_timer').countdown('stop');
                         $('#dsp_timer').removeClass('d-none');
@@ -678,10 +652,10 @@
                         $('#dish_ready').prop('disabled', true);
                         $('.buyer_cancel_btn').prop("disabled", true);
 
-                        opstr = "Dsp recieved the order. Now DSP is on the way to deliver to the buyer.";
+                        opstr = "Deliverer Received the order. Now Deliverer is on the way to deliver to the buyer.";
 
                         @if($order->pp)
-                            opstr = "PP Received the dish. Now Buyer has to collect the dish from PP";
+                            opstr = "Pick-up point Received the dish. Now Buyer has to collect the dish from PP";
                             timerstr = "";
                         @endif
 
@@ -705,14 +679,12 @@
                         $('#dish_ready').prop('disabled', true);
                         $('.buyer_cancel_btn').prop("disabled", true);
 
-                        opstr = "Dsp Delivered the order. Waiting for the Buyers Comfirmation";
+                        opstr = "Deliverer Delivered the order. Waiting for the Buyers Confirmation";
                         @if($order->pp)
-                            opstr = "PP Delivered the order. Waiting for the Buyers Comfirmation";
+                            opstr = "Pick-up point Delivered the order. Waiting for the Buyers Confirmation";
                             timerstr = "";
                         @endif
-                        timerstr = "Dish is Delivered to Buyer.";
-
-
+                        timerstr = "Dish is Delivered By Buyer.";
                         $('.step_1').removeClass('list-group-item-warning');
                         $('.step_2').removeClass('list-group-item-warning');
                         $('.step_3').removeClass('list-group-item-warning');

@@ -59,6 +59,7 @@
                             </ul>
                         </div>
                     </div>
+                    <a href="#" onclick="window.open('https://www.sitelock.com/verify.php?site=khanidaani.com','SiteLock','width=600,height=600,left=160,top=170');"><img title="1&1 SiteLock" src="https://shield.sitelock.com/shield/khanidaani.com" alt="Website security"></a>
                 </div>
             </div>
         </div>
