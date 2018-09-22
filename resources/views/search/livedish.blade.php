@@ -145,7 +145,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-md-4">
+            <div class="col-md-4 s-hide">
                 <aside class="sidebar product--sidebar">
 
                     <div class="sidebar-card card--slider">
@@ -166,7 +166,7 @@
                         </div>
                     </div>
 
-                    <div class="sidebar-card card--filter s-hide">
+                    <div class="sidebar-card card--filter">
                         <a class="card-title" href="#collapse1" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapse1">
                             <h4>Filter Price
                                 <span class="lnr lnr-chevron-down"></span>
@@ -193,7 +193,7 @@
                         </div>
                     </div>
 
-                    <div class="sidebar-card card--filter s-hide">
+                    <div class="sidebar-card card--filter">
                         <a class="card-title" href="#collapse2" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapse2">
                             <h4>Filter Dishes
                                 <span class="lnr lnr-chevron-down"></span>
@@ -232,16 +232,19 @@
 
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-8 padding-left0">
 
-                <div class="container scroll" >
-                    <!-- start .row -->
+                <div class="container">
                     <div class="row" id="dish_result">
                         @include('includes.dish_preview')
                     </div>
+                    <div class="scroll s-hide">
+                    <!-- start .row -->
+
                     <div class="container">
                         {{ $dishes->links() }}
                     </div>
+                </div>
                 </div>
 
             </div>
