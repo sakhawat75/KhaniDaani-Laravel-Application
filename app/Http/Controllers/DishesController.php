@@ -348,8 +348,8 @@ class DishesController extends Controller
 
             }
 
-            $fileNameToStore= $dish->profile->user->name . '_' . time() . '.' .$extension;
-//            $fileNameToStore= $dish->profile->user->name . '_' . $filename . '_' . time() . '.' .$extension;
+//            $fileNameToStore= $dish->profile->user->name . '_' . time() . '.' .$extension;
+            $fileNameToStore= $dish->profile->user->name . '_' . $filename . '_' . time() . '.' .$extension;
 
             $destination = 'public/images/' . $type;
 			// Upload Image
