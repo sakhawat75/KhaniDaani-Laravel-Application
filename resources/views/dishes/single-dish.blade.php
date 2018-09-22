@@ -118,9 +118,17 @@
                   </div>
                   <!-- end /.thumb-slider -->
 
-                  <div class="prev-nav thumb-nav">
+                  <div class="prev-nav thumb-nav mg-bt">
                     <span class="lnr nav-left lnr-arrow-left"></span>
                     <span class="lnr nav-right lnr-arrow-right"></span>
+                  </div>
+
+                  <div class="dish-title">
+                    <div class="product-desc">
+
+                      <h3 class="scolor">{{$dish->dish_name }}</h3>
+                    </div>
+
                   </div>
                   <!-- end /.prev-nav -->
                 </div>
