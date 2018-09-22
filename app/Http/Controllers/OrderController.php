@@ -100,6 +100,8 @@ class OrderController extends Controller
 	 */
 	public function storeOrder(Request $request)
 	{
+        ini_set('max_execution_time', 300);
+        ini_set('memory_limit','2048M');
 
 	    $validate = $request->validate([
 	        'payment_type' => 'required',
@@ -213,6 +215,9 @@ class OrderController extends Controller
 
     public function complain(Request $request)
     {
+        ini_set('max_execution_time', 300);
+        ini_set('memory_limit','2048M');
+
         $content = $request->input('complain_text');
         $title = "Complain";
         Mail::send( 'emails.complains', ['title' => $title, 'content' => $content], function ($message)
