@@ -57,7 +57,7 @@
                                             <span>(Describe Everything in detail)</span>
                                         </label>
                                         <textarea name="service_description" rows="10" class="form-control"
-                                                  placeholder="max 1000 character" id="article-ckeditor"></textarea>
+                                                  placeholder="max 1000 character" {{--id="article-ckeditor"--}}></textarea>
                                     </div>
                                 </div>
 
