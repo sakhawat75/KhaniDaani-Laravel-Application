@@ -425,6 +425,7 @@
 @push('scripts-footer-bottom')
 @include ('notifications.notify_order_template')
 @include ('notifications.notify_dish_ready_template')
+@include ('notifications.notify_dd')
 @include ('messages.message_preview_template')
 {{--<script type="text/javascript">
     $(document).ready(function() {
@@ -489,6 +490,11 @@
                 } else if (notify.type == "App\\Notifications\\NotifyDishReady") {
                     template = _.template(
                         $('#notify_dish_ready_template').html()
+                    );
+
+                } else if (notify.type == "App\\Notifications\\NotifyDD") {
+                    template = _.template(
+                        $('#notify_dd').html()
                     );
 
                 } else {

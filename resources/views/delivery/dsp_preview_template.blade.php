@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <p class="dsp-description"><%- dsp.service_description %></p>
+                    <p class="dsp-description"><span><%- dsp.service_description %></span></p>
                     <p class="dsp-area">Service Area: <span><%- dsp.service_area %></span></p>
                 </div>
                 <div class="col-md-12">

@@ -6,6 +6,7 @@ use App\Area;
 use App\Category;
 use App\City;
 use App\DeliveryService;
+use App\Notifications\NotifyDD;
 use App\PickersPoint;
 use App\User;
 use App\Dish;
@@ -279,6 +280,11 @@ class RestApiController extends Controller
 			    if($request->has( 'dsp_is_dish_delivered')){
 
 				    $order->dsp_is_dish_delivered = 1;
+
+                    $buyer->notify( new NotifyDD( $order, 'user'));
+                    $chef->notify(new NotifyDD( $order, 'chef'));
+                    $dsp->notify(new NotifyDD( $order, 'dsp'));
+
 				    $order->save();
 			    }
 			    if($request->has( 'dsp_is_dish_recieved')){

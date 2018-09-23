@@ -2,13 +2,13 @@
 
 namespace App\Notifications;
 
+use App\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\Order;
 
-class NotifyDishReady extends Notification
+class NotifyDD extends Notification
 {
 //    use Queueable;
 
@@ -35,7 +35,6 @@ class NotifyDishReady extends Notification
     public function via($notifiable)
     {
         return ['database'];
-//        return ['database', 'mail'];
     }
 
     /**
@@ -46,21 +45,10 @@ class NotifyDishReady extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = url('/order/status/'.$this->order->id);
-
         return (new MailMessage)
-            ->greeting('Order Update!')
-            ->line('The dish is ready to be delivered ')
-            ->action('View Order', url($url))
-            ->line('Thank you for using our KhaniDaani platform!');
-    }
-
-    public function toDatabase($notifiable)
-    {
-        return [
-            'order' => $this->order,
-            'noti_type' => $this->type,  
-        ];
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**
@@ -71,9 +59,17 @@ class NotifyDishReady extends Notification
      */
     public function toArray($notifiable)
     {
-       return [
+        return [
             'order' => $this->order,
-            'noti_type' => $this->type,  
+            'noti_type' => $this->type,
+        ];
+    }
+
+    public function toDatabase($notifiable)
+    {
+        return [
+            'order' => $this->order,
+            'noti_type' => $this->type,
         ];
     }
 }
