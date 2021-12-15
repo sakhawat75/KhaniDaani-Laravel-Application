@@ -1,3 +1,18 @@
+# KhaniDaani
+A Chef hiring and online food ordering platform
+
+## Description
+KhaniDaani is a web application which is a freelance marketplace for home cooks and foodies. Technologies used to build these applications are PHP, MySQL, Sass, Rest API and Laravel Framework.
+
+## Technologies
+1. Back end: PHP, Laravel
+1. Front End: jQuery, Bootstrap, Google Fonts, etc.
+1. Database: MySQL
+1. Build Tools: PHP Storm
+
+![ss_khanidaani](https://user-images.githubusercontent.com/18674809/146246168-79365d6b-35e3-4cd9-811b-cb666fb7cfc7.png)
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
@@ -26,6 +41,7 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
 
 If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+
 
 ## Laravel Sponsors
 
